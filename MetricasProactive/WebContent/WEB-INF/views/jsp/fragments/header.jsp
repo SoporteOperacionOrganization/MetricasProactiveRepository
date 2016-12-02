@@ -17,7 +17,7 @@
 	<div class="container body">
 		<div class="main_container">
 			<div class="col-md-3 left_col">
-				<div class="left_col scroll-view">
+				<div class="${empty soeidSesion ? 'fondo_blanco left_col scroll-view' : 'left_col scroll-view'}">
 					<div class="navbar nav_title" style="border: 0;">
 						<a href="" class="site_title"> <img
 							src="resources/Images/citibanamex_menu.png" alt="Citibanamex" />
@@ -27,7 +27,7 @@
 					<div class="clearfix"></div>
 					<!-- sidebar menu -->
 					<div id="sidebar-menu"
-						class="main_menu_side hidden-print main_menu">
+						class="${empty soeidSesion ? 'oculto main_menu_side hidden-print main_menu' : 'main_menu_side hidden-print main_menu'}">
 						<div class="menu_section">
 							<ul class="nav side-menu">
 								<li class="active"><a><i class="fa fa-sitemap"></i>
@@ -50,11 +50,11 @@
 				<div class="nav_menu">
 					<nav style="height: 25%">
 						<div class="nav toggle" title="Menú">
-							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+							<c:if test="${not empty soeidSesion}"><a id="menu_toggle"><i class="fa fa-bars"></i></a></c:if>
 						</div>
 						<ul class="nav navbar-nav navbar-right">
 							<li class=""><a href="javascript:;"
-								class="user-profile dropdown-toggle" data-toggle="dropdown"
+								class="${empty soeidSesion ? 'oculto user-profile dropdown-toggle' : 'user-profile dropdown-toggle'}" data-toggle="dropdown"
 								aria-expanded="false">Jordi Orlando Velázquez <span
 									class=" fa fa-angle-down"></span>
 							</a>

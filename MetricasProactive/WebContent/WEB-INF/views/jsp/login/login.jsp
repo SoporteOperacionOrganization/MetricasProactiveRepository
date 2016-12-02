@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
 <jsp:include page="../fragments/resources.jsp" />
 </head>
@@ -27,12 +27,12 @@
 						<div style="display: none" id="login-alert" class="alert alert-danger col-sm-12"></div>
 						<div style="margin-bottom: 5px; width: 100%; height: 3px" class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-						    <input id="Soeid" type="text" class="form-control" name="soeid" value=""  autofocus="autofocus" placeholder="Soeid" required="required" maxlength="7">
+						    <input id="Soeid" type="text" class="form-control" name="soeid" value=""  autofocus="autofocus" placeholder="SOEID" required="required" maxlength="7">
 						
 						</div>
 						<div style="margin-bottom: 5px; width: 100%" class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> 
-							<input id="login-password" maxlength="100" type="password" class="form-control" name="contrasena" placeholder="Contraseña" required="required">
+							<input id="login-password" maxlength="100" type="password" class="form-control" name="contrasena" placeholder="Password" required="required">
 						</div>
 						<br/>
 						<div style="margin-top:10px; text-align:center;" class="form-group">
@@ -67,9 +67,6 @@
 	
 	</div>
 	
-	<footer style="position: fixed; bottom: 0; width: 100%">
-		<jsp:include page="../fragments/footer.jsp" />
-	</footer>
 
 </body>
 </html>
