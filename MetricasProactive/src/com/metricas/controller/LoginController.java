@@ -28,10 +28,11 @@ public class LoginController {
 	
 	@RequestMapping(value = "/inicio", method = RequestMethod.GET)
 	public String inicio(Model model, Principal principal1){
-		//CustomUsuario principal = (CustomUsuario) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		CustomUsuario principal = (CustomUsuario) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String soeidSesion = principal.getNombre();
 		//String segmento = principal.getSegmentos().toString();
 		//String segmento = principal.getName();
-		//model.addAttribute("segmento", segmento);
+		model.addAttribute("soeidSesion", soeidSesion);
 		return "login/inicio";
 	}
 	
