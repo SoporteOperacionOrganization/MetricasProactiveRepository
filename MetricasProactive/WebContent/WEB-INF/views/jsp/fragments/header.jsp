@@ -1,102 +1,75 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Meta, title, CSS, favicons, etc. -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Citibanamex | Visor de métricas Proactive</title>
+<jsp:include page="../fragments/resources.jsp" />
 </head>
-<body  style="width: 100%">
-	<div style="background-image:url('resources/Images/Logos/Logo_CitiBanamex.png'); background-repeat:repeat-x; 
-	top: 0%; ;	z-index:3 ; position: fixed; width: 100%; height: 100px">
-		
-		<table style="width: 100%; position: fixed;">
-			<tr > 
-			<td width="30%"></td>
-				<td  width="43%">
-					<h3 class="titleSize"
-						style="color: #D7D7D7; margin-top: 0.0em">VISOR DE METRICAS PROACTIVE</h3>
-				</td>
-				<td style="width: 52%; height: 100px;  text-align: right;"> 
-				
-						<h4>
 
-							<span  class="headerText" style=" color: #C01722; font-weight: bold; letter-spacing: 1px; margin: 0em 1.2em 0em 0em ">
-							</span>
-						</h4>
-						<h5>
-							<span class="headerText"  style="color: #fff;   margin:  0em 1.2em 0em 0em "> <c:if
-									test="${UsuarioSesion != null}">
-									<span class="tranformarMayusculas"></span>
-								</c:if>
-							</span>
-						</h5></td>
-				<td ></td>
-			</tr>
-		</table>
-		
-		
-			<!-- <table  style="width: 100%; margin-top: 4.5em; height: 2em;">
-			<tr >
-					<td colspan="4" style="font-size: 14px">
-					<nav class="navbar navbar-default" style="margin: 0% 0% 0% 0px;width: 100%;
-					background-color:#013F7A ;border-color: #013F7A; border-radius: 0px 0px 0px 0px;" role="navigation">
-						  <div class="navbar-header" >
-							    <button type="button" class="navbar-toggle" data-toggle="collapse"
-							            data-target=".navbar-ex1-collapse">
-							      <span class="sr-only">Desplegar navegaci�n</span>
-							      <span class="icon-bar"></span>
-							      <span class="icon-bar"></span>
-							      <span class="icon-bar"></span>
-							    </button>
-						  </div>
-						  
-						  <div class="collapse navbar-collapse navbar-ex1-collapse">
-							    <ul class="nav navbar-nav">	
-							      
-							      <li class="dropdown">
-							        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							          Usuarios <b class="caret"></b>
-							        </a>
-							        <ul class="dropdown-menu">
-							          <li><a href="<c:url value='/listarUsuarios' />">Consultar</a></li>
-									  <li><a href="<c:url value='/agregarUsuario' />">Agregar</a></li>
-									  <li><a href="<c:url value='/resetPassword' />">Resetear</a></li>
-							        </ul>
-							      </li>
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			<div class="col-md-3 left_col">
+				<div class="left_col scroll-view">
+					<div class="navbar nav_title" style="border: 0;">
+						<a href="" class="site_title"> <img
+							src="resources/Images/citibanamex_menu.png" alt="Citibanamex" />
+						</a>
+					</div>
 
-							      <li class="dropdown">
-							        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							          Agenda <b class="caret"></b>
-							        </a>
-							        <ul class="dropdown-menu">
-							          	<li><a href="<c:url value='/listarAgendas' />">Consultar</a></li>
-										<li><a href="<c:url value='/agregarAgenda' />">Agregar</a></li>
-										<li role="separator" class="divider dividerColor"></li>
-	
-										<li><a class="subtitulosDropDown"
-											style="color: #000; font-weight: bold; cursor: default;"
-											>Carga masiva &nbsp;<span class="glyphicon glyphicon-upload"></span></a></li>
-										<li role="separator" class="divider"></li>
-										<li><a href="<c:url value='/cargaMasiva' />">Agregar</a></li>
-										<li><a href="<c:url value='/eliminacionMasiva' />">Eliminar</a></li>
-							        </ul>
-							      </li>
-							    </ul>
-							    <ul  style="text-align: right; margin: 17px 5px 0px 0px">
-									<a style="color: white; font-weight: bold;" href="<c:url value='/logout' />"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Cerrar sesi�n</a>
-								</ul>
-						  </div>
+					<div class="clearfix"></div>
+					<!-- sidebar menu -->
+					<div id="sidebar-menu"
+						class="main_menu_side hidden-print main_menu">
+						<div class="menu_section">
+							<ul class="nav side-menu">
+								<li class="active"><a><i class="fa fa-sitemap"></i>
+										General</a></li>
+								<li><a><i class="fa fa-sitemap"></i> Online</a></li>
+								<li><a><i class="fa fa-sitemap"></i> Offline</a></li>
+								<li><a><i class="fa fa-sitemap"></i> Pyme</a></li>
+								<li><a><i class="fa fa-sitemap"></i> Empresarial</a></li>
+								<li><a><i class="fa fa-sitemap"></i> Pyme Offline</a></li>
+							</ul>
+						</div>
+
+					</div>
+					<!-- /sidebar menu -->
+				</div>
+			</div>
+
+			<!-- top navigation -->
+			<div class="top_nav">
+				<div class="nav_menu">
+					<nav style="height: 25%">
+						<div class="nav toggle" title="Menú">
+							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+						</div>
+						<ul class="nav navbar-nav navbar-right">
+							<li class=""><a href="javascript:;"
+								class="user-profile dropdown-toggle" data-toggle="dropdown"
+								aria-expanded="false">Jordi Orlando Velázquez <span
+									class=" fa fa-angle-down"></span>
+							</a>
+								<ul class="dropdown-menu dropdown-usermenu pull-right">
+									<li><a href="<c:url value='/logout' />"><i
+											class="fa fa-sign-out pull-right"></i> Cerrar sesión</a></li>
+								</ul></li>
+						</ul>
 					</nav>
-					</td>
-							</tr>
-		</table>
-		 -->
-		
-		
-		
+				</div>
+			</div>
+			<!-- /top navigation -->
+
+
+		</div>
 	</div>
-	<br>
 </body>
-
 </html>
-
