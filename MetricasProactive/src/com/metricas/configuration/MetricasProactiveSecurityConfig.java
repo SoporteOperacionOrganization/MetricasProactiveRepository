@@ -13,6 +13,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.metricas.security.CustomPasswordEncoder;
+
 @Configuration
 @EnableWebSecurity
 public class MetricasProactiveSecurityConfig extends WebSecurityConfigurerAdapter{
@@ -29,7 +31,7 @@ public class MetricasProactiveSecurityConfig extends WebSecurityConfigurerAdapte
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
+		return new CustomPasswordEncoder();
 	}
 	
 	@Bean
