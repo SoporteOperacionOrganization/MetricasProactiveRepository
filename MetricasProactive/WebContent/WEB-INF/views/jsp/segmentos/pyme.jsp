@@ -23,7 +23,7 @@
 			<div class="right_col" role="main">
 				<div class="page-title">
 					<div
-						class="col-md-6 col-sm-6 col-xs-12 form-group pull-right no-padding">
+						class="col-md-8 col-sm-8 col-xs-12 form-group pull-right no-padding">
 						<div class="row">
 							<div class="col-md-6 col-sm-12 col-xs-12">
 								<label for="calendarioFiltro">Filtro:</label>
@@ -610,6 +610,8 @@
 		function recalcularAlto() {
 			var alto = $(document).height();
 			$(".left_col").css("min-height", alto);
+			/*var anchoLogo = $(".nav_title").width();
+			$(".nav_menu").css("padding-left", anchoLogo);*/
 		}
 		$(document)
 				.ready(

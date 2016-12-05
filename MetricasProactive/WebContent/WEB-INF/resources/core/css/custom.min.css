@@ -959,24 +959,54 @@ a:focus {
 /* Custom, iPhone Retina */ 
 @media only screen and (min-width : 320px) {
 	.nav-md nav .navbar-middle {
-		font-size: 16px;
-		width: 100%;
+		font-size: 14px;
+		width: 20%;
+		padding-top: 8px;
 	}
 	.nav-sm nav .navbar-middle {
-		font-size: 16px;
-		width: 100%;
+		font-size: 14px;
+		width: 20%;
+		padding-top: 8px;
+	}
+	.nav-md nav .navbar-right {
+		font-size: 12px;
+		padding-top: 11px;
+		line-height:0;
+		width: 60%;
+		padding-top: 0;
+	}
+	.nav-sm nav .navbar-right {
+		font-size: 12px;
+		padding-top: 11px;
+		line-height:0;
+		padding-right: 30px;
+		width: 60%;
+		padding-top: 0;
 	}
 }
 
 /* Extra Small Devices, Phones */ 
 @media only screen and (min-width : 480px) {
 	.nav-md nav .navbar-middle {
-		font-size: 16px;
-		width: 100%;
+		font-size: 14px;
+		width: 35%;
 	}
 	.nav-sm nav .navbar-middle {
-		font-size: 16px;
-		width: 100%;
+		font-size: 14px;
+		width: 35%;
+	}
+	.nav-md nav .navbar-right {
+		font-size: 12px;
+		padding-top: 11px;
+		line-height:0;
+		width: 40%;
+	}
+	.nav-sm nav .navbar-right {
+		font-size: 12px;
+		padding-top: 11px;
+		line-height:0;
+		padding-right: 60px;
+		width: 40%;
 	}
 }
 
@@ -984,30 +1014,49 @@ a:focus {
 @media only screen and (min-width : 768px) {
 	.nav-md nav .navbar-middle {
 		font-size: 16px;
-		width: 100%;
+		padding-top: 28px;
 	}
 	.nav-sm nav .navbar-middle {
 		font-size: 16px;
-		width: 100%;
+		padding-top: 28px;
+	}
+	.nav-md nav .navbar-right {
+		font-size: 14px;
+		padding-top: 11px;
+		width: 60%;
+	}
+	.nav-sm nav .navbar-right {
+		font-size: 14px;
+		padding-top: 11px;
+		padding-right: 60px;
+		width: 60%;
 	}
 }
 
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
 	.nav-md nav .navbar-middle {
-		width: calc(100% - 400px);
+		width: calc(100% - 500px);
 		font-size: 22px;
+		padding-top: 24px;
 	}
 	.nav-sm nav .navbar-middle {
 		width: calc(100% - 250px);
 		font-size: 22px;
+		padding-top: 24px;
+	}
+	.nav-md .nav_menu{
+		padding-left: 230px;
+	}
+	.nav-sm .nav_menu{
+		padding-left: 0;
 	}
 }
 
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
 	.nav-md nav .navbar-middle {
-		width: calc(100% - 400px);
+		width: calc(100% - 500px);
 		font-size: 22px;
 	}
 	.nav-sm nav .navbar-middle {
