@@ -38,7 +38,7 @@
 					<div class="col-md-4 col-sm-4 col-xs-12">
 						<div class="x_panel tile fixed_height_320">
 							<div class="x_title">
-								<h2>Top 10 familias</h2>
+								<h2>Servicios</h2>
 								<div class="clearfix"></div>
 							</div>
 							<div class="x_content">
@@ -197,9 +197,9 @@
 
 				</div>
 				</div>
-			<!-- footer content -->
+			<!-- footer content 
 			<jsp:include page="../fragments/footer.jsp"/>
-			<!-- /footer content -->
+			<!-- /footer content -->-->
 		</div>
 		<!-- /page content -->
 	</div>
@@ -452,7 +452,7 @@
 			},
 			calculable : true,
 			legend : {
-				data : [ 'Revenue', 'Time Spent' ],
+				data : [ 'Revenue', 'Comparativa' ],
 				y : 'bottom'
 			},
 			xAxis : [ {
@@ -462,15 +462,15 @@
 			} ],
 			yAxis : [ {
 				type : 'value',
-				name : 'Amount',
+				name : '',
 				axisLabel : {
-					formatter : '{value} ml'
+					formatter : '{value}'
 				}
 			}, {
 				type : 'value',
-				name : 'Hours',
+				name : 'Número',
 				axisLabel : {
-					formatter : '{value} Â°C'
+					formatter : '{value}'
 				}
 			} ],
 			series : [ {
@@ -478,7 +478,7 @@
 				type : 'bar',
 				data : [ 2.0, 4.9, 7.0, 23.2, 25.6 ]
 			}, {
-				name : 'Time Spent',
+				name : 'Comparativa',
 				type : 'line',
 				yAxisIndex : 1,
 				data : [ 2.0, 2.2, 3.3, 4.5, 6.3 ]

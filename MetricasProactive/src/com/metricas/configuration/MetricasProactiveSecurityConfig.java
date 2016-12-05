@@ -45,11 +45,11 @@ public class MetricasProactiveSecurityConfig extends WebSecurityConfigurerAdapte
 		http.csrf().disable();
 		
 		http.authorizeRequests().antMatchers("/", "/login", "/logout").permitAll();
-		http.authorizeRequests().antMatchers("/inicio").access("hasAnyRole('ROLE_DIRECTOR', 'ROLE_DIRECTO')");
+		http.authorizeRequests().antMatchers("/general").access("hasAnyRole('ROLE_DIRECTOR', 'ROLE_DIRECTO')");
 		http.authorizeRequests().antMatchers("/test").access("hasRole('ROLE_DIRECTOR')");
 		http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
 		http.authorizeRequests().and().formLogin().loginProcessingUrl("/j_spring_security_check").loginPage("/login")
-				.defaultSuccessUrl("/inicio").failureUrl("/login?error=true").usernameParameter("soeid")
+				.defaultSuccessUrl("/general").failureUrl("/login?error=true").usernameParameter("soeid")
 				.passwordParameter("contrasena")
 				.and().logout().logoutUrl("/logout").logoutSuccessUrl("/login");
 
