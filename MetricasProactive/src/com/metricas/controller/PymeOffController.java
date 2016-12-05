@@ -19,13 +19,10 @@ public class PymeOffController {
 	public String test(Model model){
 		CustomUsuario principal = (CustomUsuario) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String soeidSesion = principal.getNombre();
+		String activo = "pymeoff";
 		model.addAttribute("soeidSesion", soeidSesion);
-		
-		int valores[] ={1,2,3,4,5};
-		
-		//usuarios = usuarioService.obtenerUsuarios();
-		//model.addAttribute("usuarios", usuarios);
-		return "login/pymeOffline";
+		model.addAttribute("activo", activo);
+		return "segmentos/pymeOffline";
 	}
 	
 }

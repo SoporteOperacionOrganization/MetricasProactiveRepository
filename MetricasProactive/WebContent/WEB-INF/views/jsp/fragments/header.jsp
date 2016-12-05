@@ -30,13 +30,12 @@
 						class="${empty soeidSesion ? 'oculto main_menu_side hidden-print main_menu' : 'main_menu_side hidden-print main_menu'}">
 						<div class="menu_section">
 							<ul class="nav side-menu">
-								<li class="active"><a><i class="fa fa-sitemap"></i>
-										General</a></li>
-								<li><a><i class="fa fa-sitemap"></i> Online</a></li>
-								<li><a><i class="fa fa-sitemap"></i> Offline</a></li>
-								<li><a><i class="fa fa-sitemap"></i> Pyme</a></li>
-								<li><a><i class="fa fa-sitemap"></i> Empresarial</a></li>
-								<li><a><i class="fa fa-sitemap"></i> Pyme Offline</a></li>
+								<li class="${activo == 'general' ? 'active' : '' }"><a href="<c:url value='/general' />"><i class="fa fa-sitemap"></i> General</a></li>
+								<li class="${activo == 'online' ? 'active' : '' }"><a href="<c:url value='/online' />"><i class="fa fa-sitemap"></i> Online</a></li>
+								<li class="${activo == 'offline' ? 'active' : '' }"><a href="<c:url value='/offline' />"><i class="fa fa-sitemap"></i> Offline</a></li>
+								<li class="${activo == 'pyme' ? 'active' : '' }"><a href="<c:url value='/pyme' />"><i class="fa fa-sitemap"></i> Pyme</a></li>
+								<li class="${activo == 'empresarial' ? 'active' : '' }"><a href="<c:url value='/empresarial' />"><i class="fa fa-sitemap"></i> Empresarial</a></li>
+								<li class="${activo == 'pymeoff' ? 'active' : '' }"><a href="<c:url value='/pymeOffline' />"><i class="fa fa-sitemap"></i> Pyme Offline</a></li>
 							</ul>
 						</div>
 
@@ -48,20 +47,24 @@
 			<!-- top navigation -->
 			<div class="top_nav">
 				<div class="nav_menu">
-					<nav style="height: 25%">
-						<div class="nav toggle" title="Menú">
+					<nav style="height: 72px">
+						<div class="${empty soeidSesion ? 'no-mostrar nav toggle' : 'nav toggle'}" title="Menú">
 							<c:if test="${not empty soeidSesion}"><a id="menu_toggle"><i class="fa fa-bars"></i></a></c:if>
 						</div>
-						<ul class="nav navbar-nav navbar-right">
-							<li class=""><a href="javascript:;"
+						<div class="nav navbar-middle">
+							Visor de métricas Proactive
+						</div>
+						<ul class="${empty soeidSesion ? 'no-mostrar nav navbar-nav navbar-right' : 'nav navbar-nav navbar-right'}">
+							<li class="">
+								<a href="javascript:;"
 								class="${empty soeidSesion ? 'oculto user-profile dropdown-toggle' : 'user-profile dropdown-toggle'}" data-toggle="dropdown"
-								aria-expanded="false">Jordi Orlando Velázquez <span
-									class=" fa fa-angle-down"></span>
-							</a>
-								<ul class="dropdown-menu dropdown-usermenu pull-right">
+								aria-expanded="false">${usuarioSesion.nombre}&nbsp;${usuarioSesion.apellidoPaterno}<span class=" fa fa-angle-down"></span>
+								</a>
+									<ul class="dropdown-menu dropdown-usermenu pull-right">
 									<li><a href="<c:url value='/logout' />"><i
 											class="fa fa-sign-out pull-right"></i> Cerrar sesión</a></li>
-								</ul></li>
+									</ul>
+							</li>
 						</ul>
 					</nav>
 				</div>

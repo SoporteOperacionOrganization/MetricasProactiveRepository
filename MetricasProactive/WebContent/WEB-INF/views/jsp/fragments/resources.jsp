@@ -2,17 +2,25 @@
 <spring:url value="resources/css/bootstrap.css" var="bootstrapCss" />
 <spring:url value="resources/css/bootstrap.min.css" var="bootstrapCssMin" />
 <spring:url value="resources/css/font-awesome.min.css" var="fontAwesome" />
+<spring:url value="resources/css/daterangepicker.css" var="dateRangePickerCSS" />
 <spring:url value="resources/css/custom.min.css" var="customCSS" />
 <spring:url value="resources/js/jquery.min.js" var="jquery" />
 <spring:url value="resources/js/bootstrap.min.js" var="bootstrapJs" />
 <spring:url value="resources/js/fastclick.js" var="fastclick" />
 <spring:url value="resources/js/echarts.min.js" var="echarts" />
+<spring:url value="resources/js/moment.min.js" var="momentMin" />
+<spring:url value="resources/js/daterangepicker.js" var="dateRangePicker" />
+
+    
 
 <link href="${bootstrapCss}" rel="stylesheet" ></link>
 <link href="${bootstrapCssMin}" rel="stylesheet" ></link>
 <link href="${fontAwesome}" rel="stylesheet" ></link>
+<link href="${dateRangePickerCSS}" rel="stylesheet">
 <link href="${customCSS}" rel="stylesheet" ></link>
 <script src="${jquery}"></script>
 <script src="${bootstrapJs}"></script>
 <script src="${fastclick}"></script>
 <script src="${echarts}"></script>
+<script src="${momentMin}"></script>
+<script src="${dateRangePicker}"></script>
