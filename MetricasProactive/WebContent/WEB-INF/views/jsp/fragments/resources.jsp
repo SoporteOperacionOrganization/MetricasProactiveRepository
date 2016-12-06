@@ -10,7 +10,7 @@
 <spring:url value="resources/js/echarts.min.js" var="echarts" />
 <spring:url value="resources/js/moment.min.js" var="momentMin" />
 <spring:url value="resources/js/daterangepicker.js" var="dateRangePicker" />
-
+<spring:url value="resources/js/bootstrap-progressbar.min.js" var="progressbar" />
     
 
 <link href="${bootstrapCss}" rel="stylesheet" ></link>
@@ -24,3 +24,4 @@
 <script src="${echarts}"></script>
 <script src="${momentMin}"></script>
 <script src="${dateRangePicker}"></script>
+<script src="${progressbar}"></script>
