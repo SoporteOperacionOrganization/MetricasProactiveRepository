@@ -25,6 +25,7 @@ public class PymeOffController {
 		String activo = "pymeoff";
 		Set <Segmento> segmentos = principal.getSegmentos();
 		model.addAttribute("soeidSesion", soeidSesion);
+		model.addAttribute("usuarioSesion",principal);
 		model.addAttribute("activo", activo);
 		model.addAttribute("segmentos",segmentos);
 		return "segmentos/pymeOffline";

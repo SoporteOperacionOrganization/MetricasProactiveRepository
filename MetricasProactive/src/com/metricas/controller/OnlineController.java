@@ -25,6 +25,7 @@ public class OnlineController {
 		String activo = "online";
 		Set <Segmento> segmentos = principal.getSegmentos();
 		model.addAttribute("soeidSesion", soeidSesion);
+		model.addAttribute("usuarioSesion",principal);
 		model.addAttribute("activo", activo);
 		model.addAttribute("segmentos",segmentos);
 		return "segmentos/online";

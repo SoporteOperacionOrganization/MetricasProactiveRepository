@@ -51,7 +51,7 @@ public class MetricasProactiveSecurityConfig extends WebSecurityConfigurerAdapte
 		http.authorizeRequests().antMatchers("/test").access("hasRole('ROLE_DIRECTOR')");
 		http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
 		http.authorizeRequests().and().formLogin().loginProcessingUrl("/j_spring_security_check").loginPage("/login")
-				.defaultSuccessUrl("/general").failureUrl("/login?error=true").usernameParameter("soeid")
+				.defaultSuccessUrl("/inicio").failureUrl("/login?error=true").usernameParameter("soeid")
 				.passwordParameter("contrasena")
 				.and().logout().logoutUrl("/logout").logoutSuccessUrl("/login");
 

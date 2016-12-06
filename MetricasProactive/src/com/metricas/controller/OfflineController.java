@@ -27,6 +27,7 @@ public class OfflineController {
 		String activo = "offline";
 		Set <Segmento> segmentos = principal.getSegmentos();
 		model.addAttribute("soeidSesion", soeidSesion);
+		model.addAttribute("usuarioSesion",principal);
 		model.addAttribute("segmentos",segmentos);
 		model.addAttribute("activo", activo);
 		return "segmentos/offline";
