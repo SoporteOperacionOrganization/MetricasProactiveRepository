@@ -13,21 +13,21 @@ import com.metricas.service.UsuarioService;
 
 
 @Controller
-public class PymeController {
+public class OnlineController {
 
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	@RequestMapping(value = "/pyme", method = RequestMethod.GET)
+	@RequestMapping(value = "/online", method = RequestMethod.GET)
 	public String test(Model model){
 		CustomUsuario principal = (CustomUsuario) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String soeidSesion = principal.getNombre();
-		String activo = "pyme";
+		String activo = "online";
 		Set <Segmento> segmentos = principal.getSegmentos();
 		model.addAttribute("soeidSesion", soeidSesion);
 		model.addAttribute("activo", activo);
 		model.addAttribute("segmentos",segmentos);
-		return "segmentos/pyme";
+		return "segmentos/online";
 	}
 	
 }
