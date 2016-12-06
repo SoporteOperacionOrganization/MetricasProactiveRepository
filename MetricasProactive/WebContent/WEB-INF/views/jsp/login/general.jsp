@@ -50,18 +50,20 @@
 					</div>
 
 
-    <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
+    <div class="col-md-3 col-sm-3 col-xs-12 ">
+                  <div class="x_panel tile fixed_height_320">
+                  
                   <div class="x_title">
                     <h2>Clientes Frecuentes</h2>
                     <div class="clearfix"></div>
                   </div>
 
-                  <div class="col-md-12 col-sm-12 col-xs-6">
+                  <div class="col-md-12 col-sm-12 col-xs-6" style="font-size: 10px">
                     <div>
                       <p>Facebook Campaign</p>
                       <div class="">
                         <div class="progress progress_sm" style="width: 100%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="10"></div>
+                          <div class="progress-bar" style="background-color:#1DB7D0 ;" role="progressbar" data-transitiongoal="10"></div>
                         </div>
                       </div>
                     </div>
@@ -69,7 +71,7 @@
                       <p>Twitter Campaign</p>
                       <div class="">
                         <div class="progress progress_sm" style="width: 100%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
+                          <div class="progress-bar " style="background-color: #C01722;" role="progressbar" data-transitiongoal="60"></div>
                         </div>
                       </div>
                     </div>
@@ -77,7 +79,7 @@
                       <p>Twitter Campaign</p>
                       <div class="">
                         <div class="progress progress_sm" style="width: 100%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
+                          <div class="progress-bar " style="background-color: #F7DEB4';" role="progressbar" data-transitiongoal="60"></div>
                         </div>
                       </div>
                     </div>
@@ -85,7 +87,7 @@
                       <p>Twitter Campaign</p>
                       <div class="">
                         <div class="progress progress_sm" style="width: 100%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
+                          <div class="progress-bar" style="background-color: #8FA508;" role="progressbar" data-transitiongoal="60"></div>
                         </div>
                       </div>
                     </div>
@@ -93,53 +95,17 @@
                       <p>Twitter Campaign</p>
                       <div class="">
                         <div class="progress progress_sm" style="width: 100%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
+                          <div class="progress-bar " style="background-color: #A6A6A6;" role="progressbar" data-transitiongoal="60"></div>
                         </div>
                       </div>
                     </div>
-                     <div>
-                      <p>Twitter Campaign</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 100%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
-                        </div>
-                      </div>
-                    </div>
-                     <div>
-                      <p>Twitter Campaign</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 100%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
-                        </div>
-                      </div>
-                    </div>
-                     <div>
-                      <p>Twitter Campaign</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 100%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
-                        </div>
-                      </div>
-                    </div>
-                     <div>
-                      <p>Twitter Campaign</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 100%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
-                        </div>
-                      </div>
-                    </div>
-                     <div>
-                      <p>Twitter Campaign</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 100%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
-                        </div>
-                      </div>
-                    </div>
+               
+                    
+                  
+                  
                   </div>
                  
-                </div>
+                </div></div>
 		<div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
@@ -172,7 +138,7 @@
 	<script>
 	//Colores Bar
 	var themeBar = {
-		color : [ '#E8B027', '#0B676A', '#E8B027', '#70FDFF',
+		color : [ '#1DB7D0', '#0B676A', '#E8B027', '#70FDFF',
 				'#0B676A','#C01722' , '#8FA508' ],
 
 		title : {
