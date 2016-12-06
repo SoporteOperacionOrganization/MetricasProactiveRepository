@@ -135,20 +135,74 @@
 
 						</div>
 					</div>
-					<div class="col-md-4 col-sm-4 col-xs-12">
-						<div class="x_panel">
+					<div class="col-md-3 col-sm-3 col-xs-12 ">
+						<div class="x_panel tile fixed_height_320">
+
 							<div class="x_title">
-								<h2>Concurrencia</h2>
+								<h2>Familias</h2>
 								<div class="clearfix"></div>
 							</div>
-							<div class="x_content">
-								<div id="echart_mini_pie" style="height: 235px;"></div>
+
+							<div class="col-md-4 tile" style="font-size: 10px">
+								<span>Total Revenue</span>
+								<h2>809</h2>
+								<span class="sparkline22 graph"
+									style="height: 160px; width: 20px">
+									<canvas width="10" height="10"
+										style="display: inline-block; vertical-align: top; width: 4px; height: 30px;"></canvas>
+								</span>
+							</div>
+
+							<div class="col-md-4 tile" style="font-size: 10px">
+								<span>Total Revenue</span>
+								<h2>809</h2>
+								<span class="sparkline22 graph"
+									style="height: 160px; width: 20px">
+									<canvas width="10" height="10"
+										style="display: inline-block; vertical-align: top; width: 4px; height: 30px;"></canvas>
+								</span>
+							</div>
+
+							<div class="col-md-4 tile" style="font-size: 10px">
+								<span>Total Revenue</span>
+								<h2>809</h2>
+								<span class="sparkline22 graph"
+									style="height: 160px; width: 20px">
+									<canvas width="10" height="10"
+										style="display: inline-block; vertical-align: top; width: 4px; height: 30px;"></canvas>
+								</span>
+							</div>
+
+							<div class="col-md-4 tile" style="font-size: 10px">
+								<span>Total Revenue</span>
+								<h2>809</h2>
+								<span class="sparkline22 graph"
+									style="height: 160px; width: 20px">
+									<canvas width="10" height="10"
+										style="display: inline-block; vertical-align: top; width: 4px; height: 30px;"></canvas>
+								</span>
+							</div>
+
+							<div class="col-md-4 tile" style="font-size: 10px">
+								<span>Total Revenue</span>
+								<h2>809</h2>
+								<span class="sparkline22 graph"
+									style="height: 160px; width: 20px">
+									<canvas width="10" height="10"
+										style="display: inline-block; vertical-align: top; width: 4px; height: 30px;"></canvas>
+								</span>
+							</div>
+							<div class="col-md-4 tile" style="font-size: 10px">
+								<span>Total Revenue</span>
+								<h2>809</h2>
+								<span class="sparkline22 graph"
+									style="height: 160px; width: 20px">
+									<canvas width="10" height="10"
+										style="display: inline-block; vertical-align: top; width: 4px; height: 30px;"></canvas>
+								</span>
 							</div>
 						</div>
 					</div>
-
-
-
 				</div>
 			</div>
 			<!-- footer content -->

@@ -12,6 +12,7 @@
 <spring:url value="resources/js/moment.min.js" var="momentMin" />
 <spring:url value="resources/js/daterangepicker.js" var="dateRangePicker" />
 <spring:url value="resources/js/bootstrap-progressbar.min.js" var="progressbar" />
+<spring:url value="resources/js/jquery.sparkline.min.js" var="jquerySparkline" />
 <spring:url value="resources/js/daterangepicker-opciones.js" var="dateRangePickerOpciones" />
 <spring:url value="resources/js/generales.js" var="generales" />
     
@@ -30,5 +31,6 @@
 <script src="${momentMin}"></script>
 <script src="${dateRangePicker}"></script>
 <script src="${progressbar}"></script>
+<script src="${jquerySparkline}"></script>
 <script src="${dateRangePickerOpciones}"></script>
 <script src="${generales}"></script>

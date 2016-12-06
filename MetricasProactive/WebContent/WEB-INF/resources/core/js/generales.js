@@ -13,16 +13,51 @@ function redibujarGraficas() {
 function recalcularAlto() {
 	var alto = $(document).height();
 	$(".left_col").css("min-height", alto);
-	/*
-	 * var anchoLogo = $(".nav_title").width();
-	 * $(".nav_menu").css("padding-left", anchoLogo);
-	 */
 }
 
 $(document).ready(
 		function() {
 			recalcularAlto();
 			$(".dropdown-toggle").dropdown();
+
+			$(".sparkline_one").sparkline(
+					[ 2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 4, 5, 6, 3, 5, 4, 5,
+							4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6 ], {
+						type : 'bar',
+						height : '125',
+						barWidth : 13,
+						colorMap : {
+							'7' : '#a1a1a1'
+						},
+						barSpacing : 2,
+						barColor : '#26B99A'
+					});
+
+			$(".sparkline11").sparkline(
+					[ 2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 6, 2, 4, 3, 4, 5, 4, 5, 4,
+							3 ], {
+						type : 'bar',
+						height : '40',
+						barWidth : 8,
+						colorMap : {
+							'7' : '#a1a1a1'
+						},
+						barSpacing : 2,
+						barColor : '#26B99A'
+					});
+
+			$(".sparkline22").sparkline(
+					[ 2, 4, 3, 4, 7, 5, 4, 3, 5, 6, 2, 4, 3, 4, 5, 4, 5, 4, 3,
+							4, 6 ], {
+						type : 'line',
+						height : '40',
+						width : '200',
+						lineColor : '#26B99A',
+						fillColor : '#ffffff',
+						lineWidth : 3,
+						spotColor : '#34495E',
+						minSpotColor : '#34495E'
+					});
 
 			$(window).on('resize', function() {
 				redibujarGraficas();
@@ -49,7 +84,8 @@ $(document).ready(
 								+ picker.startDate.format('MMMM D, YYYY')
 								+ " to "
 								+ picker.endDate.format('MMMM D, YYYY'));
-						cambiarLabelFechaFiltro(picker.startDate,picker.endDate);
+						cambiarLabelFechaFiltro(picker.startDate,
+								picker.endDate);
 					});
 			$('#calendarioFiltro').on('cancel.daterangepicker',
 					function(ev, picker) {
