@@ -41,6 +41,7 @@
 							</div>
 						</div>
 					</div>
+					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<div class="x_panel">
@@ -217,7 +218,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- footer content 
+			<!-- footer content  -->
 			<jsp:include page="../fragments/footer.jsp"/>
 			<!-- /footer content -->
 		</div>
@@ -596,169 +597,6 @@
 		};
 	</script>
 	<!-- /ECharts -->
-
-	<!-- Custom scripts -->
-	<script>
-		function redibujarGraficas() {
-			if (echartBarLine != null && echartBarLine != undefined) {
-				echartBarLine.resize();
-			}
-			if (echartPie != null && echartPie != undefined) {
-				echartPie.resize();
-			}
-		}
-		function recalcularAlto() {
-			var alto = $(document).height();
-			$(".left_col").css("min-height", alto);
-			/*var anchoLogo = $(".nav_title").width();
-			$(".nav_menu").css("padding-left", anchoLogo);*/
-		}
-		$(document)
-				.ready(
-						function() {
-							recalcularAlto();
-							$(".dropdown-toggle").dropdown();
-
-							$(window).on('resize', function() {
-								redibujarGraficas();
-								recalcularAlto();
-							});
-							$("#menu_toggle").on('click', function() {
-								redibujarGraficas();
-							});
-
-							var start = moment();
-							var end = moment();
-
-							var cb = function(start, end, label) {
-								console.log(start.toISOString(), end
-										.toISOString(), label);
-								$('#calendarioFiltro span').html(
-										start.format('DD/MM/YYYY') + ' - '
-												+ end.format('DD/MM/YYYY'));
-								$('#calendarioComparativo span').html(
-										start.format('DD/MM/YYYY') + ' - '
-												+ end.format('DD/MM/YYYY'));
-							};
-
-							var optionSet1 = {
-								startDate : moment(),
-								endDate : moment(),
-								minDate : moment().subtract(3, 'months'),
-								maxDate : moment(),
-								dateLimit : {
-									days : 60
-								},
-								showWeekNumbers : true,
-								timePicker : false,
-								ranges : {
-									'Hoy' : [ moment(), moment() ],
-									'Ayer' : [ moment().subtract(1, 'days'),
-											moment().subtract(1, 'days') ],
-									'Última semana' : [
-											moment().subtract(6, 'days'),
-											moment() ],
-									'Último mes' : [
-											moment().subtract(29, 'days'),
-											moment() ],
-									'Mes actual' : [ moment().startOf('month'),
-											moment().endOf('month') ],
-									'Mes anterior' : [
-											moment().subtract(1, 'month')
-													.startOf('month'),
-											moment().subtract(1, 'month')
-													.endOf('month') ]
-								},
-								opens : 'left',
-								buttonClasses : [ 'btn btn-default' ],
-								applyClass : 'btn-small btn-primary',
-								cancelClass : 'btn-small',
-								format : 'DD/MM/YYYY',
-								separator : ' a ',
-								locale : {
-									applyLabel : 'Filtrar',
-									cancelLabel : 'Cancelar',
-									fromLabel : 'De',
-									toLabel : 'A',
-									customRangeLabel : 'Personalizado',
-									daysOfWeek : [ 'Do', 'Lu', 'Ma', 'Mi',
-											'Ju', 'Vi', 'Sá' ],
-									monthNames : [ 'Enero', 'Febrero', 'Marzo',
-											'Abril', 'Mayo', 'Junio', 'Julio',
-											'Agosto', 'Septiembre', 'Octubre',
-											'Noviembre', 'Diciembre' ],
-									firstDay : 1,
-									format : 'DD/MM/YYYY'
-								}
-							};
-							$('#calendarioFiltro span').html(
-									moment().subtract(29, 'days').format(
-											'DD/MM/YYYY')
-											+ ' - '
-											+ moment().format('DD/MM/YYYY'));
-							$('#calendarioFiltro').daterangepicker(optionSet1,
-									cb);
-							$('#calendarioFiltro').on('show.daterangepicker',
-									function() {
-										console.log("show event fired");
-									});
-							$('#calendarioFiltro').on('hide.daterangepicker',
-									function() {
-										console.log("hide event fired");
-									});
-							$('#calendarioFiltro')
-									.on(
-											'apply.daterangepicker',
-											function(ev, picker) {
-												console
-														.log("apply event fired, start/end dates are "
-																+ picker.startDate
-																		.format('MMMM D, YYYY')
-																+ " to "
-																+ picker.endDate
-																		.format('MMMM D, YYYY'));
-											});
-							$('#calendarioFiltro').on('cancel.daterangepicker',
-									function(ev, picker) {
-										console.log("cancel event fired");
-									});
-							$('#calendarioComparativo span').html(
-									moment().subtract(29, 'days').format(
-											'DD/MM/YYYY')
-											+ ' - '
-											+ moment().format('DD/MM/YYYY'));
-							$('#calendarioComparativo').daterangepicker(
-									optionSet1, cb);
-							$('#calendarioComparativo').on(
-									'show.daterangepicker', function() {
-										console.log("show event fired");
-									});
-							$('#calendarioComparativo').on(
-									'hide.daterangepicker', function() {
-										console.log("hide event fired");
-									});
-							$('#calendarioComparativo')
-									.on(
-											'apply.daterangepicker',
-											function(ev, picker) {
-												console
-														.log("apply event fired, start/end dates are "
-																+ picker.startDate
-																		.format('MMMM D, YYYY')
-																+ " to "
-																+ picker.endDate
-																		.format('MMMM D, YYYY'));
-											});
-							$('#calendarioComparativo').on(
-									'cancel.daterangepicker',
-									function(ev, picker) {
-										console.log("cancel event fired");
-									});
-						});
-	</script>
-
-
-	<!-- /Custom scripts -->
 
 </body>
 

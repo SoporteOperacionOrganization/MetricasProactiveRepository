@@ -10,7 +10,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>Citibanamex | Visor de métricas Proactive</title>
 <jsp:include page="../fragments/resources.jsp" />
 </head>
@@ -21,6 +20,27 @@
 		<div class="main_container">
 			<!-- page content -->
 			<div class="right_col" role="main">
+				<div class="page-title">
+					<div
+						class="col-md-8 col-sm-8 col-xs-12 form-group pull-right no-padding">
+						<div class="row">
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<label for="calendarioFiltro">Filtro:</label>
+								<div id="calendarioFiltro" class="form-control">
+									<i class="glyphicon glyphicon-calendar fa fa-calendar"></i> <span></span>
+									<b class="caret"></b>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<label for="calendarioComparativo">Comparativo:</label>
+								<div id="calendarioComparativo" class="form-control">
+									<i class="glyphicon glyphicon-calendar fa fa-calendar"></i> <span></span>
+									<b class="caret"></b>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel">
@@ -197,9 +217,9 @@
 
 				</div>
 				</div>
-			<!-- footer content 
+			<!-- footer content -->
 			<jsp:include page="../fragments/footer.jsp"/>
-			<!-- /footer content -->-->
+			<!-- /footer content -->
 		</div>
 		<!-- /page content -->
 	</div>
@@ -576,41 +596,6 @@
 		};
 	</script>
 	<!-- /ECharts -->
-
-	<!-- Custom scripts -->
-	<script>
-		function redibujarGraficas() {
-			if (echartBarLine != null && echartBarLine != undefined) {
-				echartBarLine.resize();
-			}
-			if (echartPie != null && echartPie != undefined) {
-				echartPie.resize();
-			}
-		}
-		function recalcularAlto(){
-			var alto =$(document).height();
-			$(".left_col").css("min-height",alto);
-		}
-		$(document).ready(function() {
-			recalcularAlto();
-			$(".dropdown-toggle").dropdown();
-			
-			$(window).on('resize', function() {
-				redibujarGraficas();
-				recalcularAlto();
-			});
-			$("#menu_toggle").on('click', function() {
-				redibujarGraficas();
-			});
-			$(".nav_title").on('resize', function() {
-				alert("change");
-			});
-		});
-	</script>
-
-
-	<!-- /Custom scripts -->
-
 </body>
 
 

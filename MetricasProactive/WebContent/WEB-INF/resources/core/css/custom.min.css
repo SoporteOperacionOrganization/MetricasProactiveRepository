@@ -1031,8 +1031,8 @@ a:focus {
 		font-size: 16px;
 		padding-top: 28px;
 	}
-	.navbar-sin-sesion{
-		width: 35% !important;
+	.nav-md .navbar-sin-sesion{
+		width: 55% !important;
 	    top: 0;
 	    right: 150px;
 	}
@@ -1041,13 +1041,13 @@ a:focus {
 		padding-top: 28px;
 	}
 	.nav-md nav .navbar-right {
-		font-size: 14px;
-		padding-top: 11px;
+		font-size: 12px;
+		padding-top: 14px;
 		width: 60%;
 	}
 	.nav-sm nav .navbar-right {
-		font-size: 14px;
-		padding-top: 11px;
+		font-size: 12px;
+		padding-top: 14px;
 		padding-right: 60px;
 		width: 60%;
 	}
@@ -1060,14 +1060,17 @@ a:focus {
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
 	.nav-md nav .navbar-middle {
-		width: calc(100% - 500px) !important;
+		width: calc(100% - 500px);
 		font-size: 22px;
-		padding-top: 24px;
+		padding-top: 26px;
+	}
+	.nav-md .navbar-sin-sesion {
+		width: calc(100% - 400px) !important;
 	}
 	.nav-sm nav .navbar-middle {
 		width: calc(100% - 250px) !important;
 		font-size: 22px;
-		padding-top: 24px;
+		padding-top: 26px;
 	}
 	.nav-md .nav_menu{
 		padding-left: 230px;
@@ -1099,11 +1102,11 @@ a:focus {
 	}
 }
 
-@media only screen and (min-width : 1400px) {
+/*@media only screen and (min-width : 1400px) {
 	.nav-md .site_title>img {
 		top: -45px;
 	}
-}
+}*/
 
 .nav.side-menu>li>a,
 .nav.child_menu>li>a {
@@ -1219,7 +1222,7 @@ a:focus {
 .toggle {
     float: left;
     margin: 0;
-    padding-top: 26px;
+    padding-top: 28px;
     min-width: 50px;
     width: 5%;
 }
