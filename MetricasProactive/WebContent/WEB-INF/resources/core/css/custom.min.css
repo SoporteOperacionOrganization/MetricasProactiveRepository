@@ -991,6 +991,9 @@ a:focus {
 		width:130px;
 		top:-6px
 	}
+	.nav-md .footerA{
+		padding-left: 10px;
+	}
 }
 
 /* Extra Small Devices, Phones */ 
@@ -1022,6 +1025,9 @@ a:focus {
 	.nav_menu .nav_title img{
 		width:200px;
 		top:-30px
+	}
+	.nav-md .footerA{
+		padding-left: 10px;
 	} 
 }
 
@@ -1054,6 +1060,9 @@ a:focus {
 	.nav_menu .nav_title img{
 		width:200px;
 		top:-30px
+	}
+	.nav-md .footerA{
+		padding-left: 10px;
 	} 
 }
 
@@ -1085,6 +1094,12 @@ a:focus {
 	.imagenTemp{
 		display: none
 	}
+	.nav-md .footerA{
+		padding-left: 245px;
+	}
+	.nav-sm .footerA{
+		padding-left: 20px;
+	}
 }
 
 /* Large Devices, Wide Screens */
@@ -1099,6 +1114,12 @@ a:focus {
 	}
 	.imagenTemp{
 		display: none
+	}
+	.nav-md .footerA{
+		padding-left: 245px;
+	}
+	.nav-sm .footerA{
+		padding-left: 20px;
 	}
 }
 

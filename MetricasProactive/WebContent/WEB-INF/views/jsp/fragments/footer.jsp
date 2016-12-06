@@ -1,4 +1,4 @@
-<footer class="footerA" style="position: relative; width:100%; bottom:0; z-index:999" >
+<footer class="footerA" style="position: relative; bottom:0;" >
          <table style="width: 100%">
         <tbody><tr>
             <td align="left"><img src="resources/Images/Logos/banamex_logo_footer.gif" alt="">
