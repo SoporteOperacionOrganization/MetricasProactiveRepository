@@ -10,7 +10,7 @@ import com.metricas.dao.UsuarioDao;
 import com.metricas.model.Usuario;
 
 @Service
-@Transactional
+@Transactional("transactionManagerLogin")
 public class UsuarioServiceImpl implements UsuarioService{
 
 	@Autowired

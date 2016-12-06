@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -22,44 +21,43 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @ComponentScan({"com.metricas.configuration"})
 @PropertySource(value = {"classpath:application.properties"})
-public class HibernateConfiguration {
+public class HibernateConfigurationData {
 
 	@Autowired
     private Environment environment;
-
+	
 	@Bean
-    public LocalSessionFactoryBean sessionFactoryLogin() {
+    public LocalSessionFactoryBean sessionFactoryData() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setDataSource(dataSourceLogin());
+        sessionFactory.setDataSource(dataSourceData());
         sessionFactory.setPackagesToScan(new String[] { "com.metricas.model" });
-        sessionFactory.setHibernateProperties(hibernatePropertiesLogin());
+        sessionFactory.setHibernateProperties(hibernatePropertiesData());
         return sessionFactory;
      }
 	
 	@Bean
-    public DataSource dataSourceLogin() {
+    public DataSource dataSourceData() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(environment.getRequiredProperty("metricasLogin.jdbc.driverClassName"));
-        dataSource.setUrl(environment.getRequiredProperty("metricasLogin.jdbc.url"));
-        dataSource.setUsername(environment.getRequiredProperty("metricasLogin.jdbc.username"));
-        dataSource.setPassword(environment.getRequiredProperty("metricasLogin.jdbc.password"));
+        dataSource.setDriverClassName(environment.getRequiredProperty("metricasData.jdbc.driverClassName"));
+        dataSource.setUrl(environment.getRequiredProperty("metricasData.jdbc.url"));
+        dataSource.setUsername(environment.getRequiredProperty("metricasData.jdbc.username"));
+        dataSource.setPassword(environment.getRequiredProperty("metricasData.jdbc.password"));
         return dataSource;
     }
 	
-	private Properties hibernatePropertiesLogin() {
+	private Properties hibernatePropertiesData() {
         Properties properties = new Properties();
-        properties.put("hibernate.dialect", environment.getRequiredProperty("metricasLogin.hibernate.dialect"));
-        properties.put("hibernate.show_sql", environment.getRequiredProperty("metricasLogin.hibernate.show_sql"));
-        properties.put("hibernate.format_sql", environment.getRequiredProperty("metricasLogin.hibernate.format_sql"));
+        properties.put("hibernate.dialect", environment.getRequiredProperty("metricasData.hibernate.dialect"));
+        properties.put("hibernate.show_sql", environment.getRequiredProperty("metricasData.hibernate.show_sql"));
+        properties.put("hibernate.format_sql", environment.getRequiredProperty("metricasData.hibernate.format_sql"));
         return properties;        
     }
-
+	
 	@Bean
     @Autowired
-    @Primary
-    public HibernateTransactionManager transactionManagerLogin(SessionFactory sessionFactoryLogin) {
+    public HibernateTransactionManager transactionManagerData(SessionFactory sessionFactoryData) {
        HibernateTransactionManager txManager = new HibernateTransactionManager();
-       txManager.setSessionFactory(sessionFactoryLogin);
+       txManager.setSessionFactory(sessionFactoryData);
        return txManager;
     }
 	

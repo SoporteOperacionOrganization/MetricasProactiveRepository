@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.metricas.model.Usuario;
@@ -16,7 +17,7 @@ import com.metricas.model.Usuario;
 public class UsuarioDaoImpl implements UsuarioDao {
 
 	@Autowired
-	private SessionFactory sessionFactory;
+	private SessionFactory sessionFactoryLogin;
 	
 	private Session session;
 	private Query query;
@@ -24,7 +25,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	@Override
 	public List<Usuario> obtenerUsuarios() {
 		List<Usuario> usuarios = new ArrayList<Usuario>();
-		session = sessionFactory.getCurrentSession();
+		session = sessionFactoryLogin.getCurrentSession();
 		query = session.createQuery("FROM Usuario");
 		usuarios = query.list();
 		for(Usuario usuario:usuarios){
@@ -38,7 +39,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
 	@Override
 	public Usuario obtenerUsuarioPorSoeid(String soeid){
-		session = sessionFactory.getCurrentSession();
+		session = sessionFactoryLogin.getCurrentSession();
 		List<Usuario> userList = new ArrayList<Usuario>();
 		query = session.createQuery("FROM Usuario u where u.soeid = :soeid");
 		//query = session.createSQLQuery("SELECT * FROM TblEjecutivos WHERE SOEID = :soeid");
