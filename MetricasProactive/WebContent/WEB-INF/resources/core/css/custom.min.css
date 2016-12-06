@@ -420,8 +420,7 @@
 
 .nav-md .container.body .col-md-3.left_col {
     min-height: 100%;
-    width: 17%;
-    min-width: 215px;
+    width: 220px;
     padding: 0;
     position: absolute;
     display: -ms-flexbox;
@@ -963,6 +962,11 @@ a:focus {
 		width: 20%;
 		padding-top: 8px;
 	}
+	.navbar-sin-sesion{
+		top: 10px;
+    	right: 10px;
+    	width: 150px !important;
+	}
 	.nav-sm nav .navbar-middle {
 		font-size: 14px;
 		width: 20%;
@@ -983,6 +987,10 @@ a:focus {
 		width: 60%;
 		padding-top: 0;
 	}
+	.nav_menu .nav_title img{
+		width:130px;
+		top:-6px
+	}
 }
 
 /* Extra Small Devices, Phones */ 
@@ -991,6 +999,9 @@ a:focus {
 		font-size: 14px;
 		width: 35%;
 	}
+	.nav-md nav .navbar-middle .navbar-sin-sesion{
+		width: 200px;
+	}
 	.nav-sm nav .navbar-middle {
 		font-size: 14px;
 		width: 35%;
@@ -1008,6 +1019,10 @@ a:focus {
 		padding-right: 60px;
 		width: 40%;
 	}
+	.nav_menu .nav_title img{
+		width:200px;
+		top:-30px
+	} 
 }
 
 /* Small Devices, Tablets */
@@ -1015,6 +1030,11 @@ a:focus {
 	.nav-md nav .navbar-middle {
 		font-size: 16px;
 		padding-top: 28px;
+	}
+	.navbar-sin-sesion{
+		width: 35% !important;
+	    top: 0;
+	    right: 150px;
 	}
 	.nav-sm nav .navbar-middle {
 		font-size: 16px;
@@ -1031,17 +1051,21 @@ a:focus {
 		padding-right: 60px;
 		width: 60%;
 	}
+	.nav_menu .nav_title img{
+		width:200px;
+		top:-30px
+	} 
 }
 
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
 	.nav-md nav .navbar-middle {
-		width: calc(100% - 500px);
+		width: calc(100% - 500px) !important;
 		font-size: 22px;
 		padding-top: 24px;
 	}
 	.nav-sm nav .navbar-middle {
-		width: calc(100% - 250px);
+		width: calc(100% - 250px) !important;
 		font-size: 22px;
 		padding-top: 24px;
 	}
@@ -1051,17 +1075,33 @@ a:focus {
 	.nav-sm .nav_menu{
 		padding-left: 0;
 	}
+	.nav-md .site_title>img {
+		top: -35px;
+		bottom: 0;
+	}
+	.imagenTemp{
+		display: none
+	}
 }
 
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
 	.nav-md nav .navbar-middle {
-		width: calc(100% - 500px);
+		width: calc(100% - 500px) !important;
 		font-size: 22px;
 	}
 	.nav-sm nav .navbar-middle {
-		width: calc(100% - 250px);
+		width: calc(100% - 250px) !important;
 		font-size: 22px;
+	}
+	.imagenTemp{
+		display: none
+	}
+}
+
+@media only screen and (min-width : 1400px) {
+	.nav-md .site_title>img {
+		top: -45px;
 	}
 }
 
