@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="../fragments/resources.jsp" />
 </head>
-<body class="nav-md">
+<body class="nav-md"  onload="llamar()">
 
 <jsp:include page="../fragments/header.jsp" />
 
@@ -40,12 +40,35 @@
 						</button>
 					</div>
 					<div>
-						<input id="guardarComparativo" type="text" value="">
-						
-						</input>
+						<input id="guardarComparativo" type="text" value=""/>
+					
 					</div>
 				</div>
 			</div>
+			
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="x_panel tile fixed_height_320">
+							<div class="x_title">
+								<h2>Servicios</h2>
+								<div class="clearfix"></div>
+							</div>
+							<div class="x_content">
+								<div id="echart_pie" style="height: 320px;"></div>
+							</div>
+						</div>
+					</div>
+			
+				<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="x_panel">
+							<div class="x_title">
+								<h2>Concurrencia</h2>
+								<div class="clearfix"></div>
+							</div>
+							<div class="x_content">
+								<div id="echart_mini_pie" style="height: 235px;"></div>
+							</div>
+						</div>
+					</div>
 		</div>
 	</div>
 		
@@ -287,7 +310,13 @@ echartBarLine.setOption({
 		data : [ 0, 0, 0, 0, 0 ]
 	} ]
 });
+
+
 </script>
+
+
+
+
 <script>
 $( document ).ready(function() {
 	$("#guardarComparativo").hide();

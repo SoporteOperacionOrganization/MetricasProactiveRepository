@@ -44,11 +44,6 @@
 						</div>
 					</div>
 				</div>
-				<!-- Valores de gráficas -->
-				<div>
-					<input id="comparativoLlamadasTotalesSegmentos" type="text"
-						value="" />
-				</div>
 
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
@@ -58,11 +53,10 @@
 								<div class="clearfix"></div>
 							</div>
 							<div class="x_content">
-								<div id="LlamadasTotalesPorSegmentos" style="height: 300px;"></div>
+								<div id="mainb" style="height: 300px;"></div>
 							</div>
 						</div>
 					</div>
-
 				</div>
 				<div class="row">
 					<div class="col-md-4 col-sm-4 col-xs-12">
@@ -78,7 +72,7 @@
 					</div>
 
 
-					<div class="col-md-4 col-sm-4 col-xs-12 ">
+					<div class="col-md-3 col-sm-3 col-xs-12 ">
 						<div class="x_panel tile fixed_height_320">
 
 							<div class="x_title">
@@ -141,61 +135,74 @@
 
 						</div>
 					</div>
-
-					<div class="col-md-4 col-sm-4 col-xs-12 ">
+					<div class="col-md-3 col-sm-3 col-xs-12 ">
 						<div class="x_panel tile fixed_height_320">
 
 							<div class="x_title">
 								<h2>Familias</h2>
 								<div class="clearfix"></div>
 							</div>
-							<div class="row">
-								<div id="sparkline1" class="col-md-4 col-sm-4 col-xs-4 tile"
-									style="font-size: 10px">
-									<span></span>
-									<h2></h2>
-									<span class="sparkline22 graph"> Cargando... </span>
-								</div>
 
-								<div id="sparkline2" class="col-md-4 col-sm-4 col-xs-4 tile"
-									style="font-size: 10px">
-									<span></span>
-									<h2></h2>
-									<span class="sparkline22 graph"> Cargando... </span>
-								</div>
-
-								<div id="sparkline3" class="col-md-4 col-sm-4 col-xs-4 tile"
-									style="font-size: 10px">
-									<span></span>
-									<h2></h2>
-									<span class="sparkline22 graph"> Cargando... </span>
-								</div>
+							<div class="col-md-4 tile" style="font-size: 10px">
+								<span>Total Revenue</span>
+								<h2>809</h2>
+								<span class="sparkline22 graph"
+									style="height: 160px; width: 20px">
+									<canvas width="10" height="10"
+										style="display: inline-block; vertical-align: top; width: 4px; height: 30px;"></canvas>
+								</span>
 							</div>
-							<div class="row">
-								<div id="sparkline4" class="col-md-4 col-sm-4 col-xs-4 tile"
-									style="font-size: 10px">
-									<span></span>
-									<h2></h2>
-									<span class="sparkline22 graph"> Cargando... </span>
-								</div>
 
-								<div id="sparkline5" class="col-md-4 col-sm-4 col-xs-4 tile"
-									style="font-size: 10px">
-									<span></span>
-									<h2></h2>
-									<span class="sparkline22 graph"> Cargando... </span>
-								</div>
+							<div class="col-md-4 tile" style="font-size: 10px">
+								<span>Total Revenue</span>
+								<h2>809</h2>
+								<span class="sparkline22 graph"
+									style="height: 160px; width: 20px">
+									<canvas width="10" height="10"
+										style="display: inline-block; vertical-align: top; width: 4px; height: 30px;"></canvas>
+								</span>
+							</div>
 
-								<div id="sparkline6" class="col-md-4 col-sm-4 col-xs-4 tile"
-									style="font-size: 10px">
-									<span></span>
-									<h2></h2>
-									<span class="sparkline22 graph"> Cargando... </span>
-								</div>
+							<div class="col-md-4 tile" style="font-size: 10px">
+								<span>Total Revenue</span>
+								<h2>809</h2>
+								<span class="sparkline22 graph"
+									style="height: 160px; width: 20px">
+									<canvas width="10" height="10"
+										style="display: inline-block; vertical-align: top; width: 4px; height: 30px;"></canvas>
+								</span>
+							</div>
+
+							<div class="col-md-4 tile" style="font-size: 10px">
+								<span>Total Revenue</span>
+								<h2>809</h2>
+								<span class="sparkline22 graph"
+									style="height: 160px; width: 20px">
+									<canvas width="10" height="10"
+										style="display: inline-block; vertical-align: top; width: 4px; height: 30px;"></canvas>
+								</span>
+							</div>
+
+							<div class="col-md-4 tile" style="font-size: 10px">
+								<span>Total Revenue</span>
+								<h2>809</h2>
+								<span class="sparkline22 graph"
+									style="height: 160px; width: 20px">
+									<canvas width="10" height="10"
+										style="display: inline-block; vertical-align: top; width: 4px; height: 30px;"></canvas>
+								</span>
+							</div>
+							<div class="col-md-4 tile" style="font-size: 10px">
+								<span>Total Revenue</span>
+								<h2>809</h2>
+								<span class="sparkline22 graph"
+									style="height: 160px; width: 20px">
+									<canvas width="10" height="10"
+										style="display: inline-block; vertical-align: top; width: 4px; height: 30px;"></canvas>
+								</span>
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 			<!-- footer content -->
@@ -215,7 +222,7 @@
 		//Colores Bar
 		var themeBar = {
 			color : [ '#1DB7D0', '#0B676A', '#E8B027', '#70FDFF', '#0B676A',
-                      '#C01722', '#8FA508' ],
+					'#C01722', '#8FA508' ],
 
 			title : {
 				itemGap : 8,
@@ -427,7 +434,6 @@
 			textStyle : {
 				fontFamily : 'Arial, Verdana, sans-serif'
 			}
-
 		};
 
 		//Colores Pie
@@ -647,8 +653,8 @@
 			}
 		};
 
-		var echartBarLine = echarts.init(document
-				.getElementById('LlamadasTotalesPorSegmentos'), themeBar);
+		var echartBarLine = echarts.init(document.getElementById('mainb'),
+				themeBar);
 
 		echartBarLine.setOption({
 			tooltip : {
@@ -675,7 +681,7 @@
 			},
 			calculable : true,
 			legend : {
-				data : [ 'Llamadas', 'Comparativo' ],
+				data : [ 'Revenue', 'Comparativa' ],
 				y : 'bottom'
 			},
 			xAxis : [ {
@@ -686,26 +692,26 @@
 			} ],
 			yAxis : [ {
 				type : 'value',
-				name : 'Total',
+				name : '',
 				axisLabel : {
 					formatter : '{value}'
 				}
 			}, {
 				type : 'value',
-				name : 'Total',
+				name : 'Número',
 				axisLabel : {
 					formatter : '{value}'
 				}
 			} ],
 			series : [ {
-				name : 'Llamadas',
+				name : 'Revenue',
 				type : 'bar',
-				data: [0,0,0,0,0]
+				data : [ 2.0, 4.9, 7.0, 23.2, 25.6 ]
 			}, {
-				name : 'Comparativo',
+				name : 'Comparativa',
 				type : 'line',
 				yAxisIndex : 1,
-				data: [0,0,0,0,0]
+				data : [ 2.0, 2.2, 3.3, 4.5, 6.3 ]
 			} ]
 		});
 
