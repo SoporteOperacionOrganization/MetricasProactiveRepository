@@ -29,7 +29,7 @@ var optionSet1 = {
 	buttonClasses : [ 'btn btn-default' ],
 	applyClass : 'btn-small btn-primary',
 	cancelClass : 'btn-small',
-	format : 'DD/MM/YYYY',
+	format : 'YYYY/MM/DD',
 	separator : ' a ',
 	locale : {
 		applyLabel : 'Filtrar',
@@ -42,7 +42,7 @@ var optionSet1 = {
 				'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre',
 				'Diciembre' ],
 		firstDay : 1,
-		format : 'DD/MM/YYYY'
+		format : 'YYYY/MM/DD'
 	}
 };
 /*Set de opciones para el calendario de comparar*/
@@ -69,7 +69,7 @@ var optionSet2 = {
 	buttonClasses : [ 'btn btn-default' ],
 	applyClass : 'btn-small btn-primary',
 	cancelClass : 'btn-small',
-	format : 'DD/MM/YYYY',
+	format : 'YYYY/MM/DD',
 	separator : ' a ',
 	locale : {
 		applyLabel : 'Comparar',
@@ -82,6 +82,6 @@ var optionSet2 = {
 				'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre',
 				'Diciembre' ],
 		firstDay : 1,
-		format : 'DD/MM/YYYY'
+		format : 'YYYY/MM/DD'
 	}
 };

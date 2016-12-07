@@ -66,10 +66,8 @@ $(document).ready(
 			$("#menu_toggle").on('click', function() {
 				redibujarGraficas();
 			});
-
-			$('#calendarioFiltro span').html(
-					moment().format('DD/MM/YYYY') + ' - '
-							+ moment().format('DD/MM/YYYY'));
+			cambiarLabelFechaFiltro(moment(),moment());
+			
 			$('#calendarioFiltro').daterangepicker(optionSet1);
 			$('#calendarioFiltro').on('show.daterangepicker', function() {
 				console.log("show event fired 1");
@@ -91,9 +89,7 @@ $(document).ready(
 					function(ev, picker) {
 						console.log("cancel event fired 1");
 					});
-			$('#calendarioComparativo span').html(
-					moment().format('DD/MM/YYYY') + ' - '
-							+ moment().format('DD/MM/YYYY'));
+			cambiarLabelFechaComparativo(moment(),moment());
 			$('#calendarioComparativo').daterangepicker(optionSet2);
 			$('#calendarioComparativo').on('show.daterangepicker', function() {
 				console.log("show event fired");
@@ -117,12 +113,12 @@ $(document).ready(
 					});
 			function cambiarLabelFechaFiltro(inicio, fin) {
 				$('#calendarioFiltro span').html(
-						inicio.format('DD/MM/YYYY') + ' - '
-								+ fin.format('DD/MM/YYYY'));
+						inicio.format('YYYY/MM/DD') + ' - '
+								+ fin.format('YYYY/MM/DD'));
 			}
 			function cambiarLabelFechaComparativo(inicio, fin) {
 				$('#calendarioComparativo span').html(
-						inicio.format('DD/MM/YYYY') + ' - '
-								+ fin.format('DD/MM/YYYY'));
+						inicio.format('YYYY/MM/DD') + ' - '
+								+ fin.format('YYYY/MM/DD'));
 			}
 		});
