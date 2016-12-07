@@ -15,9 +15,28 @@ function recalcularAlto() {
 	$(".left_col").css("min-height", alto);
 }
 
+function obtenerURL() {
+	var url = window.location.href.split("/");
+	var pagina = url[url.length - 1];
+	return pagina;
+}
+
+function cambiarLabelFechaFiltro(inicio, fin) {
+	$('#calendarioFiltro span').html(
+			inicio.format('YYYY/MM/DD') + ' - '
+					+ fin.format('YYYY/MM/DD'));
+}
+function cambiarLabelFechaComparativo(inicio, fin) {
+	$('#calendarioComparativo span').html(
+			inicio.format('YYYY/MM/DD') + ' - '
+					+ fin.format('YYYY/MM/DD'));
+}
+
 $(document).ready(
 		function() {
+			console.log(obtenerURL());
 			recalcularAlto();
+			dibujarFamiliasGeneral();
 			$(".dropdown-toggle").dropdown();
 
 			$(".sparkline_one").sparkline(
@@ -46,18 +65,7 @@ $(document).ready(
 						barColor : '#26B99A'
 					});
 
-			$(".sparkline22").sparkline(
-					[ 2, 4, 3, 4, 7, 5, 4, 3, 5, 6, 2, 4, 3, 4, 5, 4, 5, 4, 3,
-							4, 6 ], {
-						type : 'line',
-						height : '40',
-						width : '200',
-						lineColor : '#26B99A',
-						fillColor : '#ffffff',
-						lineWidth : 3,
-						spotColor : '#34495E',
-						minSpotColor : '#34495E'
-					});
+			
 
 			$(window).on('resize', function() {
 				redibujarGraficas();
@@ -66,8 +74,8 @@ $(document).ready(
 			$("#menu_toggle").on('click', function() {
 				redibujarGraficas();
 			});
-			cambiarLabelFechaFiltro(moment(),moment());
-			
+			cambiarLabelFechaFiltro(moment(), moment());
+
 			$('#calendarioFiltro').daterangepicker(optionSet1);
 			$('#calendarioFiltro').on('show.daterangepicker', function() {
 				console.log("show event fired 1");
@@ -89,7 +97,7 @@ $(document).ready(
 					function(ev, picker) {
 						console.log("cancel event fired 1");
 					});
-			cambiarLabelFechaComparativo(moment(),moment());
+			cambiarLabelFechaComparativo(moment(), moment());
 			$('#calendarioComparativo').daterangepicker(optionSet2);
 			$('#calendarioComparativo').on('show.daterangepicker', function() {
 				console.log("show event fired");
@@ -111,14 +119,4 @@ $(document).ready(
 					function(ev, picker) {
 						console.log("cancel event fired");
 					});
-			function cambiarLabelFechaFiltro(inicio, fin) {
-				$('#calendarioFiltro span').html(
-						inicio.format('YYYY/MM/DD') + ' - '
-								+ fin.format('YYYY/MM/DD'));
-			}
-			function cambiarLabelFechaComparativo(inicio, fin) {
-				$('#calendarioComparativo span').html(
-						inicio.format('YYYY/MM/DD') + ' - '
-								+ fin.format('YYYY/MM/DD'));
-			}
 		});
