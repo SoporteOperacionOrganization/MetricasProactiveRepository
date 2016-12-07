@@ -22,8 +22,8 @@ public class SegmentoServiceImpl implements SegmentoService {
 	}
 	
 	@Override
-	public Map<String,Integer> obtenerLlamadasFamilia(String fechaInicio, String fechaFinal) {
-		return segmentoDao.obtenerLlamadasFamilia(fechaInicio, fechaFinal);
+	public Map<String,Integer> obtenerLlamadasFamilia(String fechaInicio, String fechaFinal, String segmento) {
+		return segmentoDao.obtenerLlamadasFamilia(fechaInicio, fechaFinal, segmento);
 	}
 
 }

@@ -66,7 +66,8 @@ public class GeneralController {
     public @ResponseBody String chartLlamadasFamilia(Model model, @RequestParam("fechaInicio") String fechaInicio, @RequestParam("fechaFinal") String fechaFinal){
           Gson gson = new Gson();
           Map<String,Integer> llamadasFamilia = new HashMap<String,Integer>();
-          llamadasFamilia = segmentoService.obtenerLlamadasFamilia(fechaInicio, fechaFinal);
+          //Falta el parametro de segmento
+          //llamadasFamilia = segmentoService.obtenerLlamadasFamilia(fechaInicio, fechaFinal);
           
           System.out.println("GSON "+gson);
           String json = gson.toJson(llamadasFamilia); 

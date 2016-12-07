@@ -30,6 +30,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 	private Session session;
 	private Query query;
 	
+	
 	@Override
 	public Map<String,Integer> obtenerLlamadasTotalesSegmentos(String fechaInicio, String fechaFinal) {
 		/*List<String> resultados = new ArrayList<String>();
@@ -74,9 +75,135 @@ public class SegmentoDaoImpl implements SegmentoDao {
 		return totalesLlamadasSegmentos;
 	}
 	
+	
 	@Override
-	public HashMap<String, Integer> obtenerLlamadasFamilia (String fecha_inicio, String fecha_fin){
-		HashMap<String, Integer> LlamadasFamilia = new HashMap<>();
+	public Map<Integer, Integer> obtenerClientesFrecuentes (String fecha_inicio, String fecha_fin, String segmento){
+		Map<Integer, Integer> ClientesFrecuentes =  new HashMap<>();
+		session = sessionFactoryData.openSession();	
+		
+		session.doWork(new Work(){
+            @Override
+            public void execute(Connection connection) throws SQLException {
+            	PreparedStatement pstmt = null;
+            	
+            	try{
+            		
+            		String sqlQuery="";
+            		
+            		switch(segmento){
+            		
+            		case "general":
+            			sqlQuery = "SELECT TOP 10 SO.CLIENTE, COUNT(SO.CLIENTE) AS TOTAL"+
+        						" FROM  [dbo].[LlamadasATE] LL" +
+        						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
+        						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
+        					" WHERE"+ 
+        						" (SO.CLIENTE != 0)"+ 
+        						" AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"+ 
+        						" AND	(EJE.Segmento='ATE' OR EJE.Segmento='PYME' OR EJE.Segmento='OFFLINE' OR EJE.Segmento='PYME OFFLINE' OR EJE.Segmento='BANCA EMPRESARIAL')"+
+        					" GROUP BY SO.CLIENTE"+
+        					" ORDER BY COUNT(SO.CLIENTE) DESC";
+            			break;
+            			
+            			
+            		case "empresarial":
+            			sqlQuery = "SELECT TOP 10 SO.CLIENTE, COUNT(SO.CLIENTE) AS TOTAL"+
+        						" FROM  [dbo].[LlamadasATE] LL" +
+        						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
+        						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
+        					" WHERE"+ 
+        						" (SO.CLIENTE != 0)"+ 
+        						" AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"+ 
+        						" AND (SO.Segmento='BANCA EMPRESARIAL')"+
+        					" GROUP BY SO.CLIENTE"+
+        					" ORDER BY COUNT(SO.CLIENTE) DESC";
+            			break;
+            			
+            			
+            		case "online":
+            			sqlQuery = "SELECT TOP 10 SO.CLIENTE, COUNT(SO.CLIENTE) AS TOTAL"+
+        						" FROM  [dbo].[LlamadasATE] LL" +
+        						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
+        						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
+        					" WHERE"+ 
+        						" (SO.CLIENTE != 0)"+ 
+        						" AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"+ 
+        						" AND (SO.Segmento='ATE')"+
+        					" GROUP BY SO.CLIENTE"+
+        					" ORDER BY COUNT(SO.CLIENTE) DESC";
+            			break;
+            			
+            		case "pyme":
+            			sqlQuery = "SELECT TOP 10 SO.CLIENTE, COUNT(SO.CLIENTE) AS TOTAL"+
+        						" FROM  [dbo].[LlamadasATE] LL" +
+        						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
+        						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
+        					" WHERE"+ 
+        						" (SO.CLIENTE != 0)"+ 
+        						" AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"+ 
+        						" AND (SO.Segmento='PYME')"+
+        					" GROUP BY SO.CLIENTE"+
+        					" ORDER BY COUNT(SO.CLIENTE) DESC";
+            			break;	
+            			
+            		case "offline":
+            			sqlQuery = "SELECT TOP 10 SO.CLIENTE, COUNT(SO.CLIENTE) AS TOTAL"+
+        						" FROM  [dbo].[LlamadasATE] LL" +
+        						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
+        						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
+        					" WHERE"+ 
+        						" (SO.CLIENTE != 0)"+ 
+        						" AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"+ 
+        						" AND (SO.Segmento='OFFLINE')"+
+        					" GROUP BY SO.CLIENTE"+
+        					" ORDER BY COUNT(SO.CLIENTE) DESC";
+            			break;
+            			
+            		case "pymeOffline":
+            			sqlQuery = "SELECT TOP 10 SO.CLIENTE, COUNT(SO.CLIENTE) AS TOTAL"+
+        						" FROM  [dbo].[LlamadasATE] LL" +
+        						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
+        						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
+        					" WHERE"+ 
+        						" (SO.CLIENTE != 0)"+ 
+        						" AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"+ 
+        						" AND (SO.Segmento='PYME OFFLINE')"+
+        					" GROUP BY SO.CLIENTE"+
+        					" ORDER BY COUNT(SO.CLIENTE) DESC";
+            			break;
+            		
+            		}
+            		
+
+            	ResultSet rs;
+            	pstmt = connection.prepareStatement(sqlQuery);
+            	pstmt.setString(1, fecha_inicio);
+            	pstmt.setString(2, fecha_fin);
+     
+      			rs = pstmt.executeQuery();
+        		while(rs.next()){
+        			ClientesFrecuentes.put(rs.getInt(1), rs.getInt(2));
+        		}
+        			
+            	
+            	}catch(SQLException ex){
+            		System.out.println("RNE Excepcion de SQL Server: " + ex.getMessage());
+            	}
+            	finally{
+            		pstmt.close();
+            	}
+            	
+              }
+          });
+	
+		
+		return ClientesFrecuentes;
+	}
+
+	
+	@Override
+	public Map<String, Integer> obtenerLlamadasFamilia (String fecha_inicio, String fecha_fin, String segmento){
+		Map<String, Integer> LlamadasFamilia = new HashMap<>();
 		session = sessionFactoryData.openSession();	
 		
 		session.doWork(new Work(){
@@ -87,17 +214,102 @@ public class SegmentoDaoImpl implements SegmentoDao {
             	try{
             		
             		String sqlQuery="";	
-            		sqlQuery = "SELECT TOP 10 TT.FAMILIA, COUNT(TT.FAMILIA) AS TOTAL"+
-            						" FROM  [dbo].[LlamadasATE] LL"+
-            						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
-            						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
-            						" INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE"+
-            					" WHERE"+
-            						" (TT.FAMILIA != '')"+ 
-            						" AND (CAST(ll.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"+
-            						" AND TT.Interno NOT IN (1)"+
-            						" GROUP BY TT.FAMILIA"+
-            						" ORDER BY COUNT(TT.FAMILIA) DESC";
+            		
+            		
+            		switch(segmento){
+            		
+            		case "general":
+            			sqlQuery = "SELECT TOP 10 TT.FAMILIA, COUNT(TT.FAMILIA) AS TOTAL"+
+        						" FROM  [dbo].[LlamadasATE] LL"+
+        						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
+        						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
+        						" INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE"+
+        					" WHERE"+
+        						" (TT.FAMILIA != '')"+ 
+        						" AND (CAST(ll.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"+
+        						" AND TT.Interno NOT IN (1)"+
+        						" AND (SO.Segmento='ATE' OR SO.Segmento='PYME' OR SO.Segmento='OFFLINE' OR SO.Segmento='PYME OFFLINE' OR SO.Segmento='BANCA EMPRESARIAL')"+
+        						" GROUP BY TT.FAMILIA"+
+        						" ORDER BY COUNT(TT.FAMILIA) DESC";
+            			
+            		case "empresarial":
+            			sqlQuery = "SELECT TOP 10 TT.FAMILIA, COUNT(TT.FAMILIA) AS TOTAL"+
+        						" FROM  [dbo].[LlamadasATE] LL"+
+        						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
+        						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
+        						" INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE"+
+        					" WHERE"+
+        						" (TT.FAMILIA != '')"+ 
+        						" AND (CAST(ll.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"+
+        						" AND TT.Interno NOT IN (1)"+
+        						" AND (SO.Segmento='BANCA EMPRESARIAL')"+
+        						" GROUP BY TT.FAMILIA"+
+        						" ORDER BY COUNT(TT.FAMILIA) DESC";
+            			break;
+            			
+            			
+            		case "online":
+            			sqlQuery = "SELECT TOP 10 TT.FAMILIA, COUNT(TT.FAMILIA) AS TOTAL"+
+        						" FROM  [dbo].[LlamadasATE] LL"+
+        						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
+        						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
+        						" INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE"+
+        					" WHERE"+
+        						" (TT.FAMILIA != '')"+ 
+        						" AND (CAST(ll.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"+
+        						" AND TT.Interno NOT IN (1)"+
+        						" AND (SO.Segmento='ATE')"+
+        						" GROUP BY TT.FAMILIA"+
+        						" ORDER BY COUNT(TT.FAMILIA) DESC";
+            			break;
+            			
+            		case "pyme":
+            			sqlQuery = "SELECT TOP 10 TT.FAMILIA, COUNT(TT.FAMILIA) AS TOTAL"+
+        						" FROM  [dbo].[LlamadasATE] LL"+
+        						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
+        						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
+        						" INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE"+
+        					" WHERE"+
+        						" (TT.FAMILIA != '')"+ 
+        						" AND (CAST(ll.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"+
+        						" AND TT.Interno NOT IN (1)"+
+        						" AND (SO.Segmento='PYME')"+
+        						" GROUP BY TT.FAMILIA"+
+        						" ORDER BY COUNT(TT.FAMILIA) DESC";
+            			break;	
+            			
+            		case "offline":
+            			sqlQuery = "SELECT TOP 10 TT.FAMILIA, COUNT(TT.FAMILIA) AS TOTAL"+
+        						" FROM  [dbo].[LlamadasATE] LL"+
+        						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
+        						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
+        						" INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE"+
+        					" WHERE"+
+        						" (TT.FAMILIA != '')"+ 
+        						" AND (CAST(ll.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"+
+        						" AND TT.Interno NOT IN (1)"+
+        						" AND (SO.Segmento='OFFLINE')"+
+        						" GROUP BY TT.FAMILIA"+
+        						" ORDER BY COUNT(TT.FAMILIA) DESC";
+            			break;
+            			
+            		case "pymeOffline":
+            			sqlQuery = "SELECT TOP 10 TT.FAMILIA, COUNT(TT.FAMILIA) AS TOTAL"+
+        						" FROM  [dbo].[LlamadasATE] LL"+
+        						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
+        						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
+        						" INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE"+
+        					" WHERE"+
+        						" (TT.FAMILIA != '')"+ 
+        						" AND (CAST(ll.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"+
+        						" AND TT.Interno NOT IN (1)"+
+        						" AND (SO.Segmento='PYME OFFLINE')"+
+        						" GROUP BY TT.FAMILIA"+
+        						" ORDER BY COUNT(TT.FAMILIA) DESC";
+            			break;
+            		}
+            		
+            		
 
             	ResultSet rs;
             	pstmt = connection.prepareStatement(sqlQuery);
@@ -121,5 +333,129 @@ public class SegmentoDaoImpl implements SegmentoDao {
           });
 		return LlamadasFamilia;
 	}
+
+
+	@Override
+	public Map<String, Integer> obtenerLLamadasServicio (String fecha_inicio, String fecha_fin, String segmento){
+		Map<String, Integer> LlamadasServicio = new HashMap<>();
+		session = sessionFactoryData.openSession();	
+		
+		session.doWork(new Work(){
+            @Override
+            public void execute(Connection connection) throws SQLException {
+            	PreparedStatement pstmt = null;
+            	
+            	try{
+            		
+            		String sqlQuery="";	
+            		
+            		switch(segmento){
+            		
+            		case "general":
+            			sqlQuery = "SELECT TOP 10 TT.DESCRIPCION, COUNT(TT.DESCRIPCION) as TOTAL"+
+        						" FROM  [dbo].[LlamadasATE] LL"+
+        						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
+        						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
+        						" INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE"+
+        					" WHERE"+ 
+        						" CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111)"+
+        						" AND (SO.Segmento='ATE' OR SO.Segmento='PYME' OR SO.Segmento='OFFLINE' OR SO.Segmento='PYME OFFLINE' OR SO.Segmento='BANCA EMPRESARIAL')"+
+        						" GROUP BY TT.DESCRIPCION"+
+        						" ORDER BY COUNT(TT.DESCRIPCION) DESC";
+            			
+            		case "empresarial":
+            			sqlQuery = "SELECT TOP 10 TT.DESCRIPCION, COUNT(TT.DESCRIPCION) as TOTAL"+
+        						" FROM  [dbo].[LlamadasATE] LL"+
+        						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
+        						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
+        						" INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE"+
+        					" WHERE"+ 
+        						" CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111)"+
+        						" AND (SO.Segmento='BANCA EMPRESARIAL')"+
+        						" GROUP BY TT.DESCRIPCION"+
+        						" ORDER BY COUNT(TT.DESCRIPCION) DESC";
+            			
+            			
+            		case "online":
+            			sqlQuery = "SELECT TOP 10 TT.DESCRIPCION, COUNT(TT.DESCRIPCION) as TOTAL"+
+        						" FROM  [dbo].[LlamadasATE] LL"+
+        						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
+        						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
+        						" INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE"+
+        					" WHERE"+ 
+        						" CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111)"+
+        						" AND (SO.Segmento='ATE')"+
+        						" GROUP BY TT.DESCRIPCION"+
+        						" ORDER BY COUNT(TT.DESCRIPCION) DESC";
+            			break;
+            			
+            		case "pyme":
+            			sqlQuery = "SELECT TOP 10 TT.DESCRIPCION, COUNT(TT.DESCRIPCION) as TOTAL"+
+        						" FROM  [dbo].[LlamadasATE] LL"+
+        						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
+        						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
+        						" INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE"+
+        					" WHERE"+ 
+        						" CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111)"+
+        						" AND (SO.Segmento='PYME')"+
+        						" GROUP BY TT.DESCRIPCION"+
+        						" ORDER BY COUNT(TT.DESCRIPCION) DESC";
+            			break;	
+            			
+            		case "offline":
+            			sqlQuery = "SELECT TOP 10 TT.DESCRIPCION, COUNT(TT.DESCRIPCION) as TOTAL"+
+        						" FROM  [dbo].[LlamadasATE] LL"+
+        						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
+        						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
+        						" INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE"+
+        					" WHERE"+ 
+        						" CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111)"+
+        						" AND (SO.Segmento='OFFLINE')"+
+        						" GROUP BY TT.DESCRIPCION"+
+        						" ORDER BY COUNT(TT.DESCRIPCION) DESC";
+            			break;
+            			
+            		case "pymeOffline":
+            			sqlQuery = "SELECT TOP 10 TT.DESCRIPCION, COUNT(TT.DESCRIPCION) as TOTAL"+
+        						" FROM  [dbo].[LlamadasATE] LL"+
+        						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
+        						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
+        						" INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE"+
+        					" WHERE"+ 
+        						" CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111)"+
+        						" AND (SO.Segmento='PYME OFFLINE')"+
+        						" GROUP BY TT.DESCRIPCION"+
+        						" ORDER BY COUNT(TT.DESCRIPCION) DESC";
+            			break;
+            		}
+            		
+            		
+            		
+
+            	ResultSet rs;
+            	pstmt = connection.prepareStatement(sqlQuery);
+            	pstmt.setString(1, fecha_inicio);
+            	pstmt.setString(2, fecha_fin);
+     
+      			rs = pstmt.executeQuery();
+        		while(rs.next()){
+        			LlamadasServicio.put(rs.getString(1), rs.getInt(2));
+        		}
+        			
+            	
+            	}catch(SQLException ex){
+            		System.out.println("RNE Excepcion de SQL Server: " + ex.getMessage());
+            	}
+            	finally{
+            		pstmt.close();
+            	}
+            	
+              }
+          });
+		return LlamadasServicio;
+	}
+	
+	
+	
 
 }
