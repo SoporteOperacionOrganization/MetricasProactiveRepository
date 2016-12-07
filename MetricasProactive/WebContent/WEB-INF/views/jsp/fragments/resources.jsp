@@ -15,6 +15,7 @@
 <spring:url value="resources/js/jquery.sparkline.min.js" var="jquerySparkline" />
 <spring:url value="resources/js/daterangepicker-opciones.js" var="dateRangePickerOpciones" />
 <spring:url value="resources/js/generales.js" var="generales" />
+<spring:url value="resources/js/graficas.js" var="graficas" />
     
 
 <link href="${bootstrapCss}" rel="stylesheet" ></link>
@@ -34,3 +35,4 @@
 <script src="${jquerySparkline}"></script>
 <script src="${dateRangePickerOpciones}"></script>
 <script src="${generales}"></script>
+<script src="${graficas}"></script>

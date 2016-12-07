@@ -30,13 +30,13 @@
 						<div id="mainb" style="height: 350px;"></div>
 					</div>
 					<div>
-						<button onClick="testGraphic();">
-						Aceptar
+						<button onClick="dibujarLlamadasTotalesGeneral();">
+						Llamadas totales
 						</button>
 					</div>
 					<div>
-						<button onClick="testGraphic2();">
-						Aceptar2
+						<button onClick="dibujarLlamadasTotalesGeneralComparativo();">
+						Comparar llamadas
 						</button>
 					</div>
 					<div>
@@ -290,157 +290,8 @@ echartBarLine.setOption({
 </script>
 <script>
 $( document ).ready(function() {
- 
+	$("#guardarComparativo").hide();
 });
-	function testGraphic(){
-		$.ajax({
-            url : 'retorno1',
-            success : function(data) {
-            	//alert(data);
-            	$('#guardarComparativo').val(data);
-                //$('#result').html(data);
-                var GeneralLlamadasBarras = echarts.init(document.getElementById('mainb'),
-                		theme);
-
-                GeneralLlamadasBarras.setOption({
-                	tooltip : {
-                		trigger : 'axis'
-                	},
-                	toolbox : {
-                		show : true,
-                		feature : {
-                			dataView : {
-                				show : true,
-                				readOnly : false,
-                				title : "Text View",
-                				lang : [ "Text View", "Close", "Refresh", ],
-                			},
-                			restore : {
-                				show : true,
-                				title : 'Restore'
-                			},
-                			saveAsImage : {
-                				show : true,
-                				title : 'Save'
-                			}
-                		}
-                	},
-                	calculable : true,
-                	legend : {
-                		data : [ 'Revenue', 'Comparativa' ],
-                		y : 'bottom'
-                	},
-                	xAxis : [ {
-                		type : 'category',
-                		data : [ 'Pyme', 'Online', 'Offline', 'Empresarial',
-                				'Pyme Offline' ]
-                	} ],
-                	yAxis : [ {
-                		type : 'value',
-                		name : 'Número',
-                		axisLabel : {
-                			formatter : '{value}'
-                		}
-                	}, {
-                		type : 'value',
-                		name : 'Número',
-                		axisLabel : {
-                			formatter : '{value}'
-                		}
-                	} ],
-                	series : [ {
-                		name : 'Revenue',
-                		type : 'bar',
-                		data : data
-                		//data : [ 2.0, 4.9, 7.0, 23.2, 25.6 ]
-                	}/*,{
-                		name : 'Comparativa',
-                		type : 'line',
-                		yAxisIndex : 1,        
-                		data : [ 2.0, 2.2, 3.3, 4.5, 6.3 ]
-                	}*/ ]
-                });
-                
-                
-            }
-        });
-	}
-	
-	function testGraphic2(){
-		$.ajax({
-            url : 'retorno2',
-            success : function(data) {
-            		
-            	var arrayComparativo = $('#guardarComparativo').val();
-            	var arrrayConv =  arrayComparativo.split(',');
-            	//alert(arrrayConv);
-            	var GeneralLlamadasBarras2 = echarts.init(document.getElementById('mainb'),
-                		theme);
-
-                GeneralLlamadasBarras2.setOption({
-                	tooltip : {
-                		trigger : 'axis'
-                	},
-                	toolbox : {
-                		show : true,
-                		feature : {
-                			dataView : {
-                				show : true,
-                				readOnly : false,
-                				title : "Text View",
-                				lang : [ "Text View", "Close", "Refresh", ],
-                			},
-                			restore : {
-                				show : true,
-                				title : 'Restore'
-                			},
-                			saveAsImage : {
-                				show : true,
-                				title : 'Save'
-                			}
-                		}
-                	},
-                	calculable : true,
-                	legend : {
-                		data : [ 'Revenue', 'Comparativa' ],
-                		y : 'bottom'
-                	},
-                	xAxis : [ {
-                		type : 'category',
-                		data : [ 'Pyme', 'Online', 'Offline', 'Empresarial',
-                				'Pyme Offline' ]
-                	} ],
-                	yAxis : [ {
-                		type : 'value',
-                		name : 'Número',
-                		axisLabel : {
-                			formatter : '{value}'
-                		}
-                	}, {
-                		type : 'value',
-                		name : 'Número',
-                		axisLabel : {
-                			formatter : '{value}'
-                		}
-                	} ],
-                	series : [{
-                		name : 'Revenue',
-                		type : 'bar',
-                		data : arrrayConv 
-                		//data : [ 2.0, 4.9, 7.0, 23.2, 25.6 ]
-                	}, {
-                		name : 'Comparativa',
-                		type : 'line',
-                		yAxisIndex : 1,        
-                		data : data
-                	} ]
-                });
-            	
-            	
-            	
-            }
-            });
-	}
 </script>
 
 </body>
