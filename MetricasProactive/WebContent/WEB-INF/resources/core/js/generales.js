@@ -36,7 +36,7 @@ $(document).ready(
 		function() {
 			console.log(obtenerURL());
 			recalcularAlto();
-			dibujarFamiliasGeneral();
+			dibujarFamilias();
 			$(".dropdown-toggle").dropdown();
 
 			$(".sparkline_one").sparkline(

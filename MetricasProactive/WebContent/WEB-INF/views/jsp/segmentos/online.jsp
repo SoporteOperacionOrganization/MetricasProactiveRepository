@@ -67,7 +67,7 @@
 						</div>
 					</div>
 
-					<div class="col-md-3 col-sm-3 col-xs-12 ">
+					<div class="col-md-4 col-sm-4 col-xs-12 ">
 						<div class="x_panel tile fixed_height_320">
 
 							<div class="x_title">
@@ -141,7 +141,6 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 			<!-- footer content -->
@@ -521,74 +520,71 @@
 				color : 'rgba(0,0,0,0)'
 			}
 		};
-		var echartMiniPie = echarts.init(document.getElementById('echart_mini_pie'), theme);
+		var echartMiniPie = echarts.init(document
+				.getElementById('echart_mini_pie'), theme);
 
-	      echartMiniPie .setOption({
-	        title: {
-	          text: 'Porcentaje',
-	         
-	          x: 'center',
-	          y: 'center',
-	          itemGap: 20,
-	          textStyle: {
-	            color: 'rgba(30,144,255,0.8)',
-	            fontSize: 15,
-	            fontWeight: 'bolder'
-	          }
-	        },
-	        tooltip: {
-	          show: true,
-	          formatter: "{a} <br/>{b} : {c} ({d}%)"
-	        },
-	        legend: {
-	          orient: 'vertical',
-	          x: 10,
-	          y: 213,
-	          itemGap: 12,
-	          data: ['68%Something #1'],
-	        },
-	        toolbox: {
-	          show: true,
-	          feature: {
-	            mark: {
-	              show: true
-	            },
-	            dataView: {
-	              show: true,
-	              title: "Text View",
-	              lang: [
-	                "Text View",
-	                "Close",
-	                "Refresh",
-	              ],
-	              readOnly: false
-	            },
-	            restore: {
-	              show: true,
-	              title: "Restore"
-	            },
-	            saveAsImage: {
-	              show: true,
-	              title: "Save "
-	            }
-	          }
-	        },
-	        series: [{
-	          name: '1',
-	          type: 'pie',
-	          clockWise: false,
-	          radius: [65, 90],
-	          itemStyle: dataStyle,
-	          data: [{
-	            value: 68,
-	            name: '68%Something #1'
-	          }, {
-	            value: 32,
-	            name: 'invisible',
-	            itemStyle: placeHolderStyle
-	          }]
-	        }]
-	      });
+		echartMiniPie.setOption({
+			title : {
+				text : 'Porcentaje',
+
+				x : 'center',
+				y : 'center',
+				itemGap : 20,
+				textStyle : {
+					color : 'rgba(30,144,255,0.8)',
+					fontSize : 15,
+					fontWeight : 'bolder'
+				}
+			},
+			tooltip : {
+				show : true,
+				formatter : "{a} <br/>{b} : {c} ({d}%)"
+			},
+			legend : {
+				orient : 'vertical',
+				x : 10,
+				y : 213,
+				itemGap : 12,
+				data : [ '68%Something #1' ],
+			},
+			toolbox : {
+				show : true,
+				feature : {
+					mark : {
+						show : true
+					},
+					dataView : {
+						show : true,
+						title : "Text View",
+						lang : [ "Text View", "Close", "Refresh", ],
+						readOnly : false
+					},
+					restore : {
+						show : true,
+						title : "Restore"
+					},
+					saveAsImage : {
+						show : true,
+						title : "Save "
+					}
+				}
+			},
+			series : [ {
+				name : '1',
+				type : 'pie',
+				clockWise : false,
+				radius : [ 65, 90 ],
+				itemStyle : dataStyle,
+				data : [ {
+					value : 68,
+					name : '68%Something #1'
+				}, {
+					value : 32,
+					name : 'invisible',
+					itemStyle : placeHolderStyle
+				} ]
+			} ]
+		});
 	</script>
 	<!-- /ECharts -->
 </body>

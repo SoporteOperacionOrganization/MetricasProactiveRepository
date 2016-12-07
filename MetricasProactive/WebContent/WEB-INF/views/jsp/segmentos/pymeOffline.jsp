@@ -68,156 +68,85 @@
 						</div>
 					</div>
 
-					<div class="col-md-4 col-sm-4 col-xs-12">
-						<div class="x_panel tile fixed_height_320 overflow_hidden">
-							<div class="x_title">
-								<h2>Device Usage</h2>
-								<ul class="nav navbar-right panel_toolbox">
-									<li><a class="collapse-link"><i
-											class="fa fa-chevron-up"></i></a></li>
-									<li class="dropdown"><a class="dropdown-toggle"
-										role="button" aria-expanded="false" href="#"
-										data-toggle="dropdown"><i class="fa fa-wrench"></i></a>
-										<ul class="dropdown-menu" role="menu">
-											<li><a href="#">Settings 1</a></li>
-											<li><a href="#">Settings 2</a></li>
-										</ul></li>
-									<li><a class="close-link"><i class="fa fa-close"></i></a></li>
-								</ul>
-								<div class="clearfix"></div>
-							</div>
-							<div class="x_content">
-								<table style="width: 100%;">
-									<tbody>
-										<tr>
-											<th style="width: 37%;">
-												<p>Top 5</p>
-											</th>
-											<th>
-												<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-													<p>Device</p>
-												</div>
-												<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-													<p>Progress</p>
-												</div>
-											</th>
-										</tr>
-										<tr>
-											<td><iframe class="chartjs-hidden-iframe"
-													style="margin: 0px; border: 0px currentColor; border-image: none; left: 0px; top: 0px; width: 100%; height: 0px; right: 0px; bottom: 0px; display: block; position: absolute;"></iframe>
-												<canvas width="140" height="140" id="canvas1"
-													style="margin: 15px 10px 10px 0px; width: 140px; height: 140px;"></canvas>
-											</td>
-											<td>
-												<table class="tile_info">
-													<tbody>
-														<tr>
-															<td>
-																<p>
-																	<i class="fa fa-square blue"></i>IOS
-																</p>
-															</td>
-															<td>30%</td>
-														</tr>
-														<tr>
-															<td>
-																<p>
-																	<i class="fa fa-square green"></i>Android
-																</p>
-															</td>
-															<td>10%</td>
-														</tr>
-														<tr>
-															<td>
-																<p>
-																	<i class="fa fa-square purple"></i>Blackberry
-																</p>
-															</td>
-															<td>20%</td>
-														</tr>
-														<tr>
-															<td>
-																<p>
-																	<i class="fa fa-square aero"></i>Symbian
-																</p>
-															</td>
-															<td>15%</td>
-														</tr>
-														<tr>
-															<td>
-																<p>
-																	<i class="fa fa-square red"></i>Others
-																</p>
-															</td>
-															<td>30%</td>
-														</tr>
-													</tbody>
-												</table>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-
-
-					<div class="col-md-4 col-sm-4 col-xs-12">
+					<div class="col-md-4 col-sm-4 col-xs-12 ">
 						<div class="x_panel tile fixed_height_320">
+
 							<div class="x_title">
-								<h2>Quick Settings</h2>
-								<ul class="nav navbar-right panel_toolbox">
-									<li><a class="collapse-link"><i
-											class="fa fa-chevron-up"></i></a></li>
-									<li class="dropdown"><a class="dropdown-toggle"
-										role="button" aria-expanded="false" href="#"
-										data-toggle="dropdown"><i class="fa fa-wrench"></i></a>
-										<ul class="dropdown-menu" role="menu">
-											<li><a href="#">Settings 1</a></li>
-											<li><a href="#">Settings 2</a></li>
-										</ul></li>
-									<li><a class="close-link"><i class="fa fa-close"></i></a></li>
-								</ul>
+								<h2>Clientes Frecuentes</h2>
 								<div class="clearfix"></div>
 							</div>
-							<div class="x_content">
-								<div class="dashboard-widget-content">
-									<ul class="quick-list">
-										<li><i class="fa fa-calendar-o"></i><a href="#">Settings</a>
-										</li>
-										<li><i class="fa fa-bars"></i><a href="#">Subscription</a>
-										</li>
-										<li><i class="fa fa-bar-chart"></i><a href="#">Auto
-												Renewal</a></li>
-										<li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
-										</li>
-										<li><i class="fa fa-bar-chart"></i><a href="#">Auto
-												Renewal</a></li>
-										<li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
-										</li>
-										<li><i class="fa fa-area-chart"></i><a href="#">Logout</a>
-										</li>
-									</ul>
 
-									<div class="sidebar-widget">
-										<h4>Profile Completion</h4>
-										<canvas width="150" height="80" id="foo"
-											style="width: 160px; height: 100px;"></canvas>
-										<div class="goal-wrapper">
-											<span class="gauge-value pull-left">$</span> <span
-												class="gauge-value pull-left" id="gauge-text">3,200</span> <span
-												class="goal-value pull-right" id="goal-text">$5,000</span>
+							<div class="col-md-12 col-sm-12 col-xs-6" style="font-size: 10px">
+								<div>
+									<p>Facebook Campaign</p>
+									<div class="">
+										<div class="progress progress_sm" style="width: 100%;">
+											<div class="progress-bar" style="background-color: #1DB7D0;"
+												role="progressbar" data-transitiongoal="10"></div>
 										</div>
 									</div>
 								</div>
+								<div>
+									<p>Twitter Campaign</p>
+									<div class="">
+										<div class="progress progress_sm" style="width: 100%;">
+											<div class="progress-bar " style="background-color: #C01722;"
+												role="progressbar" data-transitiongoal="60"></div>
+										</div>
+									</div>
+								</div>
+								<div>
+									<p>Twitter Campaign</p>
+									<div class="">
+										<div class="progress progress_sm" style="width: 100%;">
+											<div class="progress-bar "
+												style="background-color: #F7DEB4';" role="progressbar"
+												data-transitiongoal="60"></div>
+										</div>
+									</div>
+								</div>
+								<div>
+									<p>Twitter Campaign</p>
+									<div class="">
+										<div class="progress progress_sm" style="width: 100%;">
+											<div class="progress-bar" style="background-color: #8FA508;"
+												role="progressbar" data-transitiongoal="60"></div>
+										</div>
+									</div>
+								</div>
+								<div>
+									<p>Twitter Campaign</p>
+									<div class="">
+										<div class="progress progress_sm" style="width: 100%;">
+											<div class="progress-bar " style="background-color: #A6A6A6;"
+												role="progressbar" data-transitiongoal="60"></div>
+										</div>
+									</div>
+								</div>
+
+
+
+
 							</div>
+
 						</div>
 					</div>
 
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="x_panel">
+							<div class="x_title">
+								<h2>Concurrencia</h2>
+								<div class="clearfix"></div>
+							</div>
+							<div class="x_content">
+								<div id="echart_mini_pie" style="height: 235px;"></div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<!-- footer content -->
-			<jsp:include page="../fragments/footer.jsp"/>
+			<jsp:include page="../fragments/footer.jsp" />
 			<!-- /footer content -->
 		</div>
 		<!-- /page content -->
@@ -593,6 +522,71 @@
 				color : 'rgba(0,0,0,0)'
 			}
 		};
+		var echartMiniPie = echarts.init(document
+				.getElementById('echart_mini_pie'), theme);
+
+		echartMiniPie.setOption({
+			title : {
+				text : 'Porcentaje',
+
+				x : 'center',
+				y : 'center',
+				itemGap : 20,
+				textStyle : {
+					color : 'rgba(30,144,255,0.8)',
+					fontSize : 15,
+					fontWeight : 'bolder'
+				}
+			},
+			tooltip : {
+				show : true,
+				formatter : "{a} <br/>{b} : {c} ({d}%)"
+			},
+			legend : {
+				orient : 'vertical',
+				x : 10,
+				y : 213,
+				itemGap : 12,
+				data : [ '68%Something #1' ],
+			},
+			toolbox : {
+				show : true,
+				feature : {
+					mark : {
+						show : true
+					},
+					dataView : {
+						show : true,
+						title : "Text View",
+						lang : [ "Text View", "Close", "Refresh", ],
+						readOnly : false
+					},
+					restore : {
+						show : true,
+						title : "Restore"
+					},
+					saveAsImage : {
+						show : true,
+						title : "Save "
+					}
+				}
+			},
+			series : [ {
+				name : '1',
+				type : 'pie',
+				clockWise : false,
+				radius : [ 65, 90 ],
+				itemStyle : dataStyle,
+				data : [ {
+					value : 68,
+					name : '68%Something #1'
+				}, {
+					value : 32,
+					name : 'invisible',
+					itemStyle : placeHolderStyle
+				} ]
+			} ]
+		});
 	</script>
 	<!-- /ECharts -->
 
