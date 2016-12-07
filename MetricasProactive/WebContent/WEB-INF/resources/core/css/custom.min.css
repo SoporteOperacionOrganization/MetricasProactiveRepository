@@ -5185,3 +5185,8 @@ ul.notifications {
 	padding-right:0;
 	padding-left: 0;
 }
+#diferenciaLlamadas{
+	text-align: right;
+	padding-right: 150px;
+	font-size: 18px;
+}

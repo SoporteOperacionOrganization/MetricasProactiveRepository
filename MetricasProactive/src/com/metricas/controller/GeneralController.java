@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -50,21 +51,34 @@ public class GeneralController {
 		return "usuario/testGraph";
 	}
 	
-	@RequestMapping(value = "/chart", method = RequestMethod.GET, produces="application/json")
-	public @ResponseBody String chart(Model model){
-		Gson gson = new Gson();
-		Map<String,Integer> totalesLlamadas = new HashMap<String,Integer>();
-		totalesLlamadas = segmentoService.obtenerLlamadasTotalesSegmentos();
-		String json = gson.toJson(totalesLlamadas); 
-		
-		return json;
-	}
+	@RequestMapping(value = "/obtenerLlamadasTotalesSegmento", method = RequestMethod.GET, produces="application/json")
+    public @ResponseBody String chart(Model model, @RequestParam("fechaInicio") String fechaInicio, @RequestParam("fechaFinal") String fechaFinal){
+          Gson gson = new Gson();
+          Map<String,Integer> totalesLlamadas = new HashMap<String,Integer>();
+          totalesLlamadas = segmentoService.obtenerLlamadasTotalesSegmentos(fechaInicio, fechaFinal);
+          
+          String json = gson.toJson(totalesLlamadas); 
+          //System.out.println("Json " + json);
+          return json;
+    }
+	
+	@RequestMapping(value = "/obtenerLlamadasFamilia", method = RequestMethod.GET, produces="application/json")
+    public @ResponseBody String chartLlamadasFamilia(Model model, @RequestParam("fechaInicio") String fechaInicio, @RequestParam("fechaFinal") String fechaFinal){
+          Gson gson = new Gson();
+          Map<String,Integer> llamadasFamilia = new HashMap<String,Integer>();
+          llamadasFamilia = segmentoService.obtenerLlamadasFamilia(fechaInicio, fechaFinal);
+          
+          System.out.println("GSON "+gson);
+          String json = gson.toJson(llamadasFamilia); 
+          System.out.println("Json " + json);
+          return json;
+    }
 	
 	@RequestMapping(value = "/servicios", method = RequestMethod.GET, produces="application/json")
-	public @ResponseBody String servicios(Model model){
+	public @ResponseBody String servicios(Model model, @RequestParam("fechaInicio") String fechaInicio, @RequestParam("fechaFinal") String fechaFinal){
 		Gson gson = new Gson();
 		Map<String,Integer> serviciosG = new HashMap<String,Integer>();
-		serviciosG = segmentoService.obtenerLlamadasTotalesSegmentos();// llmaar consulota servicios
+		serviciosG = segmentoService.obtenerLlamadasTotalesSegmentos(fechaInicio, fechaFinal);// llmaar consulota servicios
 		String json = gson.toJson(serviciosG); 
 		
 		return json;
@@ -72,10 +86,10 @@ public class GeneralController {
 	
 	
 	@RequestMapping(value = "/concurrencia", method = RequestMethod.GET, produces="application/json")
-	public @ResponseBody String concurrencia(Model model){
+	public @ResponseBody String concurrencia(Model model, @RequestParam("fechaInicio") String fechaInicio, @RequestParam("fechaFinal") String fechaFinal){
 		Gson gson = new Gson();
 		Map<String,Integer> serviciosG = new HashMap<String,Integer>();
-		serviciosG = segmentoService.obtenerLlamadasTotalesSegmentos();// llmaar consulota concurrencia
+		serviciosG = segmentoService.obtenerLlamadasTotalesSegmentos(fechaInicio, fechaFinal);// llmaar consulota concurrencia
 		String json = gson.toJson(serviciosG); 
 		
 		return json;

@@ -45,6 +45,12 @@
 					</div>
 				</div>
 
+				<!-- Valores de gráficas -->
+				<div>
+					<input id="comparativoLlamadasTotalesSegmentos" type="text"
+						value="" />
+				</div>
+
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel">
@@ -53,7 +59,10 @@
 								<div class="clearfix"></div>
 							</div>
 							<div class="x_content">
-								<div id="mainb" style="height: 300px;"></div>
+								<div id="diferenciaLlamadas">
+									<i class="green"><i class="fa fa-sort-asc"></i> 34%</i>
+								</div>
+								<div id="LlamadasTotalesPorSegmentos" style="height: 300px;"></div>
 							</div>
 						</div>
 					</div>
@@ -72,7 +81,7 @@
 					</div>
 
 
-					<div class="col-md-3 col-sm-3 col-xs-12 ">
+					<div class="col-md-4 col-sm-4 col-xs-12 ">
 						<div class="x_panel tile fixed_height_320">
 
 							<div class="x_title">
@@ -135,74 +144,83 @@
 
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-3 col-xs-12 ">
+					<div class="col-md-4 col-sm-4 col-xs-12 ">
 						<div class="x_panel tile fixed_height_320">
 
 							<div class="x_title">
-								<h2>Familias</h2>
+								<h2>Llamadas por familia</h2>
 								<div class="clearfix"></div>
 							</div>
+							<div class="row">
+								<div id="sparkline1" class="col-md-4 col-sm-4 col-xs-4 tile"
+									style="font-size: 10px">
+									<span></span>
+									<h2></h2>
 
-							<div class="col-md-4 tile" style="font-size: 10px">
-								<span>Total Revenue</span>
-								<h2>809</h2>
-								<span class="sparkline22 graph"
-									style="height: 160px; width: 20px">
-									<canvas width="10" height="10"
-										style="display: inline-block; vertical-align: top; width: 4px; height: 30px;"></canvas>
-								</span>
+								</div>
+
+								<div id="sparkline2" class="col-md-4 col-sm-4 col-xs-4 tile"
+									style="font-size: 10px">
+									<span></span>
+									<h2></h2>
+
+								</div>
+
+								<div id="sparkline3" class="col-md-4 col-sm-4 col-xs-4 tile"
+									style="font-size: 10px">
+									<span></span>
+									<h2></h2>
+
+								</div>
+							</div>
+							<div class="row">
+								<div id="sparkline4" class="col-md-4 col-sm-4 col-xs-4 tile"
+									style="font-size: 10px">
+									<span></span>
+									<h2></h2>
+
+								</div>
+
+								<div id="sparkline5" class="col-md-4 col-sm-4 col-xs-4 tile"
+									style="font-size: 10px">
+									<span></span>
+									<h2></h2>
+
+								</div>
+
+								<div id="sparkline6" class="col-md-4 col-sm-4 col-xs-4 tile"
+									style="font-size: 10px">
+									<span></span>
+									<h2></h2>
+
+								</div>
+							</div>
+							<div class="row">
+								<div id="sparkline7" class="col-md-4 col-sm-4 col-xs-4 tile"
+									style="font-size: 10px">
+									<span></span>
+									<h2></h2>
+
+								</div>
+
+								<div id="sparkline8" class="col-md-4 col-sm-4 col-xs-4 tile"
+									style="font-size: 10px">
+									<span></span>
+									<h2></h2>
+
+								</div>
+
+								<div id="sparkline9" class="col-md-4 col-sm-4 col-xs-4 tile"
+									style="font-size: 10px">
+									<span></span>
+									<h2></h2>
+
+								</div>
 							</div>
 
-							<div class="col-md-4 tile" style="font-size: 10px">
-								<span>Total Revenue</span>
-								<h2>809</h2>
-								<span class="sparkline22 graph"
-									style="height: 160px; width: 20px">
-									<canvas width="10" height="10"
-										style="display: inline-block; vertical-align: top; width: 4px; height: 30px;"></canvas>
-								</span>
-							</div>
-
-							<div class="col-md-4 tile" style="font-size: 10px">
-								<span>Total Revenue</span>
-								<h2>809</h2>
-								<span class="sparkline22 graph"
-									style="height: 160px; width: 20px">
-									<canvas width="10" height="10"
-										style="display: inline-block; vertical-align: top; width: 4px; height: 30px;"></canvas>
-								</span>
-							</div>
-
-							<div class="col-md-4 tile" style="font-size: 10px">
-								<span>Total Revenue</span>
-								<h2>809</h2>
-								<span class="sparkline22 graph"
-									style="height: 160px; width: 20px">
-									<canvas width="10" height="10"
-										style="display: inline-block; vertical-align: top; width: 4px; height: 30px;"></canvas>
-								</span>
-							</div>
-
-							<div class="col-md-4 tile" style="font-size: 10px">
-								<span>Total Revenue</span>
-								<h2>809</h2>
-								<span class="sparkline22 graph"
-									style="height: 160px; width: 20px">
-									<canvas width="10" height="10"
-										style="display: inline-block; vertical-align: top; width: 4px; height: 30px;"></canvas>
-								</span>
-							</div>
-							<div class="col-md-4 tile" style="font-size: 10px">
-								<span>Total Revenue</span>
-								<h2>809</h2>
-								<span class="sparkline22 graph"
-									style="height: 160px; width: 20px">
-									<canvas width="10" height="10"
-										style="display: inline-block; vertical-align: top; width: 4px; height: 30px;"></canvas>
-								</span>
-							</div>
 						</div>
 					</div>
+
 				</div>
 			</div>
 			<!-- footer content -->
@@ -221,8 +239,8 @@
 	<script>
 		//Colores Bar
 		var themeBar = {
-			color : [ '#1DB7D0', '#0B676A', '#E8B027', '#70FDFF', '#0B676A',
-					'#C01722', '#8FA508' ],
+				color : [ '#1DB7D0', '#0B676A', '#E8B027', '#70FDFF', '#0B676A',
+	                      '#C01722', '#8FA508' ],
 
 			title : {
 				itemGap : 8,
@@ -653,8 +671,8 @@
 			}
 		};
 
-		var echartBarLine = echarts.init(document.getElementById('mainb'),
-				themeBar);
+		var echartBarLine = echarts.init(document
+				.getElementById('LlamadasTotalesPorSegmentos'), themeBar);
 
 		echartBarLine.setOption({
 			tooltip : {
@@ -681,7 +699,7 @@
 			},
 			calculable : true,
 			legend : {
-				data : [ 'Revenue', 'Comparativa' ],
+				data : [ 'Llamadas', 'Comparativo' ],
 				y : 'bottom'
 			},
 			xAxis : [ {
@@ -692,26 +710,26 @@
 			} ],
 			yAxis : [ {
 				type : 'value',
-				name : '',
+				name : 'Total',
 				axisLabel : {
 					formatter : '{value}'
 				}
 			}, {
 				type : 'value',
-				name : 'Número',
+				name : 'Total',
 				axisLabel : {
 					formatter : '{value}'
 				}
 			} ],
 			series : [ {
-				name : 'Revenue',
+				name : 'Llamadas',
 				type : 'bar',
-				data : [ 2.0, 4.9, 7.0, 23.2, 25.6 ]
+				data: [0,0,0,0,0]
 			}, {
-				name : 'Comparativa',
+				name : 'Comparativo',
 				type : 'line',
 				yAxisIndex : 1,
-				data : [ 2.0, 2.2, 3.3, 4.5, 6.3 ]
+				data: [0,0,0,0,0]
 			} ]
 		});
 

@@ -36,7 +36,6 @@ $(document).ready(
 		function() {
 			console.log(obtenerURL());
 			recalcularAlto();
-			dibujarFamilias();
 			$(".dropdown-toggle").dropdown();
 			$("#comparativoLlamadasTotalesSegmentos").hide();
 
@@ -90,6 +89,7 @@ $(document).ready(
 						var fechaInicio = picker.startDate.format('YYYY/MM/DD');
                         var fechaFinal = picker.endDate.format('YYYY/MM/DD');
                         dibujarLlamadasTotalesGeneral(fechaInicio,fechaFinal);
+                        dibujarFamilias(fechaInicio,fechaFinal);
 						console.log("apply event fired 1, start/end dates are "
 								+ picker.startDate.format('MMMM D, YYYY')
 								+ " to "
