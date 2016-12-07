@@ -31,7 +31,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 	private Query query;
 	
 	@Override
-	public Map<String,Integer> obtenerLlamadasTotalesSegmentos() {
+	public Map<String,Integer> obtenerLlamadasTotalesSegmentos(String fechaInicio, String fechaFinal) {
 		/*List<String> resultados = new ArrayList<String>();
 		session = sessionFactoryData.getCurrentSession();
 		query = session.createSQLQuery("SELECT EJE.Segmento AS Segmento, COUNT(EJE.Segmento) AS TOTAL FROM  [dbo].[LlamadasATE] LL INNER JOIN [dbo].[TblEjecutivos]  EJE  ON EJE.Nomina = LL.NOMINA_REG WHERE (CAST(LL.FECHA_INI AS DATE) BETWEEN '2014/01/01' AND '2015/12/01') AND (EJE.Segmento='ATE' OR EJE.Segmento='PYME' OR EJE.Segmento='OFFLINE' OR EJE.Segmento='PYME OFFLINE' OR EJE.Segmento='BANCA EMPRESARIAL') GROUP BY EJE.Segmento");
@@ -48,8 +48,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 			
 			@Override
 			public void execute(Connection connection) throws SQLException {
-				String fechaInicio = "2014/01/01";
-				String fechaFinal = "2015/12/01";
+				
 				PreparedStatement pstmt = null;
 				String sqlQuery = "SELECT EJE.Segmento AS Segmento, COUNT(EJE.Segmento) AS TOTAL FROM  [dbo].[LlamadasATE] LL INNER JOIN [dbo].[TblEjecutivos]  EJE  ON EJE.Nomina = LL.NOMINA_REG WHERE (CAST(LL.FECHA_INI AS DATE) BETWEEN ? AND ?) AND (EJE.Segmento='ATE' OR EJE.Segmento='PYME' OR EJE.Segmento='OFFLINE' OR EJE.Segmento='PYME OFFLINE' OR EJE.Segmento='BANCA EMPRESARIAL') GROUP BY EJE.Segmento";
 				ResultSet rs;

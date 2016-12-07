@@ -17,8 +17,8 @@ public class SegmentoServiceImpl implements SegmentoService {
 	private SegmentoDao segmentoDao;
 	
 	@Override
-	public Map<String,Integer> obtenerLlamadasTotalesSegmentos() {
-		return segmentoDao.obtenerLlamadasTotalesSegmentos();
+	public Map<String,Integer> obtenerLlamadasTotalesSegmentos(String fechaInicio, String fechaFinal) {
+		return segmentoDao.obtenerLlamadasTotalesSegmentos(fechaInicio, fechaFinal);
 	}
 
 }

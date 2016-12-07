@@ -44,6 +44,11 @@
 						</div>
 					</div>
 				</div>
+				<!-- Valores de gráficas -->
+				<div>
+					<input id="comparativoLlamadasTotalesSegmentos" type="text"
+						value="" />
+				</div>
 
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
@@ -53,10 +58,11 @@
 								<div class="clearfix"></div>
 							</div>
 							<div class="x_content">
-								<div id="mainb" style="height: 300px;"></div>
+								<div id="LlamadasTotalesPorSegmentos" style="height: 300px;"></div>
 							</div>
 						</div>
 					</div>
+
 				</div>
 				<div class="row">
 					<div class="col-md-4 col-sm-4 col-xs-12">
@@ -135,7 +141,7 @@
 
 						</div>
 					</div>
-					
+
 					<div class="col-md-4 col-sm-4 col-xs-12 ">
 						<div class="x_panel tile fixed_height_320">
 
@@ -189,7 +195,7 @@
 							</div>
 						</div>
 					</div>
-				
+
 				</div>
 			</div>
 			<!-- footer content -->
@@ -209,7 +215,7 @@
 		//Colores Bar
 		var themeBar = {
 			color : [ '#1DB7D0', '#0B676A', '#E8B027', '#70FDFF', '#0B676A',
-					'#C01722', '#8FA508' ],
+                      '#C01722', '#8FA508' ],
 
 			title : {
 				itemGap : 8,
@@ -421,6 +427,7 @@
 			textStyle : {
 				fontFamily : 'Arial, Verdana, sans-serif'
 			}
+
 		};
 
 		//Colores Pie
@@ -640,8 +647,8 @@
 			}
 		};
 
-		var echartBarLine = echarts.init(document.getElementById('mainb'),
-				themeBar);
+		var echartBarLine = echarts.init(document
+				.getElementById('LlamadasTotalesPorSegmentos'), themeBar);
 
 		echartBarLine.setOption({
 			tooltip : {
@@ -668,7 +675,7 @@
 			},
 			calculable : true,
 			legend : {
-				data : [ 'Revenue', 'Comparativa' ],
+				data : [ 'Llamadas', 'Comparativo' ],
 				y : 'bottom'
 			},
 			xAxis : [ {
@@ -679,26 +686,26 @@
 			} ],
 			yAxis : [ {
 				type : 'value',
-				name : '',
+				name : 'Total',
 				axisLabel : {
 					formatter : '{value}'
 				}
 			}, {
 				type : 'value',
-				name : 'Número',
+				name : 'Total',
 				axisLabel : {
 					formatter : '{value}'
 				}
 			} ],
 			series : [ {
-				name : 'Revenue',
+				name : 'Llamadas',
 				type : 'bar',
-				data : [ 2.0, 4.9, 7.0, 23.2, 25.6 ]
+				data: [0,0,0,0,0]
 			}, {
-				name : 'Comparativa',
+				name : 'Comparativo',
 				type : 'line',
 				yAxisIndex : 1,
-				data : [ 2.0, 2.2, 3.3, 4.5, 6.3 ]
+				data: [0,0,0,0,0]
 			} ]
 		});
 

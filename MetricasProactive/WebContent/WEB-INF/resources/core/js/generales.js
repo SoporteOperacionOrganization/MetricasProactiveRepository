@@ -38,6 +38,7 @@ $(document).ready(
 			recalcularAlto();
 			dibujarFamilias();
 			$(".dropdown-toggle").dropdown();
+			$("#comparativoLlamadasTotalesSegmentos").hide();
 
 			$(".sparkline_one").sparkline(
 					[ 2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 4, 5, 6, 3, 5, 4, 5,
@@ -86,6 +87,9 @@ $(document).ready(
 			$('#calendarioFiltro').on(
 					'apply.daterangepicker',
 					function(ev, picker) {
+						var fechaInicio = picker.startDate.format('YYYY/MM/DD');
+                        var fechaFinal = picker.endDate.format('YYYY/MM/DD');
+                        dibujarLlamadasTotalesGeneral(fechaInicio,fechaFinal);
 						console.log("apply event fired 1, start/end dates are "
 								+ picker.startDate.format('MMMM D, YYYY')
 								+ " to "
@@ -108,6 +112,10 @@ $(document).ready(
 			$('#calendarioComparativo').on(
 					'apply.daterangepicker',
 					function(ev, picker) {
+						var fechaInicioComparativo = picker.startDate.format('YYYY/MM/DD');
+                        var fechaFinalComparativo = picker.endDate.format('YYYY/MM/DD');
+                        dibujarLlamadasTotalesGeneralComparativo(fechaInicioComparativo, fechaFinalComparativo);
+
 						console.log("apply event fired, start/end dates are "
 								+ picker.startDate.format('MMMM D, YYYY')
 								+ " to "
