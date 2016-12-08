@@ -13,6 +13,7 @@ function redibujarGraficas() {
 function recalcularAlto() {
 	var alto = $(document).height();
 	$(".left_col").css("min-height", alto);
+	$(".footerA").css("bottom",0);
 }
 
 function obtenerURL() {

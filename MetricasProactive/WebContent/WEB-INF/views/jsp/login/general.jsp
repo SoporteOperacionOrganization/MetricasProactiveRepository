@@ -24,21 +24,24 @@
 			<!-- page content -->
 			<div class="right_col" role="main">
 				<div class="page-title">
-					<div
-						class="col-md-8 col-sm-8 col-xs-12 form-group pull-right no-padding">
-						<div class="row">
-							<div class="col-md-6 col-sm-12 col-xs-12">
-								<label for="calendarioFiltro">Filtro:</label>
-								<div id="calendarioFiltro" class="form-control">
-									<i class="glyphicon glyphicon-calendar fa fa-calendar"></i> <span></span>
-									<b class="caret"></b>
+					<div class="row">
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<h1>
+								<i class="fa fa-sitemap"></i> General
+							</h1>
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-12 form-group pull-right">
+							<div class="row">
+								<div class="col-md-4 col-sm-4 col-xs-4"
+									style="text-align: right; padding-top: 5px">
+									<label for="calendarioFiltro">Filtro general:</label>
 								</div>
-							</div>
-							<div class="col-md-6 col-sm-12 col-xs-12">
-								<label for="calendarioComparativo">Comparativo:</label>
-								<div id="calendarioComparativo" class="form-control">
-									<i class="glyphicon glyphicon-calendar fa fa-calendar"></i> <span></span>
-									<b class="caret"></b>
+								<div class="col-md-8 col-sm-8 col-xs-8 pull-right"
+									style="padding-right: 30px; padding-left: 5px">
+									<div id="calendarioFiltro" class="form-control">
+										<i class="glyphicon glyphicon-calendar fa fa-calendar"></i> <span></span>
+										<b class="caret"></b>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -54,9 +57,32 @@
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel">
-							<div class="x_title">
-								<h2>Llamadas totales</h2>
-								<div class="clearfix"></div>
+							<div class="row x_title">
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<h2>Llamadas totales</h2>
+									<div class="clearfix"></div>
+								</div>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<div class="row">
+										<div class="col-md-4 col-sm-4 col-xs-4"
+											style="text-align: right;">
+											<label for="calendarioComparativo" style="padding-top: 5px;">Comparativo:</label>
+										</div>
+										<div class="col-md-8 col-sm-8 col-xs-8 pull-right"
+											style="padding-left: 17px; padding-right: 7px;">
+											<div id="calendarioComparativo"
+												class="form-control pull-right">
+
+												<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+												<span></span> <b class="caret"></b>
+											</div>
+
+
+										</div>
+									</div>
+
+								</div>
+
 							</div>
 							<div class="x_content">
 								<div id="diferenciaLlamadas">
@@ -70,8 +96,10 @@
 				<div class="row">
 					<div class="col-md-4 col-sm-4 col-xs-12">
 						<div class="x_panel tile fixed_height_320">
-							<div class="x_title">
-								<h2>Servicios</h2>
+							<div class="row x_title">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<h2>Servicios</h2>
+								</div>
 								<div class="clearfix"></div>
 							</div>
 							<div class="x_content">
@@ -84,8 +112,10 @@
 					<div class="col-md-4 col-sm-4 col-xs-12 ">
 						<div class="x_panel tile">
 
-							<div class="x_title">
-								<h2>Clientes Frecuentes</h2>
+							<div class="row x_title">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<h2>Clientes frecuentes</h2>
+								</div>
 								<div class="clearfix"></div>
 							</div>
 
@@ -94,8 +124,8 @@
 									<p>Facebook Campaign</p>
 									<div class="">
 										<div class="progress progress_sm" style="width: 100%;">
-											<div id="llamadas1" class="progress-bar" style="background-color: #1DB7D0;"
-												role="progressbar"></div>
+											<div id="llamadas1" class="progress-bar"
+												style="background-color: #1DB7D0;" role="progressbar"></div>
 										</div>
 									</div>
 								</div>
@@ -103,8 +133,8 @@
 									<p>Twitter Campaign</p>
 									<div class="">
 										<div class="progress progress_sm" style="width: 100%;">
-											<div id="llamadas2" class="progress-bar " style="background-color: #C01722;"
-												role="progressbar"></div>
+											<div id="llamadas2" class="progress-bar "
+												style="background-color: #C01722;" role="progressbar"></div>
 										</div>
 									</div>
 								</div>
@@ -189,38 +219,46 @@
 					<div class="col-md-4 col-sm-4 col-xs-12 ">
 						<div class="x_panel tile">
 
-							<div class="x_title">
-								<h2>Llamadas por familia</h2>
+							<div class="row x_title">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<h2>Llamadas por familia</h2>
+								</div>
 								<div class="clearfix"></div>
 							</div>
 							<div class="row familias">
 								<div id="sparkline1" class="col-md-4 col-sm-4 col-xs-4 tile"
 									style="font-size: 10px">
 									<div class="sparkline-titulo">
-										<span class="sparkline-familia"></span> 
-										<span class="sparkline-segmento"></span>
+										<span class="sparkline-familia"></span> <span
+											class="sparkline-segmento"></span>
 									</div>
-									<div class="sparkline-contenido"><h2></h2></div>
+									<div class="sparkline-contenido">
+										<h2></h2>
+									</div>
 
 								</div>
 
 								<div id="sparkline2" class="col-md-4 col-sm-4 col-xs-4 tile"
 									style="font-size: 10px">
 									<div class="sparkline-titulo">
-										<span class="sparkline-familia"></span> 
-										<span class="sparkline-segmento"></span>
+										<span class="sparkline-familia"></span> <span
+											class="sparkline-segmento"></span>
 									</div>
-									<div class="sparkline-contenido"><h2></h2></div>
+									<div class="sparkline-contenido">
+										<h2></h2>
+									</div>
 
 								</div>
 
 								<div id="sparkline3" class="col-md-4 col-sm-4 col-xs-4 tile"
 									style="font-size: 10px">
 									<div class="sparkline-titulo">
-										<span class="sparkline-familia"></span> 
-										<span class="sparkline-segmento"></span>
+										<span class="sparkline-familia"></span> <span
+											class="sparkline-segmento"></span>
 									</div>
-									<div class="sparkline-contenido"><h2></h2></div>
+									<div class="sparkline-contenido">
+										<h2></h2>
+									</div>
 
 								</div>
 							</div>
@@ -228,30 +266,36 @@
 								<div id="sparkline4" class="col-md-4 col-sm-4 col-xs-4 tile"
 									style="font-size: 10px">
 									<div class="sparkline-titulo">
-										<span class="sparkline-familia"></span> 
-										<span class="sparkline-segmento"></span>
+										<span class="sparkline-familia"></span> <span
+											class="sparkline-segmento"></span>
 									</div>
-									<div class="sparkline-contenido"><h2></h2></div>
+									<div class="sparkline-contenido">
+										<h2></h2>
+									</div>
 
 								</div>
 
 								<div id="sparkline5" class="col-md-4 col-sm-4 col-xs-4 tile"
 									style="font-size: 10px">
 									<div class="sparkline-titulo">
-										<span class="sparkline-familia"></span> 
-										<span class="sparkline-segmento"></span>
+										<span class="sparkline-familia"></span> <span
+											class="sparkline-segmento"></span>
 									</div>
-									<div class="sparkline-contenido"><h2></h2></div>
+									<div class="sparkline-contenido">
+										<h2></h2>
+									</div>
 
 								</div>
 
 								<div id="sparkline6" class="col-md-4 col-sm-4 col-xs-4 tile"
 									style="font-size: 10px">
 									<div class="sparkline-titulo">
-										<span class="sparkline-familia"></span> 
-										<span class="sparkline-segmento"></span>
+										<span class="sparkline-familia"></span> <span
+											class="sparkline-segmento"></span>
 									</div>
-									<div class="sparkline-contenido"><h2></h2></div>
+									<div class="sparkline-contenido">
+										<h2></h2>
+									</div>
 
 								</div>
 							</div>
@@ -259,30 +303,36 @@
 								<div id="sparkline7" class="col-md-4 col-sm-4 col-xs-4 tile"
 									style="font-size: 10px">
 									<div class="sparkline-titulo">
-										<span class="sparkline-familia"></span> 
-										<span class="sparkline-segmento"></span>
+										<span class="sparkline-familia"></span> <span
+											class="sparkline-segmento"></span>
 									</div>
-									<div class="sparkline-contenido"><h2></h2></div>
+									<div class="sparkline-contenido">
+										<h2></h2>
+									</div>
 
 								</div>
 
 								<div id="sparkline8" class="col-md-4 col-sm-4 col-xs-4 tile"
 									style="font-size: 10px">
 									<div class="sparkline-titulo">
-										<span class="sparkline-familia"></span> 
-										<span class="sparkline-segmento"></span>
+										<span class="sparkline-familia"></span> <span
+											class="sparkline-segmento"></span>
 									</div>
-									<div class="sparkline-contenido"><h2></h2></div>
+									<div class="sparkline-contenido">
+										<h2></h2>
+									</div>
 
 								</div>
 
 								<div id="sparkline9" class="col-md-4 col-sm-4 col-xs-4 tile"
 									style="font-size: 10px">
 									<div class="sparkline-titulo">
-										<span class="sparkline-familia"></span> 
-										<span class="sparkline-segmento"></span>
+										<span class="sparkline-familia"></span> <span
+											class="sparkline-segmento"></span>
 									</div>
-									<div class="sparkline-contenido"><h2></h2></div>
+									<div class="sparkline-contenido">
+										<h2></h2>
+									</div>
 
 								</div>
 							</div>

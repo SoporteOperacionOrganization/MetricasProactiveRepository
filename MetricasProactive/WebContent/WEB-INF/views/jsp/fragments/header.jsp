@@ -37,19 +37,19 @@
 								</sec:authorize>
 								<c:forEach items="${segmentos}" var="segmento">
 									<c:if test="${segmento.nombre == 'ATE'}">
-										<li class="${activo == 'online' ? 'active' : '' }"><a href="<c:url value='/online' />"><i class="fa fa-sitemap"></i> Online</a></li>
+										<li class="${activo == 'online' ? 'active' : '' }"><a href="<c:url value='/online' />"><i class="fa fa-laptop"></i> Online</a></li>
 									</c:if>
 									<c:if test="${segmento.nombre == 'OFFLINE'}">
-										<li class="${activo == 'offline' ? 'active' : '' }"><a href="<c:url value='/offline' />"><i class="fa fa-sitemap"></i> Offline</a></li>
+										<li class="${activo == 'offline' ? 'active' : '' }"><a href="<c:url value='/offline' />"><i class="fa fa-pencil-square-o"></i> Offline</a></li>
 									</c:if>
 									<c:if test="${segmento.nombre == 'PYME'}">
-										<li class="${activo == 'pyme' ? 'active' : '' }"><a href="<c:url value='/pyme' />"><i class="fa fa-sitemap"></i> Pyme</a></li>
+										<li class="${activo == 'pyme' ? 'active' : '' }"><a href="<c:url value='/pyme' />"><i class="fa fa-users"></i> Pyme</a></li>
 									</c:if>
 									<c:if test="${segmento.nombre == 'BANCA EMPRESARIAL'}">
-										<li class="${activo == 'empresarial' ? 'active' : '' }"><a href="<c:url value='/empresarial' />"><i class="fa fa-sitemap"></i> Empresarial</a></li>
+										<li class="${activo == 'empresarial' ? 'active' : '' }"><a href="<c:url value='/empresarial' />"><i class="fa fa-industry"></i> Empresarial</a></li>
 									</c:if>
 									<c:if test="${segmento.nombre == 'PYME OFFLINE'}">
-										<li class="${activo == 'pymeoff' ? 'active' : '' }"><a href="<c:url value='/pymeOffline' />"><i class="fa fa-sitemap"></i> Pyme Offline</a></li>
+										<li class="${activo == 'pymeoff' ? 'active' : '' }"><a href="<c:url value='/pymeOffline' />"><i class="fa fa-sticky-note-o"></i> Pyme Offline</a></li>
 									</c:if>
 								</c:forEach>
 							</ul>

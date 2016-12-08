@@ -1537,9 +1537,9 @@ h2 {
     margin: 5px 0 6px;
     float: left;
     display: block;
-    text-overflow: ellipsis;
+    /*text-overflow: ellipsis;*/
     overflow: hidden;
-    white-space: nowrap
+   /* white-space: nowrap*/
 }
 
 .x_title h2 small {
@@ -1547,7 +1547,7 @@ h2 {
 }
 
 .x_title span {
-    color: #BDBDBD
+    color: #555;
 }
 
 .x_content {
@@ -5222,4 +5222,9 @@ ul.notifications {
 	text-align: right;
 	padding-right: 150px;
 	font-size: 18px;
+}
+.page-title h1{
+	font-size: 28px;
+    margin: 0;
+    color: #002D72;
 }

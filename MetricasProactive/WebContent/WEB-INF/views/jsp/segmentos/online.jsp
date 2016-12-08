@@ -21,41 +21,68 @@
 			<!-- page content -->
 			<div class="right_col" role="main">
 				<div class="page-title">
-					<div
-						class="col-md-8 col-sm-8 col-xs-12 form-group pull-right no-padding">
-						<div class="row">
-							<div class="col-md-6 col-sm-12 col-xs-12">
-								<label for="calendarioFiltro">Filtro:</label>
-								<div id="calendarioFiltro" class="form-control">
-									<i class="glyphicon glyphicon-calendar fa fa-calendar"></i> <span></span>
-									<b class="caret"></b>
+					<div class="row">
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<h1>
+								<i class="fa fa-laptop"></i> Online
+							</h1>
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-12 form-group pull-right">
+							<div class="row">
+								<div class="col-md-4 col-sm-4 col-xs-4"
+									style="text-align: right; padding-top: 5px">
+									<label for="calendarioFiltro">Filtro general:</label>
 								</div>
-							</div>
-							<div class="col-md-6 col-sm-12 col-xs-12">
-								<label for="calendarioComparativo">Comparativo:</label>
-								<div id="calendarioComparativo" class="form-control">
-									<i class="glyphicon glyphicon-calendar fa fa-calendar"></i> <span></span>
-									<b class="caret"></b>
+								<div class="col-md-8 col-sm-8 col-xs-8 pull-right"
+									style="padding-right: 30px; padding-left: 5px">
+									<div id="calendarioFiltro" class="form-control">
+										<i class="glyphicon glyphicon-calendar fa fa-calendar"></i> <span></span>
+										<b class="caret"></b>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-
 				<div>
-					<input id="comparativoLlamadasTotalesFamiliasSegmentos" type="hidden"
-						value="" />
+					<input id="comparativoLlamadasTotalesFamiliasSegmentos"
+						type="hidden" value="" />
 				</div>
 
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel">
-							<div class="x_title">
-								<h2>Top 10 llamadas totales por familia</h2>
-								<div class="clearfix"></div>
+							<div class="row x_title">
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<h2>Top 10 llamadas totales por familia</h2>
+									<div class="clearfix"></div>
+								</div>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<div class="row">
+										<div class="col-md-4 col-sm-4 col-xs-4"
+											style="text-align: right;">
+											<label for="calendarioComparativo" style="padding-top: 5px;">Comparativo:</label>
+										</div>
+										<div class="col-md-8 col-sm-8 col-xs-8 pull-right"
+											style="padding-left: 17px; padding-right: 7px;">
+											<div id="calendarioComparativo"
+												class="form-control pull-right">
+
+												<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+												<span></span> <b class="caret"></b>
+											</div>
+
+
+										</div>
+									</div>
+
+								</div>
+
 							</div>
+
 							<div class="x_content">
-								<div id="LlamadasTotalesPorFamiliaSegmentos" style="height: 350px;"></div>
+								<div id="LlamadasTotalesPorFamiliaSegmentos"
+									style="height: 350px;"></div>
 							</div>
 						</div>
 					</div>
