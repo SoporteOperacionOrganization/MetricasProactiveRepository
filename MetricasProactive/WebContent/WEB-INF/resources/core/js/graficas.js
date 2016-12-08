@@ -837,10 +837,6 @@ function dibujarServicios(fechaInicioP, fechaFinalP) {
 	});
 }
 
-
-
-
-
 function dibujarLlamadasTotalesFamiliaSegmentos(fechaInicioP, fechaFinalP,
 		segmento) {
 	$.ajax({
@@ -956,11 +952,11 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 				total = total + v;
 
 			});
-			
+
 			var arrayNames = Object.keys(data);
 			var nameSegmento = "";
-			
-	switch (obtenerURL()) {
+
+			switch (obtenerURL()) {
 			case 'online':
 				nameSegmento = "ATE"
 				break;
@@ -977,8 +973,7 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 				nameSegmento = "PYME OFFLINE"
 				break;
 			}
-	
-	
+
 			for (i = 0; i < arrayValues.length; i++) {
 				if (arrayNames[i] == nameSegmento) {
 					var seg = arrayNames[i];
@@ -1071,3 +1066,49 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 		}
 	});
 }
+
+function dibujarClientesFrecuentes(fechaInicioP, fechaFinalP, segmentoP) {
+
+	$.ajax({
+		url : 'clientesFrecuentes',
+		dataType : "json",
+		contentType : "application/json;charset=utf-8",
+		data : {
+			fechaInicio : fechaInicioP,
+			fechaFinal : fechaFinalP,
+			segmento: segmentoP
+		},
+
+		success : function(data) {
+
+			var arrayTemp = [];
+			var arrayLlamadas = [];
+			var arrayClientes = [];
+			var conteo = 0;
+
+			for (a in data) {
+				arrayTemp.push([ a, data[a] ])
+			}
+			arrayTemp.sort(function(a, b) {
+				return a[1] - b[1]
+			});
+			arrayTemp.reverse();
+
+			for (var a = 0, b/* ,txt='' */; b = arrayTemp[a]; ++a) {
+				arrayClientes[a] = b[0];
+				arrayLlamadas[a] = b[1];
+			}
+			console.log(arrayClientes);
+			console.log(arrayLlamadas);
+
+			for (i = 0; i <= arrayLlamadas.length; i++) {
+				$("#top" + (i + 1) + " p").text(arrayClientes[i]);
+				$("#llamadas" + (i + 1)).text(arrayLlamadas[i]);
+			}
+
+			// document.getElementById("top10").val=arrayNames[0];
+
+		}// fin function(data)
+	});// fin $.ajax
+}// fin dibujarClientesFrecuentes
+

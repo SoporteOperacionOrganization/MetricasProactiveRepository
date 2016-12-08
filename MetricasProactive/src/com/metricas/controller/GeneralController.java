@@ -108,5 +108,18 @@ public class GeneralController {
 		// System.out.println("Json " + json);
 		return json;
 	}
+	
+	@RequestMapping(value = "/clientesFrecuentes", method = RequestMethod.GET, produces = "application/json") 
+    public @ResponseBody String clientesFrecuentesController(Model model, @RequestParam("fechaInicio") String fechaInicio, @RequestParam("fechaFinal") String fechaFinal,@RequestParam("segmento") String segmento) { 
+
+            Gson gson = new Gson(); 
+            Map<Integer, Integer> clientesFrecuentes = new HashMap<Integer,Integer>(); 
+            clientesFrecuentes = segmentoService.obtenerClientesFrecuentes(fechaInicio, fechaFinal,segmento); 
+
+            String json = gson.toJson(clientesFrecuentes); 
+            return json; 
+    } 
+
+
 
 }

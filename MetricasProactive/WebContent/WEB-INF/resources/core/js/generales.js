@@ -49,6 +49,7 @@ function graficasIniciales() {
 	dibujarFamilias(hoy, hoy, obtenerURL());
 	dibujarConcurrencia(hoy, hoy);
 	dibujarServicios(hoy, hoy, obtenerURL());
+	dibujarClientesFrecuentes(hoy, hoy, obtenerURL());
 }
 
 $(document).ready(
@@ -59,11 +60,11 @@ $(document).ready(
 			$("#comparativoLlamadasTotalesSegmentos").hide();
 
 			$(window).on('resize', function() {
-				redibujarGraficas();
+				//redibujarGraficas();
 				recalcularAlto();
 			});
 			$("#menu_toggle").on('click', function() {
-				redibujarGraficas();
+				//redibujarGraficas();
 			});
 			cambiarLabelFechaFiltro(moment(), moment());
 
@@ -83,6 +84,7 @@ $(document).ready(
 								dibujarConcurrencia(fechaInicio, fechaFinal);
 								dibujarServicios(fechaInicio, fechaFinal,
 										segmento);
+								dibujarClientesFrecuentes(fechaInicio,fechaFinal,segmento); 
 
 								if (segmento == 'general') {
 									dibujarLlamadasTotalesGeneral(fechaInicio,

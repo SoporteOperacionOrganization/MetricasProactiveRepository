@@ -34,5 +34,5 @@
 <script src="${progressbar}"></script>
 <script src="${jquerySparkline}"></script>
 <script src="${dateRangePickerOpciones}"></script>
-<script src="${generales}"></script>
 <script src="${graficas}"></script>
+<script src="${generales}"></script>

@@ -421,5 +421,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 		session.close();
 		return totalesLlamadasSegmentos;
 	}
+	
+	
 
 }
