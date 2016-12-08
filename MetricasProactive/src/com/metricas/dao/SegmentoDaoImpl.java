@@ -307,15 +307,15 @@ public class SegmentoDaoImpl implements SegmentoDao {
 					switch (segmento) {
 
 					case "general":
-						sqlQuery = "SELECT TOP 10 TT.DESCRIPCION, COUNT(TT.DESCRIPCION) as TOTAL"
+						sqlQuery = "SELECT TOP 10 TT.DESCRIPCION+'  ('+SO.SEGMENTO+') ', COUNT(TT.DESCRIPCION) as TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
 								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
 								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
 								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" + " WHERE"
 								+ " CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111)"
 								+ " AND (SO.Segmento='ATE' OR SO.Segmento='PYME' OR SO.Segmento='OFFLINE' OR SO.Segmento='PYME OFFLINE' OR SO.Segmento='BANCA EMPRESARIAL')"
-								+ " GROUP BY TT.DESCRIPCION" + " ORDER BY COUNT(TT.DESCRIPCION) DESC";
-
+								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO" + " ORDER BY COUNT(TT.DESCRIPCION) DESC";
+						break;
 					case "empresarial":
 						sqlQuery = "SELECT TOP 10 TT.DESCRIPCION, COUNT(TT.DESCRIPCION) as TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
@@ -325,7 +325,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 								+ " CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111)"
 								+ " AND (SO.Segmento='BANCA EMPRESARIAL')" + " GROUP BY TT.DESCRIPCION"
 								+ " ORDER BY COUNT(TT.DESCRIPCION) DESC";
-
+						break;
 					case "online":
 						sqlQuery = "SELECT TOP 10 TT.DESCRIPCION, COUNT(TT.DESCRIPCION) as TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
