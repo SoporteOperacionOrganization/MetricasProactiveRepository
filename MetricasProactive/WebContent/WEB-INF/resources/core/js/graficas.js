@@ -1,6 +1,440 @@
 /**
  * 
  */
+/* Temas de gráficas */
+// Colores Bar
+var themeBar = {
+	color : [ '#1DB7D0', '#0B676A', '#E8B027', '#70FDFF', '#0B676A', '#C01722',
+			'#8FA508' ],
+
+	title : {
+		itemGap : 8,
+		textStyle : {
+			fontWeight : 'normal',
+			color : '#408829'
+		}
+	},
+
+	dataRange : {
+		color : [ '#1f610a', '#97b58d' ]
+	},
+
+	toolbox : {
+		color : [ '#FB2286', '#408829', '#408829', '#408829' ]
+	},
+
+	tooltip : {
+		backgroundColor : 'rgba(0,0,0,0.5)',
+		axisPointer : {
+			type : 'line',
+			lineStyle : {
+				color : '#408829',
+				type : 'dashed'
+			},
+			crossStyle : {
+				color : '#408829'
+			},
+			shadowStyle : {
+				color : 'rgba(200,200,200,0.3)'
+			}
+		}
+	},
+
+	dataZoom : {
+		dataBackgroundColor : '#eee',
+		fillerColor : 'rgba(64,136,41,0.2)',
+		handleColor : '#408829'
+	},
+	grid : {
+		borderWidth : 0
+	},
+
+	categoryAxis : {
+		axisLine : {
+			lineStyle : {
+				color : '#408829'
+			}
+		},
+		splitLine : {
+			lineStyle : {
+				color : [ '#eee' ]
+			}
+		}
+	},
+
+	valueAxis : {
+		axisLine : {
+			lineStyle : {
+				color : '#408829'
+			}
+		},
+		splitArea : {
+			show : true,
+			areaStyle : {
+				color : [ 'rgba(250,250,250,0.1)', 'rgba(200,200,200,0.1)' ]
+			}
+		},
+		splitLine : {
+			lineStyle : {
+				color : [ '#eee' ]
+			}
+		}
+	},
+	timeline : {
+		lineStyle : {
+			color : '#408829'
+		},
+		controlStyle : {
+			normal : {
+				color : '#408829'
+			},
+			emphasis : {
+				color : '#408829'
+			}
+		}
+	},
+
+	k : {
+		itemStyle : {
+			normal : {
+				color : '#68a54a',
+				color0 : '#a9cba2',
+				lineStyle : {
+					width : 1,
+					color : '#408829',
+					color0 : '#86b379'
+				}
+			}
+		}
+	},
+	map : {
+		itemStyle : {
+			normal : {
+				areaStyle : {
+					color : '#ddd'
+				},
+				label : {
+					textStyle : {
+						color : '#c12e34'
+					}
+				}
+			},
+			emphasis : {
+				areaStyle : {
+					color : '#99d2dd'
+				},
+				label : {
+					textStyle : {
+						color : '#c12e34'
+					}
+				}
+			}
+		}
+	},
+	force : {
+		itemStyle : {
+			normal : {
+				linkStyle : {
+					strokeColor : '#408829'
+				}
+			}
+		}
+	},
+	chord : {
+		padding : 4,
+		itemStyle : {
+			normal : {
+				lineStyle : {
+					width : 1,
+					color : 'rgba(128, 128, 128, 0.5)'
+				},
+				chordStyle : {
+					lineStyle : {
+						width : 1,
+						color : 'rgba(128, 128, 128, 0.5)'
+					}
+				}
+			},
+			emphasis : {
+				lineStyle : {
+					width : 1,
+					color : 'rgba(128, 128, 128, 0.5)'
+				},
+				chordStyle : {
+					lineStyle : {
+						width : 1,
+						color : 'rgba(128, 128, 128, 0.5)'
+					}
+				}
+			}
+		}
+	},
+	gauge : {
+		startAngle : 225,
+		endAngle : -45,
+		axisLine : {
+			show : true,
+			lineStyle : {
+				color : [ [ 0.2, '#86b379' ], [ 0.8, '#68a54a' ],
+						[ 1, '#408829' ] ],
+				width : 8
+			}
+		},
+		axisTick : {
+			splitNumber : 10,
+			length : 12,
+			lineStyle : {
+				color : 'auto'
+			}
+		},
+		axisLabel : {
+			textStyle : {
+				color : 'auto'
+			}
+		},
+		splitLine : {
+			length : 18,
+			lineStyle : {
+				color : 'auto'
+			}
+		},
+		pointer : {
+			length : '90%',
+			color : 'auto'
+		},
+		title : {
+			textStyle : {
+				color : '#333'
+			}
+		},
+		detail : {
+			textStyle : {
+				color : 'auto'
+			}
+		}
+	},
+	textStyle : {
+		fontFamily : 'Arial, Verdana, sans-serif'
+	}
+};
+
+// Colores Pie
+var theme = {
+	color : [ '#013F7A', '#1DB7D0', '#E8B027', '#000000', '#70FDFF', '#0B676A',
+			'#C01722', '#F7DEB4', '#8FA508', '#A6A6A6' ],
+
+	title : {
+		itemGap : 8,
+		textStyle : {
+			fontWeight : 'normal',
+			color : '#408829'
+		}
+	},
+
+	dataRange : {
+		color : [ '#1f610a', '#97b58d' ]
+	},
+
+	toolbox : {
+		color : [ '#FB2286', '#408829', '#408829', '#408829' ]
+	},
+
+	tooltip : {
+		backgroundColor : 'rgba(0,0,0,0.5)',
+		axisPointer : {
+			type : 'line',
+			lineStyle : {
+				color : '#408829',
+				type : 'dashed'
+			},
+			crossStyle : {
+				color : '#408829'
+			},
+			shadowStyle : {
+				color : 'rgba(200,200,200,0.3)'
+			}
+		}
+	},
+
+	dataZoom : {
+		dataBackgroundColor : '#eee',
+		fillerColor : 'rgba(64,136,41,0.2)',
+		handleColor : '#408829'
+	},
+	grid : {
+		borderWidth : 0
+	},
+
+	categoryAxis : {
+		axisLine : {
+			lineStyle : {
+				color : '#408829'
+			}
+		},
+		splitLine : {
+			lineStyle : {
+				color : [ '#eee' ]
+			}
+		}
+	},
+
+	valueAxis : {
+		axisLine : {
+			lineStyle : {
+				color : '#408829'
+			}
+		},
+		splitArea : {
+			show : true,
+			areaStyle : {
+				color : [ 'rgba(250,250,250,0.1)', 'rgba(200,200,200,0.1)' ]
+			}
+		},
+		splitLine : {
+			lineStyle : {
+				color : [ '#eee' ]
+			}
+		}
+	},
+	timeline : {
+		lineStyle : {
+			color : '#408829'
+		},
+		controlStyle : {
+			normal : {
+				color : '#408829'
+			},
+			emphasis : {
+				color : '#408829'
+			}
+		}
+	},
+
+	k : {
+		itemStyle : {
+			normal : {
+				color : '#68a54a',
+				color0 : '#a9cba2',
+				lineStyle : {
+					width : 1,
+					color : '#408829',
+					color0 : '#86b379'
+				}
+			}
+		}
+	},
+	map : {
+		itemStyle : {
+			normal : {
+				areaStyle : {
+					color : '#ddd'
+				},
+				label : {
+					textStyle : {
+						color : '#c12e34'
+					}
+				}
+			},
+			emphasis : {
+				areaStyle : {
+					color : '#99d2dd'
+				},
+				label : {
+					textStyle : {
+						color : '#c12e34'
+					}
+				}
+			}
+		}
+	},
+	force : {
+		itemStyle : {
+			normal : {
+				linkStyle : {
+					strokeColor : '#408829'
+				}
+			}
+		}
+	},
+	chord : {
+		padding : 4,
+		itemStyle : {
+			normal : {
+				lineStyle : {
+					width : 1,
+					color : 'rgba(128, 128, 128, 0.5)'
+				},
+				chordStyle : {
+					lineStyle : {
+						width : 1,
+						color : 'rgba(128, 128, 128, 0.5)'
+					}
+				}
+			},
+			emphasis : {
+				lineStyle : {
+					width : 1,
+					color : 'rgba(128, 128, 128, 0.5)'
+				},
+				chordStyle : {
+					lineStyle : {
+						width : 1,
+						color : 'rgba(128, 128, 128, 0.5)'
+					}
+				}
+			}
+		}
+	},
+	gauge : {
+		startAngle : 225,
+		endAngle : -45,
+		axisLine : {
+			show : true,
+			lineStyle : {
+				color : [ [ 0.2, '#86b379' ], [ 0.8, '#68a54a' ],
+						[ 1, '#408829' ] ],
+				width : 8
+			}
+		},
+		axisTick : {
+			splitNumber : 10,
+			length : 12,
+			lineStyle : {
+				color : 'auto'
+			}
+		},
+		axisLabel : {
+			textStyle : {
+				color : 'auto'
+			}
+		},
+		splitLine : {
+			length : 18,
+			lineStyle : {
+				color : 'auto'
+			}
+		},
+		pointer : {
+			length : '90%',
+			color : 'auto'
+		},
+		title : {
+			textStyle : {
+				color : '#333'
+			}
+		},
+		detail : {
+			textStyle : {
+				color : 'auto'
+			}
+		}
+	},
+	textStyle : {
+		fontFamily : 'Arial, Verdana, sans-serif'
+	}
+};
+
+/* Fin temas de gráficas */
 function dibujarLlamadasTotalesGeneral(fechaInicioP, fechaFinalP) {
 	$
 			.ajax({
@@ -202,7 +636,7 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioP, fechaFinalP) {
 							title : "Text View",
 							lang : [ "Text View", "Close", "Refresh", ],
 						},
-						
+
 						saveAsImage : {
 							show : true,
 							title : 'Save'
@@ -255,17 +689,12 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioP, fechaFinalP) {
 
 }
 
-
 function dibujarFamilias(fechaInicioP, fechaFinalP, segmentoP) {
-	/*var opcionesSparkline = {
-		type : 'line',
-		width : '100%',
-		lineColor : '#26B99A',
-		fillColor : '#ffffff',
-		lineWidth : 3,
-		spotColor : '#34495E',
-		minSpotColor : '#34495E'
-	}*/
+	/*
+	 * var opcionesSparkline = { type : 'line', width : '100%', lineColor :
+	 * '#26B99A', fillColor : '#ffffff', lineWidth : 3, spotColor : '#34495E',
+	 * minSpotColor : '#34495E' }
+	 */
 	$.ajax({
 		url : 'obtenerLlamadasFamilia',
 		dataType : "json",
@@ -273,13 +702,14 @@ function dibujarFamilias(fechaInicioP, fechaFinalP, segmentoP) {
 		data : {
 			fechaInicio : fechaInicioP,
 			fechaFinal : fechaFinalP,
-			segmento: segmentoP
+			segmento : segmentoP
 		},
 		success : function(data) {
 
 			var arrayTemp = [];
 			var arrayValores = [];
 			var arrayEtiquetas = [];
+
 			var conteo = 0;
 
 			for (a in data) {
@@ -290,24 +720,23 @@ function dibujarFamilias(fechaInicioP, fechaFinalP, segmentoP) {
 			});
 			arrayTemp.reverse();
 
-			for (var a = 0, b/*,txt=''*/; b = arrayTemp[a]; ++a) {
+			for (var a = 0, b/* ,txt='' */; b = arrayTemp[a]; ++a) {
 				arrayValores[a] = b[1];
 				arrayEtiquetas[a] = b[0];
 			}
-			//console.log(arrayValores);
-
 			for (i = 0; i <= arrayValores.length; i++) {
-				$("#sparkline" + (i + 1) + " span").text(arrayEtiquetas[i]);
-				$("#sparkline" + (i + 1) + " h2").text(arrayValores[i]);
+				var segmento = arrayEtiquetas[i].toString().split("-");
+				$("#sparkline" + (i + 1) + " .sparkline-familia").text(
+						segmento[0]);
+				$("#sparkline" + (i + 1) + " .sparkline-segmento").text(
+						segmento[1]);
+				$("#sparkline" + (i + 1) + " .sparkline-contenido h2").text(
+						arrayValores[i]);
 			}
-
-			//$(".sparkline22").sparkline(arrayValores, opcionesSparkline);
 		}
 	});
 
 }
-
-
 
 function dibujarServicios(fechaInicioP, fechaFinalP) {
 	$.ajax({
@@ -357,7 +786,7 @@ function dibujarServicios(fechaInicioP, fechaFinalP) {
 								}
 							}
 						},
-						
+
 						saveAsImage : {
 							show : true,
 							title : "Save"
@@ -409,7 +838,7 @@ function dibujarServicios(fechaInicioP, fechaFinalP) {
 }
 
 function dibujarConcurrenciaSeg(fechaInicioP, fechaFinalP) {
-	
+
 	$.ajax({
 		url : 'concurrencia',
 		dataType : "json",
@@ -418,7 +847,7 @@ function dibujarConcurrenciaSeg(fechaInicioP, fechaFinalP) {
 			fechaInicio : fechaInicioP,
 			fechaFinal : fechaFinalP
 		},
-		
+
 		success : function(data) {
 
 			var arrayValues = [];
@@ -432,12 +861,12 @@ function dibujarConcurrenciaSeg(fechaInicioP, fechaFinalP) {
 				total = total + v;
 
 			});
-			var arrayNames = Object.keys(data);  
-			for(i=0 ; i< data.length(); i++){
-				//if(arrayNames[i]== 
-					arrayValues[i]= llamadas;
+			var arrayNames = Object.keys(data);
+			for (i = 0; i < data.length; i++) {
+				// if(arrayNames[i]==
+				arrayValues[i] = llamadas;
 			}
-			
+
 			var dataStyle = {
 				normal : {
 					label : {
@@ -503,7 +932,7 @@ function dibujarConcurrenciaSeg(fechaInicioP, fechaFinalP) {
 							lang : [ "Text View", "Close", "Refresh", ],
 							readOnly : false
 						},
-						
+
 						saveAsImage : {
 							show : true,
 							title : "Save "
@@ -531,3 +960,93 @@ function dibujarConcurrenciaSeg(fechaInicioP, fechaFinalP) {
 	});
 }
 
+function dibujarLlamadasTotalesFamiliaSegmentos(fechaInicioP, fechaFinalP,
+		segmento) {
+	$.ajax({
+		url : 'obtenerLlamadasTotalesFamiliasSegmento',
+		dataType : "json",
+		contentType : "application/json;charset=utf-8",
+		data : {
+			fechaInicio : fechaInicioP,
+			fechaFinal : fechaFinalP,
+			segmento : segmento
+		},
+		success : function(data) {
+
+			$("#comparativoLlamadasTotalesFamiliasSegmentos").val(
+					JSON.stringify(data));
+			var arrayValues = [];
+			var cont = 0;
+			$.each(data, function(k, v) {
+				arrayValues[cont] = v;
+				cont = cont + 1;
+			});
+
+			var GeneralLlamadasBarras2 = echarts.init(document
+					.getElementById('LlamadasTotalesPorFamiliaSegmentos'),
+					theme);
+
+			GeneralLlamadasBarras2.setOption({
+				tooltip : {
+					trigger : 'axis'
+				},
+				toolbox : {
+					show : true,
+					feature : {
+						dataView : {
+							show : true,
+							readOnly : false,
+							title : "Text View",
+							lang : [ "Text View", "Close", "Refresh", ],
+						},
+						restore : {
+							show : true,
+							title : 'Restore'
+						},
+						saveAsImage : {
+							show : true,
+							title : 'Save'
+						}
+					}
+				},
+				calculable : true,
+				legend : {
+					data : [ 'Llamadas', 'Comparativo' ],
+					y : 'bottom'
+				},
+				xAxis : [ {
+					type : 'category',
+					data : Object.keys(data)
+				// data: ['ATE', 'BANCA EMPRESARIAL', 'PYME', 'PYME OFFLINE',
+				// 'OFFLINE']
+				} ],
+				yAxis : [ {
+					type : 'value',
+					name : 'Total',
+					axisLabel : {
+						formatter : '{value}'
+					}
+				}, {
+					type : 'value',
+					name : 'Total',
+					axisLabel : {
+						formatter : '{value}'
+					}
+				} ],
+				series : [ {
+					name : 'Llamadas',
+					type : 'bar',
+					// data : [2,5,10,8,15]
+					// data:[valorAte,valorBE,valorPyme,valorPymeOffline,valorOffline]
+					data : arrayValues
+				}, {
+					name : 'Comparativo',
+					type : 'line',
+					yAxisIndex : 1,
+					data : [ 0, 0, 0, 0, 0 ]
+				} ]
+			});
+
+		}
+	});
+}

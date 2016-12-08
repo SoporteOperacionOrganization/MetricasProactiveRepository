@@ -23,49 +23,40 @@ function obtenerURL() {
 
 function cambiarLabelFechaFiltro(inicio, fin) {
 	$('#calendarioFiltro span').html(
-			inicio.format('YYYY/MM/DD') + ' - '
-					+ fin.format('YYYY/MM/DD'));
+			inicio.format('YYYY/MM/DD') + ' - ' + fin.format('YYYY/MM/DD'));
 }
 function cambiarLabelFechaComparativo(inicio, fin) {
 	$('#calendarioComparativo span').html(
-			inicio.format('YYYY/MM/DD') + ' - '
-					+ fin.format('YYYY/MM/DD'));
+			inicio.format('YYYY/MM/DD') + ' - ' + fin.format('YYYY/MM/DD'));
+}
+
+function graficasIniciales() {
+	var hoy = new Date();
+	var dd = hoy.getDate();
+	var mm = hoy.getMonth() + 1;
+	var yyyy = hoy.getFullYear();
+
+	if (dd < 10) {
+		dd = '0' + dd
+	}
+
+	if (mm < 10) {
+		mm = '0' + mm
+	}
+
+	hoy = yyyy + '/' + mm + '/' + dd;
+	dibujarLlamadasTotalesGeneral(hoy, hoy);
+	dibujarFamilias(hoy, hoy, obtenerURL());
+	dibujarConcurrenciaSeg(hoy, hoy, obtenerURL());
+	dibujarServicios(hoy, hoy, obtenerURL());
 }
 
 $(document).ready(
 		function() {
-			console.log(obtenerURL());
 			recalcularAlto();
+			graficasIniciales();
 			$(".dropdown-toggle").dropdown();
 			$("#comparativoLlamadasTotalesSegmentos").hide();
-
-			$(".sparkline_one").sparkline(
-					[ 2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 5, 6, 4, 5, 6, 3, 5, 4, 5,
-							4, 5, 4, 3, 4, 5, 6, 7, 5, 4, 3, 5, 6 ], {
-						type : 'bar',
-						height : '125',
-						barWidth : 13,
-						colorMap : {
-							'7' : '#a1a1a1'
-						},
-						barSpacing : 2,
-						barColor : '#26B99A'
-					});
-
-			$(".sparkline11").sparkline(
-					[ 2, 4, 3, 4, 5, 4, 5, 4, 3, 4, 6, 2, 4, 3, 4, 5, 4, 5, 4,
-							3 ], {
-						type : 'bar',
-						height : '40',
-						barWidth : 8,
-						colorMap : {
-							'7' : '#a1a1a1'
-						},
-						barSpacing : 2,
-						barColor : '#26B99A'
-					});
-
-			
 
 			$(window).on('resize', function() {
 				redibujarGraficas();
@@ -77,51 +68,47 @@ $(document).ready(
 			cambiarLabelFechaFiltro(moment(), moment());
 
 			$('#calendarioFiltro').daterangepicker(optionSet1);
-			$('#calendarioFiltro').on('show.daterangepicker', function() {
-				console.log("show event fired 1");
-			});
-			$('#calendarioFiltro').on('hide.daterangepicker', function() {
-				console.log("hide event fired 1");
-			});
-			$('#calendarioFiltro').on(
-					'apply.daterangepicker',
-					function(ev, picker) {
-						var fechaInicio = picker.startDate.format('YYYY/MM/DD');
-                        var fechaFinal = picker.endDate.format('YYYY/MM/DD');
-                        dibujarLlamadasTotalesGeneral(fechaInicio,fechaFinal);
-                        dibujarFamilias(fechaInicio,fechaFinal,obtenerURL());
-                        dibujarConcurrenciaSeg(fechaInicio,fechaFinal,obtenerURL());
-                        dibujarServicios(fechaInicio,fechaFinal,obtenerURL());
-						console.log("apply event fired 1, start/end dates are "
-								+ picker.startDate.format('MMMM D, YYYY')
-								+ " to "
-								+ picker.endDate.format('MMMM D, YYYY'));
-						cambiarLabelFechaFiltro(picker.startDate,
-								picker.endDate);
-					});
-			$('#calendarioFiltro').on('cancel.daterangepicker',
-					function(ev, picker) {
-						console.log("cancel event fired 1");
-					});
+
+			$('#calendarioFiltro')
+					.on(
+							'apply.daterangepicker',
+							function(ev, picker) {
+								var fechaInicio = picker.startDate
+										.format('YYYY/MM/DD');
+								var fechaFinal = picker.endDate
+										.format('YYYY/MM/DD');
+								var segmento = obtenerURL();
+								dibujarFamilias(fechaInicio, fechaFinal,
+										segmento);
+								dibujarConcurrenciaSeg(fechaInicio, fechaFinal,
+										segmento);
+								dibujarServicios(fechaInicio, fechaFinal,
+										segmento);
+
+								if (segmento == 'general') {
+									dibujarLlamadasTotalesGeneral(fechaInicio,
+											fechaFinal);
+								} else if (segmento == 'online') {
+									dibujarLlamadasTotalesFamiliaSegmentos(
+											fechaInicio, fechaFinal, 'ATE');
+								}
+
+								cambiarLabelFechaFiltro(picker.startDate,
+										picker.endDate);
+							});
 			cambiarLabelFechaComparativo(moment(), moment());
 			$('#calendarioComparativo').daterangepicker(optionSet2);
-			$('#calendarioComparativo').on('show.daterangepicker', function() {
-				console.log("show event fired");
-			});
-			$('#calendarioComparativo').on('hide.daterangepicker', function() {
-				console.log("hide event fired");
-			});
+
 			$('#calendarioComparativo').on(
 					'apply.daterangepicker',
 					function(ev, picker) {
-						var fechaInicioComparativo = picker.startDate.format('YYYY/MM/DD');
-                        var fechaFinalComparativo = picker.endDate.format('YYYY/MM/DD');
-                        dibujarLlamadasTotalesGeneralComparativo(fechaInicioComparativo, fechaFinalComparativo);
+						var fechaInicioComparativo = picker.startDate
+								.format('YYYY/MM/DD');
+						var fechaFinalComparativo = picker.endDate
+								.format('YYYY/MM/DD');
+						dibujarLlamadasTotalesGeneralComparativo(
+								fechaInicioComparativo, fechaFinalComparativo);
 
-						console.log("apply event fired, start/end dates are "
-								+ picker.startDate.format('MMMM D, YYYY')
-								+ " to "
-								+ picker.endDate.format('MMMM D, YYYY'));
 						cambiarLabelFechaComparativo(picker.startDate,
 								picker.endDate);
 					});
@@ -129,4 +116,5 @@ $(document).ready(
 					function(ev, picker) {
 						console.log("cancel event fired");
 					});
+
 		});

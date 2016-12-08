@@ -31,4 +31,10 @@ public class SegmentoServiceImpl implements SegmentoService {
 		return segmentoDao.obtenerLLamadasServicio(fechaInicio, fechaFinal, segmento);
 	}
 	
+	@Override
+    public Map<String, Integer> obtenerLlamadasTotalesFamiliasSegmento(String fechaInicio, String fechaFinal, String segmento) {
+          return segmentoDao.obtenerLlamadasTotalesFamiliasSegmento(fechaInicio, fechaFinal, segmento);
+    }
+
+	
 }

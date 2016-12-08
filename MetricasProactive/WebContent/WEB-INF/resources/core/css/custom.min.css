@@ -1349,8 +1349,41 @@ footer {
     margin-bottom: 0
 }
 
+.row .familias{
+	display: table;
+	border-bottom: 1px solid #E6E9ED;
+}
+
 .tile {
-    overflow: hidden
+    overflow: hidden;
+    float: none;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.sparkline-titulo{
+	height: 60px;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.sparkline-contenido{
+	text-align:center;
+	height:20px;
+}
+
+.sparkline-familia{
+	font-size: 11px;
+}
+
+.sparkline-segmento{
+	font-size: 9px;
+	color: #DA291C;
+}
+
+.sparkline-contenido{
+	color: #002d72;
 }
 
 .top_tiles {
