@@ -837,128 +837,9 @@ function dibujarServicios(fechaInicioP, fechaFinalP) {
 	});
 }
 
-function dibujarConcurrenciaSeg(fechaInicioP, fechaFinalP) {
 
-	$.ajax({
-		url : 'concurrencia',
-		dataType : "json",
-		contentType : "application/json;charset=utf-8",
-		data : {
-			fechaInicio : fechaInicioP,
-			fechaFinal : fechaFinalP
-		},
 
-		success : function(data) {
 
-			var arrayValues = [];
-			var porcentaje = [];
-			var cont = 0;
-			var total = 0;
-			var llamadas = "";
-			$.each(data, function(k, v) {
-				arrayValues[cont] = v;
-				cont = cont + 1;
-				total = total + v;
-
-			});
-			var arrayNames = Object.keys(data);
-			for (i = 0; i < data.length; i++) {
-				// if(arrayNames[i]==
-				arrayValues[i] = llamadas;
-			}
-
-			var dataStyle = {
-				normal : {
-					label : {
-						show : false
-					},
-					labelLine : {
-						show : false
-					}
-				}
-			};
-
-			var placeHolderStyle = {
-				normal : {
-					color : 'rgba(0,0,0,0)',
-					label : {
-						show : false
-					},
-					labelLine : {
-						show : false
-					}
-				},
-				emphasis : {
-					color : 'rgba(0,0,0,0)'
-				}
-			};
-
-			var echartMiniPie = echarts.init(document
-					.getElementById('echart_mini_pie'), theme);
-
-			echartMiniPie.setOption({
-				title : {
-					text : 'Porcentaje',
-
-					x : 'center',
-					y : 'center',
-					itemGap : 20,
-					textStyle : {
-						color : 'rgba(30,144,255,0.8)',
-						fontSize : 15,
-						fontWeight : 'bolder'
-					}
-				},
-				tooltip : {
-					show : true,
-					formatter : "{a} <br/>{b} : {c} ({d}%)"
-				},
-				legend : {
-					orient : 'vertical',
-					x : 10,
-					y : 213,
-					itemGap : 12,
-					data : [ '68%Something #1' ],
-				},
-				toolbox : {
-					show : true,
-					feature : {
-						mark : {
-							show : true
-						},
-						dataView : {
-							show : true,
-							title : "Text View",
-							lang : [ "Text View", "Close", "Refresh", ],
-							readOnly : false
-						},
-
-						saveAsImage : {
-							show : true,
-							title : "Save "
-						}
-					}
-				},
-				series : [ {
-					name : '1',
-					type : 'pie',
-					clockWise : false,
-					radius : [ 65, 90 ],
-					itemStyle : dataStyle,
-					data : [ {
-						value : arrayValues[0] * 100 / total,
-						name : '68%Something #1'
-					}, {
-						value : 32,
-						name : 'invisible',
-						itemStyle : placeHolderStyle
-					} ]
-				} ]
-			});
-
-		}
-	});
-}
 
 function dibujarLlamadasTotalesFamiliaSegmentos(fechaInicioP, fechaFinalP,
 		segmento) {
@@ -1044,6 +925,146 @@ function dibujarLlamadasTotalesFamiliaSegmentos(fechaInicioP, fechaFinalP,
 					type : 'line',
 					yAxisIndex : 1,
 					data : [ 0, 0, 0, 0, 0 ]
+				} ]
+			});
+
+		}
+	});
+}
+
+function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
+
+	$.ajax({
+		url : 'concurrencia',
+		dataType : "json",
+		contentType : "application/json;charset=utf-8",
+		data : {
+			fechaInicio : fechaInicioP,
+			fechaFinal : fechaFinalP
+		},
+
+		success : function(data) {
+
+			var arrayValues = [];
+			var porcentaje = [];
+			var cont = 0;
+			var total = 0;
+
+			$.each(data, function(k, v) {
+				arrayValues[cont] = v;
+				cont = cont + 1;
+				total = total + v;
+
+			});
+			
+			var arrayNames = Object.keys(data);
+			var nameSegmento = "";
+			
+	switch (obtenerURL()) {
+			case 'online':
+				nameSegmento = "ATE"
+				break;
+			case 'offline':
+				nameSegmento = "OFFLINE"
+				break;
+			case 'pyme':
+				nameSegmento = "PYME"
+				break;
+			case 'empresarial':
+				nameSegmento = "BANCA EMPRESARIAL"
+				break;
+			case 'pymeOffline':
+				nameSegmento = "PYME OFFLINE"
+				break;
+			}
+	
+	
+			for (i = 0; i < arrayValues.length; i++) {
+				if (arrayNames[i] == nameSegmento) {
+					var seg = arrayNames[i];
+					var concu = (arrayValues[i] * 100 / total).toFixed(2);
+				}
+			}
+
+			var dataStyle = {
+				normal : {
+					label : {
+						show : false
+					},
+					labelLine : {
+						show : false
+					}
+				}
+			};
+
+			var placeHolderStyle = {
+				normal : {
+					color : 'rgba(0,0,0,0)',
+					label : {
+						show : false
+					},
+					labelLine : {
+						show : false
+					}
+				},
+				emphasis : {
+					color : 'rgba(0,0,0,0)'
+				}
+			};
+
+			var echartMiniPie = echarts.init(document
+					.getElementById('echart_mini_pie'), theme);
+
+			echartMiniPie.setOption({
+				title : {
+					text : seg,
+
+					x : 'center',
+					y : 'center',
+					itemGap : 20,
+					textStyle : {
+						color : 'rgba(30,144,255,0.8)',
+						fontSize : 15,
+						fontWeight : 'bolder'
+					}
+				},
+				tooltip : {
+					show : true,
+					formatter : "{b} : {c} (%)"
+				},
+				legend : {
+					orient : 'vertical',
+					x : 10,
+					y : 213,
+					itemGap : 12,
+					data : [ 'Llamadas' ],
+				},
+				toolbox : {
+					show : false,
+					feature : {
+						mark : {
+							show : false
+						},
+						saveAsImage : {
+							show : true,
+							title : "Save "
+						}
+					}
+				},
+				series : [ {
+					name : '',
+					type : 'pie',
+					clockWise : false,
+					radius : [ 65, 90 ],
+					itemStyle : dataStyle,
+					data : [ {
+						value : concu,
+						name : 'Llamadas'
+					}, {
+						value : 32,
+						name : '',
+						itemStyle : placeHolderStyle
+					} ]
 				} ]
 			});
 

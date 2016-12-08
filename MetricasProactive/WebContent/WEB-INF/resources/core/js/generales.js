@@ -47,7 +47,7 @@ function graficasIniciales() {
 	hoy = yyyy + '/' + mm + '/' + dd;
 	dibujarLlamadasTotalesGeneral(hoy, hoy);
 	dibujarFamilias(hoy, hoy, obtenerURL());
-	dibujarConcurrenciaSeg(hoy, hoy, obtenerURL());
+	dibujarConcurrencia(hoy, hoy);
 	dibujarServicios(hoy, hoy, obtenerURL());
 }
 
@@ -80,8 +80,7 @@ $(document).ready(
 								var segmento = obtenerURL();
 								dibujarFamilias(fechaInicio, fechaFinal,
 										segmento);
-								dibujarConcurrenciaSeg(fechaInicio, fechaFinal,
-										segmento);
+								dibujarConcurrencia(fechaInicio, fechaFinal);
 								dibujarServicios(fechaInicio, fechaFinal,
 										segmento);
 
