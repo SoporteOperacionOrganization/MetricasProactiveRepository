@@ -739,7 +739,6 @@ function dibujarFamilias(fechaInicioP, fechaFinalP, segmentoP) {
 }
 
 function dibujarServicios(fechaInicioP, fechaFinalP) {
-
 	$.ajax({
 		url : 'servicios',
 		dataType : "json",
@@ -749,10 +748,8 @@ function dibujarServicios(fechaInicioP, fechaFinalP) {
 			fechaFinal : fechaFinalP,
 			segmento : obtenerURL()
 		},
-		
-		
 		success : function(data) {
-			
+
 			var arrayValues = [];
 			var cont = 0;
 			$.each(data, function(k, v) {
@@ -760,6 +757,7 @@ function dibujarServicios(fechaInicioP, fechaFinalP) {
 				cont = cont + 1;
 			});
 			var arrayNames = Object.keys(data);
+
 			var echartPie = echarts.init(document.getElementById('echart_pie'),
 					theme);
 
@@ -930,6 +928,9 @@ function dibujarLlamadasTotalesFamiliaSegmentos(fechaInicioP, fechaFinalP,
 	});
 }
 
+
+
+
 function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 
 	$.ajax({
@@ -954,11 +955,11 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 				total = total + v;
 
 			});
-
+			
 			var arrayNames = Object.keys(data);
 			var nameSegmento = "";
-
-			switch (obtenerURL()) {
+			
+	switch (obtenerURL()) {
 			case 'online':
 				nameSegmento = "ATE"
 				break;
@@ -975,16 +976,18 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 				nameSegmento = "PYME OFFLINE"
 				break;
 			}
-
+	
+	
 			for (i = 0; i < arrayValues.length; i++) {
 				if (arrayNames[i] == nameSegmento) {
 					var seg = arrayNames[i];
 					var concu = (arrayValues[i] * 100 / total).toFixed(2);
+					var vacio = (100-concu).toFixed(2);
 				}
 			}
+document.getElementById("porcen").innerHTML = concu;
 
 			
-			 document.getElementById("porcen").innerHTML = concu;
 			var dataStyle = {
 				normal : {
 					label : {
@@ -1060,7 +1063,7 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 						value : concu,
 						name : 'Llamadas'
 					}, {
-						value : 45,
+						value : vacio,
 						name : '',
 						itemStyle : placeHolderStyle
 					} ]
@@ -1070,6 +1073,9 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 		}
 	});
 }
+
+
+
 
 function dibujarClientesFrecuentes(fechaInicioP, fechaFinalP, segmentoP) {
 
