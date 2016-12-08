@@ -739,6 +739,7 @@ function dibujarFamilias(fechaInicioP, fechaFinalP, segmentoP) {
 }
 
 function dibujarServicios(fechaInicioP, fechaFinalP) {
+
 	$.ajax({
 		url : 'servicios',
 		dataType : "json",
@@ -748,8 +749,10 @@ function dibujarServicios(fechaInicioP, fechaFinalP) {
 			fechaFinal : fechaFinalP,
 			segmento : obtenerURL()
 		},
+		
+		
 		success : function(data) {
-
+			
 			var arrayValues = [];
 			var cont = 0;
 			$.each(data, function(k, v) {
@@ -757,7 +760,6 @@ function dibujarServicios(fechaInicioP, fechaFinalP) {
 				cont = cont + 1;
 			});
 			var arrayNames = Object.keys(data);
-
 			var echartPie = echarts.init(document.getElementById('echart_pie'),
 					theme);
 
@@ -981,6 +983,8 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 				}
 			}
 
+			
+			 document.getElementById("porcen").innerHTML = concu;
 			var dataStyle = {
 				normal : {
 					label : {

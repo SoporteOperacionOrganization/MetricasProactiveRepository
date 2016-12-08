@@ -69,7 +69,6 @@ public class GeneralController {
 		Gson gson = new Gson();
 		Map<String, Integer> llamadasFamilia = new HashMap<String, Integer>();
 		llamadasFamilia = segmentoService.obtenerLlamadasFamilia(fechaInicio, fechaFinal, segmento);
-
 		String json = gson.toJson(llamadasFamilia);
 		return json;
 	}
@@ -81,7 +80,7 @@ public class GeneralController {
 		Map<String, Integer> servicios = new HashMap<String, Integer>();
 		servicios = segmentoService.obtenerLLamadasServicio(fechaInicio, fechaFinal, segmento);
 		String json = gson.toJson(servicios);
-
+		System.out.println("mis servicios" +servicios);
 		return json;
 	}
 
