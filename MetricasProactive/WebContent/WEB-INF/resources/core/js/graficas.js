@@ -255,14 +255,69 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioP, fechaFinalP) {
 
 }
 
-function dibujarServiciosGeneral(fechaInicioP, fechaFinalP) {
+
+function dibujarFamilias(fechaInicioP, fechaFinalP, segmentoP) {
+	/*var opcionesSparkline = {
+		type : 'line',
+		width : '100%',
+		lineColor : '#26B99A',
+		fillColor : '#ffffff',
+		lineWidth : 3,
+		spotColor : '#34495E',
+		minSpotColor : '#34495E'
+	}*/
 	$.ajax({
-		url : 'serviciosS',
+		url : 'obtenerLlamadasFamilia',
 		dataType : "json",
 		contentType : "application/json;charset=utf-8",
 		data : {
 			fechaInicio : fechaInicioP,
-			fechaFinal : fechaFinalP
+			fechaFinal : fechaFinalP,
+			segmento: segmentoP
+		},
+		success : function(data) {
+
+			var arrayTemp = [];
+			var arrayValores = [];
+			var arrayEtiquetas = [];
+			var conteo = 0;
+
+			for (a in data) {
+				arrayTemp.push([ a, data[a] ])
+			}
+			arrayTemp.sort(function(a, b) {
+				return a[1] - b[1]
+			});
+			arrayTemp.reverse();
+
+			for (var a = 0, b/*,txt=''*/; b = arrayTemp[a]; ++a) {
+				arrayValores[a] = b[1];
+				arrayEtiquetas[a] = b[0];
+			}
+			//console.log(arrayValores);
+
+			for (i = 0; i <= arrayValores.length; i++) {
+				$("#sparkline" + (i + 1) + " span").text(arrayEtiquetas[i]);
+				$("#sparkline" + (i + 1) + " h2").text(arrayValores[i]);
+			}
+
+			//$(".sparkline22").sparkline(arrayValores, opcionesSparkline);
+		}
+	});
+
+}
+
+
+
+function dibujarServicios(fechaInicioP, fechaFinalP) {
+	$.ajax({
+		url : 'servicios',
+		dataType : "json",
+		contentType : "application/json;charset=utf-8",
+		data : {
+			fechaInicio : fechaInicioP,
+			fechaFinal : fechaFinalP,
+			segmento : obtenerURL()
 		},
 		success : function(data) {
 
@@ -354,6 +409,7 @@ function dibujarServiciosGeneral(fechaInicioP, fechaFinalP) {
 }
 
 function dibujarConcurrenciaSeg(fechaInicioP, fechaFinalP) {
+	
 	$.ajax({
 		url : 'concurrencia',
 		dataType : "json",
@@ -362,19 +418,26 @@ function dibujarConcurrenciaSeg(fechaInicioP, fechaFinalP) {
 			fechaInicio : fechaInicioP,
 			fechaFinal : fechaFinalP
 		},
+		
 		success : function(data) {
 
 			var arrayValues = [];
 			var porcentaje = [];
 			var cont = 0;
 			var total = 0;
+			var llamadas = "";
 			$.each(data, function(k, v) {
 				arrayValues[cont] = v;
 				cont = cont + 1;
 				total = total + v;
 
 			});
-
+			var arrayNames = Object.keys(data);  
+			for(i=0 ; i< data.length(); i++){
+				//if(arrayNames[i]== 
+					arrayValues[i]= llamadas;
+			}
+			
 			var dataStyle = {
 				normal : {
 					label : {
@@ -468,53 +531,3 @@ function dibujarConcurrenciaSeg(fechaInicioP, fechaFinalP) {
 	});
 }
 
-function dibujarFamilias(fechaInicioP, fechaFinalP, segmentoP) {
-	/*var opcionesSparkline = {
-		type : 'line',
-		width : '100%',
-		lineColor : '#26B99A',
-		fillColor : '#ffffff',
-		lineWidth : 3,
-		spotColor : '#34495E',
-		minSpotColor : '#34495E'
-	}*/
-	$.ajax({
-		url : 'obtenerLlamadasFamilia',
-		dataType : "json",
-		contentType : "application/json;charset=utf-8",
-		data : {
-			fechaInicio : fechaInicioP,
-			fechaFinal : fechaFinalP,
-			segmento: segmentoP
-		},
-		success : function(data) {
-
-			var arrayTemp = [];
-			var arrayValores = [];
-			var arrayEtiquetas = [];
-			var conteo = 0;
-
-			for (a in data) {
-				arrayTemp.push([ a, data[a] ])
-			}
-			arrayTemp.sort(function(a, b) {
-				return a[1] - b[1]
-			});
-			arrayTemp.reverse();
-
-			for (var a = 0, b/*,txt=''*/; b = arrayTemp[a]; ++a) {
-				arrayValores[a] = b[1];
-				arrayEtiquetas[a] = b[0];
-			}
-			//console.log(arrayValores);
-
-			for (i = 0; i <= arrayValores.length; i++) {
-				$("#sparkline" + (i + 1) + " span").text(arrayEtiquetas[i]);
-				$("#sparkline" + (i + 1) + " h2").text(arrayValores[i]);
-			}
-
-			//$(".sparkline22").sparkline(arrayValores, opcionesSparkline);
-		}
-	});
-
-}
