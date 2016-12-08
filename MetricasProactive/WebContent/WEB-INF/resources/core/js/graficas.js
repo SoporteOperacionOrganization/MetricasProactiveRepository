@@ -1056,7 +1056,7 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 						value : concu,
 						name : 'Llamadas'
 					}, {
-						value : 32,
+						value : 45,
 						name : '',
 						itemStyle : placeHolderStyle
 					} ]
