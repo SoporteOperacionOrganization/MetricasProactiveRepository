@@ -468,7 +468,7 @@ function dibujarConcurrenciaSeg(fechaInicioP, fechaFinalP) {
 	});
 }
 
-function dibujarFamilias(fechaInicioP, fechaFinalP) {
+function dibujarFamilias(fechaInicioP, fechaFinalP, segmentoP) {
 	/*var opcionesSparkline = {
 		type : 'line',
 		width : '100%',
@@ -484,7 +484,8 @@ function dibujarFamilias(fechaInicioP, fechaFinalP) {
 		contentType : "application/json;charset=utf-8",
 		data : {
 			fechaInicio : fechaInicioP,
-			fechaFinal : fechaFinalP
+			fechaFinal : fechaFinalP,
+			segmento: segmentoP
 		},
 		success : function(data) {
 
@@ -505,7 +506,7 @@ function dibujarFamilias(fechaInicioP, fechaFinalP) {
 				arrayValores[a] = b[1];
 				arrayEtiquetas[a] = b[0];
 			}
-			console.log(arrayValores);
+			//console.log(arrayValores);
 
 			for (i = 0; i <= arrayValores.length; i++) {
 				$("#sparkline" + (i + 1) + " span").text(arrayEtiquetas[i]);

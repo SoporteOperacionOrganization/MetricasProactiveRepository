@@ -69,9 +69,9 @@ public class SegmentoDaoImpl implements SegmentoDao {
 		});
 		 tx.commit();
 		 session.close();
-		 //Gson gson = new Gson(); 
-		 //String json = gson.toJson(totalesLlamadasSegmentos); 
-		 //System.out.println("JSON " + json);
+		 Gson gson = new Gson(); 
+		 String json = gson.toJson(totalesLlamadasSegmentos); 
+		 System.out.println("JSON " + json);
 		return totalesLlamadasSegmentos;
 	}
 	
@@ -203,7 +203,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 	
 	@Override
 	public Map<String, Integer> obtenerLlamadasFamilia (String fecha_inicio, String fecha_fin, String segmento){
-		Map<String, Integer> LlamadasFamilia = new HashMap<>();
+		Map<String,Integer> LlamadasFamilia = new HashMap<>();
 		session = sessionFactoryData.openSession();	
 		
 		session.doWork(new Work(){
@@ -219,7 +219,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
             		switch(segmento){
             		
             		case "general":
-            			sqlQuery = "SELECT TOP 10 TT.FAMILIA, COUNT(TT.FAMILIA) AS TOTAL"+
+            			sqlQuery = "SELECT TOP 10 TT.FAMILIA+'-'+SO.SEGMENTO, COUNT(TT.FAMILIA) AS TOTAL"+
         						" FROM  [dbo].[LlamadasATE] LL"+
         						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
         						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
@@ -229,11 +229,12 @@ public class SegmentoDaoImpl implements SegmentoDao {
         						" AND (CAST(ll.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"+
         						" AND TT.Interno NOT IN (1)"+
         						" AND (SO.Segmento='ATE' OR SO.Segmento='PYME' OR SO.Segmento='OFFLINE' OR SO.Segmento='PYME OFFLINE' OR SO.Segmento='BANCA EMPRESARIAL')"+
-        						" GROUP BY TT.FAMILIA"+
+        						" GROUP BY TT.FAMILIA, SO.SEGMENTO"+
         						" ORDER BY COUNT(TT.FAMILIA) DESC";
+            			break;
             			
             		case "empresarial":
-            			sqlQuery = "SELECT TOP 10 TT.FAMILIA, COUNT(TT.FAMILIA) AS TOTAL"+
+            			sqlQuery = "SELECT TOP 10 TT.FAMILIA+'-'+SO.SEGMENTO, COUNT(TT.FAMILIA) AS TOTAL"+
         						" FROM  [dbo].[LlamadasATE] LL"+
         						" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"+
         						" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"+
@@ -308,13 +309,11 @@ public class SegmentoDaoImpl implements SegmentoDao {
         						" ORDER BY COUNT(TT.FAMILIA) DESC";
             			break;
             		}
-            		
-            		
 
             	ResultSet rs;
             	pstmt = connection.prepareStatement(sqlQuery);
             	pstmt.setString(1, fecha_inicio);
-            	pstmt.setString(2, fecha_fin);
+            	pstmt.setString(2, fecha_fin);	
      
       			rs = pstmt.executeQuery();
         		while(rs.next()){

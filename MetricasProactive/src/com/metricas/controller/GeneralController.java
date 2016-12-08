@@ -58,52 +58,38 @@ public class GeneralController {
           totalesLlamadas = segmentoService.obtenerLlamadasTotalesSegmentos(fechaInicio, fechaFinal);
           
           String json = gson.toJson(totalesLlamadas); 
-          //System.out.println("Json " + json);
+          System.out.println("Json totales llamadas " + json);
           return json;
     }
 	
 	@RequestMapping(value = "/obtenerLlamadasFamilia", method = RequestMethod.GET, produces="application/json")
-    public @ResponseBody String chartLlamadasFamilia(Model model, @RequestParam("fechaInicio") String fechaInicio, @RequestParam("fechaFinal") String fechaFinal){
+    public @ResponseBody String chartLlamadasFamilia(Model model, @RequestParam("fechaInicio") String fechaInicio, @RequestParam("fechaFinal") String fechaFinal,@RequestParam("segmento") String segmento){
           Gson gson = new Gson();
           Map<String,Integer> llamadasFamilia = new HashMap<String,Integer>();
-          //Falta el parametro de segmento
-          //llamadasFamilia = segmentoService.obtenerLlamadasFamilia(fechaInicio, fechaFinal);
+          llamadasFamilia = segmentoService.obtenerLlamadasFamilia(fechaInicio, fechaFinal, segmento);
           
-          System.out.println("GSON "+gson);
           String json = gson.toJson(llamadasFamilia); 
-          System.out.println("Json " + json);
           return json;
     }
-	
-	@RequestMapping(value = "/serviciosG", method = RequestMethod.GET, produces="application/json")
-	public @ResponseBody String serviciosG(Model model, @RequestParam("fechaInicio") String fechaInicio, @RequestParam("fechaFinal") String fechaFinal){
-		Gson gson = new Gson();
-		Map<String,Integer> serviciosG = new HashMap<String,Integer>();
-		serviciosG = segmentoService.obtenerLLamadasServicio(fechaInicio, fechaFinal,"general");// llmaar consulota servicios
-		String json = gson.toJson(serviciosG); 
-		
-		return json;
-	}
-	
-	@RequestMapping(value = "/serviciosS", method = RequestMethod.GET, produces="application/json")
-	public @ResponseBody String serviciosS(Model model, @RequestParam("fechaInicio") String fechaInicio, @RequestParam("fechaFinal") String fechaFinal){
-		Gson gson = new Gson();
-		Map<String,Integer> serviciosS = new HashMap<String,Integer>();
-		serviciosS = segmentoService.obtenerLLamadasServicio(fechaInicio, fechaFinal,"pyme");// llmaar consulota servicios
-		String json = gson.toJson(serviciosS); 
-		
-		return json;
-	}
-	
-	
-	@RequestMapping(value = "/concurrencia", method = RequestMethod.GET, produces="application/json")
-	public @ResponseBody String concurrencia(Model model, @RequestParam("fechaInicio") String fechaInicio, @RequestParam("fechaFinal") String fechaFinal){
-		Gson gson = new Gson();
-		Map<String,Integer> serviciosG = new HashMap<String,Integer>();
-		serviciosG = segmentoService.obtenerLlamadasTotalesSegmentos(fechaInicio, fechaFinal);// llmaar consulota concurrencia
-		String json = gson.toJson(serviciosG); 
-		
-		return json;
-	}
+	@RequestMapping(value = "/servicios", method = RequestMethod.GET, produces="application/json")
+    public @ResponseBody String servicios(Model model, @RequestParam("fechaInicio") String fechaInicio, @RequestParam("fechaFinal") String fechaFinal, @RequestParam("segmento") String segmento){
+          Gson gson = new Gson();
+          Map<String,Integer> servicios = new HashMap<String,Integer>();
+          servicios = segmentoService.obtenerLLamadasServicio(fechaInicio, fechaFinal, segmento);
+          String json = gson.toJson(servicios); 
+          
+          return json;
+    }
+          
+    @RequestMapping(value = "/concurrencia", method = RequestMethod.GET, produces="application/json")
+    public @ResponseBody String concurrencia(Model model, @RequestParam("fechaInicio") String fechaInicio, @RequestParam("fechaFinal") String fechaFinal){
+          Gson gson = new Gson();
+          Map<String,Integer> concurrencia = new HashMap<String,Integer>();
+          concurrencia = segmentoService.obtenerLlamadasTotalesSegmentos(fechaInicio, fechaFinal);
+          String json = gson.toJson(concurrencia); 
+          
+          return json;
+    }
+
 	
 }
