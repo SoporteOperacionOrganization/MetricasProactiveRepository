@@ -1,13 +1,6 @@
 /**
  * 
  */
-function llamar() {
-	dibujarConcurrenciaSeg();
-	// dibujarServiciosGeneral();
-	// dibujarLlamadasTotalesGeneral();
-
-}
-
 function dibujarLlamadasTotalesGeneral(fechaInicioP, fechaFinalP) {
 	$
 			.ajax({
@@ -74,10 +67,6 @@ function dibujarLlamadasTotalesGeneral(fechaInicioP, fechaFinalP) {
 											title : "Text View",
 											lang : [ "Text View", "Close",
 													"Refresh", ],
-										},
-										restore : {
-											show : true,
-											title : 'Restore'
 										},
 										saveAsImage : {
 											show : true,
@@ -213,10 +202,7 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioP, fechaFinalP) {
 							title : "Text View",
 							lang : [ "Text View", "Close", "Refresh", ],
 						},
-						restore : {
-							show : true,
-							title : 'Restore'
-						},
+						
 						saveAsImage : {
 							show : true,
 							title : 'Save'
@@ -269,11 +255,15 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioP, fechaFinalP) {
 
 }
 
-function dibujarServiciosGeneral() {
+function dibujarServiciosGeneral(fechaInicioP, fechaFinalP) {
 	$.ajax({
-		url : 'servicios',
+		url : 'serviciosS',
 		dataType : "json",
 		contentType : "application/json;charset=utf-8",
+		data : {
+			fechaInicio : fechaInicioP,
+			fechaFinal : fechaFinalP
+		},
 		success : function(data) {
 
 			var arrayValues = [];
@@ -312,10 +302,7 @@ function dibujarServiciosGeneral() {
 								}
 							}
 						},
-						restore : {
-							show : true,
-							title : "Restore"
-						},
+						
 						saveAsImage : {
 							show : true,
 							title : "Save"
@@ -366,11 +353,15 @@ function dibujarServiciosGeneral() {
 	});
 }
 
-function dibujarConcurrenciaSeg() {
+function dibujarConcurrenciaSeg(fechaInicioP, fechaFinalP) {
 	$.ajax({
 		url : 'concurrencia',
 		dataType : "json",
 		contentType : "application/json;charset=utf-8",
+		data : {
+			fechaInicio : fechaInicioP,
+			fechaFinal : fechaFinalP
+		},
 		success : function(data) {
 
 			var arrayValues = [];
@@ -449,10 +440,7 @@ function dibujarConcurrenciaSeg() {
 							lang : [ "Text View", "Close", "Refresh", ],
 							readOnly : false
 						},
-						restore : {
-							show : true,
-							title : "Restore"
-						},
+						
 						saveAsImage : {
 							show : true,
 							title : "Save "

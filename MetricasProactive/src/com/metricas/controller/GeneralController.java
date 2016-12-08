@@ -75,12 +75,22 @@ public class GeneralController {
           return json;
     }
 	
-	@RequestMapping(value = "/servicios", method = RequestMethod.GET, produces="application/json")
-	public @ResponseBody String servicios(Model model, @RequestParam("fechaInicio") String fechaInicio, @RequestParam("fechaFinal") String fechaFinal){
+	@RequestMapping(value = "/serviciosG", method = RequestMethod.GET, produces="application/json")
+	public @ResponseBody String serviciosG(Model model, @RequestParam("fechaInicio") String fechaInicio, @RequestParam("fechaFinal") String fechaFinal){
 		Gson gson = new Gson();
 		Map<String,Integer> serviciosG = new HashMap<String,Integer>();
-		serviciosG = segmentoService.obtenerLlamadasTotalesSegmentos(fechaInicio, fechaFinal);// llmaar consulota servicios
+		serviciosG = segmentoService.obtenerLLamadasServicio(fechaInicio, fechaFinal,"general");// llmaar consulota servicios
 		String json = gson.toJson(serviciosG); 
+		
+		return json;
+	}
+	
+	@RequestMapping(value = "/serviciosS", method = RequestMethod.GET, produces="application/json")
+	public @ResponseBody String serviciosS(Model model, @RequestParam("fechaInicio") String fechaInicio, @RequestParam("fechaFinal") String fechaFinal){
+		Gson gson = new Gson();
+		Map<String,Integer> serviciosS = new HashMap<String,Integer>();
+		serviciosS = segmentoService.obtenerLLamadasServicio(fechaInicio, fechaFinal,"pyme");// llmaar consulota servicios
+		String json = gson.toJson(serviciosS); 
 		
 		return json;
 	}

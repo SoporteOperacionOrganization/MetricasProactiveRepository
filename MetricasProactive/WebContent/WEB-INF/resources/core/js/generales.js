@@ -90,6 +90,8 @@ $(document).ready(
                         var fechaFinal = picker.endDate.format('YYYY/MM/DD');
                         dibujarLlamadasTotalesGeneral(fechaInicio,fechaFinal);
                         dibujarFamilias(fechaInicio,fechaFinal);
+                        dibujarConcurrenciaSeg(fechaInicio,fechaFinal);
+                        dibujarServiciosGeneral(fechaInicio,fechaFinal);
 						console.log("apply event fired 1, start/end dates are "
 								+ picker.startDate.format('MMMM D, YYYY')
 								+ " to "
