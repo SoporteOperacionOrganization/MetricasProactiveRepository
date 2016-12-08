@@ -837,10 +837,6 @@ function dibujarServicios(fechaInicioP, fechaFinalP) {
 	});
 }
 
-
-
-
-
 function dibujarLlamadasTotalesFamiliaSegmentos(fechaInicioP, fechaFinalP,
 		segmento) {
 	$.ajax({
@@ -1061,7 +1057,7 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 						value : concu,
 						name : 'Llamadas'
 					}, {
-						value : 32,
+						value : 45,
 						name : '',
 						itemStyle : placeHolderStyle
 					} ]
