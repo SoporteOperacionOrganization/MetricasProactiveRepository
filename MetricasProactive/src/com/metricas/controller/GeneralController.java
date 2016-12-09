@@ -114,7 +114,7 @@ public class GeneralController {
 			@RequestParam("segmento") String segmento) {
 
 		Gson gson = new Gson();
-		Map<Integer, Integer> clientesFrecuentes = new HashMap<Integer, Integer>();
+		Map<String, Integer> clientesFrecuentes = new HashMap<String, Integer>();
 		clientesFrecuentes = segmentoService.obtenerClientesFrecuentes(fechaInicio, fechaFinal, segmento);
 
 		String json = gson.toJson(clientesFrecuentes);

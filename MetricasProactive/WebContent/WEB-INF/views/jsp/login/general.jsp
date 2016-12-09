@@ -120,97 +120,104 @@
 							</div>
 
 							<div class="col-md-12 col-sm-12 col-xs-6" style="font-size: 10px">
-								<div id="top1">
-									<p>Facebook Campaign</p>
-									<div class="">
-										<div class="progress progress_sm" style="width: 100%;">
-											<div id="llamadas1" class="progress-bar"
-												style="background-color: #1DB7D0;" role="progressbar"></div>
+								
+								
+							<div id="top1">
+								<p> </p>
+																		
+									<div id="llamadas1">
+									
+										<div class="progress">
+  											<div id="progreso1" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                            		aria-valuemin="0" aria-valuemax="100" style="">
+    										</div>
 										</div>
-									</div>
-								</div>
-								<div id="top2">
-									<p>Twitter Campaign</p>
-									<div class="">
-										<div class="progress progress_sm" style="width: 100%;">
-											<div id="llamadas2" class="progress-bar "
-												style="background-color: #C01722;" role="progressbar"></div>
+										
+										<div class="">
+											 <p align="right"> </p>
 										</div>
+		
 									</div>
-								</div>
-								<div id="top3">
-									<p>Twitter Campaign</p>
-									<div class="">
-										<div class="progress progress_sm" style="width: 100%;">
-											<div class="progress-bar " style="background-color: #C01722;"
-												role="progressbar" data-transitiongoal="60"></div>
+							</div>
+							
+							
+							
+							<div id="top2">
+								<p> </p>
+																		
+									<div id="llamadas2">
+									
+										<div class="progress">
+  											<div id="progreso2" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                            		aria-valuemin="0" aria-valuemax="100" style="">
+    										</div>
 										</div>
-									</div>
-								</div>
-								<div id="top4">
-									<p>Twitter Campaign</p>
-									<div class="">
-										<div class="progress progress_sm" style="width: 100%;">
-											<div class="progress-bar " style="background-color: #C01722;"
-												role="progressbar" data-transitiongoal="60"></div>
+										
+										<div class="">
+											 <p align="right"> </p>
 										</div>
+		
 									</div>
-								</div>
-								<div id="top5">
-									<p>Twitter Campaign</p>
-									<div class="">
-										<div class="progress progress_sm" style="width: 100%;">
-											<div class="progress-bar " style="background-color: #C01722;"
-												role="progressbar" data-transitiongoal="60"></div>
+							</div>
+							
+							
+							
+							<div id="top3">
+								<p> </p>
+																		
+									<div id="llamadas3">
+									
+										<div class="progress">
+  											<div id="progreso3" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                            		aria-valuemin="0" aria-valuemax="100" style="">
+    										</div>
 										</div>
-									</div>
-								</div>
-								<div id="top6">
-									<p>Twitter Campaign</p>
-									<div class="">
-										<div class="progress progress_sm" style="width: 100%;">
-											<div class="progress-bar " style="background-color: #C01722;"
-												role="progressbar" data-transitiongoal="60"></div>
+										
+										<div class="">
+											 <p align="right"> </p>
 										</div>
+		
 									</div>
-								</div>
-								<div id="top7">
-									<p>Twitter Campaign</p>
-									<div class="">
-										<div class="progress progress_sm" style="width: 100%;">
-											<div class="progress-bar " style="background-color: #C01722;"
-												role="progressbar" data-transitiongoal="60"></div>
+							</div>
+							
+							
+							
+							<div id="top4">
+								<p> </p>
+																		
+									<div id="llamadas4">
+									
+										<div class="progress">
+  											<div id="progreso4" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                            		aria-valuemin="0" aria-valuemax="100" style="">
+    										</div>
 										</div>
-									</div>
-								</div>
-								<div id="top8">
-									<p>Twitter Campaign</p>
-									<div class="">
-										<div class="progress progress_sm" style="width: 100%;">
-											<div class="progress-bar " style="background-color: #C01722;"
-												role="progressbar" data-transitiongoal="60"></div>
+										
+										<div class="">
+											 <p align="right"> </p>
 										</div>
+		
 									</div>
-								</div>
-								<div id="top9">
-									<p>Twitter Campaign</p>
-									<div class="">
-										<div class="progress progress_sm" style="width: 100%;">
-											<div class="progress-bar " style="background-color: #C01722;"
-												role="progressbar" data-transitiongoal="60"></div>
+							</div>
+							
+							
+							<div id="top5">
+								<p> </p>
+																		
+									<div id="llamadas5">
+									
+										<div class="progress">
+  											<div id="progreso5" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                            		aria-valuemin="0" aria-valuemax="100" style="">
+    										</div>
 										</div>
-									</div>
-								</div>
-								<div id="top10">
-									<p>Twitter Campaign</p>
-									<div class="">
-										<div class="progress progress_sm" style="width: 100%;">
-											<div class="progress-bar " style="background-color: #C01722;"
-												role="progressbar" data-transitiongoal="60"></div>
+										
+										<div class="">
+											 <p align="right"> </p>
 										</div>
+		
 									</div>
-								</div>
-
+							</div>
 
 							</div>
 

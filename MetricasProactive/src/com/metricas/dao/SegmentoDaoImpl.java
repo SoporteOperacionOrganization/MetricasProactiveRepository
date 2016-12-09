@@ -74,8 +74,8 @@ public class SegmentoDaoImpl implements SegmentoDao {
 	}
 
 	@Override
-	public Map<Integer, Integer> obtenerClientesFrecuentes(String fecha_inicio, String fecha_fin, String segmento) {
-		Map<Integer, Integer> ClientesFrecuentes = new HashMap<>();
+	public Map<String, Integer> obtenerClientesFrecuentes(String fecha_inicio, String fecha_fin, String segmento) {
+		Map<String, Integer> ClientesFrecuentes = new HashMap<>();
 		session = sessionFactoryData.openSession();
 
 		session.doWork(new Work() {
@@ -90,69 +90,69 @@ public class SegmentoDaoImpl implements SegmentoDao {
 					switch (segmento) {
 
 					case "general":
-						sqlQuery = "SELECT TOP 10 SO.CLIENTE, COUNT(SO.CLIENTE) AS TOTAL"
+						sqlQuery = "SELECT TOP 5 SO.RAZONSOCIAL, COUNT(SO.CLIENTE) AS TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
 								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
 								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA" + " WHERE"
 								+ " (SO.CLIENTE != 0)"
 								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"
-								+ " AND	(EJE.Segmento='ATE' OR EJE.Segmento='PYME' OR EJE.Segmento='OFFLINE' OR EJE.Segmento='PYME OFFLINE' OR EJE.Segmento='BANCA EMPRESARIAL')"
-								+ " GROUP BY SO.CLIENTE" + " ORDER BY COUNT(SO.CLIENTE) DESC";
+								+ " AND	(SO.SEGMENTO='ATE' OR SO.SEGMENTO='PYME' OR SO.SEGMENTO='OFFLINE' OR SO.SEGMENTO='PYME OFFLINE' OR SO.SEGMENTO='BANCA EMPRESARIAL')"
+								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
 
 					case "empresarial":
-						sqlQuery = "SELECT TOP 10 SO.CLIENTE, COUNT(SO.CLIENTE) AS TOTAL"
+						sqlQuery = "SELECT TOP 5 SO.RAZONSOCIAL, COUNT(SO.CLIENTE) AS TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
 								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
 								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA" + " WHERE"
 								+ " (SO.CLIENTE != 0)"
 								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"
-								+ " AND (SO.Segmento='BANCA EMPRESARIAL')" + " GROUP BY SO.CLIENTE"
-								+ " ORDER BY COUNT(SO.CLIENTE) DESC";
+								+ " AND	(SO.SEGMENTO='BANCA EMPRESARIAL')"
+								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
 
 					case "online":
-						sqlQuery = "SELECT TOP 10 SO.CLIENTE, COUNT(SO.CLIENTE) AS TOTAL"
+						sqlQuery = "SELECT TOP 5 SO.RAZONSOCIAL, COUNT(SO.CLIENTE) AS TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
 								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
 								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA" + " WHERE"
 								+ " (SO.CLIENTE != 0)"
 								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"
-								+ " AND (SO.Segmento='ATE')" + " GROUP BY SO.CLIENTE"
-								+ " ORDER BY COUNT(SO.CLIENTE) DESC";
+								+ " AND	(SO.SEGMENTO='ATE')"
+								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
 
 					case "pyme":
-						sqlQuery = "SELECT TOP 10 SO.CLIENTE, COUNT(SO.CLIENTE) AS TOTAL"
+						sqlQuery = "SELECT TOP 5 SO.RAZONSOCIAL, COUNT(SO.CLIENTE) AS TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
 								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
 								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA" + " WHERE"
 								+ " (SO.CLIENTE != 0)"
 								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"
-								+ " AND (SO.Segmento='PYME')" + " GROUP BY SO.CLIENTE"
-								+ " ORDER BY COUNT(SO.CLIENTE) DESC";
+								+ " AND	(SO.SEGMENTO='PYME')"
+								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
 
 					case "offline":
-						sqlQuery = "SELECT TOP 10 SO.CLIENTE, COUNT(SO.CLIENTE) AS TOTAL"
+						sqlQuery = "SELECT TOP 5 SO.RAZONSOCIAL, COUNT(SO.CLIENTE) AS TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
 								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
 								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA" + " WHERE"
 								+ " (SO.CLIENTE != 0)"
 								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"
-								+ " AND (SO.Segmento='OFFLINE')" + " GROUP BY SO.CLIENTE"
-								+ " ORDER BY COUNT(SO.CLIENTE) DESC";
+								+ " AND	(SO.SEGMENTO='OFFLINE')"
+								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
 
 					case "pymeOffline":
-						sqlQuery = "SELECT TOP 10 SO.CLIENTE, COUNT(SO.CLIENTE) AS TOTAL"
+						sqlQuery = "SELECT TOP 5 SO.RAZONSOCIAL, COUNT(SO.CLIENTE) AS TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
 								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
 								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA" + " WHERE"
 								+ " (SO.CLIENTE != 0)"
 								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"
-								+ " AND (SO.Segmento='PYME OFFLINE')" + " GROUP BY SO.CLIENTE"
-								+ " ORDER BY COUNT(SO.CLIENTE) DESC";
+								+ " AND	(SO.SEGMENTO='PYME OFFLINE')"
+								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
 
 					}
@@ -164,7 +164,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 
 					rs = pstmt.executeQuery();
 					while (rs.next()) {
-						ClientesFrecuentes.put(rs.getInt(1), rs.getInt(2));
+						ClientesFrecuentes.put(rs.getString(1), rs.getInt(2));
 					}
 
 				} catch (SQLException ex) {

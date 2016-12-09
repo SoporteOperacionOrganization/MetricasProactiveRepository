@@ -1274,6 +1274,7 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 	});
 }
 
+
 function dibujarClientesFrecuentes(fechaInicioP, fechaFinalP, segmentoP) {
 
 	$.ajax({
@@ -1283,7 +1284,7 @@ function dibujarClientesFrecuentes(fechaInicioP, fechaFinalP, segmentoP) {
 		data : {
 			fechaInicio : fechaInicioP,
 			fechaFinal : fechaFinalP,
-			segmento : segmentoP
+			segmento: segmentoP
 		},
 
 		success : function(data) {
@@ -1292,6 +1293,7 @@ function dibujarClientesFrecuentes(fechaInicioP, fechaFinalP, segmentoP) {
 			var arrayLlamadas = [];
 			var arrayClientes = [];
 			var conteo = 0;
+			var dato = [];
 
 			for (a in data) {
 				arrayTemp.push([ a, data[a] ])
@@ -1305,14 +1307,22 @@ function dibujarClientesFrecuentes(fechaInicioP, fechaFinalP, segmentoP) {
 				arrayClientes[a] = b[0];
 				arrayLlamadas[a] = b[1];
 			}
-
+			console.log(arrayClientes);
+			console.log(arrayLlamadas);
+//			
 			for (i = 0; i <= arrayLlamadas.length; i++) {
 				$("#top" + (i + 1) + " p").text(arrayClientes[i]);
-				$("#llamadas" + (i + 1)).text(arrayLlamadas[i]);
+				$("#llamadas" + (i + 1) + " p").text(arrayLlamadas[i]);
+			
+	
 			}
-
-			// document.getElementById("top10").val=arrayNames[0];
-
+			$("#progreso1").css("width",arrayLlamadas[0]);
+			$("#progreso2").css("width",arrayLlamadas[1]);
+			$("#progreso3").css("width",arrayLlamadas[2]);
+			$("#progreso4").css("width",arrayLlamadas[3]);
+			$("#progreso5").css("width",arrayLlamadas[4]);
+			
+		
 		}// fin function(data)
 	});// fin $.ajax
 }// fin dibujarClientesFrecuentes

@@ -6,7 +6,7 @@ public interface SegmentoDao {
 
 	public Map<String,Integer> obtenerLlamadasTotalesSegmentos(String fechaInicio, String fechaFinal);
 
-	public Map<Integer, Integer> obtenerClientesFrecuentes(String fecha_inicio, String fecha_fin, String segmento);
+	public Map<String, Integer> obtenerClientesFrecuentes(String fecha_inicio, String fecha_fin, String segmento);
 
 	public Map<String, Integer> obtenerLlamadasFamilia(String fecha_inicio, String fecha_fin, String segmento);
 

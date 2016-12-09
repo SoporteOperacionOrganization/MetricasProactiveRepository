@@ -41,7 +41,7 @@ public class SegmentoServiceImpl implements SegmentoService {
 	}
 
 	@Override
-	public Map<Integer, Integer> obtenerClientesFrecuentes(String fechaInicio, String fechaFinal, String segmento) {
+	public Map<String, Integer> obtenerClientesFrecuentes(String fechaInicio, String fechaFinal, String segmento) {
 		return segmentoDao.obtenerClientesFrecuentes(fechaInicio, fechaFinal, segmento);
 	}
 
