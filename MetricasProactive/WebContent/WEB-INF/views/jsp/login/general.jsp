@@ -343,7 +343,11 @@
 				</div>
 			</div>
 			<!-- footer content -->
-			<jsp:include page="../fragments/footer.jsp" />
+			<nav class="navbar navbar-default navbar-fixed-bottom">
+				<div class="container">
+					<jsp:include page="../fragments/footer.jsp" />
+				</div>
+			</nav>
 			<!-- /footer content -->
 		</div>
 		<!-- /page content -->

@@ -435,6 +435,32 @@ var theme = {
 };
 
 /* Fin temas de gráficas */
+/* Funciones por página */
+
+/* General */
+var segmento = obtenerURL();
+
+switch (segmento) {
+case "general":
+	var GeneralLlamadasBarras2 = echarts.init(document
+			.getElementById('LlamadasTotalesPorSegmentos'), theme);
+	var echartPie = echarts.init(document.getElementById('echart_pie'), theme);
+	break;
+case "empresarial":
+	break;
+case "online":
+
+	break;
+case "offline":
+	break;
+case "pyme":
+	break;
+case "pymeOffline":
+	break;
+default:
+	break;
+}
+
 function dibujarLlamadasTotalesGeneral(fechaInicioP, fechaFinalP) {
 	$
 			.ajax({
@@ -463,7 +489,7 @@ function dibujarLlamadasTotalesGeneral(fechaInicioP, fechaFinalP) {
 						cont = cont + 1;
 					});
 
-					var GeneralLlamadasBarras2 = echarts.init(document
+					GeneralLlamadasBarras2 = echarts.init(document
 							.getElementById('LlamadasTotalesPorSegmentos'),
 							theme);
 					var valorAte = data['ATE'];
@@ -487,67 +513,72 @@ function dibujarLlamadasTotalesGeneral(fechaInicioP, fechaFinalP) {
 						valorOffline = 0;
 					}
 
-					GeneralLlamadasBarras2
-							.setOption({
-								tooltip : {
-									trigger : 'axis'
-								},
-								toolbox : {
+					GeneralLlamadasBarras2.setOption({
+						tooltip : {
+							trigger : 'axis'
+						},
+						toolbox : {
+							show : true,
+							feature : {
+								dataView : {
 									show : true,
-									feature : {
-										dataView : {
-											show : true,
-											readOnly : false,
-											title : "Text View",
-											lang : [ "Text View", "Close",
-													"Refresh", ],
-										},
-										saveAsImage : {
-											show : true,
-											title : 'Save'
+									readOnly : false,
+									title : "Ver como texto",
+									lang : [ "Ver como texto", "Cerrar",
+											"Ver como gráfica", ],
+								},
+								saveAsImage : {
+									show : true,
+									title : 'Descargar'
+								}
+							}
+						},
+						calculable : true,
+						legend : {
+							data : [ 'Llamadas', 'Comparativo' ],
+							y : 'bottom'
+						},
+						xAxis : [ {
+							type : 'category',
+							// data : Object.keys(data)
+							data : [ 'ATE', 'BANCA EMPRESARIAL', 'PYME',
+									'PYME OFFLINE', 'OFFLINE' ]
+						} ],
+						yAxis : [ {
+							type : 'value',
+							name : 'Total',
+							axisLabel : {
+								formatter : '{value}'
+							}
+						}, {
+							type : 'value',
+							name : 'Total',
+							axisLabel : {
+								formatter : '{value}'
+							}
+						} ],
+						series : [
+								{
+									name : 'Llamadas',
+									type : 'bar',
+									// data : [2,5,10,8,15]
+									data : [ valorAte, valorBE, valorPyme,
+											valorPymeOffline, valorOffline ],
+									itemStyle : {
+										normal : {
+											label : {
+												show : true,
+												position : 'top'
+											}
 										}
-									}
-								},
-								calculable : true,
-								legend : {
-									data : [ 'Llamadas', 'Comparativo' ],
-									y : 'bottom'
-								},
-								xAxis : [ {
-									type : 'category',
-									// data : Object.keys(data)
-									data : [ 'ATE', 'BANCA EMPRESARIAL',
-											'PYME', 'PYME OFFLINE', 'OFFLINE' ]
-								} ],
-								yAxis : [ {
-									type : 'value',
-									name : 'Total',
-									axisLabel : {
-										formatter : '{value}'
-									}
+									},
 								}, {
-									type : 'value',
-									name : 'Total',
-									axisLabel : {
-										formatter : '{value}'
-									}
-								} ],
-								series : [
-										{
-											name : 'Llamadas',
-											type : 'bar',
-											// data : [2,5,10,8,15]
-											data : [ valorAte, valorBE,
-													valorPyme,
-													valorPymeOffline,
-													valorOffline ]
-										}, {
-											name : 'Comparativo',
-											type : 'line',
-											yAxisIndex : 1,
-											data : [ 0, 0, 0, 0, 0 ]
-										} ]
-							});
+									name : 'Comparativo',
+									type : 'line',
+									yAxisIndex : 1,
+									data : [ 0, 0, 0, 0, 0 ]
+								} ]
+					});
 				}
 			});
 }
@@ -579,7 +610,7 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioP, fechaFinalP) {
 				conteo = conteo + 1;
 			});
 
-			var GeneralLlamadasBarras2 = echarts.init(document
+			GeneralLlamadasBarras2 = echarts.init(document
 					.getElementById('LlamadasTotalesPorSegmentos'), theme);
 			var valorAte = json['ATE'];
 			var valorBE = json['BANCA EMPRESARIAL'];
@@ -633,13 +664,14 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioP, fechaFinalP) {
 						dataView : {
 							show : true,
 							readOnly : false,
-							title : "Text View",
-							lang : [ "Text View", "Close", "Refresh", ],
+							title : "Ver como texto",
+							lang : [ "Ver como texto", "Cerrar",
+									"Ver como gráfica", ],
 						},
 
 						saveAsImage : {
 							show : true,
-							title : 'Save'
+							title : 'Descargar'
 						}
 					}
 				},
@@ -674,7 +706,15 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioP, fechaFinalP) {
 							name : 'Llamadas',
 							type : 'bar',
 							data : [ valorAte, valorBE, valorPyme,
-									valorPymeOffline, valorOffline ]
+									valorPymeOffline, valorOffline ],
+							itemStyle : {
+								normal : {
+									label : {
+										show : true,
+										position : 'top'
+									}
+								}
+							},
 						},
 						{
 							name : 'Comparativo',
@@ -758,7 +798,7 @@ function dibujarServicios(fechaInicioP, fechaFinalP) {
 			});
 			var arrayNames = Object.keys(data);
 
-			var echartPie = echarts.init(document.getElementById('echart_pie'),
+			echartPie = echarts.init(document.getElementById('echart_pie'),
 					theme);
 
 			echartPie.setOption({
@@ -928,9 +968,6 @@ function dibujarLlamadasTotalesFamiliaSegmentos(fechaInicioP, fechaFinalP,
 	});
 }
 
-
-
-
 function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 
 	$.ajax({
@@ -955,11 +992,11 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 				total = total + v;
 
 			});
-			
+
 			var arrayNames = Object.keys(data);
 			var nameSegmento = "";
-			
-	switch (obtenerURL()) {
+
+			switch (obtenerURL()) {
 			case 'online':
 				nameSegmento = "ATE"
 				break;
@@ -976,18 +1013,16 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 				nameSegmento = "PYME OFFLINE"
 				break;
 			}
-	
-	
+
 			for (i = 0; i < arrayValues.length; i++) {
 				if (arrayNames[i] == nameSegmento) {
 					var seg = arrayNames[i];
 					var concu = (arrayValues[i] * 100 / total).toFixed(2);
-					var vacio = (100-concu).toFixed(2);
+					var vacio = (100 - concu).toFixed(2);
 				}
 			}
-document.getElementById("porcen").innerHTML = concu;
+			document.getElementById("porcen").innerHTML = concu;
 
-			
 			var dataStyle = {
 				normal : {
 					label : {
@@ -1074,9 +1109,6 @@ document.getElementById("porcen").innerHTML = concu;
 	});
 }
 
-
-
-
 function dibujarClientesFrecuentes(fechaInicioP, fechaFinalP, segmentoP) {
 
 	$.ajax({
@@ -1086,7 +1118,7 @@ function dibujarClientesFrecuentes(fechaInicioP, fechaFinalP, segmentoP) {
 		data : {
 			fechaInicio : fechaInicioP,
 			fechaFinal : fechaFinalP,
-			segmento: segmentoP
+			segmento : segmentoP
 		},
 
 		success : function(data) {
@@ -1108,8 +1140,6 @@ function dibujarClientesFrecuentes(fechaInicioP, fechaFinalP, segmentoP) {
 				arrayClientes[a] = b[0];
 				arrayLlamadas[a] = b[1];
 			}
-			console.log(arrayClientes);
-			console.log(arrayLlamadas);
 
 			for (i = 0; i <= arrayLlamadas.length; i++) {
 				$("#top" + (i + 1) + " p").text(arrayClientes[i]);

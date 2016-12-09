@@ -3,17 +3,30 @@
  */
 
 function redibujarGraficas() {
-	if (echartBarLine != null && echartBarLine != undefined) {
-		echartBarLine.resize();
-	}
-	if (echartPie != null && echartPie != undefined) {
-		echartPie.resize();
-	}
+	var segmento = obtenerURL();
+
+	switch (segmento){
+			case "general" : 
+				if (GeneralLlamadasBarras2 != null && GeneralLlamadasBarras2 != undefined) {
+					GeneralLlamadasBarras2.resize();
+				}
+				if (echartPie != null && echartPie != undefined) {
+					echartPie.resize();
+				}
+				break;
+			case "empresarial" : break;
+			case "online" : 
+				
+				break;
+			case "offline" : break;
+			case "pyme" : break;
+			case "pymeOffline" : break;
+			default : break;
+		}
 }
 function recalcularAlto() {
 	var alto = $(document).height();
 	$(".left_col").css("min-height", alto);
-	$(".footerA").css("bottom",0);
 }
 
 function obtenerURL() {
@@ -36,6 +49,7 @@ function graficasIniciales() {
 	var dd = hoy.getDate();
 	var mm = hoy.getMonth() + 1;
 	var yyyy = hoy.getFullYear();
+	var segmento = obtenerURL();
 
 	if (dd < 10) {
 		dd = '0' + dd
@@ -46,11 +60,23 @@ function graficasIniciales() {
 	}
 
 	hoy = yyyy + '/' + mm + '/' + dd;
-	dibujarLlamadasTotalesGeneral(hoy, hoy);
-	dibujarFamilias(hoy, hoy, obtenerURL());
-	dibujarConcurrencia(hoy, hoy);
-	dibujarServicios(hoy, hoy, obtenerURL());
-	dibujarClientesFrecuentes(hoy, hoy, obtenerURL());
+	
+	switch (segmento){
+		case "general" : 
+			dibujarLlamadasTotalesGeneral(hoy, hoy);
+			dibujarServicios(hoy, hoy, segmento);
+			dibujarClientesFrecuentes(hoy, hoy, segmento);
+			dibujarFamilias(hoy, hoy, segmento);
+			break;
+		case "empresarial" : break;
+		case "online" : 
+			dibujarConcurrencia(hoy, hoy);
+			break;
+		case "offline" : break;
+		case "pyme" : break;
+		case "pymeOffline" : break;
+		default : break;
+	}
 }
 
 $(document).ready(
@@ -61,11 +87,11 @@ $(document).ready(
 			$("#comparativoLlamadasTotalesSegmentos").hide();
 
 			$(window).on('resize', function() {
-				//redibujarGraficas();
+				redibujarGraficas();
 				recalcularAlto();
 			});
 			$("#menu_toggle").on('click', function() {
-				//redibujarGraficas();
+				// redibujarGraficas();
 			});
 			cambiarLabelFechaFiltro(moment(), moment());
 
@@ -85,7 +111,8 @@ $(document).ready(
 								dibujarConcurrencia(fechaInicio, fechaFinal);
 								dibujarServicios(fechaInicio, fechaFinal,
 										segmento);
-								dibujarClientesFrecuentes(fechaInicio,fechaFinal,segmento); 
+								dibujarClientesFrecuentes(fechaInicio,
+										fechaFinal, segmento);
 
 								if (segmento == 'general') {
 									dibujarLlamadasTotalesGeneral(fechaInicio,
