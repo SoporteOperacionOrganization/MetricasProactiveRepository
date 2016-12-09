@@ -436,8 +436,6 @@ var theme = {
 
 /* Fin temas de gráficas */
 /* Funciones por página */
-
-/* General */
 var segmento = obtenerURL();
 
 switch (segmento) {
@@ -447,15 +445,29 @@ case "general":
 	var echartPie = echarts.init(document.getElementById('echart_pie'), theme);
 	break;
 case "empresarial":
+	var GeneralLlamadasBarras2 = echarts.init(document
+			.getElementById('LlamadasTotalesPorFamiliaSegmentos'),
+			theme);
 	break;
 case "online":
-
+	var GeneralLlamadasBarras2 = echarts.init(document
+			.getElementById('LlamadasTotalesPorFamiliaSegmentos'),
+			theme);
 	break;
 case "offline":
+	var GeneralLlamadasBarras2 = echarts.init(document
+			.getElementById('LlamadasTotalesPorFamiliaSegmentos'),
+			theme);
 	break;
 case "pyme":
+	var GeneralLlamadasBarras2 = echarts.init(document
+			.getElementById('LlamadasTotalesPorFamiliaSegmentos'),
+			theme);
 	break;
 case "pymeOffline":
+	var GeneralLlamadasBarras2 = echarts.init(document
+			.getElementById('LlamadasTotalesPorFamiliaSegmentos'),
+			theme);
 	break;
 default:
 	break;
@@ -474,24 +486,24 @@ function dibujarLlamadasTotalesGeneral(fechaInicioP, fechaFinalP) {
 				success : function(data) {
 					$("#comparativoLlamadasTotalesSegmentos").val(
 							JSON.stringify(data));
-					// alert(JSON.stringify(data));
-					// alert(Object.keys(data));
-
-					// alert(object);
-					// var json = JSON.stringify(eval("(" + object + ")"));
-
-					// var json = JSON.parse(object);
-					// alert(json.PYME);
 					var arrayValues = [];
 					var cont = 0;
+					var totalLlamadas = 0;
 					$.each(data, function(k, v) {
 						arrayValues[cont] = v;
+						totalLlamadas = totalLlamadas + v;
 						cont = cont + 1;
 					});
-
+					
+					$("#diferenciaLlamadas span i").removeClass("fa-arrow-up");
+					$("#diferenciaLlamadas span i").removeClass("fa-arrow-down");
+					$("#diferenciaLlamadas span i").removeClass("fa-arrows-h");
+					$("#diferenciaLlamadas span i i").text('');
+					
 					GeneralLlamadasBarras2 = echarts.init(document
 							.getElementById('LlamadasTotalesPorSegmentos'),
 							theme);
+					$("#totalLlamadas").text(' '+totalLlamadas);
 					var valorAte = data['ATE'];
 					var valorBE = data['BANCA EMPRESARIAL'];
 					var valorPyme = data['PYME'];
@@ -541,8 +553,8 @@ function dibujarLlamadasTotalesGeneral(fechaInicioP, fechaFinalP) {
 						xAxis : [ {
 							type : 'category',
 							// data : Object.keys(data)
-							data : [ 'ATE', 'BANCA EMPRESARIAL', 'PYME',
-									'PYME OFFLINE', 'OFFLINE' ]
+							data : [ 'Online', 'B.E.', 'Pyme', 'Pyme Off',
+									'Offline' ]
 						} ],
 						yAxis : [ {
 							type : 'value',
@@ -600,15 +612,27 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioP, fechaFinalP) {
 			var arrayValuesOriginal = [];
 			var arrayValuesComparativo = [];
 			var cont = 0;
+			var totalComparativo = 0;
+			var porcentajeDiferencia = 0;
+
 			$.each(data, function(k, v) {
 				arrayValuesComparativo[cont] = v;
+				totalComparativo = totalComparativo + v;
 				cont = cont + 1;
 			});
 			var conteo = 0;
+			var totalOriginal = 0;
 			$.each(json, function(k, v) {
 				arrayValuesOriginal[conteo] = v;
+				totalOriginal = totalOriginal + v;
 				conteo = conteo + 1;
 			});
+			porcentajeDiferencia = (totalComparativo - totalOriginal) / totalOriginal;
+			
+			estilosPorcentajes(porcentajeDiferencia);
+			
+			$("#diferenciaLlamadas span i i").text(
+					' '+porcentajeDiferencia.toFixed(2) + " %");
 
 			GeneralLlamadasBarras2 = echarts.init(document
 					.getElementById('LlamadasTotalesPorSegmentos'), theme);
@@ -685,8 +709,7 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioP, fechaFinalP) {
 					// data : [Object.keys(json)[0], Object.keys(json)[1],
 					// Object.keys(json)[2], Object.keys(json)[3],
 					// Object.keys(json)[4]]
-					data : [ 'ATE', 'BANCA EMPRESARIAL', 'PYME',
-							'PYME OFFLINE', 'OFFLINE' ]
+					data : [ 'Online', 'B.E.', 'Pyme', 'Pyme Off', 'Offline' ]
 				} ],
 				yAxis : [ {
 					type : 'value',
@@ -721,7 +744,15 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioP, fechaFinalP) {
 							type : 'line',
 							yAxisIndex : 1,
 							data : [ valorAteC, valorBEC, valorPymeC,
-									valorPymeOfflineC, valorOfflineC ]
+									valorPymeOfflineC, valorOfflineC ],
+							itemStyle : {
+								normal : {
+									label : {
+										show : true,
+										position : 'top'
+									}
+								}
+							},
 						} ]
 			});
 		}
@@ -729,12 +760,245 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioP, fechaFinalP) {
 
 }
 
+
+function dibujarLlamadasTotalesFamiliaSegmentos(fechaInicioP, fechaFinalP,
+		segmento) {
+	$.ajax({
+		url : 'obtenerLlamadasTotalesFamiliasSegmento',
+		dataType : "json",
+		contentType : "application/json;charset=utf-8",
+		data : {
+			fechaInicio : fechaInicioP,
+			fechaFinal : fechaFinalP,
+			segmento : segmento
+		},
+		success : function(data) {
+
+			$("#comparativoLlamadasTotalesFamiliasSegmentos").val(
+					JSON.stringify(data));
+			var totalLlamadas = 0;
+			var arrayValues = [];
+			var cont = 0;
+			$.each(data, function(k, v) {
+				arrayValues[cont] = v;
+				totalLlamadas = totalLlamadas + v;
+				cont = cont + 1;
+			});
+			$("#totalLlamadas").text(' '+totalLlamadas);
+			$("#diferenciaLlamadas span i").removeClass("fa-arrow-up");
+			$("#diferenciaLlamadas span i").removeClass("fa-arrow-down");
+			$("#diferenciaLlamadas span i").removeClass("fa-arrows-h");
+			$("#diferenciaLlamadas span i i").text('');
+
+			GeneralLlamadasBarras2 = echarts.init(document
+					.getElementById('LlamadasTotalesPorFamiliaSegmentos'),
+					theme);
+
+			GeneralLlamadasBarras2.setOption({
+				tooltip : {
+					trigger : 'axis'
+				},
+				toolbox : {
+					show : true,
+					feature : {
+						dataView : {
+							show : true,
+							readOnly : false,
+							title : "Ver como texto",
+							lang : [ "Ver como texto", "Cerrar",
+									"Ver como gráfica", ],
+						},
+						saveAsImage : {
+							show : true,
+							title : 'Save'
+						}
+					}
+				},
+				calculable : true,
+				legend : {
+					data : [ 'Llamadas', 'Comparativo' ],
+					y : 'bottom'
+				},
+				xAxis : [ {
+					type : 'category',
+					data : Object.keys(data),
+					axisLabel : {
+						interval: 0,
+						rotate: 25,
+						textStyle : {
+							fontSize : 9
+						}
+					}
+				} ],
+				yAxis : [ {
+					type : 'value',
+					name : 'Total filtro',
+					axisLabel : {
+						formatter : '{value}'
+					}
+				}, {
+					type : 'value',
+					name : 'Total comparativo',
+					axisLabel : {
+						formatter : '{value}'
+					}
+				} ],
+				series : [ {
+					name : 'Llamadas',
+					type : 'bar',
+					// data : [2,5,10,8,15]
+					// data:[valorAte,valorBE,valorPyme,valorPymeOffline,valorOffline]
+					data : arrayValues,
+					itemStyle : {
+						normal : {
+							label : {
+								show : true,
+								position : 'top'
+							}
+						}
+					},
+				}, {
+					name : 'Comparativo',
+					type : 'line',
+					yAxisIndex : 1,
+					data : [ ]
+				} ]
+			});
+
+		}
+	});
+}
+
+function dibujarLlamadasTotalesFamiliaSegmentoComparativo(fechaInicioOriginalP,
+		fechaFinalOriginalP, fechaInicioComparativo, fechaFinalComparativo,
+		segmento) {
+	$
+			.ajax({
+				url : 'obtenerLlamadasTotalesFamiliasSegmentoComparativo',
+				dataType : "json",
+				contentType : "application/json;charset=utf-8",
+				data : {
+					fechaInicioOriginal : fechaInicioOriginalP,
+					fechaFinalOriginal : fechaFinalOriginalP,
+					fechaInicio : fechaInicioComparativo,
+					fechaFinal : fechaFinalComparativo,
+					segmento : segmento
+				},
+				success : function(data) {
+
+					var arrayEtiquetas = [];
+					var arrayValoresFiltro = [];
+					var arrayValoresComparativo = [];
+					var totalLlamadas = 0;
+					cont = 0;
+					var totalComparativo = 0;
+                    var porcentajeDiferencia = 0;
+					for ( var key in data) {
+						if (data.hasOwnProperty(key)) {
+							arrayEtiquetas[cont] = Object.keys(data)[cont];
+							arrayValoresFiltro[cont] = data[Object.keys(data)[cont]][0];
+							totalLlamadas = totalLlamadas
+									+ data[Object.keys(data)[cont]][0];
+							totalComparativo = totalComparativo + data[Object.keys(data)[cont]][1];
+							arrayValoresComparativo[cont] = data[Object
+									.keys(data)[cont]][1];
+							cont = cont + 1;
+						}
+					}
+					porcentajeDiferencia = (totalComparativo - totalLlamadas) / totalLlamadas;
+					
+					estilosPorcentajes(porcentajeDiferencia);
+					
+					$("#diferenciaLlamadas span i i").text(
+							' '+porcentajeDiferencia.toFixed(2) + " %");
+					
+					GeneralLlamadasBarras2 = echarts
+							.init(
+									document
+											.getElementById('LlamadasTotalesPorFamiliaSegmentos'),
+									theme);
+					$("#totalLlamadas").text(' '+totalLlamadas);
+					GeneralLlamadasBarras2
+							.setOption({
+								tooltip : {
+									trigger : 'axis'
+								},
+								toolbox : {
+									show : true,
+									feature : {
+										dataView : {
+											show : true,
+											readOnly : false,
+											title : "Ver como texto",
+											lang : [ "Ver como texto", "Cerrar",
+													"Ver como gráfica", ],
+										},
+										saveAsImage : {
+											show : true,
+											title : 'Descargar'
+										}
+									}
+								},
+								calculable : true,
+								legend : {
+									data : [ 'Llamadas', 'Comparativo' ],
+									y : 'bottom'
+								},
+								xAxis : [ {
+									type : 'category',
+									data : arrayEtiquetas,
+									axisLabel : {
+										interval: 0,
+										rotate: 25,
+										textStyle : {
+											fontSize : 9
+										}
+									}
+								// data: [Object.keys(data)[0],
+								// Object.keys(data)[1], Object.keys(data)[2],
+								// Object.keys(data)[3], Object.keys(data)[4],
+								// Object.keys(data)[5], Object.keys(data)[6],
+								// Object.keys(data)[7], Object.keys(data)[8],
+								// Object.keys(data)[9]]
+								} ],
+								yAxis : [ {
+									type : 'value',
+									name : 'Total filtro',
+									axisLabel : {
+										formatter : '{value}'
+									}
+								}, {
+									type : 'value',
+									name : 'Total comparativo',
+									axisLabel : {
+										formatter : '{value}'
+									}
+								} ],
+								series : [ {
+									name : 'Llamadas',
+									type : 'bar',
+									data : arrayValoresFiltro,
+									itemStyle : {
+										normal : {
+											label : {
+												show : true,
+												position : 'top'
+											}
+										}
+									},
+								}, {
+									name : 'Comparativo',
+									type : 'line',
+									stack : 'area',
+									yAxisIndex : 1,
+									data : arrayValoresComparativo
+								} ]
+							});
+				}
+			});
+}
+
 function dibujarFamilias(fechaInicioP, fechaFinalP, segmentoP) {
-	/*
-	 * var opcionesSparkline = { type : 'line', width : '100%', lineColor :
-	 * '#26B99A', fillColor : '#ffffff', lineWidth : 3, spotColor : '#34495E',
-	 * minSpotColor : '#34495E' }
-	 */
 	$.ajax({
 		url : 'obtenerLlamadasFamilia',
 		dataType : "json",
@@ -807,26 +1071,19 @@ function dibujarServicios(fechaInicioP, fechaFinalP) {
 					formatter : "{a} <br/>{b} : {c} ({d}%)"
 				},
 				legend : {
-					x : 'center',
-					y : 'bottom',
-
+					x : 'left',
+					y : 'top',
+					orient : 'vertical'
 				},
 				toolbox : {
 					show : true,
 					feature : {
-						magicType : {
-							show : true,
-							type : [ 'pie', 'funnel' ],
-							option : {
-								funnel : {
-									x : '25%',
-									width : '50%',
-									funnelAlign : 'left',
-									max : 1548
-								}
-							}
+						mark : {
+							show : true
 						},
-
+						dataView : {
+							show : true
+						},
 						saveAsImage : {
 							show : true,
 							title : "Save"
@@ -835,10 +1092,9 @@ function dibujarServicios(fechaInicioP, fechaFinalP) {
 				},
 				calculable : true,
 				series : [ {
-					name : '',
 					type : 'pie',
-					radius : '55%',
-					center : [ '50%', '43%' ],
+					radius : '40%',
+					center : [ '50%', '40%' ],
 					data : [ {
 						value : arrayValues[0],
 						name : arrayNames[0]
@@ -870,97 +1126,6 @@ function dibujarServicios(fechaInicioP, fechaFinalP) {
 						value : arrayValues[9],
 						name : arrayNames[9]
 					} ]
-				} ]
-			});
-
-		}
-	});
-}
-
-function dibujarLlamadasTotalesFamiliaSegmentos(fechaInicioP, fechaFinalP,
-		segmento) {
-	$.ajax({
-		url : 'obtenerLlamadasTotalesFamiliasSegmento',
-		dataType : "json",
-		contentType : "application/json;charset=utf-8",
-		data : {
-			fechaInicio : fechaInicioP,
-			fechaFinal : fechaFinalP,
-			segmento : segmento
-		},
-		success : function(data) {
-
-			$("#comparativoLlamadasTotalesFamiliasSegmentos").val(
-					JSON.stringify(data));
-			var arrayValues = [];
-			var cont = 0;
-			$.each(data, function(k, v) {
-				arrayValues[cont] = v;
-				cont = cont + 1;
-			});
-
-			var GeneralLlamadasBarras2 = echarts.init(document
-					.getElementById('LlamadasTotalesPorFamiliaSegmentos'),
-					theme);
-
-			GeneralLlamadasBarras2.setOption({
-				tooltip : {
-					trigger : 'axis'
-				},
-				toolbox : {
-					show : true,
-					feature : {
-						dataView : {
-							show : true,
-							readOnly : false,
-							title : "Text View",
-							lang : [ "Text View", "Close", "Refresh", ],
-						},
-						restore : {
-							show : true,
-							title : 'Restore'
-						},
-						saveAsImage : {
-							show : true,
-							title : 'Save'
-						}
-					}
-				},
-				calculable : true,
-				legend : {
-					data : [ 'Llamadas', 'Comparativo' ],
-					y : 'bottom'
-				},
-				xAxis : [ {
-					type : 'category',
-					data : Object.keys(data)
-				// data: ['ATE', 'BANCA EMPRESARIAL', 'PYME', 'PYME OFFLINE',
-				// 'OFFLINE']
-				} ],
-				yAxis : [ {
-					type : 'value',
-					name : 'Total',
-					axisLabel : {
-						formatter : '{value}'
-					}
-				}, {
-					type : 'value',
-					name : 'Total',
-					axisLabel : {
-						formatter : '{value}'
-					}
-				} ],
-				series : [ {
-					name : 'Llamadas',
-					type : 'bar',
-					// data : [2,5,10,8,15]
-					// data:[valorAte,valorBE,valorPyme,valorPymeOffline,valorOffline]
-					data : arrayValues
-				}, {
-					name : 'Comparativo',
-					type : 'line',
-					yAxisIndex : 1,
-					data : [ 0, 0, 0, 0, 0 ]
 				} ]
 			});
 
@@ -1061,7 +1226,7 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 					itemGap : 20,
 					textStyle : {
 						color : 'rgba(30,144,255,0.8)',
-						fontSize : 15,
+						fontSize : 12,
 						fontWeight : 'bolder'
 					}
 				},

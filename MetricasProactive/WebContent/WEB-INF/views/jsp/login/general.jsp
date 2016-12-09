@@ -50,7 +50,7 @@
 
 				<!-- Valores de gráficas -->
 				<div>
-					<input id="comparativoLlamadasTotalesSegmentos" type="text"
+					<input id="comparativoLlamadasTotalesSegmentos" type="hidden"
 						value="" />
 				</div>
 
@@ -59,7 +59,7 @@
 						<div class="x_panel">
 							<div class="row x_title">
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<h2>Llamadas totales</h2>
+									<h2>Llamadas totales<span id="totalLlamadas" class="blue"><b></b></span></h2>
 									<div class="clearfix"></div>
 								</div>
 								<div class="col-md-6 col-sm-6 col-xs-12">
@@ -86,7 +86,7 @@
 							</div>
 							<div class="x_content">
 								<div id="diferenciaLlamadas">
-									<i class="green"><i class="fa fa-sort-asc"></i> 34%</i>
+									<span><i class="green"><i class="fa"></i></i></span>
 								</div>
 								<div id="LlamadasTotalesPorSegmentos" style="height: 300px;"></div>
 							</div>
@@ -94,7 +94,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-4 col-sm-4 col-xs-12">
+					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel tile fixed_height_320">
 							<div class="row x_title">
 								<div class="col-md-12 col-sm-12 col-xs-12">
@@ -109,7 +109,7 @@
 					</div>
 
 
-					<div class="col-md-4 col-sm-4 col-xs-12 ">
+					<div class="col-md-6 col-sm-6 col-xs-12 ">
 						<div class="x_panel tile">
 
 							<div class="row x_title">
@@ -216,7 +216,7 @@
 
 						</div>
 					</div>
-					<div class="col-md-4 col-sm-4 col-xs-12 ">
+					<div class="col-md-6 col-sm-6 col-xs-12 ">
 						<div class="x_panel tile">
 
 							<div class="row x_title">

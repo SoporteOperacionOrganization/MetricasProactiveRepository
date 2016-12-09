@@ -3,26 +3,13 @@
  */
 
 function redibujarGraficas() {
-	var segmento = obtenerURL();
-
-	switch (segmento){
-			case "general" : 
-				if (GeneralLlamadasBarras2 != null && GeneralLlamadasBarras2 != undefined) {
-					GeneralLlamadasBarras2.resize();
-				}
-				if (echartPie != null && echartPie != undefined) {
-					echartPie.resize();
-				}
-				break;
-			case "empresarial" : break;
-			case "online" : 
-				
-				break;
-			case "offline" : break;
-			case "pyme" : break;
-			case "pymeOffline" : break;
-			default : break;
-		}
+	if (GeneralLlamadasBarras2 != null
+			&& GeneralLlamadasBarras2 != undefined) {
+		GeneralLlamadasBarras2.resize();
+	}
+	if (echartPie != null && echartPie != undefined) {
+		echartPie.resize();
+	}
 }
 function recalcularAlto() {
 	var alto = $(document).height();
@@ -61,21 +48,71 @@ function graficasIniciales() {
 
 	hoy = yyyy + '/' + mm + '/' + dd;
 	
-	switch (segmento){
-		case "general" : 
-			dibujarLlamadasTotalesGeneral(hoy, hoy);
-			dibujarServicios(hoy, hoy, segmento);
-			dibujarClientesFrecuentes(hoy, hoy, segmento);
-			dibujarFamilias(hoy, hoy, segmento);
-			break;
-		case "empresarial" : break;
-		case "online" : 
-			dibujarConcurrencia(hoy, hoy);
-			break;
-		case "offline" : break;
-		case "pyme" : break;
-		case "pymeOffline" : break;
-		default : break;
+	dibujarGraficasPorPagina(hoy,hoy,segmento);
+}
+
+function estilosPorcentajes(porcentajeDiferencia){
+	if (porcentajeDiferencia < 0){
+		$("#diferenciaLlamadas span i").removeClass("green");
+		$("#diferenciaLlamadas span i i").removeClass("fa-arrows-h");
+		$("#diferenciaLlamadas span i i").removeClass("fa-arrow-up");
+		$("#diferenciaLlamadas span i").addClass("red");
+		$("#diferenciaLlamadas span i i").addClass("fa-arrow-down");
+	}else if (porcentajeDiferencia > 0){
+		$("#diferenciaLlamadas span i").removeClass("red");
+		$("#diferenciaLlamadas span i i").removeClass("fa-arrows-h");
+		$("#diferenciaLlamadas span i i").removeClass("fa-arrow-down");
+		$("#diferenciaLlamadas span i").addClass("green");
+		$("#diferenciaLlamadas span i i").addClass("fa-arrow-up");
+	}else{
+		$("#diferenciaLlamadas span i").removeClass("green");
+		$("#diferenciaLlamadas span i i").removeClass("fa-arrow-up");
+		$("#diferenciaLlamadas span i").removeClass("red");
+		$("#diferenciaLlamadas span i i").removeClass("fa-arrow-down");
+		$("#diferenciaLlamadas span i i").addClass("fa-arrows-h");
+	}
+}
+
+function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
+	switch (segmento) {
+	case "general":
+		dibujarLlamadasTotalesGeneral(fechaInicio, fechaFinal);
+		dibujarServicios(fechaInicio, fechaFinal, segmento);
+		dibujarClientesFrecuentes(fechaInicio, fechaFinal, segmento);
+		dibujarFamilias(fechaInicio, fechaFinal, segmento);
+		break;
+	case "empresarial":
+		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal, 'BANCA EMPRESARIAL');
+		dibujarServicios(fechaInicio, fechaFinal, segmento);
+		dibujarClientesFrecuentes(fechaInicio, fechaFinal, segmento);
+		dibujarConcurrencia(fechaInicio, fechaFinal);
+		break;
+	case "online":
+		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal, 'ATE');
+		dibujarServicios(fechaInicio, fechaFinal, segmento);
+		dibujarClientesFrecuentes(fechaInicio, fechaFinal, segmento);
+		dibujarConcurrencia(fechaInicio, fechaFinal);
+		break;
+	case "offline":
+		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal, 'OFFLINE');
+		dibujarServicios(fechaInicio, fechaFinal, segmento);
+		dibujarClientesFrecuentes(fechaInicio, fechaFinal, segmento);
+		dibujarConcurrencia(fechaInicio, fechaFinal);
+		break;
+	case "pyme":
+		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal, 'PYME');
+		dibujarServicios(fechaInicio, fechaFinal, segmento);
+		dibujarClientesFrecuentes(fechaInicio, fechaFinal, segmento);
+		dibujarConcurrencia(fechaInicio, fechaFinal);
+		break;
+	case "pymeOffline":
+		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal, 'PYME OFFLINE');
+		dibujarServicios(fechaInicio, fechaFinal, segmento);
+		dibujarClientesFrecuentes(fechaInicio, fechaFinal, segmento);
+		dibujarConcurrencia(fechaInicio, fechaFinal);
+		break;
+	default:
+		break;
 	}
 }
 
@@ -106,22 +143,22 @@ $(document).ready(
 								var fechaFinal = picker.endDate
 										.format('YYYY/MM/DD');
 								var segmento = obtenerURL();
-								dibujarFamilias(fechaInicio, fechaFinal,
-										segmento);
-								dibujarConcurrencia(fechaInicio, fechaFinal);
-								dibujarServicios(fechaInicio, fechaFinal,
-										segmento);
-								dibujarClientesFrecuentes(fechaInicio,
-										fechaFinal, segmento);
-
-								if (segmento == 'general') {
-									dibujarLlamadasTotalesGeneral(fechaInicio,
-											fechaFinal);
-								} else if (segmento == 'online') {
-									dibujarLlamadasTotalesFamiliaSegmentos(
-											fechaInicio, fechaFinal, 'ATE');
-								}
-
+								dibujarGraficasPorPagina(fechaInicio,
+										fechaFinal, segmento)
+								/*
+								 * dibujarFamilias(fechaInicio, fechaFinal,
+								 * segmento); dibujarConcurrencia(fechaInicio,
+								 * fechaFinal); dibujarServicios(fechaInicio,
+								 * fechaFinal, segmento);
+								 * dibujarClientesFrecuentes(fechaInicio,
+								 * fechaFinal, segmento);
+								 * 
+								 * if (segmento == 'general') {
+								 * dibujarLlamadasTotalesGeneral(fechaInicio,
+								 * fechaFinal); } else if (segmento == 'online') {
+								 * dibujarLlamadasTotalesFamiliaSegmentos(
+								 * fechaInicio, fechaFinal, 'ATE'); }
+								 */
 								cambiarLabelFechaFiltro(picker.startDate,
 										picker.endDate);
 							});
@@ -131,19 +168,47 @@ $(document).ready(
 			$('#calendarioComparativo').on(
 					'apply.daterangepicker',
 					function(ev, picker) {
+						var fechasFiltro = $('#calendarioFiltro span').text().split("-");
+						var fechaInicioOriginal = fechasFiltro[0];
+						var fechaFinalOriginal = fechasFiltro[1];
 						var fechaInicioComparativo = picker.startDate
 								.format('YYYY/MM/DD');
 						var fechaFinalComparativo = picker.endDate
 								.format('YYYY/MM/DD');
-						dibujarLlamadasTotalesGeneralComparativo(
-								fechaInicioComparativo, fechaFinalComparativo);
+						var segmento = obtenerURL();
+
+						if (segmento == 'general') {
+							dibujarLlamadasTotalesGeneralComparativo(
+									fechaInicioComparativo,
+									fechaFinalComparativo);
+						} else if (segmento == 'online') {
+							dibujarLlamadasTotalesFamiliaSegmentoComparativo(
+									fechaInicioOriginal, fechaFinalOriginal,
+									fechaInicioComparativo,
+									fechaFinalComparativo, 'ATE');
+						} else if (segmento == 'offline') {
+							dibujarLlamadasTotalesFamiliaSegmentoComparativo(
+									fechaInicioOriginal, fechaFinalOriginal,
+									fechaInicioComparativo,
+									fechaFinalComparativo, 'OFFLINE');
+						} else if (segmento == 'pyme') {
+							dibujarLlamadasTotalesFamiliaSegmentoComparativo(
+									fechaInicioOriginal, fechaFinalOriginal,
+									fechaInicioComparativo,
+									fechaFinalComparativo, 'PYME');
+						} else if (segmento == 'pymeOffline') {
+							dibujarLlamadasTotalesFamiliaSegmentoComparativo(
+									fechaInicioOriginal, fechaFinalOriginal,
+									fechaInicioComparativo,
+									fechaFinalComparativo, 'PYME OFFLINE');
+						} else if (segmento == 'empresarial') {
+							dibujarLlamadasTotalesFamiliaSegmentoComparativo(
+									fechaInicioOriginal, fechaFinalOriginal,
+									fechaInicioComparativo,
+									fechaFinalComparativo, 'BANCA EMPRESARIAL');
+						}
 
 						cambiarLabelFechaComparativo(picker.startDate,
 								picker.endDate);
 					});
-			$('#calendarioComparativo').on('cancel.daterangepicker',
-					function(ev, picker) {
-						console.log("cancel event fired");
-					});
-
 		});

@@ -504,7 +504,7 @@ body .container.body .right_col {
 }
 
 .blue {
-    color: #3498DB
+    color: #3498DB !important;
 }
 
 .purple {

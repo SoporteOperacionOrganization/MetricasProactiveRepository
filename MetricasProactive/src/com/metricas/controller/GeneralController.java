@@ -80,7 +80,7 @@ public class GeneralController {
 		Map<String, Integer> servicios = new HashMap<String, Integer>();
 		servicios = segmentoService.obtenerLLamadasServicio(fechaInicio, fechaFinal, segmento);
 		String json = gson.toJson(servicios);
-		System.out.println("mis servicios" +servicios);
+		System.out.println("mis servicios" + servicios);
 		return json;
 	}
 
@@ -107,18 +107,30 @@ public class GeneralController {
 		// System.out.println("Json " + json);
 		return json;
 	}
-	
-	@RequestMapping(value = "/clientesFrecuentes", method = RequestMethod.GET, produces = "application/json") 
-    public @ResponseBody String clientesFrecuentesController(Model model, @RequestParam("fechaInicio") String fechaInicio, @RequestParam("fechaFinal") String fechaFinal,@RequestParam("segmento") String segmento) { 
 
-            Gson gson = new Gson(); 
-            Map<Integer, Integer> clientesFrecuentes = new HashMap<Integer,Integer>(); 
-            clientesFrecuentes = segmentoService.obtenerClientesFrecuentes(fechaInicio, fechaFinal,segmento); 
+	@RequestMapping(value = "/clientesFrecuentes", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody String clientesFrecuentesController(Model model,
+			@RequestParam("fechaInicio") String fechaInicio, @RequestParam("fechaFinal") String fechaFinal,
+			@RequestParam("segmento") String segmento) {
 
-            String json = gson.toJson(clientesFrecuentes); 
-            return json; 
-    } 
+		Gson gson = new Gson();
+		Map<Integer, Integer> clientesFrecuentes = new HashMap<Integer, Integer>();
+		clientesFrecuentes = segmentoService.obtenerClientesFrecuentes(fechaInicio, fechaFinal, segmento);
 
+		String json = gson.toJson(clientesFrecuentes);
+		return json;
+	}
 
+	@RequestMapping(value = "/obtenerLlamadasTotalesFamiliasSegmentoComparativo", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody String obtenerLlamadasTotalesFamiliasSegmentoComparativo(Model model,
+			@RequestParam("fechaInicioOriginal") String fechaInicioOriginal,
+			@RequestParam("fechaFinalOriginal") String fechaFinalOriginal,
+			@RequestParam("fechaInicio") String fechaInicio, @RequestParam("fechaFinal") String fechaFinal,
+			@RequestParam("segmento") String segmento) {
+
+		String json = segmentoService.obtenerLlamadasTotalesFamiliasSegmentoComparacion(fechaInicioOriginal,
+				fechaFinalOriginal, fechaInicio, fechaFinal, segmento);
+		return json;
+	}
 
 }

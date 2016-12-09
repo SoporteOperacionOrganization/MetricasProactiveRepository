@@ -54,7 +54,10 @@
 						<div class="x_panel">
 							<div class="row x_title">
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<h2>Top 10 llamadas totales por familia</h2>
+									<h2>
+										Llamadas totales por familia<span id="totalLlamadas"
+											class="blue"><b></b></span>
+									</h2>
 									<div class="clearfix"></div>
 								</div>
 								<div class="col-md-6 col-sm-6 col-xs-12">
@@ -81,6 +84,9 @@
 							</div>
 
 							<div class="x_content">
+								<div id="diferenciaLlamadas">
+									<span><i class="green"><i class="fa"></i></i></span>
+								</div>
 								<div id="LlamadasTotalesPorFamiliaSegmentos"
 									style="height: 350px;"></div>
 							</div>
@@ -88,7 +94,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-4 col-sm-4 col-xs-12">
+					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel tile fixed_height_320">
 							<div class="x_title">
 								<h2>Servicios</h2>
@@ -100,7 +106,7 @@
 						</div>
 					</div>
 
-					<div class="col-md-4 col-sm-4 col-xs-12 ">
+					<div class="col-md-6 col-sm-6 col-xs-12 ">
 						<div class="x_panel tile fixed_height_320">
 
 							<div class="x_title">
@@ -163,12 +169,12 @@
 
 						</div>
 					</div>
-					<div class="col-md-4 col-sm-4 col-xs-12">
+					<div class="col-md-6 col-sm-6 col-xs-12">
 						<div class="x_panel">
 							<div class="x_title">
-								<h2>Porcentaje (
-								<span id="porcen"> </span>
-								 %)</h2>
+								<h2>
+									Porcentaje ( <span id="porcen"> </span> %)
+								</h2>
 								<div class="clearfix"></div>
 							</div>
 							<div class="x_content">
