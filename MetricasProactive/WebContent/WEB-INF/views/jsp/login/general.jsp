@@ -158,7 +158,7 @@
 												<div id="progreso2"
 													class="progress-bar progress-bar-success"
 													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style=""></div>
+													aria-valuemax="100" style="" ></div>
 											</div>
 
 											<div class="">

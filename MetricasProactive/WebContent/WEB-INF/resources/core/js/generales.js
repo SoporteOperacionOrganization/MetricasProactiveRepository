@@ -218,3 +218,16 @@ $(document).ready(
 								picker.endDate);
 					});
 		});
+
+$(function() { 
+	   $("#progreso1").addClass("progress-bar-progreso1");
+	   $("#progreso2").addClass("progress-bar-progreso2");
+	   $("#progreso3").addClass("progress-bar-progreso3");
+	   $("#progreso4").addClass("progress-bar-progreso4");
+	   $("#progreso5").addClass("progress-bar-progreso5");
+	   
+	   
+	   
+	});
+	
+	
