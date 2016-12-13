@@ -446,28 +446,33 @@ case "general":
 	break;
 case "empresarial":
 	var GeneralLlamadasBarras2 = echarts.init(document
-			.getElementById('LlamadasTotalesPorFamiliaSegmentos'),
-			theme);
+			.getElementById('LlamadasTotalesPorFamiliaSegmentos'), theme);
+	var echartMiniPie = echarts.init(
+			document.getElementById('echart_mini_pie'), theme);
 	break;
 case "online":
 	var GeneralLlamadasBarras2 = echarts.init(document
-			.getElementById('LlamadasTotalesPorFamiliaSegmentos'),
-			theme);
+			.getElementById('LlamadasTotalesPorFamiliaSegmentos'), theme);
+	var echartMiniPie = echarts.init(
+			document.getElementById('echart_mini_pie'), theme);
 	break;
 case "offline":
 	var GeneralLlamadasBarras2 = echarts.init(document
-			.getElementById('LlamadasTotalesPorFamiliaSegmentos'),
-			theme);
+			.getElementById('LlamadasTotalesPorFamiliaSegmentos'), theme);
+	var echartMiniPie = echarts.init(
+			document.getElementById('echart_mini_pie'), theme);
 	break;
 case "pyme":
 	var GeneralLlamadasBarras2 = echarts.init(document
-			.getElementById('LlamadasTotalesPorFamiliaSegmentos'),
-			theme);
+			.getElementById('LlamadasTotalesPorFamiliaSegmentos'), theme);
+	var echartMiniPie = echarts.init(
+			document.getElementById('echart_mini_pie'), theme);
 	break;
 case "pymeOffline":
 	var GeneralLlamadasBarras2 = echarts.init(document
-			.getElementById('LlamadasTotalesPorFamiliaSegmentos'),
-			theme);
+			.getElementById('LlamadasTotalesPorFamiliaSegmentos'), theme);
+	var echartMiniPie = echarts.init(
+			document.getElementById('echart_mini_pie'), theme);
 	break;
 default:
 	break;
@@ -486,111 +491,140 @@ function dibujarLlamadasTotalesGeneral(fechaInicioP, fechaFinalP) {
 				success : function(data) {
 					$("#comparativoLlamadasTotalesSegmentos").val(
 							JSON.stringify(data));
-					var arrayValues = [];
-					var cont = 0;
-					var totalLlamadas = 0;
-					$.each(data, function(k, v) {
-						arrayValues[cont] = v;
-						totalLlamadas = totalLlamadas + v;
-						cont = cont + 1;
-					});
-					
-					$("#diferenciaLlamadas span i").removeClass("fa-arrow-up");
-					$("#diferenciaLlamadas span i").removeClass("fa-arrow-down");
-					$("#diferenciaLlamadas span i").removeClass("fa-arrows-h");
-					$("#diferenciaLlamadas span i i").text('');
-					
-					GeneralLlamadasBarras2 = echarts.init(document
-							.getElementById('LlamadasTotalesPorSegmentos'),
-							theme);
-					$("#totalLlamadas").text(' '+totalLlamadas);
-					var valorAte = data['ATE'];
-					var valorBE = data['BANCA EMPRESARIAL'];
-					var valorPyme = data['PYME'];
-					var valorPymeOffline = data['PYME OFFLINE'];
-					var valorOffline = data['OFFLINE'];
-					if (valorAte == null) {
-						valorAte = 0;
-					}
-					if (valorBE == null) {
-						valorBE = 0;
-					}
-					if (valorPyme == null) {
-						valorPyme = 0;
-					}
-					if (valorPymeOffline == null) {
-						valorPymeOffline = 0;
-					}
-					if (valorOffline == null) {
-						valorOffline = 0;
-					}
+					if (JSON.stringify(data) === "{}") {
+						$("#diferenciaLlamadas").css("display", "none");
+						$("#LlamadasTotalesPorSegmentos")
+								.css("display", "none");
+						$("#LlamadasTotalesPorSegmentosSinDatos").css(
+								"display", "block");
+						$("#calendarioComparativo").parent().parent().parent()
+								.css("display", "none");
+						$("#totalLlamadas").text(' 0');
+					} else {
+						$("#diferenciaLlamadas").css("display", "block");
+						$("#LlamadasTotalesPorSegmentos").css("display",
+								"block");
+						$("#LlamadasTotalesPorSegmentosSinDatos").css(
+								"display", "none");
+						$("#calendarioComparativo").parent().parent().parent()
+								.css("display", "block");
 
-					GeneralLlamadasBarras2.setOption({
-						tooltip : {
-							trigger : 'axis'
-						},
-						toolbox : {
-							show : true,
-							feature : {
-								dataView : {
-									show : true,
-									readOnly : false,
-									title : "Ver como texto",
-									lang : [ "Ver como texto", "Cerrar",
-											"Ver como gráfica", ],
-								},
-								saveAsImage : {
-									show : true,
-									title : 'Descargar'
-								}
-							}
-						},
-						calculable : true,
-						legend : {
-							data : [ 'Llamadas', 'Comparativo' ],
-							y : 'bottom'
-						},
-						xAxis : [ {
-							type : 'category',
-							// data : Object.keys(data)
-							data : [ 'Online', 'B.E.', 'Pyme', 'Pyme Off',
-									'Offline' ]
-						} ],
-						yAxis : [ {
-							type : 'value',
-							name : 'Total',
-							axisLabel : {
-								formatter : '{value}'
-							}
-						}, {
-							type : 'value',
-							name : 'Total',
-							axisLabel : {
-								formatter : '{value}'
-							}
-						} ],
-						series : [
-								{
-									name : 'Llamadas',
-									type : 'bar',
-									// data : [2,5,10,8,15]
-									data : [ valorAte, valorBE, valorPyme,
-											valorPymeOffline, valorOffline ],
-									itemStyle : {
-										normal : {
-											label : {
+						var arrayValues = [];
+						var cont = 0;
+						var totalLlamadas = 0;
+						$.each(data, function(k, v) {
+							arrayValues[cont] = v;
+							totalLlamadas = totalLlamadas + v;
+							cont = cont + 1;
+						});
+
+						$("#diferenciaLlamadas span i").removeClass(
+								"fa-arrow-up");
+						$("#diferenciaLlamadas span i").removeClass(
+								"fa-arrow-down");
+						$("#diferenciaLlamadas span i").removeClass(
+								"fa-arrows-h");
+						$("#diferenciaLlamadas span i i").text('');
+
+						GeneralLlamadasBarras2 = echarts.init(document
+								.getElementById('LlamadasTotalesPorSegmentos'),
+								theme);
+						$("#totalLlamadas").text(' ' + totalLlamadas);
+						var valorAte = data['ATE'];
+						var valorBE = data['BANCA EMPRESARIAL'];
+						var valorPyme = data['PYME'];
+						var valorPymeOffline = data['PYME OFFLINE'];
+						var valorOffline = data['OFFLINE'];
+						if (valorAte == null) {
+							valorAte = 0;
+						}
+						if (valorBE == null) {
+							valorBE = 0;
+						}
+						if (valorPyme == null) {
+							valorPyme = 0;
+						}
+						if (valorPymeOffline == null) {
+							valorPymeOffline = 0;
+						}
+						if (valorOffline == null) {
+							valorOffline = 0;
+						}
+
+						GeneralLlamadasBarras2
+								.setOption({
+									tooltip : {
+										trigger : 'axis'
+									},
+									toolbox : {
+										show : true,
+										feature : {
+											dataView : {
 												show : true,
-												position : 'top'
+												readOnly : false,
+												title : "Ver como texto",
+												lang : [ "Ver como texto",
+														"Cerrar",
+														"Ver como gráfica", ],
+											},
+											saveAsImage : {
+												show : true,
+												title : 'Descargar'
 											}
 										}
 									},
-								}, {
-									name : 'Comparativo',
-									type : 'line',
-									yAxisIndex : 1,
-									data : [ 0, 0, 0, 0, 0 ]
-								} ]
-					});
+									calculable : true,
+									legend : {
+										data : [ 'Llamadas', 'Comparativo' ],
+										y : 'bottom'
+									},
+									xAxis : [ {
+										type : 'category',
+										// data : Object.keys(data)
+										data : [ 'Online', 'B.E.', 'Pyme',
+												'Pyme Off', 'Offline' ]
+									} ],
+									yAxis : [ {
+										type : 'value',
+										name : 'Total filtro',
+										axisLabel : {
+											formatter : '{value}'
+										}
+									}, {
+										type : 'value',
+										name : 'Total comparativo',
+										axisLabel : {
+											formatter : '{value}'
+										}
+									} ],
+									series : [
+											{
+												name : 'Llamadas',
+												type : 'bar',
+												// data : [2,5,10,8,15]
+												data : [ valorAte, valorBE,
+														valorPyme,
+														valorPymeOffline,
+														valorOffline ],
+												itemStyle : {
+													normal : {
+														label : {
+															show : true,
+															position : 'top'
+														}
+													}
+												},
+												barMaxWidth : '70',
+											}, {
+												name : 'Comparativo',
+												type : 'line',
+												yAxisIndex : 1,
+												data : [ 0, 0, 0, 0, 0 ]
+											} ]
+								});
+
+					}
+
 				}
 			});
 }
@@ -627,12 +661,13 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioP, fechaFinalP) {
 				totalOriginal = totalOriginal + v;
 				conteo = conteo + 1;
 			});
-			porcentajeDiferencia = (totalComparativo - totalOriginal) / totalOriginal;
-			
+			porcentajeDiferencia = (totalComparativo - totalOriginal)
+					/ totalOriginal;
+
 			estilosPorcentajes(porcentajeDiferencia);
-			
+
 			$("#diferenciaLlamadas span i i").text(
-					' '+porcentajeDiferencia.toFixed(2) + " %");
+					' ' + porcentajeDiferencia.toFixed(2) + " %");
 
 			GeneralLlamadasBarras2 = echarts.init(document
 					.getElementById('LlamadasTotalesPorSegmentos'), theme);
@@ -713,13 +748,13 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioP, fechaFinalP) {
 				} ],
 				yAxis : [ {
 					type : 'value',
-					name : 'Total',
+					name : 'Total filtro',
 					axisLabel : {
 						formatter : '{value}'
 					}
 				}, {
 					type : 'value',
-					name : 'Total',
+					name : 'Total comparativo',
 					axisLabel : {
 						formatter : '{value}'
 					}
@@ -738,6 +773,7 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioP, fechaFinalP) {
 									}
 								}
 							},
+							barMaxWidth : '70',
 						},
 						{
 							name : 'Comparativo',
@@ -760,113 +796,136 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioP, fechaFinalP) {
 
 }
 
-
 function dibujarLlamadasTotalesFamiliaSegmentos(fechaInicioP, fechaFinalP,
 		segmento) {
-	$.ajax({
-		url : 'obtenerLlamadasTotalesFamiliasSegmento',
-		dataType : "json",
-		contentType : "application/json;charset=utf-8",
-		data : {
-			fechaInicio : fechaInicioP,
-			fechaFinal : fechaFinalP,
-			segmento : segmento
-		},
-		success : function(data) {
-
-			$("#comparativoLlamadasTotalesFamiliasSegmentos").val(
-					JSON.stringify(data));
-			var totalLlamadas = 0;
-			var arrayValues = [];
-			var cont = 0;
-			$.each(data, function(k, v) {
-				arrayValues[cont] = v;
-				totalLlamadas = totalLlamadas + v;
-				cont = cont + 1;
-			});
-			$("#totalLlamadas").text(' '+totalLlamadas);
-			$("#diferenciaLlamadas span i").removeClass("fa-arrow-up");
-			$("#diferenciaLlamadas span i").removeClass("fa-arrow-down");
-			$("#diferenciaLlamadas span i").removeClass("fa-arrows-h");
-			$("#diferenciaLlamadas span i i").text('');
-
-			GeneralLlamadasBarras2 = echarts.init(document
-					.getElementById('LlamadasTotalesPorFamiliaSegmentos'),
-					theme);
-
-			GeneralLlamadasBarras2.setOption({
-				tooltip : {
-					trigger : 'axis'
+	$
+			.ajax({
+				url : 'obtenerLlamadasTotalesFamiliasSegmento',
+				dataType : "json",
+				contentType : "application/json;charset=utf-8",
+				data : {
+					fechaInicio : fechaInicioP,
+					fechaFinal : fechaFinalP,
+					segmento : segmento
 				},
-				toolbox : {
-					show : true,
-					feature : {
-						dataView : {
-							show : true,
-							readOnly : false,
-							title : "Ver como texto",
-							lang : [ "Ver como texto", "Cerrar",
-									"Ver como gráfica", ],
-						},
-						saveAsImage : {
-							show : true,
-							title : 'Save'
-						}
-					}
-				},
-				calculable : true,
-				legend : {
-					data : [ 'Llamadas', 'Comparativo' ],
-					y : 'bottom'
-				},
-				xAxis : [ {
-					type : 'category',
-					data : Object.keys(data),
-					axisLabel : {
-						interval: 0,
-						rotate: 25,
-						textStyle : {
-							fontSize : 9
-						}
-					}
-				} ],
-				yAxis : [ {
-					type : 'value',
-					name : 'Total filtro',
-					axisLabel : {
-						formatter : '{value}'
-					}
-				}, {
-					type : 'value',
-					name : 'Total comparativo',
-					axisLabel : {
-						formatter : '{value}'
-					}
-				} ],
-				series : [ {
-					name : 'Llamadas',
-					type : 'bar',
-					// data : [2,5,10,8,15]
-					// data:[valorAte,valorBE,valorPyme,valorPymeOffline,valorOffline]
-					data : arrayValues,
-					itemStyle : {
-						normal : {
-							label : {
+				success : function(data) {
+					$("#comparativoLlamadasTotalesFamiliasSegmentos").val(
+							JSON.stringify(data));
+					if (JSON.stringify(data) === "{}") {
+						$("#diferenciaLlamadas").css("display", "none");
+						$("#LlamadasTotalesPorFamiliaSegmentos").css("display",
+								"none");
+						$("#LlamadasTotalesPorFamiliaSegmentosSinDatos").css(
+								"display", "block");
+						$("#calendarioComparativo").parent().parent().parent()
+								.css("display", "none");
+						$("#totalLlamadas").text(' 0');
+					} else {
+						$("#diferenciaLlamadas").css("display", "block");
+						$("#LlamadasTotalesPorFamiliaSegmentos").css("display",
+								"block");
+						$("#LlamadasTotalesPorFamiliaSegmentosSinDatos").css(
+								"display", "none");
+						$("#calendarioComparativo").parent().parent().parent()
+								.css("display", "block");
+
+						var totalLlamadas = 0;
+						var arrayValues = [];
+						var cont = 0;
+						$.each(data, function(k, v) {
+							arrayValues[cont] = v;
+							totalLlamadas = totalLlamadas + v;
+							cont = cont + 1;
+						});
+						$("#totalLlamadas").text(' ' + totalLlamadas);
+						$("#diferenciaLlamadas span i").removeClass(
+								"fa-arrow-up");
+						$("#diferenciaLlamadas span i").removeClass(
+								"fa-arrow-down");
+						$("#diferenciaLlamadas span i").removeClass(
+								"fa-arrows-h");
+						$("#diferenciaLlamadas span i i").text('');
+
+						GeneralLlamadasBarras2 = echarts
+								.init(
+										document
+												.getElementById('LlamadasTotalesPorFamiliaSegmentos'),
+										theme);
+
+						GeneralLlamadasBarras2.setOption({
+							tooltip : {
+								trigger : 'axis'
+							},
+							toolbox : {
 								show : true,
-								position : 'top'
-							}
-						}
-					},
-				}, {
-					name : 'Comparativo',
-					type : 'line',
-					yAxisIndex : 1,
-					data : [ ]
-				} ]
+								feature : {
+									dataView : {
+										show : true,
+										readOnly : false,
+										title : "Ver como texto",
+										lang : [ "Ver como texto", "Cerrar",
+												"Ver como gráfica", ],
+									},
+									saveAsImage : {
+										show : true,
+										title : 'Save'
+									}
+								}
+							},
+							calculable : true,
+							legend : {
+								data : [ 'Llamadas', 'Comparativo' ],
+								y : 'bottom'
+							},
+							xAxis : [ {
+								type : 'category',
+								data : Object.keys(data),
+								axisLabel : {
+									interval : 0,
+									rotate : 25,
+									textStyle : {
+										fontSize : 9
+									}
+								}
+							} ],
+							yAxis : [ {
+								type : 'value',
+								name : 'Total filtro',
+								axisLabel : {
+									formatter : '{value}'
+								}
+							}, {
+								type : 'value',
+								name : 'Total comparativo',
+								axisLabel : {
+									formatter : '{value}'
+								}
+							} ],
+							series : [ {
+								name : 'Llamadas',
+								type : 'bar',
+								// data : [2,5,10,8,15]
+								// data:[valorAte,valorBE,valorPyme,valorPymeOffline,valorOffline]
+								data : arrayValues,
+								itemStyle : {
+									normal : {
+										label : {
+											show : true,
+											position : 'top'
+										}
+									}
+								},
+								barMaxWidth : '70',
+							}, {
+								name : 'Comparativo',
+								type : 'line',
+								yAxisIndex : 1,
+								data : []
+							} ]
+						});
+					}
+				}
 			});
-
-		}
-	});
 }
 
 function dibujarLlamadasTotalesFamiliaSegmentoComparativo(fechaInicioOriginalP,
@@ -892,108 +951,110 @@ function dibujarLlamadasTotalesFamiliaSegmentoComparativo(fechaInicioOriginalP,
 					var totalLlamadas = 0;
 					cont = 0;
 					var totalComparativo = 0;
-                    var porcentajeDiferencia = 0;
+					var porcentajeDiferencia = 0;
 					for ( var key in data) {
 						if (data.hasOwnProperty(key)) {
 							arrayEtiquetas[cont] = Object.keys(data)[cont];
 							arrayValoresFiltro[cont] = data[Object.keys(data)[cont]][0];
 							totalLlamadas = totalLlamadas
 									+ data[Object.keys(data)[cont]][0];
-							totalComparativo = totalComparativo + data[Object.keys(data)[cont]][1];
+							totalComparativo = totalComparativo
+									+ data[Object.keys(data)[cont]][1];
 							arrayValoresComparativo[cont] = data[Object
 									.keys(data)[cont]][1];
 							cont = cont + 1;
 						}
 					}
-					porcentajeDiferencia = (totalComparativo - totalLlamadas) / totalLlamadas;
-					
+					porcentajeDiferencia = (totalComparativo - totalLlamadas)
+							/ totalLlamadas;
+
 					estilosPorcentajes(porcentajeDiferencia);
-					
+
 					$("#diferenciaLlamadas span i i").text(
-							' '+porcentajeDiferencia.toFixed(2) + " %");
-					
+							' ' + porcentajeDiferencia.toFixed(2) + " %");
+
 					GeneralLlamadasBarras2 = echarts
 							.init(
 									document
 											.getElementById('LlamadasTotalesPorFamiliaSegmentos'),
 									theme);
-					$("#totalLlamadas").text(' '+totalLlamadas);
-					GeneralLlamadasBarras2
-							.setOption({
-								tooltip : {
-									trigger : 'axis'
-								},
-								toolbox : {
+					$("#totalLlamadas").text(' ' + totalLlamadas);
+					GeneralLlamadasBarras2.setOption({
+						tooltip : {
+							trigger : 'axis'
+						},
+						toolbox : {
+							show : true,
+							feature : {
+								dataView : {
 									show : true,
-									feature : {
-										dataView : {
-											show : true,
-											readOnly : false,
-											title : "Ver como texto",
-											lang : [ "Ver como texto", "Cerrar",
-													"Ver como gráfica", ],
-										},
-										saveAsImage : {
-											show : true,
-											title : 'Descargar'
-										}
-									}
+									readOnly : false,
+									title : "Ver como texto",
+									lang : [ "Ver como texto", "Cerrar",
+											"Ver como gráfica", ],
 								},
-								calculable : true,
-								legend : {
-									data : [ 'Llamadas', 'Comparativo' ],
-									y : 'bottom'
-								},
-								xAxis : [ {
-									type : 'category',
-									data : arrayEtiquetas,
-									axisLabel : {
-										interval: 0,
-										rotate: 25,
-										textStyle : {
-											fontSize : 9
-										}
+								saveAsImage : {
+									show : true,
+									title : 'Descargar'
+								}
+							}
+						},
+						calculable : true,
+						legend : {
+							data : [ 'Llamadas', 'Comparativo' ],
+							y : 'bottom'
+						},
+						xAxis : [ {
+							type : 'category',
+							data : arrayEtiquetas,
+							axisLabel : {
+								interval : 0,
+								rotate : 25,
+								textStyle : {
+									fontSize : 9
+								}
+							}
+						// data: [Object.keys(data)[0],
+						// Object.keys(data)[1], Object.keys(data)[2],
+						// Object.keys(data)[3], Object.keys(data)[4],
+						// Object.keys(data)[5], Object.keys(data)[6],
+						// Object.keys(data)[7], Object.keys(data)[8],
+						// Object.keys(data)[9]]
+						} ],
+						yAxis : [ {
+							type : 'value',
+							name : 'Total filtro',
+							axisLabel : {
+								formatter : '{value}'
+							}
+						}, {
+							type : 'value',
+							name : 'Total comparativo',
+							axisLabel : {
+								formatter : '{value}'
+							}
+						} ],
+						series : [ {
+							name : 'Llamadas',
+							type : 'bar',
+							data : arrayValoresFiltro,
+							itemStyle : {
+								normal : {
+									label : {
+										show : true,
+										position : 'top'
 									}
-								// data: [Object.keys(data)[0],
-								// Object.keys(data)[1], Object.keys(data)[2],
-								// Object.keys(data)[3], Object.keys(data)[4],
-								// Object.keys(data)[5], Object.keys(data)[6],
-								// Object.keys(data)[7], Object.keys(data)[8],
-								// Object.keys(data)[9]]
-								} ],
-								yAxis : [ {
-									type : 'value',
-									name : 'Total filtro',
-									axisLabel : {
-										formatter : '{value}'
-									}
-								}, {
-									type : 'value',
-									name : 'Total comparativo',
-									axisLabel : {
-										formatter : '{value}'
-									}
-								} ],
-								series : [ {
-									name : 'Llamadas',
-									type : 'bar',
-									data : arrayValoresFiltro,
-									itemStyle : {
-										normal : {
-											label : {
-												show : true,
-												position : 'top'
-											}
-										}
-									},
-								}, {
-									name : 'Comparativo',
-									type : 'line',
-									stack : 'area',
-									yAxisIndex : 1,
-									data : arrayValoresComparativo
-								} ]
-							});
+								}
+							},
+							barMaxWidth : '70',
+						}, {
+							name : 'Comparativo',
+							type : 'line',
+							stack : 'area',
+							yAxisIndex : 1,
+							data : arrayValoresComparativo
+						} ]
+					});
 				}
 			});
 }
@@ -1009,128 +1070,149 @@ function dibujarFamilias(fechaInicioP, fechaFinalP, segmentoP) {
 			segmento : segmentoP
 		},
 		success : function(data) {
+			if (JSON.stringify(data) === "{}") {
+				$("#llamadasFamilia").css("display", "none");
+				$("#llamadasFamiliaSinDatos").css("display", "block");
+			} else {
+				$("#llamadasFamilia").css("display", "block");
+				$("#llamadasFamiliaSinDatos").css("display", "none");
 
-			var arrayTemp = [];
-			var arrayValores = [];
-			var arrayEtiquetas = [];
+				var arrayTemp = [];
+				var arrayValores = [];
+				var arrayEtiquetas = [];
 
-			var conteo = 0;
+				var conteo = 0;
 
-			for (a in data) {
-				arrayTemp.push([ a, data[a] ])
+				for (a in data) {
+					arrayTemp.push([ a, data[a] ])
+				}
+				arrayTemp.sort(function(a, b) {
+					return a[1] - b[1]
+				});
+				arrayTemp.reverse();
+
+				for (var a = 0, b/* ,txt='' */; b = arrayTemp[a]; ++a) {
+					arrayValores[a] = b[1];
+					arrayEtiquetas[a] = b[0];
+				}
+				for (i = 0; i <= arrayValores.length; i++) {
+					var segmento = arrayEtiquetas[i].toString().split("-");
+					$("#sparkline" + (i + 1) + " .sparkline-familia").text(
+							segmento[0]);
+					$("#sparkline" + (i + 1) + " .sparkline-segmento").text(
+							segmento[1]);
+					$("#sparkline" + (i + 1) + " .sparkline-contenido h2")
+							.text(arrayValores[i]);
+				}
+
 			}
-			arrayTemp.sort(function(a, b) {
-				return a[1] - b[1]
-			});
-			arrayTemp.reverse();
 
-			for (var a = 0, b/* ,txt='' */; b = arrayTemp[a]; ++a) {
-				arrayValores[a] = b[1];
-				arrayEtiquetas[a] = b[0];
-			}
-			for (i = 0; i <= arrayValores.length; i++) {
-				var segmento = arrayEtiquetas[i].toString().split("-");
-				$("#sparkline" + (i + 1) + " .sparkline-familia").text(
-						segmento[0]);
-				$("#sparkline" + (i + 1) + " .sparkline-segmento").text(
-						segmento[1]);
-				$("#sparkline" + (i + 1) + " .sparkline-contenido h2").text(
-						arrayValores[i]);
-			}
 		}
 	});
 
 }
 
 function dibujarServicios(fechaInicioP, fechaFinalP) {
-	$.ajax({
-		url : 'servicios',
-		dataType : "json",
-		contentType : "application/json;charset=utf-8",
-		data : {
-			fechaInicio : fechaInicioP,
-			fechaFinal : fechaFinalP,
-			segmento : obtenerURL()
-		},
-		success : function(data) {
-
-			var arrayValues = [];
-			var cont = 0;
-			$.each(data, function(k, v) {
-				arrayValues[cont] = v;
-				cont = cont + 1;
-			});
-			var arrayNames = Object.keys(data);
-
-			echartPie = echarts.init(document.getElementById('echart_pie'),
-					theme);
-
-			echartPie.setOption({
-				tooltip : {
-					trigger : 'item',
-					formatter : "{a} <br/>{b} : {c} ({d}%)"
+	$
+			.ajax({
+				url : 'servicios',
+				dataType : "json",
+				contentType : "application/json;charset=utf-8",
+				data : {
+					fechaInicio : fechaInicioP,
+					fechaFinal : fechaFinalP,
+					segmento : obtenerURL()
 				},
-				legend : {
-					x : 'left',
-					y : 'top',
-					orient : 'vertical'
-				},
-				toolbox : {
-					show : true,
-					feature : {
-						mark : {
-							show : true
-						},
-						dataView : {
-							show : true
-						},
-						saveAsImage : {
-							show : true,
-							title : "Save"
-						}
+				success : function(data) {
+
+					if (JSON.stringify(data) === "{}") {
+						$("#echart_pie").parent().parent().removeClass(
+								"fixed_height_320");
+						$("#echart_pie").css("display", "none");
+						$("#echart_pieSinDatos").css("display", "block");
+					} else {
+						$("#echart_pie").parent().parent().addClass(
+								"fixed_height_320");
+						$("#echart_pie").css("display", "block");
+						$("#echart_pieSinDatos").css("display", "none");
+
+						var arrayValues = [];
+						var cont = 0;
+						$.each(data, function(k, v) {
+							arrayValues[cont] = v;
+							cont = cont + 1;
+						});
+						var arrayNames = Object.keys(data);
+
+						echartPie = echarts.init(document
+								.getElementById('echart_pie'), theme);
+
+						echartPie.setOption({
+							tooltip : {
+								trigger : 'item',
+								formatter : "{a} <br/>{b} : {c} ({d}%)"
+							},
+							legend : {
+								x : 'left',
+								y : 'top',
+								orient : 'vertical'
+							},
+							toolbox : {
+								show : true,
+								feature : {
+									mark : {
+										show : true
+									},
+									dataView : {
+										show : true
+									},
+									saveAsImage : {
+										show : true,
+										title : "Save"
+									}
+								}
+							},
+							calculable : true,
+							series : [ {
+								type : 'pie',
+								radius : '40%',
+								center : [ '50%', '40%' ],
+								data : [ {
+									value : arrayValues[0],
+									name : arrayNames[0]
+								}, {
+									value : arrayValues[1],
+									name : arrayNames[1]
+								}, {
+									value : arrayValues[2],
+									name : arrayNames[2]
+								}, {
+									value : arrayValues[3],
+									name : arrayNames[3]
+								}, {
+									value : arrayValues[4],
+									name : arrayNames[4]
+								}, {
+									value : arrayValues[5],
+									name : arrayNames[5]
+								}, {
+									value : arrayValues[6],
+									name : arrayNames[6]
+								}, {
+									value : arrayValues[7],
+									name : arrayNames[7]
+								}, {
+									value : arrayValues[8],
+									name : arrayNames[8]
+								}, {
+									value : arrayValues[9],
+									name : arrayNames[9]
+								} ]
+							} ]
+						});
 					}
-				},
-				calculable : true,
-				series : [ {
-					type : 'pie',
-					radius : '40%',
-					center : [ '50%', '40%' ],
-					data : [ {
-						value : arrayValues[0],
-						name : arrayNames[0]
-					}, {
-						value : arrayValues[1],
-						name : arrayNames[1]
-					}, {
-						value : arrayValues[2],
-						name : arrayNames[2]
-					}, {
-						value : arrayValues[3],
-						name : arrayNames[3]
-					}, {
-						value : arrayValues[4],
-						name : arrayNames[4]
-					}, {
-						value : arrayValues[5],
-						name : arrayNames[5]
-					}, {
-						value : arrayValues[6],
-						name : arrayNames[6]
-					}, {
-						value : arrayValues[7],
-						name : arrayNames[7]
-					}, {
-						value : arrayValues[8],
-						name : arrayNames[8]
-					}, {
-						value : arrayValues[9],
-						name : arrayNames[9]
-					} ]
-				} ]
+				}
 			});
-
-		}
-	});
 }
 
 function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
@@ -1145,135 +1227,141 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 		},
 
 		success : function(data) {
+			if (JSON.stringify(data) === "{}") {
+				$("#echart_mini_pie").css("display", "none");
+				$("#echart_mini_pieSinDatos").css("display", "block");
+				$("#porcen").text(' 0');
+			} else {
+				$("#echart_mini_pie").css("display", "block");
+				$("#echart_mini_pieSinDatos").css("display", "none");
 
-			var arrayValues = [];
-			var porcentaje = [];
-			var cont = 0;
-			var total = 0;
+				var arrayValues = [];
+				var porcentaje = [];
+				var cont = 0;
+				var total = 0;
 
-			$.each(data, function(k, v) {
-				arrayValues[cont] = v;
-				cont = cont + 1;
-				total = total + v;
+				$.each(data, function(k, v) {
+					arrayValues[cont] = v;
+					cont = cont + 1;
+					total = total + v;
 
-			});
+				});
 
-			var arrayNames = Object.keys(data);
-			var nameSegmento = "";
+				var arrayNames = Object.keys(data);
+				var nameSegmento = "";
 
-			switch (obtenerURL()) {
-			case 'online':
-				nameSegmento = "ATE"
-				break;
-			case 'offline':
-				nameSegmento = "OFFLINE"
-				break;
-			case 'pyme':
-				nameSegmento = "PYME"
-				break;
-			case 'empresarial':
-				nameSegmento = "BANCA EMPRESARIAL"
-				break;
-			case 'pymeOffline':
-				nameSegmento = "PYME OFFLINE"
-				break;
-			}
-
-			for (i = 0; i < arrayValues.length; i++) {
-				if (arrayNames[i] == nameSegmento) {
-					var seg = arrayNames[i];
-					var concu = (arrayValues[i] * 100 / total).toFixed(2);
-					var vacio = (100 - concu).toFixed(2);
+				switch (obtenerURL()) {
+				case 'online':
+					nameSegmento = "ATE"
+					break;
+				case 'offline':
+					nameSegmento = "OFFLINE"
+					break;
+				case 'pyme':
+					nameSegmento = "PYME"
+					break;
+				case 'empresarial':
+					nameSegmento = "BANCA EMPRESARIAL"
+					break;
+				case 'pymeOffline':
+					nameSegmento = "PYME OFFLINE"
+					break;
 				}
-			}
-			document.getElementById("porcen").innerHTML = concu;
 
-			var dataStyle = {
-				normal : {
-					label : {
-						show : false
-					},
-					labelLine : {
-						show : false
+				for (i = 0; i < arrayValues.length; i++) {
+					if (arrayNames[i] == nameSegmento) {
+						var seg = arrayNames[i];
+						var concu = (arrayValues[i] * 100 / total).toFixed(2);
+						var vacio = (100 - concu).toFixed(2);
 					}
 				}
-			};
+				document.getElementById("porcen").innerHTML = concu;
 
-			var placeHolderStyle = {
-				normal : {
-					color : 'rgba(0,0,0,0)',
-					label : {
-						show : false
-					},
-					labelLine : {
-						show : false
-					}
-				},
-				emphasis : {
-					color : 'rgba(0,0,0,0)'
-				}
-			};
-
-			var echartMiniPie = echarts.init(document
-					.getElementById('echart_mini_pie'), theme);
-
-			echartMiniPie.setOption({
-				title : {
-					text : seg,
-
-					x : 'center',
-					y : 'center',
-					itemGap : 20,
-					textStyle : {
-						color : 'rgba(30,144,255,0.8)',
-						fontSize : 12,
-						fontWeight : 'bolder'
-					}
-				},
-				tooltip : {
-					show : true,
-					formatter : "{b} : {c} (%)"
-				},
-				legend : {
-					orient : 'vertical',
-					x : 10,
-					y : 213,
-					itemGap : 12,
-					data : [ 'Llamadas' ],
-				},
-				toolbox : {
-					show : false,
-					feature : {
-						mark : {
+				var dataStyle = {
+					normal : {
+						label : {
 							show : false
 						},
-						saveAsImage : {
-							show : true,
-							title : "Save "
+						labelLine : {
+							show : false
 						}
 					}
-				},
-				series : [ {
-					name : '',
-					type : 'pie',
-					clockWise : false,
-					radius : [ 65, 90 ],
-					itemStyle : dataStyle,
-					data : [ {
-						value : concu,
-						name : 'Llamadas'
-					}, {
-						value : vacio,
-						name : '',
-						itemStyle : placeHolderStyle
-					} ]
-				} ]
-			});
+				};
 
+				var placeHolderStyle = {
+					normal : {
+						color : 'rgba(0,0,0,0)',
+						label : {
+							show : false
+						},
+						labelLine : {
+							show : false
+						}
+					},
+					emphasis : {
+						color : 'rgba(0,0,0,0)'
+					}
+				};
+
+				echartMiniPie = echarts.init(document
+						.getElementById('echart_mini_pie'), theme);
+
+				echartMiniPie.setOption({
+					title : {
+						text : seg,
+
+						x : 'center',
+						y : 'center',
+						itemGap : 20,
+						textStyle : {
+							color : 'rgba(30,144,255,0.8)',
+							fontSize : 12,
+							fontWeight : 'bolder'
+						}
+					},
+					tooltip : {
+						show : true,
+						formatter : "{b} : {c} (%)"
+					},
+					legend : {
+						orient : 'vertical',
+						x : 10,
+						y : 213,
+						itemGap : 12,
+						data : [ 'Llamadas' ],
+					},
+					toolbox : {
+						show : false,
+						feature : {
+							mark : {
+								show : false
+							},
+							saveAsImage : {
+								show : true,
+								title : "Save "
+							}
+						}
+					},
+					series : [ {
+						name : '',
+						type : 'pie',
+						clockWise : false,
+						radius : [ 65, 90 ],
+						itemStyle : dataStyle,
+						data : [ {
+							value : concu,
+							name : 'Llamadas'
+						}, {
+							value : vacio,
+							name : '',
+							itemStyle : placeHolderStyle
+						} ]
+					} ]
+				});
+			}
 		}
 	});
 }
-
 
 function dibujarClientesFrecuentes(fechaInicioP, fechaFinalP, segmentoP) {
 
@@ -1284,45 +1372,46 @@ function dibujarClientesFrecuentes(fechaInicioP, fechaFinalP, segmentoP) {
 		data : {
 			fechaInicio : fechaInicioP,
 			fechaFinal : fechaFinalP,
-			segmento: segmentoP
+			segmento : segmentoP
 		},
 
 		success : function(data) {
+			if (JSON.stringify(data) === "{}") {
+				$("#clientesFrecuentes").css("display", "none");
+				$("#clientesFrecuentesSinDatos").css("display", "block");
+			} else {
+				$("#clientesFrecuentes").css("display", "block");
+				$("#clientesFrecuentesSinDatos").css("display", "none");
+				var arrayTemp = [];
+				var arrayLlamadas = [];
+				var arrayClientes = [];
+				var conteo = 0;
+				var dato = [];
 
-			var arrayTemp = [];
-			var arrayLlamadas = [];
-			var arrayClientes = [];
-			var conteo = 0;
-			var dato = [];
+				for (a in data) {
+					arrayTemp.push([ a, data[a] ])
+				}
+				arrayTemp.sort(function(a, b) {
+					return a[1] - b[1]
+				});
+				arrayTemp.reverse();
 
-			for (a in data) {
-				arrayTemp.push([ a, data[a] ])
-			}
-			arrayTemp.sort(function(a, b) {
-				return a[1] - b[1]
-			});
-			arrayTemp.reverse();
+				for (var a = 0, b/* ,txt='' */; b = arrayTemp[a]; ++a) {
+					arrayClientes[a] = b[0];
+					arrayLlamadas[a] = b[1];
+				}
 
-			for (var a = 0, b/* ,txt='' */; b = arrayTemp[a]; ++a) {
-				arrayClientes[a] = b[0];
-				arrayLlamadas[a] = b[1];
+				for (i = 0; i <= arrayLlamadas.length; i++) {
+					$("#top" + (i + 1) + " p").text(arrayClientes[i]);
+					$("#llamadas" + (i + 1) + " p").text(arrayLlamadas[i]);
+
+				}
+				$("#progreso1").css("width", arrayLlamadas[0]);
+				$("#progreso2").css("width", arrayLlamadas[1]);
+				$("#progreso3").css("width", arrayLlamadas[2]);
+				$("#progreso4").css("width", arrayLlamadas[3]);
+				$("#progreso5").css("width", arrayLlamadas[4]);
 			}
-			console.log(arrayClientes);
-			console.log(arrayLlamadas);
-//			
-			for (i = 0; i <= arrayLlamadas.length; i++) {
-				$("#top" + (i + 1) + " p").text(arrayClientes[i]);
-				$("#llamadas" + (i + 1) + " p").text(arrayLlamadas[i]);
-			
-	
-			}
-			$("#progreso1").css("width",arrayLlamadas[0]);
-			$("#progreso2").css("width",arrayLlamadas[1]);
-			$("#progreso3").css("width",arrayLlamadas[2]);
-			$("#progreso4").css("width",arrayLlamadas[3]);
-			$("#progreso5").css("width",arrayLlamadas[4]);
-			
-		
 		}// fin function(data)
 	});// fin $.ajax
 }// fin dibujarClientesFrecuentes

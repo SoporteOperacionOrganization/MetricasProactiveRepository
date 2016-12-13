@@ -10,6 +10,10 @@ function redibujarGraficas() {
 	if (echartPie != null && echartPie != undefined) {
 		echartPie.resize();
 	}
+	
+	if (echartMiniPie != null && echartMiniPie != undefined) {
+		echartMiniPie.resize();
+	}
 }
 function recalcularAlto() {
 	var alto = $(document).height();
@@ -80,6 +84,7 @@ function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
 		dibujarServicios(fechaInicio, fechaFinal, segmento);
 		dibujarClientesFrecuentes(fechaInicio, fechaFinal, segmento);
 		dibujarFamilias(fechaInicio, fechaFinal, segmento);
+		//recalcularAlto();
 		break;
 	case "empresarial":
 		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal, 'BANCA EMPRESARIAL');
@@ -118,8 +123,8 @@ function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
 
 $(document).ready(
 		function() {
-			recalcularAlto();
 			graficasIniciales();
+			//recalcularAlto();
 			$(".dropdown-toggle").dropdown();
 			$("#comparativoLlamadasTotalesSegmentos").hide();
 
@@ -128,7 +133,7 @@ $(document).ready(
 				recalcularAlto();
 			});
 			$("#menu_toggle").on('click', function() {
-				// redibujarGraficas();
+				redibujarGraficas();
 			});
 			cambiarLabelFechaFiltro(moment(), moment());
 
@@ -162,6 +167,7 @@ $(document).ready(
 								cambiarLabelFechaFiltro(picker.startDate,
 										picker.endDate);
 							});
+			
 			cambiarLabelFechaComparativo(moment(), moment());
 			$('#calendarioComparativo').daterangepicker(optionSet2);
 

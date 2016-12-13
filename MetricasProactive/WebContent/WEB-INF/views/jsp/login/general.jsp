@@ -59,7 +59,9 @@
 						<div class="x_panel">
 							<div class="row x_title">
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<h2>Llamadas totales<span id="totalLlamadas" class="blue"><b></b></span></h2>
+									<h2>
+										Llamadas totales<span id="totalLlamadas" class="blue"><b></b></span>
+									</h2>
 									<div class="clearfix"></div>
 								</div>
 								<div class="col-md-6 col-sm-6 col-xs-12">
@@ -89,6 +91,8 @@
 									<span><i class="green"><i class="fa"></i></i></span>
 								</div>
 								<div id="LlamadasTotalesPorSegmentos" style="height: 300px;"></div>
+								<div id="LlamadasTotalesPorSegmentosSinDatos">No se
+									encontraron datos, seleccione un rango de fechas distinto.</div>
 							</div>
 						</div>
 					</div>
@@ -104,6 +108,8 @@
 							</div>
 							<div class="x_content">
 								<div id="echart_pie" style="height: 320px;"></div>
+								<div id="echart_pieSinDatos">No se encontraron datos,
+									seleccione un rango de fechas distinto.</div>
 							</div>
 						</div>
 					</div>
@@ -119,106 +125,116 @@
 								<div class="clearfix"></div>
 							</div>
 
-							<div class="col-md-12 col-sm-12 col-xs-6" style="font-size: 10px">
-								
-								
-							<div id="top1">
-								<p> </p>
-																		
-									<div id="llamadas1">
-									
-										<div class="progress">
-  											<div id="progreso1" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
-                                            		aria-valuemin="0" aria-valuemax="100" style="">
-    										</div>
-										</div>
-										
-										<div class="">
-											 <p align="right"> </p>
-										</div>
-		
-									</div>
-							</div>
-							
-							
-							
-							<div id="top2">
-								<p> </p>
-																		
-									<div id="llamadas2">
-									
-										<div class="progress">
-  											<div id="progreso2" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
-                                            		aria-valuemin="0" aria-valuemax="100" style="">
-    										</div>
-										</div>
-										
-										<div class="">
-											 <p align="right"> </p>
-										</div>
-		
-									</div>
-							</div>
-							
-							
-							
-							<div id="top3">
-								<p> </p>
-																		
-									<div id="llamadas3">
-									
-										<div class="progress">
-  											<div id="progreso3" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
-                                            		aria-valuemin="0" aria-valuemax="100" style="">
-    										</div>
-										</div>
-										
-										<div class="">
-											 <p align="right"> </p>
-										</div>
-		
-									</div>
-							</div>
-							
-							
-							
-							<div id="top4">
-								<p> </p>
-																		
-									<div id="llamadas4">
-									
-										<div class="progress">
-  											<div id="progreso4" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
-                                            		aria-valuemin="0" aria-valuemax="100" style="">
-    										</div>
-										</div>
-										
-										<div class="">
-											 <p align="right"> </p>
-										</div>
-		
-									</div>
-							</div>
-							
-							
-							<div id="top5">
-								<p> </p>
-																		
-									<div id="llamadas5">
-									
-										<div class="progress">
-  											<div id="progreso5" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
-                                            		aria-valuemin="0" aria-valuemax="100" style="">
-    										</div>
-										</div>
-										
-										<div class="">
-											 <p align="right"> </p>
-										</div>
-		
-									</div>
-							</div>
+							<div class="col-md-12 col-sm-12 col-xs-12">
 
+								<div id="clientesFrecuentes" style="font-size:11px;">
+									<div id="top1">
+										<p></p>
+
+										<div id="llamadas1">
+
+											<div class="progress">
+												<div id="progreso1"
+													class="progress-bar progress-bar-success"
+													role="progressbar" aria-valuenow="40" aria-valuemin="0"
+													aria-valuemax="100" style=""></div>
+											</div>
+
+											<div class="">
+												<p align="right"></p>
+											</div>
+
+										</div>
+									</div>
+
+
+
+									<div id="top2">
+										<p></p>
+
+										<div id="llamadas2">
+
+											<div class="progress">
+												<div id="progreso2"
+													class="progress-bar progress-bar-success"
+													role="progressbar" aria-valuenow="40" aria-valuemin="0"
+													aria-valuemax="100" style=""></div>
+											</div>
+
+											<div class="">
+												<p align="right"></p>
+											</div>
+
+										</div>
+									</div>
+
+
+
+									<div id="top3">
+										<p></p>
+
+										<div id="llamadas3">
+
+											<div class="progress">
+												<div id="progreso3"
+													class="progress-bar progress-bar-success"
+													role="progressbar" aria-valuenow="40" aria-valuemin="0"
+													aria-valuemax="100" style=""></div>
+											</div>
+
+											<div class="">
+												<p align="right"></p>
+											</div>
+
+										</div>
+									</div>
+
+
+
+									<div id="top4">
+										<p></p>
+
+										<div id="llamadas4">
+
+											<div class="progress">
+												<div id="progreso4"
+													class="progress-bar progress-bar-success"
+													role="progressbar" aria-valuenow="40" aria-valuemin="0"
+													aria-valuemax="100" style=""></div>
+											</div>
+
+											<div class="">
+												<p align="right"></p>
+											</div>
+
+										</div>
+									</div>
+
+
+									<div id="top5">
+										<p></p>
+
+										<div id="llamadas5">
+
+											<div class="progress">
+												<div id="progreso5"
+													class="progress-bar progress-bar-success"
+													role="progressbar" aria-valuenow="40" aria-valuemin="0"
+													aria-valuemax="100" style=""></div>
+											</div>
+
+											<div class="">
+												<p align="right"></p>
+											</div>
+
+										</div>
+									</div>
+
+								</div>
+								<div id="clientesFrecuentesSinDatos">
+									No se encontraron datos,
+									seleccione un rango de fechas distinto.
+								</div>
 							</div>
 
 						</div>
@@ -232,6 +248,7 @@
 								</div>
 								<div class="clearfix"></div>
 							</div>
+							<div id="llamadasFamilia">
 							<div class="row familias">
 								<div id="sparkline1" class="col-md-4 col-sm-4 col-xs-4 tile"
 									style="font-size: 10px">
@@ -343,7 +360,10 @@
 
 								</div>
 							</div>
-
+							</div>
+							<div id="llamadasFamiliaSinDatos">
+							No se encontraron datos, seleccione un rango de fechas distinto.
+							</div>
 						</div>
 					</div>
 

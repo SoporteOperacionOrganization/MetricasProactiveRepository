@@ -89,6 +89,7 @@
 								</div>
 								<div id="LlamadasTotalesPorFamiliaSegmentos"
 									style="height: 350px;"></div>
+									<div id="LlamadasTotalesPorFamiliaSegmentosSinDatos">No se encontraron datos, seleccione un rango de fechas distinto.</div>
 							</div>
 						</div>
 					</div>
@@ -103,68 +104,135 @@
 							</div>
 							<div class="x_content">
 								<div id="echart_pie" style="height: 350px;"></div>
+								<div id="echart_pieSinDatos">No se encontraron datos, seleccione un rango de fechas distinto.</div>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-6 col-sm-6 col-xs-12 ">
-						<div class="x_panel tile fixed_height_320">
+						<div class="x_panel tile">
 
-							<div class="x_title">
-								<h2>Clientes Frecuentes</h2>
+							<div class="row x_title">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<h2>Clientes frecuentes</h2>
+								</div>
 								<div class="clearfix"></div>
 							</div>
 
-							<div class="col-md-12 col-sm-12 col-xs-6" style="font-size: 10px">
-								<div>
-									<p>Facebook Campaign</p>
-									<div class="">
-										<div class="progress progress_sm" style="width: 100%;">
-											<div class="progress-bar" style="background-color: #1DB7D0;"
-												role="progressbar" data-transitiongoal="10"></div>
+							<div class="col-md-12 col-sm-12 col-xs-12">
+
+								<div id="clientesFrecuentes" style="font-size:11px;">
+									<div id="top1">
+										<p></p>
+
+										<div id="llamadas1">
+
+											<div class="progress">
+												<div id="progreso1"
+													class="progress-bar progress-bar-success"
+													role="progressbar" aria-valuenow="40" aria-valuemin="0"
+													aria-valuemax="100" style=""></div>
+											</div>
+
+											<div class="">
+												<p align="right"></p>
+											</div>
+
 										</div>
 									</div>
+
+
+
+									<div id="top2">
+										<p></p>
+
+										<div id="llamadas2">
+
+											<div class="progress">
+												<div id="progreso2"
+													class="progress-bar progress-bar-success"
+													role="progressbar" aria-valuenow="40" aria-valuemin="0"
+													aria-valuemax="100" style=""></div>
+											</div>
+
+											<div class="">
+												<p align="right"></p>
+											</div>
+
+										</div>
+									</div>
+
+
+
+									<div id="top3">
+										<p></p>
+
+										<div id="llamadas3">
+
+											<div class="progress">
+												<div id="progreso3"
+													class="progress-bar progress-bar-success"
+													role="progressbar" aria-valuenow="40" aria-valuemin="0"
+													aria-valuemax="100" style=""></div>
+											</div>
+
+											<div class="">
+												<p align="right"></p>
+											</div>
+
+										</div>
+									</div>
+
+
+
+									<div id="top4">
+										<p></p>
+
+										<div id="llamadas4">
+
+											<div class="progress">
+												<div id="progreso4"
+													class="progress-bar progress-bar-success"
+													role="progressbar" aria-valuenow="40" aria-valuemin="0"
+													aria-valuemax="100" style=""></div>
+											</div>
+
+											<div class="">
+												<p align="right"></p>
+											</div>
+
+										</div>
+									</div>
+
+
+									<div id="top5">
+										<p></p>
+
+										<div id="llamadas5">
+
+											<div class="progress">
+												<div id="progreso5"
+													class="progress-bar progress-bar-success"
+													role="progressbar" aria-valuenow="40" aria-valuemin="0"
+													aria-valuemax="100" style=""></div>
+											</div>
+
+											<div class="">
+												<p align="right"></p>
+											</div>
+
+										</div>
+									</div>
+
 								</div>
-								<div>
-									<p>Twitter Campaign</p>
-									<div class="">
-										<div class="progress progress_sm" style="width: 100%;">
-											<div class="progress-bar " style="background-color: #C01722;"
-												role="progressbar" data-transitiongoal="60"></div>
-										</div>
-									</div>
-								</div>
-								<div>
-									<p>Twitter Campaign</p>
-									<div class="">
-										<div class="progress progress_sm" style="width: 100%;">
-											<div class="progress-bar "
-												style="background-color: #F7DEB4';" role="progressbar"
-												data-transitiongoal="60"></div>
-										</div>
-									</div>
-								</div>
-								<div>
-									<p>Twitter Campaign</p>
-									<div class="">
-										<div class="progress progress_sm" style="width: 100%;">
-											<div class="progress-bar" style="background-color: #8FA508;"
-												role="progressbar" data-transitiongoal="60"></div>
-										</div>
-									</div>
-								</div>
-								<div>
-									<p>Twitter Campaign</p>
-									<div class="">
-										<div class="progress progress_sm" style="width: 100%;">
-											<div class="progress-bar " style="background-color: #A6A6A6;"
-												role="progressbar" data-transitiongoal="60"></div>
-										</div>
-									</div>
+								<div id="clientesFrecuentesSinDatos">
+									No se encontraron datos,
+									seleccione un rango de fechas distinto.
 								</div>
 							</div>
+
 						</div>
 					</div>
-
+					
 					<div class="col-md-6 col-sm-6 col-xs-12">
 						<div class="x_panel">
 							<div class="x_title">
@@ -175,6 +243,7 @@
 							</div>
 							<div class="x_content">
 								<div id="echart_mini_pie" style="height: 235px;"></div>
+								<div id="echart_mini_pieSinDatos">No se encontraron datos, seleccione un rango de fechas distinto.</div>
 							</div>
 						</div>
 					</div>
