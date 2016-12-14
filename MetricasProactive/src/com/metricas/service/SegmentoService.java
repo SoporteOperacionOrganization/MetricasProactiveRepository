@@ -16,6 +16,8 @@ public interface SegmentoService {
 	
     public String obtenerLlamadasTotalesFamiliasSegmentoComparacion(String fechaInicioOriginal, String fechaFinalOriginal, String fechaInicio, String fechaFinal, String segmento);
 
-	public Map<String,Integer> obtenerClientesFrecuentes(String fechaInicio, String fechaFinal, String segmento); 
+	public Map<String,Integer> obtenerClientesFrecuentes(String fechaInicio, String fechaFinal, String segmento);
+
+	Map<String, Integer> obtenerConcurrencia(String fechaInicio, String fechaFinal); 
 
 }

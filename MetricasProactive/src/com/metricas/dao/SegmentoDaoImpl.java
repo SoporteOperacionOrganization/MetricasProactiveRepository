@@ -52,11 +52,11 @@ public class SegmentoDaoImpl implements SegmentoDao {
 					totalesLlamadasSegmentos.put(rs.getString(1), rs.getInt(2));
 				}
 				tx.commit();
-				pstmt.close();
+				
 			}
 		});
 
-		// session.close();
+		session.close();
 		Gson gson = new Gson();
 		String json = gson.toJson(totalesLlamadasSegmentos);
 		return totalesLlamadasSegmentos;
@@ -97,8 +97,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA" + " WHERE"
 								+ " (SO.CLIENTE != 0)"
 								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"
-								+ " AND SO.RAZONSOCIAL <> ''"
-								+ " AND	(SO.SEGMENTO='BANCA EMPRESARIAL')"
+								+ " AND SO.RAZONSOCIAL <> ''" + " AND	(SO.SEGMENTO='BANCA EMPRESARIAL')"
 								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
 
@@ -109,8 +108,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA" + " WHERE"
 								+ " (SO.CLIENTE != 0)"
 								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"
-								+ " AND SO.RAZONSOCIAL <> ''"
-								+ " AND	(SO.SEGMENTO='ATE')"
+								+ " AND SO.RAZONSOCIAL <> ''" + " AND	(SO.SEGMENTO='ATE')"
 								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
 
@@ -121,8 +119,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA" + " WHERE"
 								+ " (SO.CLIENTE != 0)"
 								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"
-								+ " AND SO.RAZONSOCIAL <> ''"
-								+ " AND	(SO.SEGMENTO='PYME')"
+								+ " AND SO.RAZONSOCIAL <> ''" + " AND	(SO.SEGMENTO='PYME')"
 								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
 
@@ -133,8 +130,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA" + " WHERE"
 								+ " (SO.CLIENTE != 0)"
 								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"
-								+ " AND SO.RAZONSOCIAL <> ''"
-								+ " AND	(SO.SEGMENTO='OFFLINE')"
+								+ " AND SO.RAZONSOCIAL <> ''" + " AND	(SO.SEGMENTO='OFFLINE')"
 								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
 
@@ -145,8 +141,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA" + " WHERE"
 								+ " (SO.CLIENTE != 0)"
 								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"
-								+ " AND SO.RAZONSOCIAL <> ''"
-								+ " AND	(SO.SEGMENTO='PYME OFFLINE')"
+								+ " AND SO.RAZONSOCIAL <> ''" + " AND	(SO.SEGMENTO='PYME OFFLINE')"
 								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
 
@@ -388,6 +383,41 @@ public class SegmentoDaoImpl implements SegmentoDao {
 	}
 
 	@Override
+	public Map<String, Integer> concurrencia(String fechaInicio, String fechaFinal) {
+		Map<String, Integer> concurrencia = new HashMap<>();
+		session = sessionFactoryData.openSession();
+
+		session.doWork(new Work() {
+			@Override
+			public void execute(Connection connection) throws SQLException {
+				PreparedStatement pstmt = null;
+
+				try {
+					String sqlQuery = "";
+
+					sqlQuery = "SELECT ltrim(rtrim(EJE.Segmento)) AS Segmento, COUNT(EJE.Segmento) AS TOTAL FROM  [dbo].[LlamadasATE] LL INNER JOIN [dbo].[TblEjecutivos]  EJE  ON EJE.Nomina = LL.NOMINA_REG WHERE (CAST(LL.FECHA_INI AS DATE) BETWEEN ? AND ?) AND (EJE.Segmento='ATE' OR EJE.Segmento='PYME' OR EJE.Segmento='OFFLINE' OR EJE.Segmento='PYME OFFLINE' OR EJE.Segmento='BANCA EMPRESARIAL') GROUP BY EJE.Segmento";
+					ResultSet rs;
+					pstmt = connection.prepareStatement(sqlQuery);
+					pstmt.setString(1, fechaInicio);
+					pstmt.setString(2, fechaFinal);
+
+					rs = pstmt.executeQuery();
+					while (rs.next()) {
+						concurrencia.put(rs.getString(1), rs.getInt(2));
+					}
+
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				} finally {
+					pstmt.close();
+				}
+
+			}
+		});
+		return concurrencia;
+	}
+
+	@Override
 	public Map<String, Integer> obtenerLlamadasTotalesFamiliasSegmento(String fechaInicio, String fechaFinal,
 			String segmento) {
 		Map<String, Integer> totalesLlamadasSegmentos = new HashMap<String, Integer>();
@@ -416,7 +446,5 @@ public class SegmentoDaoImpl implements SegmentoDao {
 		session.close();
 		return totalesLlamadasSegmentos;
 	}
-	
-	
 
 }

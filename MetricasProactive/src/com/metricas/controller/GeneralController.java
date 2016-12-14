@@ -100,7 +100,7 @@ public class GeneralController {
 			@RequestParam("fechaFinal") String fechaFinal) {
 		Gson gson = new Gson();
 		Map<String, Integer> concurrencia = new HashMap<String, Integer>();
-		concurrencia = segmentoService.obtenerLlamadasTotalesSegmentos(fechaInicio, fechaFinal);
+		concurrencia = segmentoService.obtenerConcurrencia(fechaInicio, fechaFinal);
 		String json = gson.toJson(concurrencia);
 
 		return json;
