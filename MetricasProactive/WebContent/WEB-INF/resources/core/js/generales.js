@@ -284,6 +284,4 @@ $(document).ready(function() {
 		backdrop : 'static'
 	});
 
-	// $("#popup").modal("show");
-
 });
