@@ -250,7 +250,6 @@ public class SegmentoServiceImpl implements SegmentoService {
 					}
 					
 				}
-				System.out.println("MAYOR ORIGINAL " + listadoTotales);
 				
 			}
 		} else {
