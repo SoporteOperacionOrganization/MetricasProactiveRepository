@@ -23,6 +23,10 @@ public class SegmentoServiceImpl implements SegmentoService {
 	public Map<String, Integer> obtenerLlamadasTotalesSegmentos(String fechaInicio, String fechaFinal) {
 		return segmentoDao.obtenerLlamadasTotalesSegmentos(fechaInicio, fechaFinal);
 	}
+	@Override
+	public Map<String, Integer> obtenerConcurrencia(String fechaInicio, String fechaFinal) {
+		return segmentoDao.concurrencia(fechaInicio, fechaFinal);
+	}
 
 	@Override
 	public Map<String, Integer> obtenerLlamadasFamilia(String fechaInicio, String fechaFinal, String segmento) {
