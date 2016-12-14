@@ -353,16 +353,7 @@
 				</div>
 			</div>
 
-			<!-- Modal -->
-			<div class="modal" id="popup" style="display: none;">
 
-				<div class="modal-body" style="text-align: center; margin-left: 45%">
-					<div style="margin-top: 40%; width: 30%">
-						<img class="inicioImages" src="resources/Images/cargando.gif">
-					</div>
-				</div>
-			</div>
-			<!-- fin modal -->
 			
 			
 			<!-- footer content -->
