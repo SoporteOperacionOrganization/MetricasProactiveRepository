@@ -69,7 +69,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 		// session.close();
 		Gson gson = new Gson();
 		String json = gson.toJson(totalesLlamadasSegmentos);
-		System.out.println("JSON " + json);
+		//System.out.println("JSON " + json);
 		return totalesLlamadasSegmentos;
 	}
 

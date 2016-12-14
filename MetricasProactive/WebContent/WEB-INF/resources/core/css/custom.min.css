@@ -1117,6 +1117,7 @@ a:focus {
 	}
 	.nav-md .footerA{
 		padding-left: 245px;
+		
 	}
 	.nav-sm .footerA{
 		padding-left: 20px;
@@ -1350,7 +1351,7 @@ footer {
 }
 
 .row .familias{
-	display: table;
+	display: table-row;
 	border-bottom: 1px solid #E6E9ED;
 }
 
@@ -1361,11 +1362,21 @@ footer {
     vertical-align: middle;
 }
 
+#llamadasFamilia{
+	height: 90%;
+}
+
 .sparkline-titulo{
-	height: 60px;
 	text-align: center;
-	display: table-cell;
+	display: table;
 	vertical-align: middle;
+	margin: 0 auto;
+}
+
+.sparkline-titulo span{
+	float: left;
+    clear: left;
+    display: table-cell;
 }
 
 .sparkline-contenido{
@@ -1375,11 +1386,13 @@ footer {
 
 .sparkline-familia{
 	font-size: 11px;
+	
 }
 
 .sparkline-segmento{
 	font-size: 9px;
 	color: #DA291C;
+	width: 100%;
 }
 
 .sparkline-contenido{

@@ -45,10 +45,6 @@
 						</div>
 					</div>
 				</div>
-				<div>
-					<input id="comparativoLlamadasTotalesFamiliasSegmentos"
-						type="hidden" value="" />
-				</div>
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel">
@@ -109,7 +105,7 @@
 					</div>
 
 					<div class="col-md-6 col-sm-6 col-xs-12 ">
-						<div class="x_panel tile">
+						<div class="x_panel tile fixed_height_390">
 
 							<div class="row x_title">
 								<div class="col-md-12 col-sm-12 col-xs-12">
@@ -120,7 +116,7 @@
 
 							<div class="col-md-12 col-sm-12 col-xs-12">
 
-								<div id="clientesFrecuentes" style="font-size:11px;">
+								<div id="clientesFrecuentes" style="font-size: 11px;">
 									<div id="top1">
 										<p></p>
 
@@ -129,13 +125,15 @@
 											<div class="progress">
 												<div id="progreso1"
 													class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style=""></div>
+													role="progressbar" aria-valuenow="40" aria-valuemin="80"
+													aria-valuemax="100" style="width: 100%">
+													<p align="right">
+														<b></b>
+													</p>
+
+												</div>
 											</div>
 
-											<div class="">
-												<p align="right"></p>
-											</div>
 
 										</div>
 									</div>
@@ -151,11 +149,9 @@
 												<div id="progreso2"
 													class="progress-bar progress-bar-success"
 													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style=""></div>
-											</div>
-
-											<div class="">
-												<p align="right"></p>
+													aria-valuemax="100" style="width: 80%">
+													<p align="right"></p>
+												</div>
 											</div>
 
 										</div>
@@ -172,11 +168,9 @@
 												<div id="progreso3"
 													class="progress-bar progress-bar-success"
 													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style=""></div>
-											</div>
-
-											<div class="">
-												<p align="right"></p>
+													aria-valuemax="100" style="width: 60%">
+													<p align="right"></p>
+												</div>
 											</div>
 
 										</div>
@@ -193,13 +187,10 @@
 												<div id="progreso4"
 													class="progress-bar progress-bar-success"
 													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style=""></div>
+													aria-valuemax="100" style="width: 40%">
+													<p align="right"></p>
+												</div>
 											</div>
-
-											<div class="">
-												<p align="right"></p>
-											</div>
-
 										</div>
 									</div>
 
@@ -213,31 +204,26 @@
 												<div id="progreso5"
 													class="progress-bar progress-bar-success"
 													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style=""></div>
+													aria-valuemax="100" style="width: 20%">
+													<p align="right"></p>
+												</div>
 											</div>
-
-											<div class="">
-												<p align="right"></p>
-											</div>
-
 										</div>
 									</div>
 
 								</div>
-								<div id="clientesFrecuentesSinDatos">
-									No se encontraron datos,
-									seleccione un rango de fechas distinto.
-								</div>
+								<div id="clientesFrecuentesSinDatos">No se encontraron
+									datos, seleccione un rango de fechas distinto.</div>
 							</div>
 
 						</div>
 					</div>
 					
 					<div class="col-md-6 col-sm-6 col-xs-12">
-						<div class="x_panel">
+						<div class="x_panel fixed_height_390">
 							<div class="x_title">
 								<h2>
-									Porcentaje ( <span id="porcen"> </span> %)
+									Porcentaje ( <span id="porcen" class="blue"> </span> %)
 								</h2>
 								<div class="clearfix"></div>
 							</div>

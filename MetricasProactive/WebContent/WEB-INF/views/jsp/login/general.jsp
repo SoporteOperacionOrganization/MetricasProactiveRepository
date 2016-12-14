@@ -48,12 +48,6 @@
 					</div>
 				</div>
 
-				<!-- Valores de gráficas -->
-				<div>
-					<input id="comparativoLlamadasTotalesSegmentos" type="hidden"
-						value="" />
-				</div>
-
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel">
@@ -116,7 +110,7 @@
 
 
 					<div class="col-md-6 col-sm-6 col-xs-12 ">
-						<div class="x_panel tile">
+						<div class="x_panel tile fixed_height_390">
 
 							<div class="row x_title">
 								<div class="col-md-12 col-sm-12 col-xs-12">
@@ -230,7 +224,7 @@
 						</div>
 					</div>
 					<div class="col-md-6 col-sm-6 col-xs-12 ">
-						<div class="x_panel tile">
+						<div class="x_panel tile fixed_height_390">
 
 							<div class="row x_title">
 								<div class="col-md-12 col-sm-12 col-xs-12">
@@ -372,11 +366,7 @@
 			
 			
 			<!-- footer content -->
-			<nav class="navbar navbar-default navbar-fixed-bottom">
-				<div class="container">
-					<jsp:include page="../fragments/footer.jsp" />
-				</div>
-			</nav>
+			<jsp:include page="../fragments/footer.jsp" />
 			<!-- /footer content -->
 		</div>
 		<!-- /page content -->

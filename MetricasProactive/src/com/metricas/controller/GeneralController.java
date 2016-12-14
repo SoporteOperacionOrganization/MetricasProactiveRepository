@@ -59,7 +59,18 @@ public class GeneralController {
 		totalesLlamadas = segmentoService.obtenerLlamadasTotalesSegmentos(fechaInicio, fechaFinal);
 
 		String json = gson.toJson(totalesLlamadas);
-		System.out.println("Json totales llamadas " + json);
+		//System.out.println("Json totales llamadas " + json);
+		return json;
+	}
+
+	@RequestMapping(value = "/obtenerLlamadasTotalesSegmentoComparativo", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody String obtenerLlamadasTotalesSegmentoComparativo(Model model,
+			@RequestParam("fechaInicioOriginal") String fechaInicioOriginal,
+			@RequestParam("fechaFinalOriginal") String fechaFinalOriginal,
+			@RequestParam("fechaInicio") String fechaInicio, @RequestParam("fechaFinal") String fechaFinal) {
+
+		String json = segmentoService.obtenerLlamadasTotalesSegmentoComparacion(fechaInicioOriginal, fechaFinalOriginal,
+				fechaInicio, fechaFinal);
 		return json;
 	}
 
@@ -80,7 +91,7 @@ public class GeneralController {
 		Map<String, Integer> servicios = new HashMap<String, Integer>();
 		servicios = segmentoService.obtenerLLamadasServicio(fechaInicio, fechaFinal, segmento);
 		String json = gson.toJson(servicios);
-		System.out.println("mis servicios" + servicios);
+		//System.out.println("mis servicios" + servicios);
 		return json;
 	}
 
