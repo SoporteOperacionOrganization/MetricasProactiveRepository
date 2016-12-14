@@ -32,16 +32,6 @@ public class SegmentoDaoImpl implements SegmentoDao {
 
 	@Override
 	public Map<String, Integer> obtenerLlamadasTotalesSegmentos(String fechaInicio, String fechaFinal) {
-		/*
-		 * List<String> resultados = new ArrayList<String>(); session =
-		 * sessionFactoryData.getCurrentSession(); query =
-		 * session.createSQLQuery(
-		 * "SELECT EJE.Segmento AS Segmento, COUNT(EJE.Segmento) AS TOTAL FROM  [dbo].[LlamadasATE] LL INNER JOIN [dbo].[TblEjecutivos]  EJE  ON EJE.Nomina = LL.NOMINA_REG WHERE (CAST(LL.FECHA_INI AS DATE) BETWEEN '2014/01/01' AND '2015/12/01') AND (EJE.Segmento='ATE' OR EJE.Segmento='PYME' OR EJE.Segmento='OFFLINE' OR EJE.Segmento='PYME OFFLINE' OR EJE.Segmento='BANCA EMPRESARIAL') GROUP BY EJE.Segmento"
-		 * ); resultados = query.list(); for (Iterator iter =
-		 * resultados.iterator(); iter.hasNext(); ) { Object[] objs =
-		 * (Object[])iter.next(); System.out.println((String)objs[0]);
-		 * System.out.println((Integer)objs[1]); }
-		 */
 		Map<String, Integer> totalesLlamadasSegmentos = new HashMap<String, Integer>();
 		session = sessionFactoryData.openSession();
 		Transaction tx = session.beginTransaction();
@@ -69,7 +59,6 @@ public class SegmentoDaoImpl implements SegmentoDao {
 		// session.close();
 		Gson gson = new Gson();
 		String json = gson.toJson(totalesLlamadasSegmentos);
-		//System.out.println("JSON " + json);
 		return totalesLlamadasSegmentos;
 	}
 
@@ -174,7 +163,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 					}
 
 				} catch (SQLException ex) {
-					System.out.println("RNE Excepcion de SQL Server: " + ex.getMessage());
+					ex.printStackTrace();
 				} finally {
 					pstmt.close();
 				}
@@ -286,7 +275,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 					}
 
 				} catch (SQLException ex) {
-					System.out.println("RNE Excepcion de SQL Server: " + ex.getMessage());
+					ex.printStackTrace();
 				} finally {
 					pstmt.close();
 				}
@@ -388,7 +377,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 					}
 
 				} catch (SQLException ex) {
-					System.out.println("RNE Excepcion de SQL Server: " + ex.getMessage());
+					ex.printStackTrace();
 				} finally {
 					pstmt.close();
 				}
