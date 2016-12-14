@@ -166,7 +166,7 @@ public class SegmentoServiceImpl implements SegmentoService {
 				fechaFinalOriginal, segmento);
 		totalesLlamadasComparativo = segmentoDao.obtenerLlamadasTotalesFamiliasSegmento(fechaInicio, fechaFinal,
 				segmento);
-
+		
 		int tamanoOriginal = totalesLlamadasOriginal.size();
 		int tamanoComparativo = totalesLlamadasComparativo.size();
 
@@ -246,7 +246,7 @@ public class SegmentoServiceImpl implements SegmentoService {
 							List<Integer> totales2 = new ArrayList<Integer>();
 							totales2.add(0);
 							totales2.add(valorC);
-
+							
 							listadoTotales.put(llaveC, totales2);
 							cont = 0;
 						}
