@@ -1387,6 +1387,9 @@ function dibujarClientesFrecuentes(fechaInicioP, fechaFinalP, segmentoP) {
 				var arrayClientes = [];
 				var conteo = 0;
 				var dato = [];
+				
+				
+				
 
 				for (a in data) {
 					arrayTemp.push([ a, data[a] ])
@@ -1401,17 +1404,24 @@ function dibujarClientesFrecuentes(fechaInicioP, fechaFinalP, segmentoP) {
 					arrayLlamadas[a] = b[1];
 				}
 
-				for (i = 0; i <= arrayLlamadas.length; i++) {
-					$("#top" + (i + 1) + " p").text(arrayClientes[i]);
-					$("#llamadas" + (i + 1) + " p").text(arrayLlamadas[i]);
+				
+				for (var i = 0; i <= 4; i++) {
+					$("#top"+[i+1]).show();
+		
+					if(arrayClientes[i]==undefined){
+						$("#top"+[i+1]).hide();
+						
+					}else{
 
-				}
-				$("#progreso1").css("width", arrayLlamadas[0]);
-				$("#progreso2").css("width", arrayLlamadas[1]);
-				$("#progreso3").css("width", arrayLlamadas[2]);
-				$("#progreso4").css("width", arrayLlamadas[3]);
-				$("#progreso5").css("width", arrayLlamadas[4]);
-			}
+						$("#top" + (i + 1) + " p").text(arrayClientes[i]);
+						$("#llamadas" + (i + 1) + " p").text(arrayLlamadas[i]);
+					}
+					
+				}//fin FOR
+					
+				}//fin else JSON.stringify(data) 
+
+		
 		}// fin function(data)
 	});// fin $.ajax
 }// fin dibujarClientesFrecuentes
