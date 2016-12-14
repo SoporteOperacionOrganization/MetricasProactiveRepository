@@ -127,7 +127,7 @@
 
 							<div class="col-md-12 col-sm-12 col-xs-12">
 
-								<div id="clientesFrecuentes" style="font-size:11px;">
+								<div id="clientesFrecuentes" style="font-size: 11px;">
 									<div id="top1">
 										<p></p>
 
@@ -137,13 +137,15 @@
 												<div id="progreso1"
 													class="progress-bar progress-bar-success"
 													role="progressbar" aria-valuenow="40" aria-valuemin="80"
-													aria-valuemax="100" style="width:100%">
-													<p align="right"><b></b></p>
-													
+													aria-valuemax="100" style="width: 100%">
+													<p align="right">
+														<b></b>
+													</p>
+
 												</div>
 											</div>
 
-											
+
 										</div>
 									</div>
 
@@ -158,8 +160,8 @@
 												<div id="progreso2"
 													class="progress-bar progress-bar-success"
 													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width:80%" >
-												<p align="right"></p>	
+													aria-valuemax="100" style="width: 80%">
+													<p align="right"></p>
 												</div>
 											</div>
 
@@ -177,8 +179,8 @@
 												<div id="progreso3"
 													class="progress-bar progress-bar-success"
 													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width:60%">
-												<p align="right"></p>	
+													aria-valuemax="100" style="width: 60%">
+													<p align="right"></p>
 												</div>
 											</div>
 
@@ -196,8 +198,8 @@
 												<div id="progreso4"
 													class="progress-bar progress-bar-success"
 													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width:40%">
-													<p align="right"></p>	
+													aria-valuemax="100" style="width: 40%">
+													<p align="right"></p>
 												</div>
 											</div>
 										</div>
@@ -213,18 +215,16 @@
 												<div id="progreso5"
 													class="progress-bar progress-bar-success"
 													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width:20%">
-												<p align="right"></p>
+													aria-valuemax="100" style="width: 20%">
+													<p align="right"></p>
 												</div>
 											</div>
 										</div>
 									</div>
 
 								</div>
-								<div id="clientesFrecuentesSinDatos">
-									No se encontraron datos,
-									seleccione un rango de fechas distinto.
-								</div>
+								<div id="clientesFrecuentesSinDatos">No se encontraron
+									datos, seleccione un rango de fechas distinto.</div>
 							</div>
 
 						</div>
@@ -239,130 +239,138 @@
 								<div class="clearfix"></div>
 							</div>
 							<div id="llamadasFamilia">
-							<div class="row familias">
-								<div id="sparkline1" class="col-md-4 col-sm-4 col-xs-4 tile"
-									style="font-size: 10px">
-									<div class="sparkline-titulo">
-										<span class="sparkline-familia"></span> <span
-											class="sparkline-segmento"></span>
-									</div>
-									<div class="sparkline-contenido">
-										<h2></h2>
+								<div class="row familias">
+									<div id="sparkline1" class="col-md-4 col-sm-4 col-xs-4 tile"
+										style="font-size: 10px">
+										<div class="sparkline-titulo">
+											<span class="sparkline-familia"></span> <span
+												class="sparkline-segmento"></span>
+										</div>
+										<div class="sparkline-contenido">
+											<h2></h2>
+										</div>
+
 									</div>
 
+									<div id="sparkline2" class="col-md-4 col-sm-4 col-xs-4 tile"
+										style="font-size: 10px">
+										<div class="sparkline-titulo">
+											<span class="sparkline-familia"></span> <span
+												class="sparkline-segmento"></span>
+										</div>
+										<div class="sparkline-contenido">
+											<h2></h2>
+										</div>
+
+									</div>
+
+									<div id="sparkline3" class="col-md-4 col-sm-4 col-xs-4 tile"
+										style="font-size: 10px">
+										<div class="sparkline-titulo">
+											<span class="sparkline-familia"></span> <span
+												class="sparkline-segmento"></span>
+										</div>
+										<div class="sparkline-contenido">
+											<h2></h2>
+										</div>
+
+									</div>
 								</div>
+								<div class="row familias">
+									<div id="sparkline4" class="col-md-4 col-sm-4 col-xs-4 tile"
+										style="font-size: 10px">
+										<div class="sparkline-titulo">
+											<span class="sparkline-familia"></span> <span
+												class="sparkline-segmento"></span>
+										</div>
+										<div class="sparkline-contenido">
+											<h2></h2>
+										</div>
 
-								<div id="sparkline2" class="col-md-4 col-sm-4 col-xs-4 tile"
-									style="font-size: 10px">
-									<div class="sparkline-titulo">
-										<span class="sparkline-familia"></span> <span
-											class="sparkline-segmento"></span>
-									</div>
-									<div class="sparkline-contenido">
-										<h2></h2>
 									</div>
 
+									<div id="sparkline5" class="col-md-4 col-sm-4 col-xs-4 tile"
+										style="font-size: 10px">
+										<div class="sparkline-titulo">
+											<span class="sparkline-familia"></span> <span
+												class="sparkline-segmento"></span>
+										</div>
+										<div class="sparkline-contenido">
+											<h2></h2>
+										</div>
+
+									</div>
+
+									<div id="sparkline6" class="col-md-4 col-sm-4 col-xs-4 tile"
+										style="font-size: 10px">
+										<div class="sparkline-titulo">
+											<span class="sparkline-familia"></span> <span
+												class="sparkline-segmento"></span>
+										</div>
+										<div class="sparkline-contenido">
+											<h2></h2>
+										</div>
+
+									</div>
 								</div>
+								<div class="row familias">
+									<div id="sparkline7" class="col-md-4 col-sm-4 col-xs-4 tile"
+										style="font-size: 10px">
+										<div class="sparkline-titulo">
+											<span class="sparkline-familia"></span> <span
+												class="sparkline-segmento"></span>
+										</div>
+										<div class="sparkline-contenido">
+											<h2></h2>
+										</div>
 
-								<div id="sparkline3" class="col-md-4 col-sm-4 col-xs-4 tile"
-									style="font-size: 10px">
-									<div class="sparkline-titulo">
-										<span class="sparkline-familia"></span> <span
-											class="sparkline-segmento"></span>
-									</div>
-									<div class="sparkline-contenido">
-										<h2></h2>
 									</div>
 
+									<div id="sparkline8" class="col-md-4 col-sm-4 col-xs-4 tile"
+										style="font-size: 10px">
+										<div class="sparkline-titulo">
+											<span class="sparkline-familia"></span> <span
+												class="sparkline-segmento"></span>
+										</div>
+										<div class="sparkline-contenido">
+											<h2></h2>
+										</div>
+
+									</div>
+
+									<div id="sparkline9" class="col-md-4 col-sm-4 col-xs-4 tile"
+										style="font-size: 10px">
+										<div class="sparkline-titulo">
+											<span class="sparkline-familia"></span> <span
+												class="sparkline-segmento"></span>
+										</div>
+										<div class="sparkline-contenido">
+											<h2></h2>
+										</div>
+
+									</div>
 								</div>
 							</div>
-							<div class="row familias">
-								<div id="sparkline4" class="col-md-4 col-sm-4 col-xs-4 tile"
-									style="font-size: 10px">
-									<div class="sparkline-titulo">
-										<span class="sparkline-familia"></span> <span
-											class="sparkline-segmento"></span>
-									</div>
-									<div class="sparkline-contenido">
-										<h2></h2>
-									</div>
-
-								</div>
-
-								<div id="sparkline5" class="col-md-4 col-sm-4 col-xs-4 tile"
-									style="font-size: 10px">
-									<div class="sparkline-titulo">
-										<span class="sparkline-familia"></span> <span
-											class="sparkline-segmento"></span>
-									</div>
-									<div class="sparkline-contenido">
-										<h2></h2>
-									</div>
-
-								</div>
-
-								<div id="sparkline6" class="col-md-4 col-sm-4 col-xs-4 tile"
-									style="font-size: 10px">
-									<div class="sparkline-titulo">
-										<span class="sparkline-familia"></span> <span
-											class="sparkline-segmento"></span>
-									</div>
-									<div class="sparkline-contenido">
-										<h2></h2>
-									</div>
-
-								</div>
-							</div>
-							<div class="row familias">
-								<div id="sparkline7" class="col-md-4 col-sm-4 col-xs-4 tile"
-									style="font-size: 10px">
-									<div class="sparkline-titulo">
-										<span class="sparkline-familia"></span> <span
-											class="sparkline-segmento"></span>
-									</div>
-									<div class="sparkline-contenido">
-										<h2></h2>
-									</div>
-
-								</div>
-
-								<div id="sparkline8" class="col-md-4 col-sm-4 col-xs-4 tile"
-									style="font-size: 10px">
-									<div class="sparkline-titulo">
-										<span class="sparkline-familia"></span> <span
-											class="sparkline-segmento"></span>
-									</div>
-									<div class="sparkline-contenido">
-										<h2></h2>
-									</div>
-
-								</div>
-
-								<div id="sparkline9" class="col-md-4 col-sm-4 col-xs-4 tile"
-									style="font-size: 10px">
-									<div class="sparkline-titulo">
-										<span class="sparkline-familia"></span> <span
-											class="sparkline-segmento"></span>
-									</div>
-									<div class="sparkline-contenido">
-										<h2></h2>
-									</div>
-
-								</div>
-							</div>
-							</div>
-							<div id="llamadasFamiliaSinDatos">
-							No se encontraron datos, seleccione un rango de fechas distinto.
-							</div>
+							<div id="llamadasFamiliaSinDatos">No se encontraron datos,
+								seleccione un rango de fechas distinto.</div>
 						</div>
 					</div>
 
 				</div>
 			</div>
+
+			<!-- Modal -->
+			<div class="modal" id="popup" style="display: none;">
+
+				<div class="modal-body" style="text-align: center; margin-left: 45%">
+					<div style="margin-top: 40%; width: 30%">
+						<img class="inicioImages" src="resources/Images/cargando.gif">
+					</div>
+				</div>
+			</div>
+			<!-- fin modal -->
 			
-			<div></div>
-			<div></div>
-			<div></div>
+			
 			<!-- footer content -->
 			<nav class="navbar navbar-default navbar-fixed-bottom">
 				<div class="container">
