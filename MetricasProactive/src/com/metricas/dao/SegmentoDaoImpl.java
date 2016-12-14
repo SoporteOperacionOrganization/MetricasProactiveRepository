@@ -96,6 +96,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA" + " WHERE"
 								+ " (SO.CLIENTE != 0)"
 								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"
+								+ " AND SO.RAZONSOCIAL <> ''"
 								+ " AND	(SO.SEGMENTO='ATE' OR SO.SEGMENTO='PYME' OR SO.SEGMENTO='OFFLINE' OR SO.SEGMENTO='PYME OFFLINE' OR SO.SEGMENTO='BANCA EMPRESARIAL')"
 								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
@@ -107,6 +108,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA" + " WHERE"
 								+ " (SO.CLIENTE != 0)"
 								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"
+								+ " AND SO.RAZONSOCIAL <> ''"
 								+ " AND	(SO.SEGMENTO='BANCA EMPRESARIAL')"
 								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
@@ -118,6 +120,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA" + " WHERE"
 								+ " (SO.CLIENTE != 0)"
 								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"
+								+ " AND SO.RAZONSOCIAL <> ''"
 								+ " AND	(SO.SEGMENTO='ATE')"
 								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
@@ -129,6 +132,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA" + " WHERE"
 								+ " (SO.CLIENTE != 0)"
 								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"
+								+ " AND SO.RAZONSOCIAL <> ''"
 								+ " AND	(SO.SEGMENTO='PYME')"
 								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
@@ -140,6 +144,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA" + " WHERE"
 								+ " (SO.CLIENTE != 0)"
 								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"
+								+ " AND SO.RAZONSOCIAL <> ''"
 								+ " AND	(SO.SEGMENTO='OFFLINE')"
 								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
@@ -151,6 +156,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA" + " WHERE"
 								+ " (SO.CLIENTE != 0)"
 								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111))"
+								+ " AND SO.RAZONSOCIAL <> ''"
 								+ " AND	(SO.SEGMENTO='PYME OFFLINE')"
 								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
