@@ -395,8 +395,10 @@ public class SegmentoDaoImpl implements SegmentoDao {
 				try {
 					String sqlQuery = "";
 
-					sqlQuery = "SELECT ltrim(rtrim(EJE.Segmento)) AS Segmento, COUNT(EJE.Segmento) AS TOTAL FROM  [dbo].[LlamadasATE] LL INNER JOIN [dbo].[TblEjecutivos]  EJE  ON EJE.Nomina = LL.NOMINA_REG WHERE (CAST(LL.FECHA_INI AS DATE) BETWEEN ? AND ?) AND (EJE.Segmento='ATE' OR EJE.Segmento='PYME' OR EJE.Segmento='OFFLINE' OR EJE.Segmento='PYME OFFLINE' OR EJE.Segmento='BANCA EMPRESARIAL') GROUP BY EJE.Segmento";
-					ResultSet rs;
+					sqlQuery = "SELECT ltrim(rtrim(EJE.Segmento)) AS Segmento, COUNT(EJE.Segmento) AS TOTAL FROM  "
+							+ "[dbo].[LlamadasATE] LL INNER JOIN [dbo].[TblEjecutivos]  EJE  ON EJE.Nomina = LL.NOMINA_REG "
+							+ "INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA 	INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE WHERE (CAST(LL.FECHA_INI AS DATE) BETWEEN ? AND ?) AND (SO.Segmento='ATE' OR SO.Segmento='PYME' OR SO.Segmento='OFFLINE' OR SO.Segmento='PYME OFFLINE' OR SO.Segmento='BANCA EMPRESARIAL') GROUP BY EJE.Segmento";
+				ResultSet rs;
 					pstmt = connection.prepareStatement(sqlQuery);
 					pstmt.setString(1, fechaInicio);
 					pstmt.setString(2, fechaFinal);
