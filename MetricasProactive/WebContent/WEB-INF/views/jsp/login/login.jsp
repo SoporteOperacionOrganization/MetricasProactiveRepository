@@ -59,8 +59,12 @@
     				<div class="row">
         				<div class="col-md-5 col-md-offset-4">
 							<div class="alert alert-danger alert-dismissible fade in text-center">
-								<strong>Autenticación incorrecta!</strong> Usuario o contraseña
-								incorrectos.
+								<!-- <strong>Autenticación incorrecta!</strong> Usuario o contraseña
+								incorrectos.-->
+								
+								<b>Error!!!</b>&nbsp;
+               					${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+								
 							</div>
 						</div>
 					</div>
