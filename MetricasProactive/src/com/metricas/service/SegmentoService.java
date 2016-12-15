@@ -3,8 +3,6 @@ package com.metricas.service;
 import java.util.Map;
 
 public interface SegmentoService {
-
-	//public Map<String,Integer> obtenerLlamadasTotalesSegmentos(String fechaInicio, String fechaFinal);
 	
 	public String obtenerLlamadasTotalesSegmentoComparacion(String fechaInicioOriginal, String fechaFinalOriginal, String fechaInicio, String fechaFinal);
 	

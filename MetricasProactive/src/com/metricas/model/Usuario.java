@@ -57,8 +57,6 @@ public class Usuario{
 	private int area;
 	@Column(name = "IdSubArea")
 	private int subArea;
-	//@OneToOne(fetch = FetchType.LAZY)
-	//@JoinColumn(name = "IdSegmento")
 	@Column(name = "IdSegmento")
 	private int segmento;
 	@Column(name = "IdSIRH")
