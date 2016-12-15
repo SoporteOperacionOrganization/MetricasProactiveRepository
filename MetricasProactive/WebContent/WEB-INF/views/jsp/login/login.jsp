@@ -35,7 +35,7 @@
 						</div>
 						<div style="margin-bottom: 5px; width: 100%" class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> 
-							<input id="login-password"  type="password" class="form-control" name="contrasena" placeholder="Password" required="required">
+							<input id="login-password" maxlength="8"  type="password" class="form-control" name="contrasena" placeholder="Password" required="required">
 						</div>
 						<br/>
 						<div style="margin-top:10px; text-align:center;" class="form-group">
@@ -53,13 +53,18 @@
 			</div>
 			<br/>
 			<br/>
+			
 			<c:if test="${param.error == 'true'}">
 				<div class="container-fluid">
-   					<div class="row">
-       					<div class="col-md-5 col-md-offset-4">
-							<div style="font-weight:bold;" class="alert alert-danger alert-dismissible fade in text-center">
-								Error!!!<br />
-		                ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}   
+    				<div class="row">
+        				<div class="col-md-5 col-md-offset-4">
+							<div class="alert alert-danger alert-dismissible fade in text-center">
+								<!-- <strong>Autenticación incorrecta!</strong> Usuario o contraseña
+								incorrectos.-->
+								
+								<b>Error!!!</b>&nbsp;
+               					${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+								
 							</div>
 						</div>
 					</div>

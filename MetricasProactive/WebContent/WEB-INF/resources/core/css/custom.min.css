@@ -3,8 +3,8 @@
 }
 
 .daterangepicker .ranges li.active, .daterangepicker .ranges li:hover {
-	background: #536A7F;
-	border: 1px solid #536A7F;
+	background: #002D72;
+	border: 1px solid #002D72;
 	color: #fff
 }
 
@@ -38,12 +38,12 @@
 }
 
 .daterangepicker td.in-range {
-	background: #E4E7EA;
+	background: #d8e7ff;
 	color: #73879C
 }
 
 .daterangepicker td.active, .daterangepicker td.active:hover {
-	background-color: #536A7F;
+	background-color: #002D72;
 	color: #fff
 }
 

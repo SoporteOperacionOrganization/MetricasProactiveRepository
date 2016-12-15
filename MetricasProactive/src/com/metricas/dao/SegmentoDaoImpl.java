@@ -287,7 +287,10 @@ public class SegmentoDaoImpl implements SegmentoDao {
 								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" + " WHERE"
 								+ " CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103)"
 								+ " AND (SO.Segmento='BANCA EMPRESARIAL')" 
-								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO" + " ORDER BY COUNT(TT.DESCRIPCION) DESC";
+								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO" + " ORDER BY COUNT(TT.DESCRIPCION) DESC"
+						+ " AND (SO.Segmento='BANCA EMPRESARIAL')" + " GROUP BY TT.DESCRIPCION"
+								+ " ORDER BY COUNT(TT.DESCRIPCION) DESC";
+
 						break;
 					case "online":
 						sqlQuery = "SELECT TOP 10 TT.DESCRIPCION+'  ('+SO.SEGMENTO+') ', COUNT(TT.DESCRIPCION) as TOTAL"
@@ -297,7 +300,10 @@ public class SegmentoDaoImpl implements SegmentoDao {
 								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" + " WHERE"
 								+ " CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103)"
 								+ " AND (SO.Segmento='ATE')" 
-								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO" + " ORDER BY COUNT(TT.DESCRIPCION) DESC";
+								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO" + " ORDER BY COUNT(TT.DESCRIPCION) DESC"
+								+ " AND (SO.Segmento='ATE')" + " GROUP BY TT.DESCRIPCION"
+								+ " ORDER BY COUNT(TT.DESCRIPCION) DESC";
+
 						break;
 
 					case "pyme":
@@ -308,7 +314,10 @@ public class SegmentoDaoImpl implements SegmentoDao {
 								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" + " WHERE"
 								+ " CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103)"
 								+ " AND (SO.Segmento='PYME')" 
-								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO" + " ORDER BY COUNT(TT.DESCRIPCION) DESC";
+								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO" + " ORDER BY COUNT(TT.DESCRIPCION) DESC"
+								+ " AND (SO.Segmento='PYME')" + " GROUP BY TT.DESCRIPCION"
+								+ " ORDER BY COUNT(TT.DESCRIPCION) DESC";
+
 						break;
 
 					case "offline":
@@ -319,7 +328,9 @@ public class SegmentoDaoImpl implements SegmentoDao {
 								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" + " WHERE"
 								+ " CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103)"
 								+ " AND (SO.Segmento='OFFLINE')"
-								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO" + " ORDER BY COUNT(TT.DESCRIPCION) DESC";
+								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO" + " ORDER BY COUNT(TT.DESCRIPCION) DESC"
+								+ " AND (SO.Segmento='OFFLINE')" + " GROUP BY TT.DESCRIPCION"
+								+ " ORDER BY COUNT(TT.DESCRIPCION) DESC";
 						break;
 
 					case "pymeOffline":
@@ -330,7 +341,9 @@ public class SegmentoDaoImpl implements SegmentoDao {
 								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" + " WHERE"
 								+ " CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103)"
 								+ " AND (SO.Segmento='PYME OFFLINE')" 
-								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO" + " ORDER BY COUNT(TT.DESCRIPCION) DESC";
+								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO" + " ORDER BY COUNT(TT.DESCRIPCION) DESC"
+								+ " AND (SO.Segmento='PYME OFFLINE')" + " GROUP BY TT.DESCRIPCION"
+								+ " ORDER BY COUNT(TT.DESCRIPCION) DESC";
 						break;
 					}
 

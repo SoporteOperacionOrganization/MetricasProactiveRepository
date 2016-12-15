@@ -39,6 +39,7 @@ public class MetricasProactiveSecurityConfig extends WebSecurityConfigurerAdapte
 		DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
 		authenticationProvider.setUserDetailsService(userDetailsService);
 		authenticationProvider.setPasswordEncoder(passwordEncoder());
+		authenticationProvider.setHideUserNotFoundExceptions(false);
 		return authenticationProvider;
 	}
 	
@@ -47,11 +48,14 @@ public class MetricasProactiveSecurityConfig extends WebSecurityConfigurerAdapte
 		http.csrf().disable();
 		
 		http.authorizeRequests().antMatchers("/", "/login", "/logout").permitAll();
-		http.authorizeRequests().antMatchers("/general").access("hasAnyRole('ROLE_DIRECTOR', 'ROLE_DIRECTO')");
-		http.authorizeRequests().antMatchers("/test").access("hasRole('ROLE_DIRECTOR')");
+		http.authorizeRequests().antMatchers("/inicio","/general", "/empresarial", "/obtenerLlamadasTotalesSegmentoComparativo", 
+				"/obtenerLlamadasTotalesFamiliasSegmento", "/obtenerLlamadasTotalesSegmento", "/servicios",
+				"/concurrencia", "/obtenerLlamadasTotalesFamiliasSegmentoComparativo", "/obtenerLlamadasFamilia",
+				"/clientesFrecuentes", "/offline", "/online", "/pyme", "/pymeOffline").access("hasAnyRole('ROLE_DIRECTOR', 'ROLE_DIRECTO')");
 		http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
 		http.authorizeRequests().and().formLogin().loginProcessingUrl("/j_spring_security_check").loginPage("/login")
-				.defaultSuccessUrl("/inicio").failureUrl("/login?error=true").usernameParameter("soeid")
+				.defaultSuccessUrl("/inicio").failureUrl("/login?error=true")
+				.usernameParameter("soeid")
 				.passwordParameter("contrasena")
 				.and().logout().logoutUrl("/logout").logoutSuccessUrl("/login");
 
