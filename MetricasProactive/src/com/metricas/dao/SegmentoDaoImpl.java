@@ -28,39 +28,6 @@ public class SegmentoDaoImpl implements SegmentoDao {
 	private SessionFactory sessionFactoryData;
 
 	private Session session;
-	private Query query;
-
-	@Override
-	public Map<String, Integer> obtenerLlamadasTotalesSegmentos(String fechaInicio, String fechaFinal) {
-		Map<String, Integer> totalesLlamadasSegmentos = new HashMap<String, Integer>();
-		session = sessionFactoryData.openSession();
-		Transaction tx = session.beginTransaction();
-		session.doWork(new Work() {
-
-			@Override
-			public void execute(Connection connection) throws SQLException {
-
-				PreparedStatement pstmt = null;
-				String sqlQuery = "SELECT ltrim(rtrim(EJE.Segmento)) AS Segmento, COUNT(EJE.Segmento) AS TOTAL FROM  [dbo].[LlamadasATE] LL INNER JOIN [dbo].[TblEjecutivos]  EJE  ON EJE.Nomina = LL.NOMINA_REG INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA 	INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE WHERE (CAST(LL.FECHA_INI AS DATE) BETWEEN ? AND ?) AND (SO.Segmento='ATE' OR SO.Segmento='PYME' OR SO.Segmento='OFFLINE' OR SO.Segmento='PYME OFFLINE' OR SO.Segmento='BANCA EMPRESARIAL') GROUP BY EJE.Segmento";
-				ResultSet rs;
-				pstmt = connection.prepareStatement(sqlQuery);
-				pstmt.setString(1, fechaInicio);
-				pstmt.setString(2, fechaFinal);
-				rs = pstmt.executeQuery();
-
-				while (rs.next()) {
-					totalesLlamadasSegmentos.put(rs.getString(1), rs.getInt(2));
-				}
-				tx.commit();
-				
-			}
-		});
-
-		session.close();
-		Gson gson = new Gson();
-		String json = gson.toJson(totalesLlamadasSegmentos);
-		return totalesLlamadasSegmentos;
-	}
 
 	@Override
 	public Map<String, Integer> obtenerClientesFrecuentes(String fecha_inicio, String fecha_fin, String segmento) {
@@ -383,8 +350,8 @@ public class SegmentoDaoImpl implements SegmentoDao {
 	}
 
 	@Override
-	public Map<String, Integer> concurrencia(String fechaInicio, String fechaFinal) {
-		Map<String, Integer> concurrencia = new HashMap<>();
+	public Map<String, Integer> obtenerLlamadasTotalesSegmentos(String fechaInicio, String fechaFinal) {
+		Map<String, Integer> llamadasTotalesSegmentos = new HashMap<>();
 		session = sessionFactoryData.openSession();
 
 		session.doWork(new Work() {
@@ -405,7 +372,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 
 					rs = pstmt.executeQuery();
 					while (rs.next()) {
-						concurrencia.put(rs.getString(1), rs.getInt(2));
+						llamadasTotalesSegmentos.put(rs.getString(1), rs.getInt(2));
 					}
 
 				} catch (SQLException ex) {
@@ -416,20 +383,25 @@ public class SegmentoDaoImpl implements SegmentoDao {
 
 			}
 		});
-		return concurrencia;
+		return llamadasTotalesSegmentos;
 	}
 
 	@Override
 	public Map<String, Integer> obtenerLlamadasTotalesFamiliasSegmento(String fechaInicio, String fechaFinal,
 			String segmento) {
-		Map<String, Integer> totalesLlamadasSegmentos = new HashMap<String, Integer>();
+		
+		
+		
+		Map<String, Integer> totalesLlamadasSegmentos = new HashMap<>();
 		session = sessionFactoryData.openSession();
-		Transaction tx = session.beginTransaction();
-		session.doWork(new Work() {
 
+		session.doWork(new Work() {
 			@Override
 			public void execute(Connection connection) throws SQLException {
 				PreparedStatement pstmt = null;
+
+				try {
+		
 				String sqlQuery = "SELECT TOP 10 ltrim(rtrim(TT.FAMILIA)), COUNT(TT.FAMILIA) AS TOTAL FROM  [dbo].[LlamadasATE] LL INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE WHERE (TT.FAMILIA != '') AND (CAST(ll.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,111) AND CONVERT(DATE,?,111)) AND TT.Interno NOT IN (1) AND (SO.Segmento=? ) GROUP BY TT.FAMILIA  ORDER BY COUNT(TT.FAMILIA) DESC ";
 				ResultSet rs;
 				pstmt = connection.prepareStatement(sqlQuery);
@@ -438,15 +410,19 @@ public class SegmentoDaoImpl implements SegmentoDao {
 				pstmt.setString(3, segmento);
 				rs = pstmt.executeQuery();
 
+				rs = pstmt.executeQuery();
 				while (rs.next()) {
 					totalesLlamadasSegmentos.put(rs.getString(1), rs.getInt(2));
 				}
+
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			} finally {
+				pstmt.close();
 			}
 
-		});
-		tx.commit();
-		session.close();
-		return totalesLlamadasSegmentos;
-	}
-
+		}
+	});
+	return totalesLlamadasSegmentos;
+}
 }
