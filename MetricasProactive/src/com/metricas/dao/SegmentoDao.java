@@ -13,5 +13,7 @@ public interface SegmentoDao {
 	public Map<String, Integer> obtenerLLamadasServicio(String fecha_inicio, String fecha_fin, String segmento);
 
 	public Map<String, Integer> obtenerLlamadasTotalesFamiliasSegmento(String fechaInicio, String fechaFinal, String segmento);
+
+	Map<String, Integer> concurrencia(String fechaInicio, String fechaFinal);
     
 }
