@@ -220,8 +220,8 @@ var themeBar = {
 
 // Colores Pie
 var theme = {
-	color : [ '#013F7A', '#1DB7D0', '#E8B027', '#000000', '#70FDFF', '#0B676A',
-			'#C01722', '#F7DEB4', '#8FA508', '#A6A6A6' ],
+	color : [ '#002d72', '#00bdf2', '#008ce6 ', '#fa1', '#890c58', '#00843d',
+			'#cb6015', '#c99700', '#949300', '#6b3077' ],
 
 	title : {
 		itemGap : 8,
@@ -558,7 +558,7 @@ function dibujarLlamadasTotalesGeneral(fechaInicioP, fechaFinalP) {
 						}
 					},
 					legend : {
-						data : [ 'Llamadas', 'Comparativo' ],
+						data : [ 'Filtro general' ],
 						y : 'bottom'
 					},
 					xAxis : [ {
@@ -574,19 +574,13 @@ function dibujarLlamadasTotalesGeneral(fechaInicioP, fechaFinalP) {
 					} ],
 					yAxis : [ {
 						type : 'value',
-						name : 'Total filtro',
+						name : 'Total',
 						axisLabel : {
 							formatter : '{value}'
 						}
-					}, {
-						type : 'value',
-						name : 'Total comparativo',
-						axisLabel : {
-							formatter : '{value}'
-						}
-					} ],
+					}],
 					series : [ {
-						name : 'Llamadas',
+						name : 'Filtro general',
 						type : 'bar',
 						// data : [2,5,10,8,15]
 						data : arrayTotales,
@@ -598,13 +592,8 @@ function dibujarLlamadasTotalesGeneral(fechaInicioP, fechaFinalP) {
 								}
 							}
 						},
-						barMaxWidth : '70',
-					}, {
-						name : 'Comparativo',
-						type : 'line',
-						yAxisIndex : 1,
-						data : []
-					} ]
+						barMaxWidth : '100',
+					}]
 				});
 
 			}
@@ -699,7 +688,7 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioOriginalP,
 						},
 						calculable : true,
 						legend : {
-							data : [ 'Llamadas', 'Comparativo' ],
+							data : [ 'Filtro general', 'Comparativo' ],
 							y : 'bottom'
 						},
 						xAxis : [ {
@@ -715,19 +704,13 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioOriginalP,
 						} ],
 						yAxis : [ {
 							type : 'value',
-							name : 'Total filtro',
+							name : 'Total',
 							axisLabel : {
 								formatter : '{value}'
 							}
-						}, {
-							type : 'value',
-							name : 'Total comparativo',
-							axisLabel : {
-								formatter : '{value}'
-							}
-						} ],
+						}],
 						series : [ {
-							name : 'Llamadas',
+							name : 'Filtro general',
 							type : 'bar',
 							data : arrayTotalesFiltro,
 							itemStyle : {
@@ -738,12 +721,10 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioOriginalP,
 									}
 								}
 							},
-							barMaxWidth : '70',
+							barMaxWidth : '100',
 						}, {
 							name : 'Comparativo',
 							type : 'line',
-							stack : 'area',
-							yAxisIndex : 1,
 							data : arrayTotalesComparativo
 						} ]
 					});
@@ -846,7 +827,7 @@ function dibujarLlamadasTotalesFamiliaSegmentos(fechaInicioP, fechaFinalP,
 							},
 							calculable : true,
 							legend : {
-								data : [ 'Llamadas', 'Comparativo' ],
+								data : [ 'Filtro general' ],
 								y : 'bottom'
 							},
 							xAxis : [ {
@@ -862,19 +843,13 @@ function dibujarLlamadasTotalesFamiliaSegmentos(fechaInicioP, fechaFinalP,
 							} ],
 							yAxis : [ {
 								type : 'value',
-								name : 'Total filtro',
+								name : 'Total',
 								axisLabel : {
 									formatter : '{value}'
 								}
-							}, {
-								type : 'value',
-								name : 'Total comparativo',
-								axisLabel : {
-									formatter : '{value}'
-								}
-							} ],
+							}],
 							series : [ {
-								name : 'Llamadas',
+								name : 'Filtro general',
 								type : 'bar',
 								data : arrayTotales,
 								itemStyle : {
@@ -885,13 +860,8 @@ function dibujarLlamadasTotalesFamiliaSegmentos(fechaInicioP, fechaFinalP,
 										}
 									}
 								},
-								barMaxWidth : '70',
-							}, {
-								name : 'Comparativo',
-								type : 'line',
-								yAxisIndex : 1,
-								data : []
-							} ]
+								barMaxWidth : '100',
+							}]
 						});
 					}
 				}
@@ -988,7 +958,7 @@ function dibujarLlamadasTotalesFamiliaSegmentoComparativo(fechaInicioOriginalP,
 						},
 						calculable : true,
 						legend : {
-							data : [ 'Llamadas', 'Comparativo' ],
+							data : [ 'Filtro general', 'Comparativo' ],
 							y : 'bottom'
 						},
 						xAxis : [ {
@@ -1010,19 +980,13 @@ function dibujarLlamadasTotalesFamiliaSegmentoComparativo(fechaInicioOriginalP,
 						} ],
 						yAxis : [ {
 							type : 'value',
-							name : 'Total filtro',
+							name : 'Total',
 							axisLabel : {
 								formatter : '{value}'
 							}
-						}, {
-							type : 'value',
-							name : 'Total comparativo',
-							axisLabel : {
-								formatter : '{value}'
-							}
-						} ],
+						}],
 						series : [ {
-							name : 'Llamadas',
+							name : 'Filtro general',
 							type : 'bar',
 							data : arrayTotalesFiltro,
 							itemStyle : {
@@ -1033,12 +997,10 @@ function dibujarLlamadasTotalesFamiliaSegmentoComparativo(fechaInicioOriginalP,
 									}
 								}
 							},
-							barMaxWidth : '70',
+							barMaxWidth : '100',
 						}, {
 							name : 'Comparativo',
 							type : 'line',
-							stack : 'area',
-							yAxisIndex : 1,
 							data : arrayTotalesComparativo
 						} ]
 					});

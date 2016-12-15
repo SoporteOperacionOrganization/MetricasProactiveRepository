@@ -18,9 +18,9 @@
 </head>
 
 <body class="nav-md">
-	<jsp:include page="../fragments/header.jsp" />
 	<div class="container body">
 		<div class="main_container">
+		<jsp:include page="../fragments/header.jsp" />
 			<!-- page content -->
 			<div class="right_col" role="main">
 				<div class="page-title">
@@ -32,12 +32,12 @@
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-12 form-group pull-right">
 							<div class="row">
-								<div class="col-md-4 col-sm-4 col-xs-4"
+								<div class="col-md-4 col-sm-4 col-xs-2"
 									style="text-align: right; padding-top: 5px">
 									<label for="calendarioFiltro">Filtro general:</label>
 								</div>
-								<div class="col-md-8 col-sm-8 col-xs-8 pull-right"
-									style="padding-right: 30px; padding-left: 5px">
+								<div class="col-md-8 col-sm-8 col-xs-10 pull-right"
+									style="padding-right: 10px; padding-left: 20px">
 									<div id="calendarioFiltro" class="form-control">
 										<i class="glyphicon glyphicon-calendar fa fa-calendar"></i> <span></span>
 										<b class="caret"></b>

@@ -3,8 +3,6 @@ package com.metricas.service;
 import java.util.Map;
 
 public interface SegmentoService {
-
-	public Map<String,Integer> obtenerLlamadasTotalesSegmentos(String fechaInicio, String fechaFinal);
 	
 	public String obtenerLlamadasTotalesSegmentoComparacion(String fechaInicioOriginal, String fechaFinalOriginal, String fechaInicio, String fechaFinal);
 	
@@ -18,6 +16,6 @@ public interface SegmentoService {
 
 	public Map<String,Integer> obtenerClientesFrecuentes(String fechaInicio, String fechaFinal, String segmento);
 
-	Map<String, Integer> obtenerConcurrencia(String fechaInicio, String fechaFinal); 
+	Map<String, Integer> llamadasTotalesSegmentos(String fechaInicio, String fechaFinal); 
 
 }
