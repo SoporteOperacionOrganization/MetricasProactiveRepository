@@ -18,15 +18,15 @@ function recalcularAlto() {
 	var altoContenido = $("body").height();
 	var altoVentana = $(window).height();
 	var altoDocumento = $(document).height();
-	
-	if(altoContenido <= altoVentana){
+
+	if (altoContenido <= altoVentana) {
 		$(".left_col").css("min-height", altoDocumento);
-	}else if (altoContenido <= altoDocumento){
+	} else if (altoContenido <= altoDocumento) {
 		$(".left_col").css("min-height", altoContenido);
-	}else{
+	} else {
 		$(".left_col").css("min-height", altoVentana);
 	}
-	
+
 }
 
 function obtenerURL() {
@@ -37,11 +37,11 @@ function obtenerURL() {
 
 function cambiarLabelFechaFiltro(inicio, fin) {
 	$('#calendarioFiltro span').html(
-			inicio.format('YYYY/MM/DD') + ' - ' + fin.format('YYYY/MM/DD'));
+			inicio.format('DD/MM/YYYY') + ' - ' + fin.format('DD/MM/YYYY'));
 }
 function cambiarLabelFechaComparativo(inicio, fin) {
 	$('#calendarioComparativo span').html(
-			inicio.format('YYYY/MM/DD') + ' - ' + fin.format('YYYY/MM/DD'));
+			inicio.format('DD/MM/YYYY') + ' - ' + fin.format('DD/MM/YYYY'));
 }
 
 function graficasIniciales() {
@@ -155,6 +155,17 @@ $(document)
 		.ready(
 				function() {
 					graficasIniciales();
+					
+					$("#popup").modal({
+						show : false,
+						backdrop : 'static'
+					});
+					$("#progreso1").addClass("progress-bar-progreso1");
+					$("#progreso2").addClass("progress-bar-progreso2");
+					$("#progreso3").addClass("progress-bar-progreso3");
+					$("#progreso4").addClass("progress-bar-progreso4");
+					$("#progreso5").addClass("progress-bar-progreso5");
+					
 					$(".dropdown-toggle").dropdown();
 
 					$(window).on('resize', function() {
@@ -162,9 +173,12 @@ $(document)
 						recalcularAlto();
 					});
 					$("#menu_toggle").on('click', function() {
-						redibujarGraficas();
+						setTimeout(function() {
+							redibujarGraficas()
+						}, 50);
 					});
 					cambiarLabelFechaFiltro(moment(), moment());
+					$('#calendarioComparativo span').html("");
 
 					$('#calendarioFiltro').daterangepicker(optionSet1);
 
@@ -172,36 +186,21 @@ $(document)
 							'apply.daterangepicker',
 							function(ev, picker) {
 								var fechaInicio = picker.startDate
-										.format('YYYY/MM/DD');
+										.format('DD/MM/YYYY');
 								var fechaFinal = picker.endDate
-										.format('YYYY/MM/DD');
+										.format('DD/MM/YYYY');
 								var segmento = obtenerURL();
 								dibujarGraficasPorPagina(fechaInicio,
 										fechaFinal, segmento)
 
 								$("#popup").modal("show");
-								/*
-								 * dibujarFamilias(fechaInicio, fechaFinal,
-								 * segmento); dibujarConcurrencia(fechaInicio,
-								 * fechaFinal); dibujarServicios(fechaInicio,
-								 * fechaFinal, segmento);
-								 * dibujarClientesFrecuentes(fechaInicio,
-								 * fechaFinal, segmento);
-								 * 
-								 * if (segmento == 'general') {
-								 * dibujarLlamadasTotalesGeneral(fechaInicio,
-								 * fechaFinal); } else if (segmento == 'online') {
-								 * dibujarLlamadasTotalesFamiliaSegmentos(
-								 * fechaInicio, fechaFinal, 'ATE'); }
-								 */
 								cambiarLabelFechaFiltro(picker.startDate,
 										picker.endDate);
+								$('#calendarioComparativo span').html("");
 
 								$("#popup").modal("hide");
 
 							});
-
-					cambiarLabelFechaComparativo(moment(), moment());
 					$('#calendarioComparativo').daterangepicker(optionSet2);
 
 					$('#calendarioComparativo')
@@ -215,9 +214,9 @@ $(document)
 										var fechaInicioOriginal = fechasFiltro[0];
 										var fechaFinalOriginal = fechasFiltro[1];
 										var fechaInicioComparativo = picker.startDate
-												.format('YYYY/MM/DD');
+												.format('DD/MM/YYYY');
 										var fechaFinalComparativo = picker.endDate
-												.format('YYYY/MM/DD');
+												.format('DD/MM/YYYY');
 										var segmento = obtenerURL();
 
 										if (segmento == 'general') {
@@ -267,21 +266,5 @@ $(document)
 												picker.startDate,
 												picker.endDate);
 									});
+					
 				});
-
-$(function() {
-	$("#progreso1").addClass("progress-bar-progreso1");
-	$("#progreso2").addClass("progress-bar-progreso2");
-	$("#progreso3").addClass("progress-bar-progreso3");
-	$("#progreso4").addClass("progress-bar-progreso4");
-	$("#progreso5").addClass("progress-bar-progreso5");
-
-});
-
-$(document).ready(function() {
-	$("#popup").modal({
-		show : false,
-		backdrop : 'static'
-	});
-
-});

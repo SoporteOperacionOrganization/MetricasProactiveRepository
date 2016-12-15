@@ -611,6 +611,7 @@ body .container.body .right_col {
 	.top_nav .nav .open>a:focus, .top_nav .nav .open>a:hover {
 	background: transparent;
 	color: #00bdf2 !important;
+	box-shadow: none;
 }
 
 body {
