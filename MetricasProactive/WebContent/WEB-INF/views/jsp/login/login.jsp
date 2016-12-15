@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Login</title>
 <jsp:include page="../fragments/resources.jsp" />
+<script src="http://digitalbush.com/wp-content/uploads/2013/01/jquery.maskedinput-1.3.1.min_.js"></script>
 </head>
 <body>
 
@@ -29,7 +30,7 @@
 						<div style="display: none" id="login-alert" class="alert alert-danger col-sm-12"></div>
 						<div style="margin-bottom: 5px; width: 100%; height: 3px" class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-						    <input id="Soeid" type="text" class="form-control" name="soeid" value=""  autofocus="autofocus" placeholder="SOEID" required="required" maxlength="7">
+						    <input id="Soeid" type="text" class="form-control" name="soeid" value="" autofocus="autofocus" placeholder="SOEID" required="required" maxlength="7">
 						
 						</div>
 						<div style="margin-bottom: 5px; width: 100%" class="input-group">
@@ -68,7 +69,13 @@
 		</form>
 	
 	</div>
-	
 
+	<script type='text/javascript'>    
+	    $( document ).ready(function() {
+	    	$(function(){
+		        $('#Soeid').mask('aa99999',{placeholder:""});
+		    });
+	    });
+	</script>
 </body>
 </html>

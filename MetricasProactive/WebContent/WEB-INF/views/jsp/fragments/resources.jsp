@@ -16,6 +16,7 @@
 <spring:url value="resources/js/daterangepicker-opciones.js" var="dateRangePickerOpciones" />
 <spring:url value="resources/js/generales.js" var="generales" />
 <spring:url value="resources/js/graficas.js" var="graficas" />
+<spring:url value="resources/js/jquery.maskedinput.min.js" var="maskedInput" />
     
 
 <link href="${bootstrapCss}" rel="stylesheet" ></link>
@@ -36,3 +37,4 @@
 <script src="${dateRangePickerOpciones}"></script>
 <script src="${graficas}"></script>
 <script src="${generales}"></script>
+<script src="${maskedInput}"></script>
