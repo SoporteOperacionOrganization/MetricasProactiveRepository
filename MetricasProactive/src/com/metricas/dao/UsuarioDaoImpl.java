@@ -42,7 +42,6 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		session = sessionFactoryLogin.getCurrentSession();
 		List<Usuario> userList = new ArrayList<Usuario>();
 		query = session.createQuery("FROM Usuario u where u.soeid = :soeid");
-		//query = session.createSQLQuery("SELECT * FROM TblEjecutivos WHERE SOEID = :soeid");
 		query.setParameter("soeid", soeid);
 		userList = query.list();
 		if(userList.size() > 0){
