@@ -59,7 +59,7 @@ function graficasIniciales() {
 		mm = '0' + mm
 	}
 
-	hoy = yyyy + '/' + mm + '/' + dd;
+	hoy = dd + '/' + mm + '/' + yyyy;
 
 	dibujarGraficasPorPagina(hoy, hoy, segmento);
 }

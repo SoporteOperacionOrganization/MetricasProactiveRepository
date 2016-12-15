@@ -971,12 +971,7 @@ function dibujarLlamadasTotalesFamiliaSegmentoComparativo(fechaInicioOriginalP,
 									fontSize : 9
 								}
 							}
-						// data: [Object.keys(data)[0],
-						// Object.keys(data)[1], Object.keys(data)[2],
-						// Object.keys(data)[3], Object.keys(data)[4],
-						// Object.keys(data)[5], Object.keys(data)[6],
-						// Object.keys(data)[7], Object.keys(data)[8],
-						// Object.keys(data)[9]]
+					
 						} ],
 						yAxis : [ {
 							type : 'value',
@@ -1046,6 +1041,20 @@ function dibujarFamilias(fechaInicioP, fechaFinalP, segmentoP) {
 					arrayValores[a] = b[1];
 					arrayEtiquetas[a] = b[0];
 				}
+				
+
+				for (i = 1; i <= 9; i++) {
+                    $("#sparkline" + (i) + " .sparkline-familia").text("");
+                    $("#sparkline" + (i) + " .sparkline-segmento").text("");
+                    $("#sparkline" + (i) + " .sparkline-contenido h2")
+                                 .text("");
+             }
+
+				
+				
+				
+				
+				
 				for (i = 0; i <= arrayValores.length; i++) {
 					var segmento = arrayEtiquetas[i].toString().split("-");
 					$("#sparkline" + (i + 1) + " .sparkline-familia").text(
@@ -1101,7 +1110,7 @@ function dibujarServicios(fechaInicioP, fechaFinalP) {
 						echartPie.setOption({
 							tooltip : {
 								trigger : 'item',
-								formatter : "{a} <br/>{b} : {c} ({d}%)"
+								formatter : "{b} : {c} ({d}%)"
 							},
 							legend : {
 								x : 'left',
@@ -1115,7 +1124,7 @@ function dibujarServicios(fechaInicioP, fechaFinalP) {
 										show : true
 									},
 									dataView : {
-										show : true
+										show : false
 									},
 									saveAsImage : {
 										show : true,
@@ -1127,7 +1136,7 @@ function dibujarServicios(fechaInicioP, fechaFinalP) {
 							series : [ {
 								type : 'pie',
 								radius : '40%',
-								center : [ '50%', '40%' ],
+								center : [ '50%', '35%' ],
 								data : [ {
 									value : arrayValues[0],
 									name : arrayNames[0]
