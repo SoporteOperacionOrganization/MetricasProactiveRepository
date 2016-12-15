@@ -101,6 +101,19 @@ public class SegmentoServiceImpl implements SegmentoService {
 						}
 					}
 				}
+				
+				for (Map.Entry<String, Integer> entryC : totalesLlamadasComparativo.entrySet()) {
+					String llaveC = entryC.getKey();
+					Integer valorC = entryC.getValue();
+					Integer busqueda = totalesLlamadasOriginal.get(llaveC);
+					if(busqueda == null){
+						List<Integer> totales2 = new ArrayList<Integer>();
+						totales2.add(0);
+						totales2.add(valorC);
+						listadoTotales.put(llaveC, totales2);
+					}
+				}
+				
 			}
 
 		} else {
@@ -145,6 +158,20 @@ public class SegmentoServiceImpl implements SegmentoService {
 					}
 				}
 			}
+			
+			
+			for (Map.Entry<String, Integer> entryO : totalesLlamadasOriginal.entrySet()) {
+				String llaveO = entryO.getKey();
+				Integer valorO = entryO.getValue();
+				Integer busqueda = totalesLlamadasComparativo.get(llaveO);
+				if(busqueda == null){
+					List<Integer> totales2 = new ArrayList<Integer>();
+					totales2.add(valorO);
+					totales2.add(0);
+					listadoTotales.put(llaveO, totales2);
+				}
+			}
+			
 
 		}
 		String json = gson.toJson(listadoTotales);
@@ -214,6 +241,20 @@ public class SegmentoServiceImpl implements SegmentoService {
 						}
 					}
 				}
+				
+				for (Map.Entry<String, Integer> entryC : totalesLlamadasComparativo.entrySet()) {
+					String llaveC = entryC.getKey();
+					Integer valorC = entryC.getValue();
+					Integer busqueda = totalesLlamadasOriginal.get(llaveC);
+					if(busqueda == null){
+						List<Integer> totales2 = new ArrayList<Integer>();
+						totales2.add(0);
+						totales2.add(valorC);
+						listadoTotales.put(llaveC, totales2);
+					}
+					
+				}
+				
 			}
 		} else {
 			if (tamanoOriginal == 0) {
@@ -257,6 +298,20 @@ public class SegmentoServiceImpl implements SegmentoService {
 					}
 				}
 			}
+			
+			
+			for (Map.Entry<String, Integer> entryO : totalesLlamadasOriginal.entrySet()) {
+				String llaveO = entryO.getKey();
+				Integer valorO = entryO.getValue();
+				Integer busqueda = totalesLlamadasComparativo.get(llaveO);
+				if(busqueda == null){
+					List<Integer> totales2 = new ArrayList<Integer>();
+					totales2.add(valorO);
+					totales2.add(0);
+					listadoTotales.put(llaveO, totales2);
+				}
+			}
+			
 		}
 
 		String json = gson.toJson(listadoTotales);
