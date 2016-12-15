@@ -37,18 +37,24 @@ public class CustomUserDetailsService implements UserDetailsService{
 		boolean accountNonLocked = true;
 		
 
-		return new CustomUsuario(
-				domainUser.getSoeid(),
-                domainUser.getContrasena(), 
-                enabled, 
-                accountNonExpired, 
-                true, 
-                accountNonLocked,
-                getAuthorities(domainUser.getPerfiles()),
-                domainUser.getSegmentos(),
-                domainUser.getNombre(),
-                domainUser.getApellidoPaterno()
-		);
+		if(domainUser != null){
+			return new CustomUsuario(
+					domainUser.getSoeid(),
+	                domainUser.getContrasena(), 
+	                enabled, 
+	                accountNonExpired, 
+	                true, 
+	                accountNonLocked,
+	                getAuthorities(domainUser.getPerfiles()),
+	                domainUser.getSegmentos(),
+	                domainUser.getNombre(),
+	                domainUser.getApellidoPaterno()
+			);
+		}else{
+			throw new UsernameNotFoundException("Usuario no encontrado");
+		}
+		
+		
 
 	}
 	
