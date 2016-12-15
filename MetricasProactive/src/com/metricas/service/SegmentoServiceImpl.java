@@ -19,13 +19,13 @@ public class SegmentoServiceImpl implements SegmentoService {
 	@Autowired
 	private SegmentoDao segmentoDao;
 
-	@Override
+	/*@Override
 	public Map<String, Integer> obtenerLlamadasTotalesSegmentos(String fechaInicio, String fechaFinal) {
 		return segmentoDao.obtenerLlamadasTotalesSegmentos(fechaInicio, fechaFinal);
-	}
+	}*/
 	@Override
-	public Map<String, Integer> obtenerConcurrencia(String fechaInicio, String fechaFinal) {
-		return segmentoDao.concurrencia(fechaInicio, fechaFinal);
+	public Map<String, Integer> llamadasTotalesSegmentos(String fechaInicio, String fechaFinal) {
+		return segmentoDao.obtenerLlamadasTotalesSegmentos(fechaInicio, fechaFinal);
 	}
 
 	@Override
