@@ -1100,9 +1100,21 @@ function dibujarServicios(fechaInicioP, fechaFinalP) {
 						var cont = 0;
 						$.each(data, function(k, v) {
 							arrayValues[cont] = v;
+							
 							cont = cont + 1;
+					
 						});
 						var arrayNames = Object.keys(data);
+						
+						for (i = 0; i < arrayValues.length; i++) {
+							
+							if( arrayNames[i].indexOf("(ATE)")){
+					        	 arrayNames[i] = arrayNames[i].replace("(ATE)","(ONLINE)");
+							}
+							
+						}
+					
+						
 
 						echartPie = echarts.init(document
 								.getElementById('echart_pie'), theme);
