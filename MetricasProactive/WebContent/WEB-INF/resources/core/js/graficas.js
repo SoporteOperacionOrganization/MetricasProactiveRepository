@@ -1105,17 +1105,7 @@ function dibujarServicios(fechaInicioP, fechaFinalP) {
 					
 						});
 						var arrayNames = Object.keys(data);
-						
-						for (i = 0; i < arrayValues.length; i++) {
-							
-							if( arrayNames[i].indexOf("(ATE)")){
-					        	 arrayNames[i] = arrayNames[i].replace("(ATE)","(ONLINE)");
-							}
-							
-						}
-					
-						
-
+			
 						echartPie = echarts.init(document
 								.getElementById('echart_pie'), theme);
 

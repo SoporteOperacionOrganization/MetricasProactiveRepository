@@ -159,7 +159,8 @@ public class SegmentoDaoImpl implements SegmentoDao {
 					switch (segmento) {
 
 					case "general":
-						sqlQuery = "SELECT TOP 10 TT.FAMILIA + '-' + SO.SEGMENTO , COUNT(TT.FAMILIA) AS TOTAL"
+						
+						sqlQuery = "SELECT TOP 10 TT.FAMILIA + '-' + CASE SO.SEGMENTO WHEN 'ATE' THEN 'ONLINE' ELSE SO.SEGMENTO END AS SEGMENTO, COUNT(TT.FAMILIA) AS TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
 								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
 								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
@@ -270,7 +271,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
 					switch (segmento) {
 
 					case "general":
-						sqlQuery = "SELECT TOP 10 TT.DESCRIPCION+'  ('+SO.SEGMENTO+') ', COUNT(TT.DESCRIPCION) as TOTAL"
+						sqlQuery = "SELECT TOP 10 TT.DESCRIPCION+'  ('+  CASE SO.SEGMENTO WHEN 'ATE' THEN 'ONLINE' ELSE SO.SEGMENTO END +') ', COUNT(TT.DESCRIPCION) as TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
 								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
 								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
@@ -368,12 +369,20 @@ public class SegmentoDaoImpl implements SegmentoDao {
 				try {
 					String sqlQuery = "";
 
-					sqlQuery = "SELECT ltrim(rtrim(EJE.Segmento)) AS Segmento, COUNT(EJE.Segmento) AS TOTAL FROM  "
-							+ "[dbo].[LlamadasATE] LL INNER JOIN [dbo].[TblEjecutivos]  EJE  ON EJE.Nomina = LL.NOMINA_REG "
-							+ "INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA 	INNER JOIN [dbo].[TipoTramitesAte3] "
-							+ "TT on TT.ID_TIPOT = SO.TIPO_TRAMITE WHERE (CAST(LL.FECHA_INI AS DATE) BETWEEN ? AND ?) "
-							+ "AND (SO.Segmento='ATE' OR SO.Segmento='PYME' OR SO.Segmento='OFFLINE' OR SO.Segmento='PYME OFFLINE' "
-							+ "OR SO.Segmento='BANCA EMPRESARIAL') GROUP BY EJE.Segmento";
+					sqlQuery = " SELECT  CASE ltrim(rtrim(EJE.Segmento))" 
+							+" WHEN 'ATE' THEN 'ONLINE' "
+							+" WHEN 'PYME' THEN 'PYME'"
+							+" WHEN 'OFFLINE' THEN 'OFFLINE'"
+							+" WHEN 'PYME OFFLINE' THEN 'PYME OFFLINE'"  
+							+" WHEN 'BANCA EMPRESARIAL' THEN 'EMPRESARIAL' END AS Segmento, COUNT(EJE.Segmento) AS TOTAL FROM "  
+							+" [dbo].[LlamadasATE] LL INNER JOIN [dbo].[TblEjecutivos]  EJE  ON EJE.Nomina = LL.NOMINA_REG "
+							+" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA      INNER JOIN [dbo].[TipoTramitesAte3] " 
+							+" TT on TT.ID_TIPOT = SO.TIPO_TRAMITE WHERE (CAST(LL.FECHA_INI AS DATE) BETWEEN ? AND ?) "
+							+" AND (SO.Segmento='ATE' OR SO.Segmento='PYME' OR SO.Segmento='OFFLINE' OR SO.Segmento='PYME OFFLINE' " 
+							+" OR SO.Segmento='BANCA EMPRESARIAL') GROUP BY EJE.Segmento";
+
+
+							
 				ResultSet rs;
 					pstmt = connection.prepareStatement(sqlQuery);
 					pstmt.setString(1, fechaInicio);
