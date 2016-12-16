@@ -48,73 +48,96 @@ public class SegmentoDaoImpl implements SegmentoDao {
 					case "general":
 						sqlQuery = "SELECT TOP 5 SO.RAZONSOCIAL, COUNT(SO.CLIENTE) AS TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
-								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
-								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
-								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE " + " WHERE"
-								+ " (SO.CLIENTE != 0)"
-								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103))"
-								+ " AND SO.RAZONSOCIAL <> ''"
-								+ " AND	(SO.SEGMENTO='ATE' OR SO.SEGMENTO='PYME' OR SO.SEGMENTO='OFFLINE' OR SO.SEGMENTO='PYME OFFLINE' OR SO.SEGMENTO='BANCA EMPRESARIAL')"
+								+ " 	INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
+								+ " 	INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
+								+ " 	INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE " 
+								+ " WHERE"
+								+ " 	(CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,'?',103) AND CONVERT(DATE,'?',103))"
+								+ " 	AND (SO.CLIENTE != 0)"
+								+ " 	AND (TT.FAMILIA != '')"
+								+ " 	AND TT.Interno NOT IN (1)"
+								+ " 	AND SO.RAZONSOCIAL <> ''"
+								+ " 	AND	(SO.SEGMENTO='ATE' OR SO.SEGMENTO='PYME' OR SO.SEGMENTO='OFFLINE' OR SO.SEGMENTO='PYME OFFLINE' OR SO.SEGMENTO='BANCA EMPRESARIAL')"
 								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
 
 					case "empresarial":
 						sqlQuery = "SELECT TOP 5 SO.RAZONSOCIAL, COUNT(SO.CLIENTE) AS TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
-								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
-								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA  "
-								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE " + " WHERE"
-								+ " (SO.CLIENTE != 0)"
-								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103))"
-								+ " AND SO.RAZONSOCIAL <> ''" + " AND	(SO.SEGMENTO='BANCA EMPRESARIAL')"
+								+ " 	INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
+								+ " 	INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
+								+ " 	INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE " 
+								+ " WHERE"
+								+ " 	(CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,'?',103) AND CONVERT(DATE,'?',103))"
+								+ " 	AND (SO.CLIENTE != 0)"
+								+ " 	AND (TT.FAMILIA != '')"
+								+ " 	AND TT.Interno NOT IN (1)"
+								+ " 	AND SO.RAZONSOCIAL <> ''"
+								+ " 	AND (SO.Segmento='BANCA EMPRESARIAL')"
 								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
 
 					case "online":
 						sqlQuery = "SELECT TOP 5 SO.RAZONSOCIAL, COUNT(SO.CLIENTE) AS TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
-								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
-								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
-								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE " + " WHERE"
-								+ " (SO.CLIENTE != 0)"
-								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103))"
-								+ " AND SO.RAZONSOCIAL <> ''" + " AND	(SO.SEGMENTO='ATE')"
+								+ " 	INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
+								+ " 	INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
+								+ " 	INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE " 
+								+ " WHERE"
+								+ " 	(CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,'?',103) AND CONVERT(DATE,'?',103))"
+								+ " 	AND (SO.CLIENTE != 0)"
+								+ " 	AND (TT.FAMILIA != '')"
+								+ " 	AND TT.Interno NOT IN (1)"
+								+ " 	AND SO.RAZONSOCIAL <> ''"
+								+ " 	AND (SO.Segmento='ATE')"
 								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
 
 					case "pyme":
 						sqlQuery = "SELECT TOP 5 SO.RAZONSOCIAL, COUNT(SO.CLIENTE) AS TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
-								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
-								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
-								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" + " WHERE"
-								+ " (SO.CLIENTE != 0)"
-								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103))"
-								+ " AND SO.RAZONSOCIAL <> ''" + " AND	(SO.SEGMENTO='PYME')"
+								+ " 	INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
+								+ " 	INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
+								+ " 	INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE " 
+								+ " WHERE"
+								+ " 	(CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,'?',103) AND CONVERT(DATE,'?',103))"
+								+ " 	AND (SO.CLIENTE != 0)"
+								+ " 	AND (TT.FAMILIA != '')"
+								+ " 	AND TT.Interno NOT IN (1)"
+								+ " 	AND SO.RAZONSOCIAL <> ''"
+								+ " 	AND (SO.Segmento='PYME')"
 								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
 
 					case "offline":
 						sqlQuery = "SELECT TOP 5 SO.RAZONSOCIAL, COUNT(SO.CLIENTE) AS TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
-								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
-								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
-								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE " + " WHERE"
-								+ " (SO.CLIENTE != 0)"
-								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103))"
-								+ " AND SO.RAZONSOCIAL <> ''" + " AND	(SO.SEGMENTO='OFFLINE')"
+								+ " 	INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
+								+ " 	INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
+								+ " 	INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE " 
+								+ " WHERE"
+								+ " 	(CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,'?',103) AND CONVERT(DATE,'?',103))"
+								+ " 	AND (SO.CLIENTE != 0)"
+								+ " 	AND (TT.FAMILIA != '')"
+								+ " 	AND TT.Interno NOT IN (1)"
+								+ " 	AND SO.RAZONSOCIAL <> ''"
+								+ " 	AND (SO.Segmento='OFFLINE')"
 								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
 
 					case "pymeOffline":
 						sqlQuery = "SELECT TOP 5 SO.RAZONSOCIAL, COUNT(SO.CLIENTE) AS TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
-								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
-								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA "
-								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE " + " WHERE"
-								+ " (SO.CLIENTE != 0)"
-								+ " AND (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103))"
-								+ " AND SO.RAZONSOCIAL <> ''" + " AND	(SO.SEGMENTO='PYME OFFLINE')"
+								+ " 	INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
+								+ " 	INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
+								+ " 	INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE " 
+								+ " WHERE"
+								+ " 	(CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,'?',103) AND CONVERT(DATE,'?',103))"
+								+ " 	AND (SO.CLIENTE != 0)"
+								+ " 	AND (TT.FAMILIA != '')"
+								+ " 	AND TT.Interno NOT IN (1)"
+								+ " 	AND SO.RAZONSOCIAL <> ''"
+								+ " 	AND (SO.Segmento='PYME OFFLINE')"
 								+ " GROUP BY SO.RAZONSOCIAL" + " ORDER BY COUNT(SO.CLIENTE) DESC";
 						break;
 
@@ -162,74 +185,95 @@ public class SegmentoDaoImpl implements SegmentoDao {
 						
 						sqlQuery = "SELECT TOP 10 TT.FAMILIA + '-' + CASE SO.SEGMENTO WHEN 'ATE' THEN 'ONLINE' ELSE SO.SEGMENTO END AS SEGMENTO, COUNT(TT.FAMILIA) AS TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
-								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
-								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
-								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" + " WHERE"
-								+ " (TT.FAMILIA != '')"
-								+ " AND (CAST(ll.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103))"
-								+ " AND TT.Interno NOT IN (1)"
-								+ " AND (SO.Segmento='ATE' OR SO.Segmento='PYME' OR SO.Segmento='OFFLINE' OR SO.Segmento='PYME OFFLINE' OR SO.Segmento='BANCA EMPRESARIAL')"
+								+ " 	INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
+								+ " 	INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
+								+ " 	INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" 
+								+ " WHERE"
+								+ " 	(CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,'?',103) AND CONVERT(DATE,'?',103))"
+								+ " 	AND (SO.CLIENTE != 0)"
+								+ " 	AND (TT.FAMILIA != '')"
+								+ " 	AND TT.Interno NOT IN (1)"
+								+ " 	AND SO.RAZONSOCIAL <> ''"
+								+ " 	AND	(SO.SEGMENTO='ATE' OR SO.SEGMENTO='PYME' OR SO.SEGMENTO='OFFLINE' OR SO.SEGMENTO='PYME OFFLINE' OR SO.SEGMENTO='BANCA EMPRESARIAL')"
 								+ " GROUP BY TT.FAMILIA, SO.SEGMENTO" + " ORDER BY COUNT(TT.FAMILIA) DESC";
 						break;
 
 					case "empresarial":
 						sqlQuery = "SELECT TOP 10 ltrim(rtrim(TT.FAMILIA)), COUNT(TT.FAMILIA) AS TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
-								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
-								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
-								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" + " WHERE"
-								+ " (TT.FAMILIA != '')"
-								+ " AND (CAST(ll.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103))"
-								+ " AND TT.Interno NOT IN (1)" + " AND (SO.Segmento='BANCA EMPRESARIAL')"
-								+ " GROUP BY TT.FAMILIA" + " ORDER BY COUNT(TT.FAMILIA) DESC";
+								+ " 	INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
+								+ " 	INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
+								+ " 	INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" 
+								+ " WHERE"
+								+ " 	(CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,'?',103) AND CONVERT(DATE,'?',103))"
+								+ " 	AND (SO.CLIENTE != 0)"
+								+ " 	AND (TT.FAMILIA != '')"
+								+ " 	AND TT.Interno NOT IN (1)"
+								+ " 	AND SO.RAZONSOCIAL <> ''"
+								+ " 	AND	(SO.SEGMENTO='BANCA EMPRESARIAL')"
+								+ " GROUP BY TT.FAMILIA, SO.SEGMENTO" + " ORDER BY COUNT(TT.FAMILIA) DESC";
 						break;
 
 					case "online":
 						sqlQuery = "SELECT TOP 10 TT.FAMILIA, COUNT(TT.FAMILIA) AS TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
-								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
-								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
-								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" + " WHERE"
-								+ " (TT.FAMILIA != '')"
-								+ " AND (CAST(ll.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103))"
-								+ " AND TT.Interno NOT IN (1)" + " AND (SO.Segmento='ATE')" + " GROUP BY TT.FAMILIA"
-								+ " ORDER BY COUNT(TT.FAMILIA) DESC";
-						break;
+								+ " 	INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
+								+ " 	INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
+								+ " 	INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" 
+								+ " WHERE"
+								+ " 	(CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,'?',103) AND CONVERT(DATE,'?',103))"
+								+ " 	AND (SO.CLIENTE != 0)"
+								+ " 	AND (TT.FAMILIA != '')"
+								+ " 	AND TT.Interno NOT IN (1)"
+								+ " 	AND SO.RAZONSOCIAL <> ''"
+								+ " 	AND	(SO.SEGMENTO='ATE')"
+								+ " GROUP BY TT.FAMILIA, SO.SEGMENTO" + " ORDER BY COUNT(TT.FAMILIA) DESC";
 
 					case "pyme":
 						sqlQuery = "SELECT TOP 10 TT.FAMILIA, COUNT(TT.FAMILIA) AS TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
-								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
-								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
-								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" + " WHERE"
-								+ " (TT.FAMILIA != '')"
-								+ " AND (CAST(ll.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103))"
-								+ " AND TT.Interno NOT IN (1)" + " AND (SO.Segmento='PYME')" + " GROUP BY TT.FAMILIA"
-								+ " ORDER BY COUNT(TT.FAMILIA) DESC";
-						break;
+								+ " 	INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
+								+ " 	INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
+								+ " 	INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" 
+								+ " WHERE"
+								+ " 	(CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,'?',103) AND CONVERT(DATE,'?',103))"
+								+ " 	AND (SO.CLIENTE != 0)"
+								+ " 	AND (TT.FAMILIA != '')"
+								+ " 	AND TT.Interno NOT IN (1)"
+								+ " 	AND SO.RAZONSOCIAL <> ''"
+								+ " 	AND	(SO.SEGMENTO='PYME')"
+								+ " GROUP BY TT.FAMILIA, SO.SEGMENTO" + " ORDER BY COUNT(TT.FAMILIA) DESC";
 
 					case "offline":
 						sqlQuery = "SELECT TOP 10 TT.FAMILIA, COUNT(TT.FAMILIA) AS TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
-								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
-								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
-								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" + " WHERE"
-								+ " (TT.FAMILIA != '')"
-								+ " AND (CAST(ll.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103))"
-								+ " AND TT.Interno NOT IN (1)" + " AND (SO.Segmento='OFFLINE')" + " GROUP BY TT.FAMILIA"
-								+ " ORDER BY COUNT(TT.FAMILIA) DESC";
+								+ " 	INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
+								+ " 	INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
+								+ " 	INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" 
+								+ " WHERE"
+								+ " 	(CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,'?',103) AND CONVERT(DATE,'?',103))"
+								+ " 	AND (SO.CLIENTE != 0)"
+								+ " 	AND (TT.FAMILIA != '')"
+								+ " 	AND TT.Interno NOT IN (1)"
+								+ " 	AND SO.RAZONSOCIAL <> ''"
+								+ " 	AND	(SO.SEGMENTO='OFFLINE')"
+								+ " GROUP BY TT.FAMILIA, SO.SEGMENTO" + " ORDER BY COUNT(TT.FAMILIA) DESC";
 						break;
 
 					case "pymeOffline":
 						sqlQuery = "SELECT TOP 10 TT.FAMILIA, COUNT(TT.FAMILIA) AS TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
-								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
-								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
-								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" + " WHERE"
-								+ " (TT.FAMILIA != '')"
-								+ " AND (CAST(ll.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103))"
-								+ " AND TT.Interno NOT IN (1)" + " AND (SO.Segmento='PYME OFFLINE')"
-								+ " GROUP BY TT.FAMILIA" + " ORDER BY COUNT(TT.FAMILIA) DESC";
+								+ " 	INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
+								+ " 	INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
+								+ " 	INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" 
+								+ " WHERE"
+								+ " 	(CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,'?',103) AND CONVERT(DATE,'?',103))"
+								+ " 	AND (SO.CLIENTE != 0)"
+								+ " 	AND (TT.FAMILIA != '')"
+								+ " 	AND TT.Interno NOT IN (1)"
+								+ " 	AND SO.RAZONSOCIAL <> ''"
+								+ " 	AND	(SO.SEGMENTO='PYME OFFLINE')"
+								+ " GROUP BY TT.FAMILIA, SO.SEGMENTO" + " ORDER BY COUNT(TT.FAMILIA) DESC";
 						break;
 					}
 
@@ -273,65 +317,91 @@ public class SegmentoDaoImpl implements SegmentoDao {
 					case "general":
 						sqlQuery = "SELECT TOP 10 TT.DESCRIPCION+'  ('+  CASE SO.SEGMENTO WHEN 'ATE' THEN 'ONLINE' ELSE SO.SEGMENTO END +') ', COUNT(TT.DESCRIPCION) as TOTAL"
 								+ " FROM  [dbo].[LlamadasATE] LL"
-								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
-								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
-								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" + " WHERE"
-								+ " CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103)"
-								+ " AND (SO.Segmento='ATE' OR SO.Segmento='PYME' OR SO.Segmento='OFFLINE' OR SO.Segmento='PYME OFFLINE' OR SO.Segmento='BANCA EMPRESARIAL')"
-								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO" + " ORDER BY COUNT(TT.DESCRIPCION) DESC";
+								+ " 	INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
+								+ " 	INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
+								+ " 	INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" 
+								+ " WHERE"
+								+ " 	(CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,'?',103) AND CONVERT(DATE,'?',103))"
+								+ " 	AND (SO.CLIENTE != 0)"
+								+ " 	AND (TT.FAMILIA != '')"
+								+ " 	AND TT.Interno NOT IN (1)"
+								+ " 	AND SO.RAZONSOCIAL <> ''"
+								+ " 	AND	(SO.SEGMENTO='ATE' OR SO.SEGMENTO='PYME' OR SO.SEGMENTO='OFFLINE' OR SO.SEGMENTO='PYME OFFLINE' OR SO.SEGMENTO='BANCA EMPRESARIAL')"		
+								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO " + " ORDER BY COUNT(TT.DESCRIPCION) DESC";
+								
 						break;
 					case "empresarial":
 						sqlQuery = "SELECT TOP 10 TT.DESCRIPCION+'  ('+SO.SEGMENTO+') ', COUNT(TT.DESCRIPCION) as TOTAL"
-								+ " FROM  [dbo].[LlamadasATE] LL"
-								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
-								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
-								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" + " WHERE"
-								+ " CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103)"
-								+ " AND (SO.Segmento='BANCA EMPRESARIAL')" 
-								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO" + " ORDER BY COUNT(TT.DESCRIPCION) DESC";
+								+ " 	INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
+								+ " 	INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
+								+ " 	INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" 
+								+ " WHERE"
+								+ " 	(CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,'?',103) AND CONVERT(DATE,'?',103))"
+								+ " 	AND (SO.CLIENTE != 0)"
+								+ " 	AND (TT.FAMILIA != '')"
+								+ " 	AND TT.Interno NOT IN (1)"
+								+ " 	AND SO.RAZONSOCIAL <> ''"
+								+ " 	AND	(SO.SEGMENTO='BANCA EMPRESARIAL')"		
+								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO " + " ORDER BY COUNT(TT.DESCRIPCION) DESC";
 						break;
 					case "online":
 						sqlQuery = "SELECT TOP 10 TT.DESCRIPCION+'  ('+SO.SEGMENTO+') ', COUNT(TT.DESCRIPCION) as TOTAL"
-								+ " FROM  [dbo].[LlamadasATE] LL"
-								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
-								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
-								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" + " WHERE"
-								+ " CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103)"
-								+ " AND (SO.Segmento='ATE')" 
-								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO" + " ORDER BY COUNT(TT.DESCRIPCION) DESC";
+								+ " 	INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
+								+ " 	INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
+								+ " 	INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" 
+								+ " WHERE"
+								+ " 	(CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,'?',103) AND CONVERT(DATE,'?',103))"
+								+ " 	AND (SO.CLIENTE != 0)"
+								+ " 	AND (TT.FAMILIA != '')"
+								+ " 	AND TT.Interno NOT IN (1)"
+								+ " 	AND SO.RAZONSOCIAL <> ''"
+								+ " 	AND	(SO.SEGMENTO='ATE')"		
+								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO " + " ORDER BY COUNT(TT.DESCRIPCION) DESC";
 						break;
 
 					case "pyme":
 						sqlQuery = "SELECT TOP 10 TT.DESCRIPCION+'  ('+SO.SEGMENTO+') ', COUNT(TT.DESCRIPCION) as TOTAL"
-								+ " FROM  [dbo].[LlamadasATE] LL"
-								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
-								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
-								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" + " WHERE"
-								+ " CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103)"
-								+ " AND (SO.Segmento='PYME')" 
-								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO" + " ORDER BY COUNT(TT.DESCRIPCION) DESC";
+								+ " 	INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
+								+ " 	INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
+								+ " 	INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" 
+								+ " WHERE"
+								+ " 	(CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,'?',103) AND CONVERT(DATE,'?',103))"
+								+ " 	AND (SO.CLIENTE != 0)"
+								+ " 	AND (TT.FAMILIA != '')"
+								+ " 	AND TT.Interno NOT IN (1)"
+								+ " 	AND SO.RAZONSOCIAL <> ''"
+								+ " 	AND	(SO.SEGMENTO='PYME')"		
+								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO " + " ORDER BY COUNT(TT.DESCRIPCION) DESC";
 						break;
 
 					case "offline":
 						sqlQuery = "SELECT TOP 10 TT.DESCRIPCION+'  ('+SO.SEGMENTO+') ',COUNT(TT.DESCRIPCION) as TOTAL"
-								+ " FROM  [dbo].[LlamadasATE] LL"
-								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
-								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
-								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" + " WHERE"
-								+ " CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103)"
-								+ " AND (SO.Segmento='OFFLINE')"
-								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO" + " ORDER BY COUNT(TT.DESCRIPCION) DESC";
+								+ " 	INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
+								+ " 	INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
+								+ " 	INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" 
+								+ " WHERE"
+								+ " 	(CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,'?',103) AND CONVERT(DATE,'?',103))"
+								+ " 	AND (SO.CLIENTE != 0)"
+								+ " 	AND (TT.FAMILIA != '')"
+								+ " 	AND TT.Interno NOT IN (1)"
+								+ " 	AND SO.RAZONSOCIAL <> ''"
+								+ " 	AND	(SO.SEGMENTO='OFFLINE')"		
+								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO " + " ORDER BY COUNT(TT.DESCRIPCION) DESC";
 						break;
 
 					case "pymeOffline":
 						sqlQuery = "SELECT TOP 10 TT.DESCRIPCION+'  ('+SO.SEGMENTO+') ', COUNT(TT.DESCRIPCION) as TOTAL"
-								+ " FROM  [dbo].[LlamadasATE] LL"
-								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
-								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
-								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" + " WHERE"
-								+ " CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103)"
-								+ " AND (SO.Segmento='PYME OFFLINE')" 
-								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO" + " ORDER BY COUNT(TT.DESCRIPCION) DESC";
+								+ " 	INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
+								+ " 	INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
+								+ " 	INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" 
+								+ " WHERE"
+								+ " 	(CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,'?',103) AND CONVERT(DATE,'?',103))"
+								+ " 	AND (SO.CLIENTE != 0)"
+								+ " 	AND (TT.FAMILIA != '')"
+								+ " 	AND TT.Interno NOT IN (1)"
+								+ " 	AND SO.RAZONSOCIAL <> ''"
+								+ " 	AND	(SO.SEGMENTO='PYME OFFLINE')"		
+								+ " GROUP BY TT.DESCRIPCION, SO.SEGMENTO " + " ORDER BY COUNT(TT.DESCRIPCION) DESC";
 						break;
 					}
 
@@ -369,17 +439,24 @@ public class SegmentoDaoImpl implements SegmentoDao {
 				try {
 					String sqlQuery = "";
 
-					sqlQuery = " SELECT  CASE ltrim(rtrim(EJE.Segmento))" 
-							+" WHEN 'ATE' THEN 'ONLINE' "
-							+" WHEN 'PYME' THEN 'PYME'"
-							+" WHEN 'OFFLINE' THEN 'OFFLINE'"
-							+" WHEN 'PYME OFFLINE' THEN 'PYME OFFLINE'"  
-							+" WHEN 'BANCA EMPRESARIAL' THEN 'EMPRESARIAL' END AS Segmento, COUNT(EJE.Segmento) AS TOTAL FROM "  
-							+" [dbo].[LlamadasATE] LL INNER JOIN [dbo].[TblEjecutivos]  EJE  ON EJE.Nomina = LL.NOMINA_REG "
-							+" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA      INNER JOIN [dbo].[TipoTramitesAte3] " 
-							+" TT on TT.ID_TIPOT = SO.TIPO_TRAMITE WHERE (CAST(LL.FECHA_INI AS DATE) BETWEEN ? AND ?) "
-							+" AND (SO.Segmento='ATE' OR SO.Segmento='PYME' OR SO.Segmento='OFFLINE' OR SO.Segmento='PYME OFFLINE' " 
-							+" OR SO.Segmento='BANCA EMPRESARIAL') GROUP BY EJE.Segmento";
+					sqlQuery = "SELECT  CASE ltrim(rtrim(EJE.Segmento))"
+								+ " WHEN 'ATE' THEN 'ONLINE'"
+								+ " WHEN 'PYME' THEN 'PYME'"
+								+ " WHEN 'OFFLINE' THEN 'OFFLINE'"
+								+ " WHEN 'PYME OFFLINE' THEN 'PYME OFFLINE'"
+								+ " WHEN 'BANCA EMPRESARIAL' THEN 'EMPRESARIAL' END AS Segmento, COUNT(EJE.Segmento) AS TOTAL" 
+						   + " FROM [dbo].[LlamadasATE] LL"
+								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  ON EJE.Nomina = LL.NOMINA_REG"
+								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
+								+ " INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE"
+						  + " WHERE (CAST(LL.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,'01/12/2016',103) AND CONVERT(DATE,'31/12/2016',103))"
+								+ " AND (SO.CLIENTE != 0)"
+								+ " AND (TT.FAMILIA != '')"
+								+ " AND TT.Interno NOT IN (1)"
+								+ " AND SO.RAZONSOCIAL <> ''"
+								+ " AND (SO.Segmento='ATE' OR SO.Segmento='PYME' OR SO.Segmento='OFFLINE' OR SO.Segmento='PYME OFFLINE' OR SO.Segmento='BANCA EMPRESARIAL')"
+						  + " GROUP BY EJE.Segmento";
+
 
 
 							
@@ -420,7 +497,19 @@ public class SegmentoDaoImpl implements SegmentoDao {
 
 				try {
 		
-				String sqlQuery = "SELECT TOP 10 ltrim(rtrim(TT.FAMILIA)), COUNT(TT.FAMILIA) AS TOTAL FROM  [dbo].[LlamadasATE] LL INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE WHERE (TT.FAMILIA != '') AND (CAST(ll.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103)) AND TT.Interno NOT IN (1) AND (SO.Segmento=? ) GROUP BY TT.FAMILIA  ORDER BY COUNT(TT.FAMILIA) DESC ";
+				String sqlQuery = "SELECT TOP 10 ltrim(rtrim(TT.FAMILIA)), COUNT(TT.FAMILIA) AS TOTAL" 
+							   + " FROM  [dbo].[LlamadasATE] LL" 
+							    	+" INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG" 
+							    	+" INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA" 
+							    	+" INNER JOIN [dbo].[TipoTramitesAte3] TT on TT.ID_TIPOT = SO.TIPO_TRAMITE" 
+							    +" WHERE (TT.FAMILIA != '')" 
+							    	+" AND (CAST(ll.FECHA_INI AS DATE) BETWEEN CONVERT(DATE,?,103) AND CONVERT(DATE,?,103)) AND TT.Interno NOT IN (1)"
+							    	+" AND (SO.CLIENTE != 0)"
+							    	+" AND (TT.FAMILIA != '')" 
+							    	+" AND TT.Interno NOT IN (1)"
+							    	+" AND SO.RAZONSOCIAL <> ''" 
+							    	+" AND (SO.Segmento=? )" 
+							    +" GROUP BY TT.FAMILIA  ORDER BY COUNT(TT.FAMILIA) DESC";				
 				ResultSet rs;
 				pstmt = connection.prepareStatement(sqlQuery);
 				pstmt.setString(1, fechaInicio);
