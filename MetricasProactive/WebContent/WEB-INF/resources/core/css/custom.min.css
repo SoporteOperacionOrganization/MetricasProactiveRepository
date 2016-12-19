@@ -204,7 +204,7 @@
 }
 
 .nav-sm .navbar.nav_title .site_title>img {
-	bottom: 10%;
+	bottom: 0;
 }
 
 .nav-sm .navbar.nav_title a span {

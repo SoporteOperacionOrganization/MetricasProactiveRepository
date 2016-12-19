@@ -95,7 +95,7 @@ function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
 		dibujarFamilias(fechaInicio, fechaFinal, segmento);
 		setTimeout(function() {
 			recalcularAlto()
-		}, 750);
+		}, 2000);
 		break;
 	case "empresarial":
 		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal,
@@ -105,7 +105,7 @@ function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
 		dibujarConcurrencia(fechaInicio, fechaFinal);
 		setTimeout(function() {
 			recalcularAlto()
-		}, 750);
+		}, 2000);
 		break;
 	case "online":
 		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal, 'ATE');
@@ -114,7 +114,7 @@ function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
 		dibujarConcurrencia(fechaInicio, fechaFinal);
 		setTimeout(function() {
 			recalcularAlto()
-		}, 750);
+		}, 2000);
 		break;
 	case "offline":
 		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal,
@@ -124,7 +124,7 @@ function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
 		dibujarConcurrencia(fechaInicio, fechaFinal);
 		setTimeout(function() {
 			recalcularAlto()
-		}, 750);
+		}, 2000);
 		break;
 	case "pyme":
 		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal, 'PYME');
@@ -133,7 +133,7 @@ function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
 		dibujarConcurrencia(fechaInicio, fechaFinal);
 		setTimeout(function() {
 			recalcularAlto()
-		}, 750);
+		}, 2000);
 		break;
 	case "pymeOffline":
 		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal,
@@ -143,7 +143,7 @@ function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
 		dibujarConcurrencia(fechaInicio, fechaFinal);
 		setTimeout(function() {
 			recalcularAlto()
-		}, 750);
+		}, 2000);
 		break;
 	default:
 		recalcularAlto();
@@ -173,6 +173,19 @@ $(document)
 						recalcularAlto();
 					});
 					$("#menu_toggle").on('click', function() {
+						var src = $(".site_title img").prop("src");
+						var imagen = src.split("/");
+						imagen = imagen[imagen.length-1];
+						
+						if (imagen == "citibanamex_menu.png"){
+							src= src.replace("citibanamex_menu.png","isotipo_citibanamex.png");
+							
+						}else{
+							src= src.replace("isotipo_citibanamex.png","citibanamex_menu.png");
+						}
+						
+						$(".site_title img").prop("src", src);
+						
 						setTimeout(function() {
 							redibujarGraficas()
 						}, 50);
