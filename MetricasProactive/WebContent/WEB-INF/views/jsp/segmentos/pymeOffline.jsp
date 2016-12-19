@@ -125,11 +125,9 @@
 											<div class="progress">
 												<div id="progreso1"
 													class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="80"
-													aria-valuemax="100" style="width: 100%">
-													<p align="right">
-														<b></b>
-													</p>
+													role="progressbar" aria-valuenow="0" aria-valuemin="0"
+													aria-valuemax="0">
+													<p align="left"></p>
 
 												</div>
 											</div>
@@ -148,9 +146,9 @@
 											<div class="progress">
 												<div id="progreso2"
 													class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width: 80%">
-													<p align="right"></p>
+													role="progressbar" aria-valuenow="0" aria-valuemin="0"
+													aria-valuemax="0">
+													<p align="left"></p>
 												</div>
 											</div>
 
@@ -167,9 +165,9 @@
 											<div class="progress">
 												<div id="progreso3"
 													class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width: 60%">
-													<p align="right"></p>
+													role="progressbar" aria-valuenow="0" aria-valuemin="0"
+													aria-valuemax="0">
+													<p align="left"></p>
 												</div>
 											</div>
 
@@ -186,9 +184,9 @@
 											<div class="progress">
 												<div id="progreso4"
 													class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width: 40%">
-													<p align="right"></p>
+													role="progressbar" aria-valuenow="0" aria-valuemin="0"
+													aria-valuemax="0">
+													<p align="left"></p>
 												</div>
 											</div>
 										</div>
@@ -203,9 +201,9 @@
 											<div class="progress">
 												<div id="progreso5"
 													class="progress-bar progress-bar-success"
-													role="progressbar" aria-valuenow="40" aria-valuemin="0"
-													aria-valuemax="100" style="width: 20%">
-													<p align="right"></p>
+													role="progressbar" aria-valuenow="0" aria-valuemin="0"
+													aria-valuemax="0">
+													<p align="left"></p>
 												</div>
 											</div>
 										</div>
