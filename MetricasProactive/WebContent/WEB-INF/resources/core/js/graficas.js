@@ -1385,6 +1385,7 @@ function dibujarClientesFrecuentes(fechaInicioP, fechaFinalP, segmentoP) {
 
 						$("#top" + (i + 1) + " p").text(arrayClientes[i]);
 						$("#llamadas" + (i + 1) + " p").text(arrayLlamadas[i]);
+						$("#progreso" + (i + 1)).attr('style',"width:"+arrayLlamadas[i]+"%");
 					}
 
 				}// fin FOR
