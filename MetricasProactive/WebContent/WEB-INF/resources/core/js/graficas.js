@@ -1207,7 +1207,7 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 
 			switch (obtenerURL()) {
 			case 'online':
-				nameSegmento = "ATE"
+				nameSegmento = "ONLINE"
 				break;
 			case 'offline':
 				nameSegmento = "OFFLINE"
@@ -1216,7 +1216,7 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 				nameSegmento = "PYME"
 				break;
 			case 'empresarial':
-				nameSegmento = "BANCA EMPRESARIAL"
+				nameSegmento = "EMPRESARIAL"
 				break;
 			case 'pymeOffline':
 				nameSegmento = "PYME OFFLINE"
