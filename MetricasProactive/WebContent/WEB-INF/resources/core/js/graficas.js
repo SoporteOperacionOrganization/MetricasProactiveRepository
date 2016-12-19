@@ -1203,30 +1203,12 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 			});
 
 			var arrayNames = Object.keys(data);
-			var nameSegmento = "";
-
-			switch (obtenerURL()) {
-			case 'online':
-				nameSegmento = "ATE"
-				break;
-			case 'offline':
-				nameSegmento = "OFFLINE"
-				break;
-			case 'pyme':
-				nameSegmento = "PYME"
-				break;
-			case 'empresarial':
-				nameSegmento = "BANCA EMPRESARIAL"
-				break;
-			case 'pymeOffline':
-				nameSegmento = "PYME OFFLINE"
-				break;
-			}
-
 			var tieneValor;
 
 			for (i = 0; i < arrayValues.length; i++) {
-				if (arrayNames[i] == nameSegmento) {
+				
+			
+				if (arrayNames[i] == obtenerURL().toUpperCase()) {
 					tieneValor = 1;
 					var seg = arrayNames[i];
 					var concu = (arrayValues[i] * 100 / total).toFixed(2);
