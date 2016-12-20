@@ -314,7 +314,9 @@ public class SegmentoDaoImpl implements SegmentoDao {
     				switch (segmento) {
     				
     				case "general":
-    					sqlQuery = "SELECT TOP 10 TT.DESCRIPCION+'  ('+  CASE SO.SEGMENTO WHEN 'ATE' THEN 'ONLINE' ELSE SO.SEGMENTO END +') ', COUNT(TT.DESCRIPCION) as TOTAL"
+    					sqlQuery = "SELECT TOP 10 SUBSTRING(TT.DESCRIPCION,0,35) +'.  ('+  CASE SO.SEGMENTO "
+    							+ "WHEN 'ATE' THEN 'ONLINE' "
+    							+ "ELSE SO.SEGMENTO END +') ', COUNT(TT.DESCRIPCION) as TOTAL"
                                 + " FROM  [dbo].[LlamadasATE] LL"
                                 	+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
                                     + " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
@@ -330,7 +332,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
     					break;
     					
     				case "empresarial":
-    					sqlQuery = "SELECT TOP 10 TT.DESCRIPCION+'  ('+SO.SEGMENTO+') ', COUNT(TT.DESCRIPCION) as TOTAL"
+    					sqlQuery = "SELECT TOP 10 SUBSTRING(TT.DESCRIPCION,0,35) +'.  ('+SO.SEGMENTO+') ', COUNT(TT.DESCRIPCION) as TOTAL"
     								+ " FROM  [dbo].[LlamadasATE] LL"
     								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
     								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
@@ -346,7 +348,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
     					break;
     					
     				case "online":
-    					sqlQuery = "SELECT TOP 10 TT.DESCRIPCION+'  ('+SO.SEGMENTO+') ', COUNT(TT.DESCRIPCION) as TOTAL"
+    					sqlQuery = "SELECT TOP 10 SUBSTRING(TT.DESCRIPCION,0,35) +'.  ('+SO.SEGMENTO+') ', COUNT(TT.DESCRIPCION) as TOTAL"
     							+ " FROM  [dbo].[LlamadasATE] LL"
 									+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
 									+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
@@ -362,7 +364,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
     					break;
     					
     				case "pyme":
-    					sqlQuery = "SELECT TOP 10 TT.DESCRIPCION+'  ('+SO.SEGMENTO+') ', COUNT(TT.DESCRIPCION) as TOTAL"
+    					sqlQuery = "SELECT TOP 10 SUBSTRING(TT.DESCRIPCION,0,35) +'.  ('+SO.SEGMENTO+') ', COUNT(TT.DESCRIPCION) as TOTAL"
     								+ " FROM  [dbo].[LlamadasATE] LL"
     								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
     								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
@@ -378,7 +380,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
     					break;
     					
     				case "offline":
-    					sqlQuery = "SELECT TOP 10 TT.DESCRIPCION+'  ('+SO.SEGMENTO+') ',COUNT(TT.DESCRIPCION) as TOTAL"
+    					sqlQuery = "SELECT TOP 10 SUBSTRING(TT.DESCRIPCION,0,35) +'.  ('+SO.SEGMENTO+') ',COUNT(TT.DESCRIPCION) as TOTAL"
     								+ " FROM  [dbo].[LlamadasATE] LL"
     								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
     								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"
@@ -394,7 +396,7 @@ public class SegmentoDaoImpl implements SegmentoDao {
     					break;
     					
     				case "pymeOffline":
-    					sqlQuery = "SELECT TOP 10 TT.DESCRIPCION+'  ('+SO.SEGMENTO+') ', COUNT(TT.DESCRIPCION) as TOTAL"
+    					sqlQuery = "SELECT TOP 10 SUBSTRING(TT.DESCRIPCION,0,35) +'.  ('+SO.SEGMENTO+') ', COUNT(TT.DESCRIPCION) as TOTAL"
     								+ " FROM  [dbo].[LlamadasATE] LL"
     								+ " INNER JOIN [dbo].[TblEjecutivos]  EJE  on EJE.Nomina = LL.NOMINA_REG"
     								+ " INNER JOIN [dbo].[SolicitudesATE] SO on LL.ID = SO.ID_LLAMADA"

@@ -82,17 +82,20 @@
 								</a>
 							</div>
 						</c:if>
-						<div
+						<div style="color: #D7D7D7; font-size:24px ;top: 0%; padding-right: 10%"
 							class="${empty soeidSesion ? 'nav navbar-middle navbar-sin-sesion' : 'nav navbar-middle'}">
-							Visor de Métricas Proactive</div>
-						<ul
-							class="${empty soeidSesion ? 'no-mostrar nav navbar-nav navbar-right' : 'nav navbar-nav navbar-right'}">
-							<li class=""><a href="javascript:;"
-								class="${empty soeidSesion ? 'oculto user-profile dropdown-toggle' : 'user-profile dropdown-toggle'}"
+							VISOR DE MÉTRICAS PROACTIVE
+							
+							</div>
+						<ul style="top: 61%; padding-right: 15px"
+							class="${empty soeidSesion ? 'no-mostrar nav navbar-nav navbar-right' : 'navbar-right'}">
+							
+							<li ><a href="javascript:;"
+								class="${empty soeidSesion ? 'oculto  dropdown-toggle' : ' dropdown-toggle'}"
 								data-toggle="dropdown" aria-expanded="false">${usuarioSesion.nombre}&nbsp;${usuarioSesion.apellidoPaterno}&nbsp;<span
 									class=" fa fa-caret-down"></span>
 							</a>
-								<ul class="dropdown-menu dropdown-usermenu pull-right">
+								<ul class="dropdown-menu  pull-right">
 									<li><a href="<c:url value='/logout' />"><i
 											class="fa fa-sign-out pull-right"></i> Cerrar sesión</a></li>
 								</ul></li>
