@@ -13,8 +13,6 @@
 
 <title>Citibanamex | Visor de métricas Proactive</title>
 <jsp:include page="../fragments/resources.jsp" />
-
-
 </head>
 
 <body class="nav-md">
@@ -31,7 +29,7 @@
 							</h1>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-12 form-group pull-right">
-						<div class="row" 	style=" margin-left:32%">
+						<div class="row" 	style=" margin-left: 33%">
 								<div class="col-md-4 col-sm-4 " 
 								 style="text-align: right; ">
 									<label for="calendarioFiltro" style="padding-top: 5px;">Fecha:</label>

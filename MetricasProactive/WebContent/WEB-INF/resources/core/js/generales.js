@@ -63,7 +63,7 @@ function graficasIniciales() {
 
 	dibujarGraficasPorPagina(hoy, hoy, segmento);
 }
-
+/*
 function estilosPorcentajes(porcentajeDiferencia) {
 	if (porcentajeDiferencia < 0) {
 		$("#diferenciaLlamadas span i").removeClass("green");
@@ -84,14 +84,14 @@ function estilosPorcentajes(porcentajeDiferencia) {
 		$("#diferenciaLlamadas span i i").removeClass("fa-arrow-down");
 		$("#diferenciaLlamadas span i i").addClass("fa-arrows-h");
 	}
-}
+}*/
 
 function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
 	switch (segmento) {
 	case "general":
 		dibujarLlamadasTotalesGeneral(fechaInicio, fechaFinal);
-		dibujarServicios(fechaInicio, fechaFinal, segmento);
-		dibujarClientesFrecuentes(fechaInicio, fechaFinal, segmento);
+		dibujarServicios(fechaInicio, fechaFinal);
+		dibujarClientesFrecuentes(fechaInicio, fechaFinal);
 		dibujarFamilias(fechaInicio, fechaFinal, segmento);
 		setTimeout(function() {
 			recalcularAlto()
@@ -100,8 +100,8 @@ function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
 	case "empresarial":
 		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal,
 				'BANCA EMPRESARIAL');
-		dibujarServicios(fechaInicio, fechaFinal, segmento);
-		dibujarClientesFrecuentes(fechaInicio, fechaFinal, segmento);
+		dibujarServicios(fechaInicio, fechaFinal);
+		dibujarClientesFrecuentes(fechaInicio, fechaFinal);
 		dibujarConcurrencia(fechaInicio, fechaFinal);
 		setTimeout(function() {
 			recalcularAlto()
@@ -109,8 +109,8 @@ function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
 		break;
 	case "online":
 		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal, 'ATE');
-		dibujarServicios(fechaInicio, fechaFinal, segmento);
-		dibujarClientesFrecuentes(fechaInicio, fechaFinal, segmento);
+		dibujarServicios(fechaInicio, fechaFinal);
+		dibujarClientesFrecuentes(fechaInicio, fechaFinal);
 		dibujarConcurrencia(fechaInicio, fechaFinal);
 		setTimeout(function() {
 			recalcularAlto()
@@ -119,8 +119,8 @@ function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
 	case "offline":
 		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal,
 				'OFFLINE');
-		dibujarServicios(fechaInicio, fechaFinal, segmento);
-		dibujarClientesFrecuentes(fechaInicio, fechaFinal, segmento);
+		dibujarServicios(fechaInicio, fechaFinal);
+		dibujarClientesFrecuentes(fechaInicio, fechaFinal);
 		dibujarConcurrencia(fechaInicio, fechaFinal);
 		setTimeout(function() {
 			recalcularAlto()
@@ -128,8 +128,8 @@ function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
 		break;
 	case "pyme":
 		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal, 'PYME');
-		dibujarServicios(fechaInicio, fechaFinal, segmento);
-		dibujarClientesFrecuentes(fechaInicio, fechaFinal, segmento);
+		dibujarServicios(fechaInicio, fechaFinal);
+		dibujarClientesFrecuentes(fechaInicio, fechaFinal);
 		dibujarConcurrencia(fechaInicio, fechaFinal);
 		setTimeout(function() {
 			recalcularAlto()
@@ -138,8 +138,8 @@ function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
 	case "pymeOffline":
 		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal,
 				'PYME OFFLINE');
-		dibujarServicios(fechaInicio, fechaFinal, segmento);
-		dibujarClientesFrecuentes(fechaInicio, fechaFinal, segmento);
+		dibujarServicios(fechaInicio, fechaFinal);
+		dibujarClientesFrecuentes(fechaInicio, fechaFinal);
 		dibujarConcurrencia(fechaInicio, fechaFinal);
 		setTimeout(function() {
 			recalcularAlto()
@@ -154,12 +154,11 @@ function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
 $(document)
 		.ready(
 				function() {
+
+					$("#popup").modal("show");
+
 					graficasIniciales();
-					
-					$("#popup").modal({
-						show : false,
-						backdrop : 'static'
-					});
+				
 					$("#progreso1").addClass("progress-bar-progreso1");
 					$("#progreso2").addClass("progress-bar-progreso2");
 					$("#progreso3").addClass("progress-bar-progreso3");
@@ -206,12 +205,10 @@ $(document)
 								dibujarGraficasPorPagina(fechaInicio,
 										fechaFinal, segmento)
 
-								$("#popup").modal("show");
+								
 								cambiarLabelFechaFiltro(picker.startDate,
 										picker.endDate);
 								$('#calendarioComparativo span').html("");
-
-								$("#popup").modal("hide");
 
 							});
 					$('#calendarioComparativo').daterangepicker(optionSet2);
@@ -280,4 +277,6 @@ $(document)
 												picker.endDate);
 									});
 					
+					$("#popup").modal("hide");
+
 				});

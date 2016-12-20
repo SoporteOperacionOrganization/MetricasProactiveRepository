@@ -82,7 +82,7 @@
 								</a>
 							</div>
 						</c:if>
-						<div style="color: #D7D7D7; font-size:24px ;top: 0%; padding-right: 10%"
+						<div style="color: #D7D7D7;top: 0%; padding-right: 10%"
 							class="${empty soeidSesion ? 'nav navbar-middle navbar-sin-sesion' : 'nav navbar-middle'}">
 							VISOR DE MÉTRICAS PROACTIVE
 							

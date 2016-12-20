@@ -3,7 +3,7 @@
  */
 /* Temas de gráficas */
 var theme = {
-	color : [  '#023059','#02A3A6', '#8AB206 ',  '#193441', '#90D7C4','#150D3F',
+	color : [  '#042F8A','#02A3A6', '#8AB206 ',  '#193441', '#90D7C4','#150D3F',
 			'#4E7AC7', '#05070D', '#436917', '#91AA9D' ],
 
 	title : {
@@ -217,49 +217,7 @@ var theme = {
 	}
 };
 
-/* Fin temas de gráficas */
-/* Funciones por página */
 var segmento = obtenerURL();
-
-switch (segmento) {
-case "general":
-	var GeneralLlamadasBarras2 = echarts.init(document
-			.getElementById('LlamadasTotalesPorSegmentos'), theme);
-	var echartPie = echarts.init(document.getElementById('echart_pie'), theme);
-	break;
-case "empresarial":
-	var GeneralLlamadasBarras2 = echarts.init(document
-			.getElementById('LlamadasTotalesPorFamiliaSegmentos'), theme);
-	var echartMiniPie = echarts.init(
-			document.getElementById('echart_mini_pie'), theme);
-	break;
-case "online":
-	var GeneralLlamadasBarras2 = echarts.init(document
-			.getElementById('LlamadasTotalesPorFamiliaSegmentos'), theme);
-	var echartMiniPie = echarts.init(
-			document.getElementById('echart_mini_pie'), theme);
-	break;
-case "offline":
-	var GeneralLlamadasBarras2 = echarts.init(document
-			.getElementById('LlamadasTotalesPorFamiliaSegmentos'), theme);
-	var echartMiniPie = echarts.init(
-			document.getElementById('echart_mini_pie'), theme);
-	break;
-case "pyme":
-	var GeneralLlamadasBarras2 = echarts.init(document
-			.getElementById('LlamadasTotalesPorFamiliaSegmentos'), theme);
-	var echartMiniPie = echarts.init(
-			document.getElementById('echart_mini_pie'), theme);
-	break;
-case "pymeOffline":
-	var GeneralLlamadasBarras2 = echarts.init(document
-			.getElementById('LlamadasTotalesPorFamiliaSegmentos'), theme);
-	var echartMiniPie = echarts.init(
-			document.getElementById('echart_mini_pie'), theme);
-	break;
-default:
-	break;
-}
 
 function dibujarLlamadasTotalesGeneral(fechaInicioP, fechaFinalP) {
 	$.ajax({
@@ -311,11 +269,11 @@ function dibujarLlamadasTotalesGeneral(fechaInicioP, fechaFinalP) {
 					arrayTotales[i] = arrayConsultaOrdenado[i]["valor"];
 				}
 
-				$("#diferenciaLlamadas span i").removeClass("fa-arrow-up");
-				$("#diferenciaLlamadas span i").removeClass("fa-arrow-down");
-				$("#diferenciaLlamadas span i").removeClass("fa-arrows-h");
-				$("#diferenciaLlamadas span i i").text('');
-				$("#totalLlamadas").text(' ' + totalLlamadas);
+				//$("#diferenciaLlamadas span i").removeClass("fa-arrow-up");
+				//$("#diferenciaLlamadas span i").removeClass("fa-arrow-down");
+				///$("#diferenciaLlamadas span i").removeClass("fa-arrows-h");
+				//$("#diferenciaLlamadas span i i").text('');
+				//$("#totalLlamadas").text(' ' + totalLlamadas);
 
 				GeneralLlamadasBarras2 = echarts.init(document
 						.getElementById('LlamadasTotalesPorSegmentos'), theme);
@@ -438,7 +396,7 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioOriginalP,
 					porcentajeDiferencia = (totalComparativo - totalLlamadas)
 							/ totalLlamadas;
 
-					estilosPorcentajes(porcentajeDiferencia);
+					//estilosPorcentajes(porcentajeDiferencia);
 
 					$("#diferenciaLlamadas span i i").text(
 							' ' + porcentajeDiferencia.toFixed(2) + " %");
@@ -1116,7 +1074,7 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 	});
 }
 
-function dibujarClientesFrecuentes(fechaInicioP, fechaFinalP, segmentoP) {
+function dibujarClientesFrecuentes(fechaInicioP, fechaFinalP) {
 
 	$.ajax({
 		url : 'clientesFrecuentes',
@@ -1125,7 +1083,7 @@ function dibujarClientesFrecuentes(fechaInicioP, fechaFinalP, segmentoP) {
 		data : {
 			fechaInicio : fechaInicioP,
 			fechaFinal : fechaFinalP,
-			segmento : segmentoP
+			segmento : obtenerURL()
 		},
 
 		success : function(data) {

@@ -115,8 +115,6 @@
 							</div>
 
 							<div class="col-md-12 col-sm-12 col-xs-12">
-
-v
 								<div id="clientesFrecuentes" style="font-size: 11px;">
 									<div id="top1" >
 										<p></p>
