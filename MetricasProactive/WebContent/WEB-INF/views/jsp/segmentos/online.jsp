@@ -27,15 +27,15 @@
 								<i class="fa fa-laptop"></i> Online
 							</h1>
 						</div>
-						<div class="col-md-6 col-sm-6 col-xs-12 form-group pull-right">
-							<div class="row" 	style=" margin-left:32%">
+				<div class="col-md-6 col-sm-6 col-xs-12 form-group pull-right">
+						<div class="row" 	>
 								<div class="col-md-4 col-sm-4 " 
 								 style="text-align: right; ">
 									<label for="calendarioFiltro" style="padding-top: 5px;">Fecha:</label>
 								</div>
 								<div class="col-md-8 col-sm-8 col-xs-12 "
 									style="">
-									<div id="calendarioFiltro" class="form-control" style=" width: 210px ; text-align: left;">
+									<div id="calendarioFiltro" class="form-control" style=" width: 16em;">
 										<i class="glyphicon glyphicon-calendar fa fa-calendar"></i> <span></span>
 										<b class="caret"></b>
 									</div>
@@ -57,14 +57,14 @@
 									<div class="clearfix"></div>
 								</div>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-											<div class="row" style=" margin-left:36%">
-										<div class="col-md-4 col-sm-4 col-xs-4"
-											style="text-align: right; ">
-											<label for="calendarioComparativo" style="padding-top: 5px;">Comparativo:</label>
+										<div class="row" 	>
+								<div class="col-md-4 col-sm-4 " 
+								 style="text-align: right; ">
+											<label for="calendarioComparativo" >Comparativo:</label>
 										</div>
 										<div class="col-md-8 col-sm-8 col-xs-8 "
 											>
-											<div id="calendarioComparativo" style=" width: 210px; text-align: left;"
+											<div id="calendarioComparativo" style=" width: 16em ;" 
 												class="form-control ">
 
 												<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
@@ -76,6 +76,7 @@
 									</div>
 
 								</div>
+
 
 							</div>
 
@@ -114,10 +115,9 @@
 								<div class="clearfix"></div>
 							</div>
 
-							<div class="col-md-12 col-sm-12 col-xs-12"  >
+							<div class="col-md-12 col-sm-12 col-xs-12">
 
-
-								<div id="clientesFrecuentes" style="font-size: 11px;  ">
+								<div id="clientesFrecuentes" style="font-size: 11px;">
 									<div id="top1" >
 										<p></p>
 										<div id="llamadas1" >
@@ -186,7 +186,6 @@
 
 								</div>
 								
-		
 								<div id="clientesFrecuentesSinDatos">No se encontraron
 									datos, seleccione un rango de fechas distinto.</div>
 							</div>

@@ -993,7 +993,7 @@ a:hover, a:focus {
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
 	.nav-md nav .navbar-middle {
-		font-size: 22px;
+		font-size: 16px;
 		padding-top: 28px;
 	}
 	.nav-md .navbar-sin-sesion {
@@ -1044,7 +1044,7 @@ a:hover, a:focus {
 	}
 	.nav-sm nav .navbar-middle {
 		width: calc(100% - 250px) !important;
-		font-size: 24px;
+		font-size: 22px;
 		padding-top: 26px;
 	}
 	.nav-md .nav_menu {
@@ -1082,7 +1082,7 @@ a:hover, a:focus {
 	}
 	.nav-sm nav .navbar-middle {
 		width: calc(100% - 250px) !important;
-		font-size: 24px;
+		font-size: 22px;
 	}
 	.imagenTemp {
 		display: none

@@ -219,6 +219,7 @@ var theme = {
 
 var segmento = obtenerURL();
 
+
 function dibujarLlamadasTotalesGeneral(fechaInicioP, fechaFinalP) {
 	$.ajax({
 		url : 'obtenerLlamadasTotalesSegmento',
@@ -269,11 +270,11 @@ function dibujarLlamadasTotalesGeneral(fechaInicioP, fechaFinalP) {
 					arrayTotales[i] = arrayConsultaOrdenado[i]["valor"];
 				}
 
-				//$("#diferenciaLlamadas span i").removeClass("fa-arrow-up");
-				//$("#diferenciaLlamadas span i").removeClass("fa-arrow-down");
-				///$("#diferenciaLlamadas span i").removeClass("fa-arrows-h");
-				//$("#diferenciaLlamadas span i i").text('');
-				//$("#totalLlamadas").text(' ' + totalLlamadas);
+				$("#diferenciaLlamadas span i").removeClass("fa-arrow-up");
+				$("#diferenciaLlamadas span i").removeClass("fa-arrow-down");
+				$("#diferenciaLlamadas span i").removeClass("fa-arrows-h");
+				$("#diferenciaLlamadas span i i").text('');
+				$("#totalLlamadas").text(' ' + totalLlamadas);
 
 				GeneralLlamadasBarras2 = echarts.init(document
 						.getElementById('LlamadasTotalesPorSegmentos'), theme);
@@ -343,6 +344,8 @@ function dibujarLlamadasTotalesGeneral(fechaInicioP, fechaFinalP) {
 	});
 }
 
+
+
 function dibujarLlamadasTotalesGeneralComparativo(fechaInicioOriginalP,
 		fechaFinalOriginalP, fechaInicioP, fechaFinalP) {
 
@@ -396,7 +399,7 @@ function dibujarLlamadasTotalesGeneralComparativo(fechaInicioOriginalP,
 					porcentajeDiferencia = (totalComparativo - totalLlamadas)
 							/ totalLlamadas;
 
-					//estilosPorcentajes(porcentajeDiferencia);
+					estilosPorcentajes(porcentajeDiferencia);
 
 					$("#diferenciaLlamadas span i i").text(
 							' ' + porcentajeDiferencia.toFixed(2) + " %");

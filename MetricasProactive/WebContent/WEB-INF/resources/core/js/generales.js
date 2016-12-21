@@ -63,7 +63,7 @@ function graficasIniciales() {
 
 	dibujarGraficasPorPagina(hoy, hoy, segmento);
 }
-/*
+
 function estilosPorcentajes(porcentajeDiferencia) {
 	if (porcentajeDiferencia < 0) {
 		$("#diferenciaLlamadas span i").removeClass("green");
@@ -84,7 +84,7 @@ function estilosPorcentajes(porcentajeDiferencia) {
 		$("#diferenciaLlamadas span i i").removeClass("fa-arrow-down");
 		$("#diferenciaLlamadas span i i").addClass("fa-arrows-h");
 	}
-}*/
+}
 
 function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
 	switch (segmento) {

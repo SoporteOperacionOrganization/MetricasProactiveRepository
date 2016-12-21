@@ -12,9 +12,9 @@
 				<div
 					class="${empty soeidSesion ? 'fondo_blanco left_col scroll-view' : 'left_col scroll-view'}">
 					<div class="navbar nav_title" style="border: 0;">
-						<div class="site_title"> <img
+						<a href="" class="site_title"> <img
 							src="resources/Images/citibanamex_menu.png" alt="Citibanamex" />
-						</div>
+						</a>
 					</div>
 
 					<div class="clearfix"></div>
@@ -82,20 +82,17 @@
 								</a>
 							</div>
 						</c:if>
-						<div style="color: #D7D7D7;top: 0%; padding-right: 10%"
+						<div 
 							class="${empty soeidSesion ? 'nav navbar-middle navbar-sin-sesion' : 'nav navbar-middle'}">
-							VISOR DE MÉTRICAS PROACTIVE
-							
-							</div>
-						<ul style="top: 61%; padding-right: 15px"
-							class="${empty soeidSesion ? 'no-mostrar nav navbar-nav navbar-right' : 'navbar-right'}">
-							
-							<li ><a href="javascript:;"
-								class="${empty soeidSesion ? 'oculto  dropdown-toggle' : ' dropdown-toggle'}"
+							VISOR DE MÉTRICAS PROATIVE</div>
+						<ul
+							class="${empty soeidSesion ? 'no-mostrar nav navbar-nav navbar-right' : 'nav navbar-nav navbar-right'}">
+							<li class=""><a href="javascript:;"
+								class="${empty soeidSesion ? 'oculto user-profile dropdown-toggle' : 'user-profile dropdown-toggle'}"
 								data-toggle="dropdown" aria-expanded="false">${usuarioSesion.nombre}&nbsp;${usuarioSesion.apellidoPaterno}&nbsp;<span
 									class=" fa fa-caret-down"></span>
 							</a>
-								<ul class="dropdown-menu  pull-right">
+								<ul class="dropdown-menu dropdown-usermenu pull-right">
 									<li><a href="<c:url value='/logout' />"><i
 											class="fa fa-sign-out pull-right"></i> Cerrar sesión</a></li>
 								</ul></li>
