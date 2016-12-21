@@ -900,7 +900,7 @@ a:hover, a:focus {
 /* Custom, iPhone Retina */
 @media only screen and (min-width : 320px) {
 	.nav-md nav .navbar-middle {
-		font-size: 14px;
+		font-size: 12px;
 		width: 20%;
 		padding-top: 8px;
 	}

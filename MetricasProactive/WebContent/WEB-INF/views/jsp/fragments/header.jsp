@@ -84,7 +84,7 @@
 						</c:if>
 						<div 
 							class="${empty soeidSesion ? 'nav navbar-middle navbar-sin-sesion' : 'nav navbar-middle'}">
-							VISOR DE MÉTRICAS PROATIVE</div>
+							VISOR DE MÉTRICAS PROACTIVE</div>
 						<ul
 							class="${empty soeidSesion ? 'no-mostrar nav navbar-nav navbar-right' : 'nav navbar-nav navbar-right'}">
 							<li class=""><a href="javascript:;"

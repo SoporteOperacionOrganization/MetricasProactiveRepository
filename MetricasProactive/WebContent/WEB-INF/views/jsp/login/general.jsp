@@ -18,7 +18,7 @@
 <body class="nav-md">
 	<div class="container body">
 		<div class="main_container">
-		<jsp:include page="../fragments/header.jsp" />
+			<jsp:include page="../fragments/header.jsp" />
 			<!-- page content -->
 			<div class="right_col" role="main">
 				<div class="page-title">
@@ -28,19 +28,28 @@
 								<i class="fa fa-sitemap"></i> General
 							</h1>
 						</div>
-						<div class="col-md-6 col-sm-6 col-xs-12 form-group pull-right">
-						<div class="row" 	>
-								<div class="col-md-4 col-sm-4 " 
-								 style="text-align: right; ">
-									<label for="calendarioFiltro" style="padding-top: 5px;">Fecha:</label>
-								</div>
-								<div class="col-md-8 col-sm-8 col-xs-12 "
-									style="">
-									<div id="calendarioFiltro" class="form-control" style=" width: 16em;">
-										<i class="glyphicon glyphicon-calendar fa fa-calendar"></i> <span></span>
-										<b class="caret"></b>
-									</div>
-								</div>
+						<div class="col-md-6 col-sm-6 col-xs-2 ">
+							<div class="row" align="right">
+								<table>
+									<tbody>
+										<tr>
+											<td>
+												<div class="col-md-4 col-sm-4">
+													<label>Fecha:</label>
+												</div>
+											</td>
+											<td>
+												<div class="col-md-8 col-sm-8 " style="">
+													<div id="calendarioFiltro" class="form-control"
+														style="width: 16em;">
+														<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+														<span></span> <b class="caret"></b>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
@@ -57,23 +66,29 @@
 									<div class="clearfix"></div>
 								</div>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-										<div class="row" 	>
-								<div class="col-md-4 col-sm-4 " 
-								 style="text-align: right; ">
-											<label for="calendarioComparativo" >Comparativo:</label>
+								
+								<div class="row" align="right">
+								<table>
+									<tbody>
+										<tr>
+											<td>
+												<div class="col-md-4 col-sm-4 " style="text-align: right;">
+											<label for="calendarioComparativo">Comparativo:</label>
 										</div>
-										<div class="col-md-8 col-sm-8 col-xs-8 "
-											>
-											<div id="calendarioComparativo" style=" width: 16em ;" 
+												<div class="col-md-8 col-sm-8 col-xs-8 ">
+											<div id="calendarioComparativo" style="width: 16em;"
 												class="form-control ">
 
 												<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
 												<span></span> <b class="caret"></b>
 											</div>
-
-
 										</div>
-									</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+									
 
 								</div>
 
@@ -120,11 +135,11 @@
 							<div class="col-md-12 col-sm-12 col-xs-12">
 
 								<div id="clientesFrecuentes" style="font-size: 11px;">
-									<div id="top1" >
+									<div id="top1">
 										<p></p>
-										<div id="llamadas1" >
+										<div id="llamadas1">
 											<div class="progress" style="height: 14px">
-												<div id="progreso1" 
+												<div id="progreso1"
 													class="progress-bar progress-bar-success"
 													role="progressbar" aria-valuenow="0" aria-valuemin="0"
 													aria-valuemax="0">
@@ -187,7 +202,7 @@
 									</div>
 
 								</div>
-								
+
 								<div id="clientesFrecuentesSinDatos">No se encontraron
 									datos, seleccione un rango de fechas distinto.</div>
 							</div>
@@ -325,8 +340,8 @@
 			</div>
 
 
-			
-			
+
+
 			<!-- footer content -->
 			<jsp:include page="../fragments/footer.jsp" />
 			<!-- /footer content -->
