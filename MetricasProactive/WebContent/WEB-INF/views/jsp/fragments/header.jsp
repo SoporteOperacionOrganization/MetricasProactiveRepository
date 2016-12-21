@@ -12,9 +12,9 @@
 				<div
 					class="${empty soeidSesion ? 'fondo_blanco left_col scroll-view' : 'left_col scroll-view'}">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="" class="site_title"> <img
+							<div class="site_title"> <img
 							src="resources/Images/citibanamex_menu.png" alt="Citibanamex" />
-						</a>
+						</div>
 					</div>
 
 					<div class="clearfix"></div>

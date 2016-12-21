@@ -138,12 +138,12 @@
 									<div id="top1">
 										<p></p>
 										<div id="llamadas1">
-											<div class="progress" style="height: 14px">
+											<div class="progress" style="height: 15px">
 												<div id="progreso1"
 													class="progress-bar progress-bar-success"
 													role="progressbar" aria-valuenow="0" aria-valuemin="0"
 													aria-valuemax="0">
-													<p align="left" style="font-size: 8px;"></p>
+													<p  align="left" style="font-size: 12px;"></p>
 												</div>
 											</div>
 										</div>
@@ -151,12 +151,12 @@
 									<div id="top2">
 										<p></p>
 										<div id="llamadas2">
-											<div class="progress" style="height: 14px">
+											<div class="progress" style="height: 15px">
 												<div id="progreso2"
 													class="progress-bar progress-bar-success"
 													role="progressbar" aria-valuenow="0" aria-valuemin="0"
 													aria-valuemax="0">
-													<p align="left" style="font-size: 8px;"></p>
+													<p align="left" style="font-size: 12px;"></p>
 												</div>
 											</div>
 										</div>
@@ -164,12 +164,12 @@
 									<div id="top3">
 										<p></p>
 										<div id="llamadas3">
-											<div class="progress" style="height: 14px">
+											<div class="progress" style="height: 15px">
 												<div id="progreso3"
 													class="progress-bar progress-bar-success"
 													role="progressbar" aria-valuenow="0" aria-valuemin="0"
 													aria-valuemax="0">
-													<p align="left" style="font-size: 8px;"></p>
+													<p align="left" style="font-size: 12px;"></p>
 												</div>
 											</div>
 										</div>
@@ -177,12 +177,12 @@
 									<div id="top4">
 										<p></p>
 										<div id="llamadas4">
-											<div class="progress" style="height: 14px">
+											<div class="progress" style="height: 15px">
 												<div id="progreso4"
 													class="progress-bar progress-bar-success"
 													role="progressbar" aria-valuenow="0" aria-valuemin="0"
 													aria-valuemax="0">
-													<p align="left" style="font-size: 8px;"></p>
+													<p align="left" style="font-size: 12px;"></p>
 												</div>
 											</div>
 										</div>
@@ -190,12 +190,12 @@
 									<div id="top5">
 										<p></p>
 										<div id="llamadas5">
-											<div class="progress" style="height: 14px">
+											<div class="progress" style="height: 15px">
 												<div id="progreso5"
 													class="progress-bar progress-bar-success"
 													role="progressbar" aria-valuenow="0" aria-valuemin="0"
 													aria-valuemax="0">
-													<p align="left" style="font-size: 8px;"></p>
+													<p align="left" style="font-size: 12px;"></p>
 												</div>
 											</div>
 										</div>
