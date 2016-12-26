@@ -28,28 +28,18 @@
 								<i class="fa fa-sitemap"></i> General
 							</h1>
 						</div>
-						<div class="col-md-6 col-sm-6 col-xs-2 ">
-							<div class="row" align="right">
-								<table>
-									<tbody>
-										<tr>
-											<td>
-												<div class="col-md-4 col-sm-4">
-													<label>Fecha:</label>
-												</div>
-											</td>
-											<td>
-												<div class="col-md-8 col-sm-8 " style="">
-													<div id="calendarioFiltro" class="form-control"
-														style="width: 16em;">
-														<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-														<span></span> <b class="caret"></b>
-													</div>
-												</div>
-											</td>
-										</tr>
-									</tbody>
-								</table>
+						<div class="col-md-6 col-sm-6 col-xs-12 form-group pull-right">
+							<div class="row">
+								<div class="col-md-4 col-sm-4 col-xs-2"
+									style="text-align: right; padding-top: 5px">
+									<label for="calendarioFiltro">Fecha:</label>
+								</div>
+								<div class="col-md-8 col-sm-8 col-xs-10 pull-right" style="max-width: 263px;padding-right: 29px;">
+									<div id="calendarioFiltro" class="form-control">
+										<i class="glyphicon glyphicon-calendar fa fa-calendar"></i> <span></span>
+										<b class="caret"></b>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -66,30 +56,23 @@
 									<div class="clearfix"></div>
 								</div>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-								
-								<div class="row" align="right">
-								<table>
-									<tbody>
-										<tr>
-											<td>
-												<div class="col-md-4 col-sm-4 " style="text-align: right;">
-											<label for="calendarioComparativo">Comparativo:</label>
+									<div class="row">
+										<div class="col-md-4 col-sm-4 col-xs-12"
+											style="text-align: right; padding-right:0">
+											<label for="calendarioComparativo" style="padding-top: 5px;">Comparativo:</label>
 										</div>
-												<div class="col-md-8 col-sm-8 col-xs-8 ">
-											<div id="calendarioComparativo" style="width: 16em;"
-												class="form-control ">
+										<div class="col-md-8 col-sm-8 col-xs-12 pull-right"
+											style="padding-left: 17px; padding-right: 7px;">
+											<div id="calendarioComparativo"
+												class="form-control pull-right">
 
 												<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
 												<span></span> <b class="caret"></b>
 											</div>
-										</div>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-									
 
+
+										</div>
+									</div>
 								</div>
 
 							</div>
@@ -97,16 +80,14 @@
 								<div id="diferenciaLlamadas">
 									<span><i class="green"><i class="fa"></i></i></span>
 								</div>
-								<div id="LlamadasTotalesPorSegmentos" style="height: 300px;"></div>
-								<div id="LlamadasTotalesPorSegmentosSinDatos">No se
-									encontraron datos, seleccione un rango de fechas distinto.</div>
+								<div id="LlamadasTotalesPorSegmentos" style="height: 350px;"></div>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="x_panel tile fixed_height_320" style="height: 330px;">
+						<div class="x_panel tile">
 							<div class="row x_title">
 								<div class="col-md-12 col-sm-12 col-xs-12">
 									<h2>Servicios</h2>
@@ -115,8 +96,6 @@
 							</div>
 							<div class="x_content">
 								<div id="echart_pie" style="height: 320px;"></div>
-								<div id="echart_pieSinDatos">No se encontraron datos,
-									seleccione un rango de fechas distinto.</div>
 							</div>
 						</div>
 					</div>
@@ -143,7 +122,7 @@
 													class="progress-bar progress-bar-success"
 													role="progressbar" aria-valuenow="0" aria-valuemin="0"
 													aria-valuemax="0">
-													<p  align="left" style="font-size: 12px;"></p>
+													<p align="left" style="font-size: 12px;"></p>
 												</div>
 											</div>
 										</div>

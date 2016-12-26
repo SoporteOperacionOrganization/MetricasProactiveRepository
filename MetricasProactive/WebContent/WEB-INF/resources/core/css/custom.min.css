@@ -169,6 +169,7 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00396b',
 		endColorstr='#0094bd', GradientType=1);
 	width: 100%;
+	transition: width .4s ease-in-out;
 }
 
 .nav-sm .container.body .col-md-3.left_col {
@@ -196,7 +197,8 @@
 .nav-sm .container.body .right_col {
 	padding: 10px 20px;
 	margin-left: 70px;
-	z-index: 2
+	z-index: 2;
+	transition: margin .4s ease-in-out;
 }
 
 .nav-sm .navbar.nav_title {
@@ -227,6 +229,7 @@
 	padding: 4%;
 	width: 100%;
 	bottom: -60%;
+	transition: opacity .4s ease-in-out;
 }
 
 /*.nav-sm .main_container .top_nav {
@@ -410,6 +413,7 @@
 	border-bottom: 1px solid #D9DEE4;
 	width: 100%;
 	position: relative;
+	transition: padding .4s ease-in-out;
 }
 
 @media ( min-width : 480px) {
@@ -441,6 +445,7 @@ body .container.body .right_col {
 	padding: 10px 20px 0;
 	margin-left: 225px;
 	height: 100%;
+	transition: margin .4s ease-in-out;
 }
 
 .nav_title {
@@ -463,7 +468,8 @@ body .container.body .right_col {
 		endColorstr='#002d72', GradientType=0);
 	border-radius: 0;
 	height: 72px;
-	border-left: 0;
+	border-left: 0; 
+	transition: width .4s ease-in-out;
 }
 
 @media ( max-width : 991px) {
@@ -472,7 +478,7 @@ body .container.body .right_col {
 		margin: 0
 	}
 	.nav-md .container.body .col-md-3.left_col {
-		display: none
+		width: 0;
 	}
 	.nav-md .container.body .right_col {
 		width: 100%;
@@ -846,7 +852,6 @@ a:hover, a:focus {
 
 .nav.side-menu>li {
 	position: relative;
-	display: block;
 	cursor: pointer
 }
 
@@ -854,9 +859,6 @@ a:hover, a:focus {
 	margin-bottom: 6px
 }
 
-/*.nav.side-menu>li>a:hover {
-    border-left: 5px solid #DA291C;
-}*/
 .nav.side-menu>li>a:hover, .nav>li>a:focus {
 	text-decoration: none;
 	color: #00bdf2;
@@ -900,9 +902,9 @@ a:hover, a:focus {
 /* Custom, iPhone Retina */
 @media only screen and (min-width : 320px) {
 	.nav-md nav .navbar-middle {
-		font-size: 12px;
-		width: 20%;
-		padding-top: 8px;
+		font-size: 13px;
+		width: 25%;
+    	padding-top: 10px;
 	}
 	.navbar-sin-sesion {
 		top: 10px;
@@ -910,7 +912,7 @@ a:hover, a:focus {
 		width: 150px !important;
 	}
 	.nav-sm nav .navbar-middle {
-		font-size: 14px;
+		font-size: 13px;
 		width: 20%;
 		padding-top: 8px;
 	}
@@ -946,9 +948,15 @@ a:hover, a:focus {
 	}
 	.nav-sm .navbar-nav>li>a {
 		padding: 20px;
-		line-height: 15px;
+		line-height: 26px;
 		text-align: center;
 		word-break: break-word;
+	}
+	.nav-sm .nav.side-menu>li {
+		visibility: visible;
+	}
+	.nav-md .nav.side-menu>li {
+		visibility: hidden;
 	}
 }
 
@@ -997,9 +1005,10 @@ a:hover, a:focus {
 		padding-top: 28px;
 	}
 	.nav-md .navbar-sin-sesion {
-		width: 55% !important;
+		width: calc(100% - 300px) !important;
 		top: 0;
 		right: 150px;
+		font-size: 20px;
 	}
 	.nav-sm nav .navbar-middle {
 		font-size: 16px;
@@ -1030,6 +1039,9 @@ a:hover, a:focus {
 	.nav-md .footerA {
 		padding-left: 10px;
 	}
+	.nav-md .navbar-nav>li>a {
+		min-height: 0;
+	}
 }
 
 /* Medium Devices, Desktops */
@@ -1040,7 +1052,7 @@ a:hover, a:focus {
 		padding-top: 26px;
 	}
 	.nav-md .navbar-sin-sesion {
-		width: calc(100% - 350px) !important;
+		width: calc(100% - 310px) !important;
 	}
 	.nav-sm nav .navbar-middle {
 		width: calc(100% - 250px) !important;
@@ -1068,9 +1080,12 @@ a:hover, a:focus {
 	}
 	.nav-md .navbar-nav>li>a {
 		padding-top: 15px;
-		padding-right: 20px;
+		/*padding-right: 20px;*/
 		line-height: 28px;
 		text-align: center;
+	}
+	.nav-sm .nav.side-menu>li, .nav-md .nav.side-menu>li  {
+		visibility: visible;
 	}
 }
 
@@ -1093,6 +1108,10 @@ a:hover, a:focus {
 	.nav-sm .footerA {
 		padding-left: 20px;
 	}
+}
+
+#calendarioComparativo {
+	max-width: 223px;
 }
 
 /*@media only screen and (min-width : 1400px) {
@@ -5133,6 +5152,11 @@ ul.notifications {
 	display: none !important;
 }
 
+.deshabilitado {
+	pointer-events: none;
+    opacity: 0.4;
+}
+
 .fondo_blanco {
 	background: #f7f7f7;
 }
@@ -5153,3 +5177,172 @@ ul.notifications {
 	margin: 0;
 	color: #002D72;
 }
+
+/**Nuevo estilo de login BETA**/
+.contenedor-login{
+	position: absolute;
+    width: 24em;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    animation: intro .7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+.login{
+	position: relative;
+}
+.formulario{
+    position: relative;
+    background: white;
+    padding: 3em;
+    border-radius: .25em;
+    visibility: visible;
+    height: auto;
+    opacity: 1;
+    transform: translateY(-2em);
+    -webkit-filter: drop-shadow(0 0 2em rgba(0,0,0,0.2));
+    transition: opacity .4s ease-in-out, height .4s ease-in-out, transform .4s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	.formulario{
+		box-shadow: 0 0 45px 20px rgba(0,0,0,0.1);
+	} 
+}
+
+.campos{
+	visibility: visible;
+	transition: opacity .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.campo{
+	position: relative;
+    margin-bottom: 2em;
+}
+.input{
+	width: 100%;
+    font-size: 100%;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    height: 2rem;
+    line-height: 2rem;
+    border-bottom: 1px solid #aaa;
+    color: #777;
+    transition: all .2s ease-in;
+}
+.input:focus {
+    outline: 0;
+    border-color: #aaa;
+}
+
+.etiqueta{
+	position: absolute;
+    height: 2rem;
+    line-height: 2rem;
+    bottom: 0;
+    color: #002D72;
+    transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    left: 0;
+}
+.input:focus + .etiqueta, input:valid + .etiqueta {
+    transform: translateY(-100%);
+    font-size: 1rem;
+    color: #002D72;
+}
+
+.boton{
+    text-align: center;
+}
+
+.boton input{
+	width: 100%;
+}
+
+.padding-left-10{
+	padding-left: 10px !important;
+}
+
+/* Intro animation */
+@keyframes intro {
+  from {
+    opacity: 0;
+    top: 0;
+  }
+  to {
+    opacity: 1;
+    top: 50%;
+  }
+}
+/**Fin nuevo estilo de login BETA**/
+
+/* Nuevo estilo de footer BETA*/
+
+#footer{
+     min-height: 50px; 
+     background-color : white;
+     border-top: 1px solid #CCC;
+     padding-top: 10px;
+}
+#footer .logo {
+    background: url(../Images/logo_citibanamex_footer.png) no-repeat;
+    height: 18px;
+    padding-left: 79px;
+    font-size: 11px;
+    width: 15px;
+    float: right;
+}
+#footer .copyrighttext {
+    color: #aeaeae;
+    font-size: 14px;
+    float: right;
+    clear: both;
+}
+#footer .elbanco {
+    font-size: 14px;
+    text-align: left;
+    height: 11px;
+    padding-top: 5px; 
+}
+
+#footer .elbanco a {
+	color: #337ab7;
+}
+#footer .elbanco a:hover {
+	color: #23527c;
+}
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+	#footer .copyrighttext {
+		font-size: 10px;
+	}
+	#footer .elbanco {
+		font-size: 10px;
+		width: 178px;
+		padding-top: 3px;
+	}
+	#footer .logo {
+		padding-left: 63px;
+	}
+	
+}
+
+@media only screen and (min-width : 480px) {
+	#footer .elbanco {
+		width: auto;
+	}
+}
+
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+	#footer .copyrighttext {
+		font-size: 14px;
+	}
+	#footer .elbanco {
+		font-size: 14px;
+		padding-top: 5px;
+	}
+	#footer .logo {
+		padding-left: 79px;
+	}
+}
+/* Fin nuevo estilo de footer BETA*/

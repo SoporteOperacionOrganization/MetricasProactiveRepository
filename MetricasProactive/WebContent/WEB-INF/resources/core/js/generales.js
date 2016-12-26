@@ -93,9 +93,7 @@ function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
 		dibujarServicios(fechaInicio, fechaFinal);
 		dibujarClientesFrecuentes(fechaInicio, fechaFinal);
 		dibujarFamilias(fechaInicio, fechaFinal, segmento);
-		setTimeout(function() {
-			recalcularAlto()
-		}, 2000);
+		recalcularAlto();
 		break;
 	case "empresarial":
 		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal,
@@ -103,18 +101,14 @@ function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
 		dibujarServicios(fechaInicio, fechaFinal);
 		dibujarClientesFrecuentes(fechaInicio, fechaFinal);
 		dibujarConcurrencia(fechaInicio, fechaFinal);
-		setTimeout(function() {
-			recalcularAlto()
-		}, 2000);
+		recalcularAlto()
 		break;
 	case "online":
 		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal, 'ATE');
 		dibujarServicios(fechaInicio, fechaFinal);
 		dibujarClientesFrecuentes(fechaInicio, fechaFinal);
 		dibujarConcurrencia(fechaInicio, fechaFinal);
-		setTimeout(function() {
-			recalcularAlto()
-		}, 2000);
+		recalcularAlto();
 		break;
 	case "offline":
 		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal,
@@ -122,18 +116,14 @@ function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
 		dibujarServicios(fechaInicio, fechaFinal);
 		dibujarClientesFrecuentes(fechaInicio, fechaFinal);
 		dibujarConcurrencia(fechaInicio, fechaFinal);
-		setTimeout(function() {
-			recalcularAlto()
-		}, 2000);
+		recalcularAlto()
 		break;
 	case "pyme":
 		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal, 'PYME');
 		dibujarServicios(fechaInicio, fechaFinal);
 		dibujarClientesFrecuentes(fechaInicio, fechaFinal);
 		dibujarConcurrencia(fechaInicio, fechaFinal);
-		setTimeout(function() {
-			recalcularAlto()
-		}, 2000);
+		recalcularAlto()
 		break;
 	case "pymeOffline":
 		dibujarLlamadasTotalesFamiliaSegmentos(fechaInicio, fechaFinal,
@@ -141,9 +131,7 @@ function dibujarGraficasPorPagina(fechaInicio, fechaFinal, segmento) {
 		dibujarServicios(fechaInicio, fechaFinal);
 		dibujarClientesFrecuentes(fechaInicio, fechaFinal);
 		dibujarConcurrencia(fechaInicio, fechaFinal);
-		setTimeout(function() {
-			recalcularAlto()
-		}, 2000);
+		recalcularAlto()
 		break;
 	default:
 		recalcularAlto();
@@ -187,7 +175,7 @@ $(document)
 						
 						setTimeout(function() {
 							redibujarGraficas()
-						}, 50);
+						}, 2000);
 					});
 					cambiarLabelFechaFiltro(moment(), moment());
 					$('#calendarioComparativo span').html("");
