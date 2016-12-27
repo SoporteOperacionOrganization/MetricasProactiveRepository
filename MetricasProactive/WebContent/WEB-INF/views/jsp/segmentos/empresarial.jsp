@@ -85,8 +85,6 @@
 								</div>
 								<div id="LlamadasTotalesPorFamiliaSegmentos"
 									style="height: 350px;"></div>
-								<div id="LlamadasTotalesPorFamiliaSegmentosSinDatos">No se
-									encontraron datos, seleccione un rango de fechas distinto.</div>
 							</div>
 						</div>
 					</div>
