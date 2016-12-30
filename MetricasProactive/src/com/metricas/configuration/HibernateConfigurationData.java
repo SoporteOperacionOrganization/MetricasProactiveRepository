@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +27,17 @@ public class HibernateConfigurationData {
 	@Autowired
     private Environment environment;
 	
+	@Value("${metricasData.jdbc.driverClassName}")
+	private String dbDriverClassName;
+	@Value("${metricasData.jdbc.url}")
+	private String dbUrl;
+	@Value("${metricasData.jdbc.username}")
+	private String dbUserName;
+	@Value("${metricasData.jdbc.password}")
+	private String dbPassword;
+	@Value("${metricasData.hibernate.dialect}")
+	private String dbDialect;
+	
 	@Bean
     public LocalSessionFactoryBean sessionFactoryData() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
@@ -38,16 +50,16 @@ public class HibernateConfigurationData {
 	@Bean
     public DataSource dataSourceData() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(environment.getRequiredProperty("metricasData.jdbc.driverClassName"));
-        dataSource.setUrl(environment.getRequiredProperty("metricasData.jdbc.url"));
-        dataSource.setUsername(environment.getRequiredProperty("metricasData.jdbc.username"));
-        dataSource.setPassword(environment.getRequiredProperty("metricasData.jdbc.password"));
+        dataSource.setDriverClassName(dbDriverClassName);
+        dataSource.setUrl(dbUrl);
+        dataSource.setUsername(dbUserName);
+        dataSource.setPassword(dbPassword);
         return dataSource;
     }
 	
 	private Properties hibernatePropertiesData() {
         Properties properties = new Properties();
-        properties.put("hibernate.dialect", environment.getRequiredProperty("metricasData.hibernate.dialect"));
+        properties.put("hibernate.dialect", dbDialect);
         properties.put("hibernate.show_sql", environment.getRequiredProperty("metricasData.hibernate.show_sql"));
         properties.put("hibernate.format_sql", environment.getRequiredProperty("metricasData.hibernate.format_sql"));
         return properties;        
