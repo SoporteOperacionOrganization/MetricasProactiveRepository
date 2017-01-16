@@ -660,6 +660,16 @@ function dibujarLlamadasTotalesFamiliaSegmentos(fechaInicioP, fechaFinalP,
 				$("#calendarioComparativo").addClass("deshabilitado");
 
 				GeneralLlamadasBarras2.hideLoading();
+				
+				if ($(window).width() <= 538){
+					opcionesGraficaBarra.legend.show = false;
+					opcionesGraficaBarra.toolbox.feature.restore.show = false;
+					opcionesGraficaBarra.toolbox.feature.magicType.show = false;
+				}else{
+					opcionesGraficaBarra.legend.show = true;
+					opcionesGraficaBarra.toolbox.feature.restore.show = true;
+					opcionesGraficaBarra.toolbox.feature.magicType.show = true;
+				}
 
 				// opcionesGraficaBarra.xAxis.show = false;
 
@@ -729,6 +739,16 @@ function dibujarLlamadasTotalesFamiliaSegmentos(fechaInicioP, fechaFinalP,
 				$("#diferenciaLlamadas span i i").text('');
 
 				GeneralLlamadasBarras2.hideLoading();
+				
+				if ($(window).width() <= 538){
+					opcionesGraficaBarra.legend.show = false;
+					opcionesGraficaBarra.toolbox.feature.restore.show = false;
+					opcionesGraficaBarra.toolbox.feature.magicType.show = false;
+				}else{
+					opcionesGraficaBarra.legend.show = true;
+					opcionesGraficaBarra.toolbox.feature.restore.show = true;
+					opcionesGraficaBarra.toolbox.feature.magicType.show = true;
+				}
 
 				opcionesGraficaBarra.xAxis.show = true;
 
