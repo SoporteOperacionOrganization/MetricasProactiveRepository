@@ -176,7 +176,7 @@
 						</div>
 					</div>
 					<div class="col-md-6 col-sm-6 col-xs-12">
-						<div class="x_panel">
+						<div class="x_panel tile fixed_height_390" style="height: 350px;">
 							<div class="x_title">
 								<h2>
 									<!--  Porcentaje ( <span id="porcen" class="blue"> </span> %)-->
@@ -185,7 +185,7 @@
 								<div class="clearfix"></div>
 							</div>
 							<div class="x_content">
-								<div id="echart_mini_pie" style="height: 250px;"></div>
+								<div id="echart_mini_pie" style="height: 300px;"></div>
 							</div>
 						</div>
 					</div>
