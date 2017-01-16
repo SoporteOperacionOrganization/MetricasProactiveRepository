@@ -900,7 +900,8 @@ a:hover, a:focus {
 }
 
 /* Custom, iPhone Retina */
-@media only screen and (min-width : 320px) {
+/* Se modificó a max-width 479px para que abarque todo tipo de dispositivo móvil, aún menor a 320px*/
+@media only screen and (max-width : 479px) {
 	.nav-md nav .navbar-middle {
 		font-size: 13px;
 		width: 25%;
@@ -917,7 +918,7 @@ a:hover, a:focus {
 		padding-top: 8px;
 	}
 	.nav-md nav .navbar-right {
-		font-size: 12px;
+		font-size: 11px;
 		padding-top: 11px;
 		line-height: 0;
 		width: 60%;
@@ -996,6 +997,12 @@ a:hover, a:focus {
 	.nav-md .footerA {
 		padding-left: 10px;
 	}
+	.nav-sm .nav.side-menu>li {
+		visibility: visible;
+	}
+	.nav-md .nav.side-menu>li {
+		visibility: hidden;
+	}
 }
 
 /* Small Devices, Tablets */
@@ -1042,6 +1049,12 @@ a:hover, a:focus {
 	.nav-md .navbar-nav>li>a {
 		min-height: 0;
 	}
+	.nav-sm .nav.side-menu>li {
+		visibility: visible;
+	}
+	.nav-md .nav.side-menu>li {
+		visibility: hidden;
+	}
 }
 
 /* Medium Devices, Desktops */
@@ -1080,7 +1093,6 @@ a:hover, a:focus {
 	}
 	.nav-md .navbar-nav>li>a {
 		padding-top: 15px;
-		/*padding-right: 20px;*/
 		line-height: 28px;
 		text-align: center;
 	}
@@ -5315,7 +5327,7 @@ ul.notifications {
 	color: #23527c;
 }
 /* Custom, iPhone Retina */
-@media only screen and (min-width : 320px) {
+@media only screen and (max-width : 479px) {
 	#footer .copyrighttext {
 		font-size: 10px;
 	}
