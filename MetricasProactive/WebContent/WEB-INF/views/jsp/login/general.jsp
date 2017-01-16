@@ -29,16 +29,12 @@
 							</h1>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-12 form-group pull-right">
-							<div class="row">
-								<div class="col-md-4 col-sm-4 col-xs-2"
-									style="text-align: right; padding-top: 5px">
-									<label for="calendarioFiltro">Fecha:</label>
-								</div>
-								<div class="col-md-8 col-sm-8 col-xs-10 pull-right" style="max-width: 263px;padding-right: 29px;">
-									<div id="calendarioFiltro" class="form-control">
-										<i class="glyphicon glyphicon-calendar fa fa-calendar"></i> <span></span>
-										<b class="caret"></b>
-									</div>
+							<div style="text-align: right">
+								<label for="calendarioFiltro"
+									style="padding-top: 5px; padding-right: 10px;">Fecha:</label>
+								<div id="calendarioFiltro" class="form-control">
+									<i class="glyphicon glyphicon-calendar fa fa-calendar"></i> <span></span>
+									<b class="caret"></b>
 								</div>
 							</div>
 						</div>
@@ -56,25 +52,15 @@
 									<div class="clearfix"></div>
 								</div>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<div class="row">
-										<div class="col-md-4 col-sm-4 col-xs-12"
-											style="text-align: right; padding-right:0">
-											<label for="calendarioComparativo" style="padding-top: 5px;">Comparativo:</label>
-										</div>
-										<div class="col-md-8 col-sm-8 col-xs-12 pull-right"
-											style="padding-left: 17px; padding-right: 7px;">
-											<div id="calendarioComparativo"
-												class="form-control pull-right">
-
-												<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-												<span></span> <b class="caret"></b>
-											</div>
-
-
+									<div style="text-align: right">
+										<label for="calendarioComparativo"
+											style="padding-top: 5px; padding-right: 10px;">Comparativo:</label>
+										<div id="calendarioComparativo" class="form-control">
+											<i class="glyphicon glyphicon-calendar fa fa-calendar"></i> <span></span>
+											<b class="caret"></b>
 										</div>
 									</div>
 								</div>
-
 							</div>
 							<div class="x_content">
 								<div id="diferenciaLlamadas">
@@ -183,7 +169,7 @@
 								</div>
 
 								<div id="clientesFrecuentesSinDatos">No se encontraron
-									datos, seleccione un rango de fechas distinto.</div>
+									datos.</div>
 							</div>
 
 						</div>
@@ -310,8 +296,7 @@
 									</div>
 								</div>
 							</div>
-							<div id="llamadasFamiliaSinDatos">No se encontraron datos,
-								seleccione un rango de fechas distinto.</div>
+							<div id="llamadasFamiliaSinDatos">No se encontraron datos.</div>
 						</div>
 					</div>
 

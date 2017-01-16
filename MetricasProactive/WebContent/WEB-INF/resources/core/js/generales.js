@@ -4,6 +4,17 @@
 
 function redibujarGraficas() {
 	if (GeneralLlamadasBarras2 != null && GeneralLlamadasBarras2 != undefined) {
+		//Se deshabilitan o se habilitan opciones según el ancho de la pantalla del dispositivo.
+		if ($(window).width() <= 538){
+			opcionesGraficaBarra.legend.show = false;
+			opcionesGraficaBarra.toolbox.feature.restore.show = false;
+			opcionesGraficaBarra.toolbox.feature.magicType.show = false;
+		}else{
+			opcionesGraficaBarra.legend.show = true;
+			opcionesGraficaBarra.toolbox.feature.restore.show = true;
+			opcionesGraficaBarra.toolbox.feature.magicType.show = true;
+		}
+		GeneralLlamadasBarras2.setOption(opcionesGraficaBarra);
 		GeneralLlamadasBarras2.resize();
 	}
 	if (echartPie != null && echartPie != undefined) {
@@ -22,7 +33,7 @@ function recalcularAlto() {
 	if (altoContenido <= altoVentana) {
 		$(".left_col").css("min-height", altoDocumento);
 	} else if (altoContenido <= altoDocumento) {
-		$(".left_col").css("min-height", altoContenido);
+		$(".left_col").css("min-height", altoDocumento);
 	} else {
 		$(".left_col").css("min-height", altoVentana);
 	}
@@ -156,7 +167,13 @@ $(document)
 					$(".dropdown-toggle").dropdown();
 
 					$(window).on('resize', function() {
-						redibujarGraficas();
+						/*var anchoPanelFamilias = ($("#LlamadasTotalesPorFamiliaSegmentos").parent().parent().width());
+						var anchoPanelServicios = ($("#echart_pie").parent().parent().width());
+						var anchoPanelConcurrencia = ($("#echart_mini_pie").parent().parent().width());*/
+						//$("#LlamadasTotalesPorFamiliaSegmentos").children.children().width(anchoPanelFamilias);
+						setTimeout(function() {
+							redibujarGraficas()
+						}, 300);
 						recalcularAlto();
 					});
 					$("#menu_toggle").on('click', function() {

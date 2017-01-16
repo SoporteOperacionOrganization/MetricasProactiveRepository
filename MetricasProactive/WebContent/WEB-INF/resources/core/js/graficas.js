@@ -249,7 +249,8 @@ var opcionesGraficaBarra = {
 				}
 			},
 			saveAsImage : {
-				title : 'Descargar'
+				title : 'Descargar',
+				lang : ['Gráfica']
 			}
 		}
 	},
@@ -318,7 +319,8 @@ var opcionesGraficaPie = {
 		show : true,
 		feature : {
 			saveAsImage : {
-				title : 'Descargar'
+				title : 'Descargar',
+				lang : ['Gráfica']
 			}
 		}
 	},
@@ -353,6 +355,7 @@ var opcionesGraficaDona = {
 		formatter : "{b}:<br/>{c}%"
 	},
 	legend : {
+		show: false,
 		orient : 'vertical',
 		x : 10,
 		y : 200,
@@ -363,7 +366,8 @@ var opcionesGraficaDona = {
 		show : true,
 		feature : {
 			saveAsImage : {
-				title : 'Descargar'
+				title : 'Descargar',
+				lang : ['Gráfica']
 			}
 		}
 	},
@@ -470,6 +474,19 @@ function dibujarLlamadasTotalesGeneral(fechaInicioP, fechaFinalP) {
 				/* $("#totalLlamadas").text(' ' + totalLlamadas); */
 
 				GeneralLlamadasBarras2.hideLoading();
+				
+				//Se deshabilitan o se habilitan opciones según el ancho de la pantalla del dispositivo.
+				if ($(window).width() <= 538){
+					opcionesGraficaBarra.legend.show = false;
+					opcionesGraficaBarra.toolbox.feature.restore.show = false;
+					opcionesGraficaBarra.toolbox.feature.magicType.show = false;
+					GeneralLlamadasBarras2.setOption(opcionesGraficaBarra);
+				}else{
+					opcionesGraficaBarra.legend.show = true;
+					opcionesGraficaBarra.toolbox.feature.restore.show = true;
+					opcionesGraficaBarra.toolbox.feature.magicType.show = true;
+					GeneralLlamadasBarras2.setOption(opcionesGraficaBarra);
+				}
 
 				opcionesGraficaBarra.xAxis.show = true;
 
@@ -641,7 +658,7 @@ function dibujarLlamadasTotalesFamiliaSegmentos(fechaInicioP, fechaFinalP,
 				// opcionesGraficaBarra.yAxis.show = false;
 
 				opcionesGraficaBarra.toolbox.show = false;
-
+				
 				opcionesGraficaBarra.xAxis.data = [];
 
 				opcionesGraficaBarra.series = [];
@@ -1127,7 +1144,17 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 					itemStyle : etiquetasOcultas,
 					data : [ {
 						name : seg,
-						value : concu
+						value : concu,
+						itemStyle : {
+							normal : {
+								label : {
+									show : true
+								},
+								labelLine : {
+									show : true
+								}
+							}
+						}
 					}, {
 						name : 'Otros',
 						value : vacio,
@@ -1135,10 +1162,16 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 							normal : {
 								color : '#ddd',
 								label : {
-									show : false
+									show : true,
+									textStyle : {
+										color: '#666'
+									}
 								},
 								labelLine : {
-									show : false
+									show : true,
+									lineStyle : {
+										color: '#666'
+									}
 								}
 							}
 						}
@@ -1158,12 +1191,15 @@ function dibujarConcurrencia(fechaInicioP, fechaFinalP) {
 
 				opcionesGraficaDona.title.text = '';
 				opcionesGraficaDona.title.text = 'No se encontraron datos';
+				opcionesGraficaDona.title.subtext = 'Del ' + fechaInicioP
+				+ ' al ' + fechaFinalP;
 
 				opcionesGraficaDona.legend.data = [];
 
 				opcionesGraficaDona.series = [];
 			}
 			echartMiniPie.setOption(opcionesGraficaDona);
+			
 
 			/*
 			 * 
@@ -1235,8 +1271,9 @@ function dibujarClientesFrecuentes(fechaInicioP, fechaFinalP) {
 				}// fin FOR
 
 			}// fin else JSON.stringify(data)
-
 		}// fin function(data)
+		
 	});// fin $.ajax
+	
 }// fin dibujarClientesFrecuentes
 
