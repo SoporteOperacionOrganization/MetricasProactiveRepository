@@ -12,7 +12,7 @@ var optionSet1 = {
 	minDate : moment().subtract(3, 'months'),
 	maxDate : moment(),
 	dateLimit : {
-		days : 60
+		months: 3
 	},
 	showWeekNumbers : true,
 	timePicker : false,
@@ -52,7 +52,7 @@ var optionSet2 = {
 	minDate : moment().subtract(3, 'months'),
 	maxDate : moment(),
 	dateLimit : {
-		days : 60
+		months: 3
 	},
 	showWeekNumbers : true,
 	timePicker : false,
